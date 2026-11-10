@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { toGeminiSchema } from '../ai/gemini';
 import { pickNext, type Progress } from './bank';
 import { checkSet } from './checks';
-import { normalizeGaps } from './generate';
+import { itemsWithProblems, normalizeGaps } from './generate';
 import { countWords, markKeyWord, markOpen, markSet, normalize } from './marking';
 import { renderSet } from './render';
 import { sentenceAround } from './review';
@@ -102,6 +102,13 @@ describe('banco: siguiente ejercicio', () => {
 describe('huecos que marca la IA', () => {
   it('unifica {{1}}, [1], (1)____ y [GAP 1] a {1}', () => {
     expect(normalizeGaps('a {{1}} b [2] c (3)____ d ____(4) e [GAP 5] f { 6 }')).toBe('a {1} b {2} c {3} d {4} e {5} f {6}');
+  });
+});
+
+describe('ronda de corrección', () => {
+  it('cuenta las preguntas distintas que marca el revisor', () => {
+    expect(itemsWithProblems(['Ítem 2: dos respuestas', 'Ítem 8: el revisor elige A', 'Ítem 8: ambiguo'])).toBe(2);
+    expect(itemsWithProblems(['El revisor dice que el nivel no es C1.'])).toBe(0);
   });
 });
 

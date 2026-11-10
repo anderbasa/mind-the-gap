@@ -86,6 +86,19 @@ export async function runAI<T>(req: AiRequest<T>): Promise<AiResult<T>> {
       if ((e as Error).name === 'AbortError') throw e;
       lastErr = e;
       if (e instanceof AiError && e.kind === 'quota-day') exhausted.set(modelKey(ref), nextPacificMidnight());
+      // Registro de intentos fallidos (users/{uid}/ailog) para poder diagnosticar desde fuera.
+      if (hasStore() && !IS_DEMO) {
+        void store()
+          .add('ailog', {
+            task: req.task,
+            model: ref.model,
+            kind: e instanceof AiError ? e.kind : 'other',
+            status: e instanceof AiError ? (e.opts.status ?? null) : null,
+            message: String((e as Error)?.message ?? e).slice(0, 300),
+            at: Date.now(),
+          })
+          .catch(() => undefined);
+      }
       if (!(e instanceof AiError) || !FALLBACK_KINDS.has(e.kind)) throw e;
       console.warn(`[ia] ${modelKey(ref)} falló (${(e as AiError).kind}); probando el siguiente`);
     }

@@ -125,7 +125,7 @@ export function normalizeGaps(text: string): string {
 }
 
 /** Guarda por qué se ha descartado un ejercicio (users/{uid}/genlog) para poder afinar los prompts. */
-async function logFailure(part: PartId, e: unknown, model?: string): Promise<void> {
+async function logFailure(part: PartId, e: unknown, model?: string, note?: string): Promise<void> {
   if (!hasStore()) return;
   const entry =
     e instanceof GenerationError
@@ -134,8 +134,39 @@ async function logFailure(part: PartId, e: unknown, model?: string): Promise<voi
         ? { stage: 'ai', kind: e.kind, issues: [e.message.slice(0, 400)] }
         : { stage: 'other', issues: [String((e as Error)?.message ?? e).slice(0, 400)] };
   await store()
-    .add('genlog', { part, ...entry, model: model ?? null, at: Date.now() })
+    .add('genlog', { part, ...entry, model: model ?? null, note: note ?? null, at: Date.now() })
     .catch(() => undefined);
+}
+
+/** Cuántas preguntas distintas aparecen en la lista de problemas del revisor. */
+export function itemsWithProblems(problems: string[]): number {
+  return new Set(problems.map((p) => /Ítem (\d+)/.exec(p)?.[1]).filter(Boolean)).size;
+}
+
+/** Ronda de corrección: el generador rehace solo las preguntas que el revisor ha marcado. */
+async function repairSet(set: RueSet, problems: string[], signal?: AbortSignal): Promise<RueSet> {
+  const spec = getPrompt(`rue-${set.part}`);
+  const repair = getPrompt('rue-repair');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { id, source, createdAt, model, promptVersion, validation, part, ...content } = set as RueSet & Record<string, unknown>;
+  const r = await runAI({
+    task: 'generate',
+    system: fill(repair.body, { part_spec: spec.body, problems: problems.join('\n'), exercise: JSON.stringify(content) }),
+    messages: [{ role: 'user', parts: [{ text: 'Return the complete corrected exercise as JSON.' }] }],
+    schema: GEN_SCHEMAS[set.part] as unknown as z.ZodType<Record<string, unknown>>,
+    maxTokens: 8192,
+    signal,
+    thinking: 'low',
+    timeoutMs: 120_000,
+    retries: 1,
+  });
+  const data = { ...(r.data as Record<string, unknown>) };
+  if (typeof data.text === 'string') data.text = normalizeGaps(data.text);
+  const fixed = parseSet({ ...data, part, id, source, createdAt, model, promptVersion: `${promptVersion ?? ''}+repair${repair.version}` });
+  if (!fixed) throw Object.assign(new GenerationError('format', ['La corrección no encaja con el esquema.']), { model: r.model.model });
+  const issues = checkSet(fixed);
+  if (issues.length) throw Object.assign(new GenerationError('format', issues), { model: r.model.model });
+  return fixed;
 }
 
 export async function generateSet(part: PartId, opts: { onStep?: (s: string) => void; signal?: AbortSignal } = {}): Promise<RueSet> {
@@ -181,7 +212,20 @@ async function generateSetInner(part: PartId, opts: { onStep?: (s: string) => vo
   const issues = checkSet(set);
   if (issues.length) throw Object.assign(new GenerationError('format', issues), { model: r.model.model });
   opts.onStep?.('Otro modelo lo está resolviendo a ciegas para comprobarlo…');
-  const ok = await validateSet(set, opts.signal);
+  let ok: RueSet;
+  try {
+    ok = await validateSet(set, opts.signal);
+  } catch (e) {
+    // Si el revisor solo ha visto problemas en unas pocas preguntas, se rehacen esas y se vuelve a comprobar.
+    if (!(e instanceof GenerationError) || e.stage !== 'validation') throw e;
+    const bad = itemsWithProblems(e.issues);
+    if (bad === 0 || bad > 4 || e.issues.some((p) => p.startsWith('El revisor dice'))) throw e;
+    await logFailure(part, e, (e as { model?: string }).model, 'repaired');
+    opts.onStep?.(`El revisor ha visto problemas en ${bad} pregunta(s): corrigiéndolas…`);
+    const fixed = await repairSet(set, e.issues, opts.signal);
+    opts.onStep?.('Comprobando otra vez a ciegas…');
+    ok = await validateSet(fixed, opts.signal);
+  }
   await saveAiSet(ok);
   if (hasStore()) {
     void store()
