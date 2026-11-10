@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { toGeminiSchema } from '../ai/gemini';
 import { pickNext, type Progress } from './bank';
 import { checkSet } from './checks';
+import { normalizeGaps } from './generate';
 import { countWords, markKeyWord, markOpen, markSet, normalize } from './marking';
 import { renderSet } from './render';
 import { sentenceAround } from './review';
@@ -95,6 +96,12 @@ describe('banco: siguiente ejercicio', () => {
     expect(pickNext([ai, p1], { ...empty, seen: { [p1.id]: 5, 'ai-1': 9 } }, 'p1')).toMatchObject({ set: { id: p1.id }, fresh: false });
     expect(pickNext([ai, p1], { ...empty, reported: { [p1.id]: true }, seen: { 'ai-1': 9 } }, 'p1')).toMatchObject({ set: { id: 'ai-1' } });
     expect(pickNext([p1], { ...empty, reported: { [p1.id]: true } }, 'p1').set).toBeNull();
+  });
+});
+
+describe('huecos que marca la IA', () => {
+  it('unifica {{1}}, [1], (1)____ y [GAP 1] a {1}', () => {
+    expect(normalizeGaps('a {{1}} b [2] c (3)____ d ____(4) e [GAP 5] f { 6 }')).toBe('a {1} b {2} c {3} d {4} e {5} f {6}');
   });
 });
 

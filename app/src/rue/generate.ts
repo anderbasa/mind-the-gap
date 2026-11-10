@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { runAI } from '../ai/client';
 import { fill, getPrompt } from '../ai/prompts';
 import { AiError } from '../ai/types';
-import { profile } from '../state';
+import { hasStore, profile, store } from '../state';
 import { allSets, getProgress, saveAiSet } from './bank';
 import { checkSet } from './checks';
 import { countWords, normalize } from './marking';
@@ -105,13 +105,46 @@ export async function validateSet(set: RueSet, signal?: AbortSignal): Promise<Ru
     return { ...it, answers: uniq([...k.answers, ...extra.filter(oneWord)]) };
   });
 
-  if (problems.length) throw new GenerationError('validation', problems);
+  if (problems.length) throw Object.assign(new GenerationError('validation', problems), { model: r.model.model });
   const out = parseSet({ ...set, items, validation: { by: r.model.model, at: Date.now(), notes: v.problems } });
   if (!out) throw new GenerationError('validation', ['El ejercicio validado no encaja con el esquema.']);
   return out;
 }
 
+/** Unifica las formas en que un modelo suele marcar los huecos: {{1}}, [1], (1)____ → {1}. */
+export function normalizeGaps(text: string): string {
+  return text
+    .replace(/\{\{\s*(\d+)\s*\}\}/g, '{$1}')
+    .replace(/\{\s+(\d+)\s+\}/g, '{$1}')
+    .replace(/\(\s*(\d+)\s*\)\s*_{2,}/g, '{$1}')
+    .replace(/_{2,}\s*\(\s*(\d+)\s*\)/g, '{$1}')
+    .replace(/\[\s*(?:GAP\s*)?(\d+)\s*\]/gi, '{$1}');
+}
+
+/** Guarda por qué se ha descartado un ejercicio (users/{uid}/genlog) para poder afinar los prompts. */
+async function logFailure(part: PartId, e: unknown, model?: string): Promise<void> {
+  if (!hasStore()) return;
+  const entry =
+    e instanceof GenerationError
+      ? { stage: e.stage, issues: e.issues.slice(0, 12) }
+      : e instanceof AiError
+        ? { stage: 'ai', kind: e.kind, issues: [e.message.slice(0, 400)] }
+        : { stage: 'other', issues: [String((e as Error)?.message ?? e).slice(0, 400)] };
+  await store()
+    .add('genlog', { part, ...entry, model: model ?? null, at: Date.now() })
+    .catch(() => undefined);
+}
+
 export async function generateSet(part: PartId, opts: { onStep?: (s: string) => void; signal?: AbortSignal } = {}): Promise<RueSet> {
+  try {
+    return await generateSetInner(part, opts);
+  } catch (e) {
+    if ((e as Error).name !== 'AbortError') await logFailure(part, e, (e as { model?: string }).model);
+    throw e;
+  }
+}
+
+async function generateSetInner(part: PartId, opts: { onStep?: (s: string) => void; signal?: AbortSignal }): Promise<RueSet> {
   const existing = await allSets(part);
   const topic = pickTopic(existing.slice(-12).map((s) => `${s.topic} ${s.title}`));
   const gen = getPrompt('rue-generate');
@@ -125,8 +158,10 @@ export async function generateSet(part: PartId, opts: { onStep?: (s: string) => 
     maxTokens: 8192,
     signal: opts.signal,
   });
+  const data = { ...(r.data as Record<string, unknown>) };
+  if (typeof data.text === 'string') data.text = normalizeGaps(data.text);
   const set = parseSet({
-    ...r.data,
+    ...data,
     part,
     id: `${part}-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`,
     source: 'ai',
@@ -134,9 +169,9 @@ export async function generateSet(part: PartId, opts: { onStep?: (s: string) => 
     model: r.model.model,
     promptVersion: `${gen.version}+${spec.version}`,
   });
-  if (!set) throw new GenerationError('format', ['El JSON no encaja con el esquema.']);
+  if (!set) throw Object.assign(new GenerationError('format', ['El JSON no encaja con el esquema.']), { model: r.model.model });
   const issues = checkSet(set);
-  if (issues.length) throw new GenerationError('format', issues);
+  if (issues.length) throw Object.assign(new GenerationError('format', issues), { model: r.model.model });
   opts.onStep?.('Otro modelo lo está resolviendo a ciegas para comprobarlo…');
   const ok = await validateSet(set, opts.signal);
   await saveAiSet(ok);

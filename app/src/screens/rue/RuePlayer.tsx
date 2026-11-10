@@ -86,8 +86,13 @@ export function RuePlayer() {
       begin(s);
     } catch (e) {
       if ((e as Error).name === 'AbortError') return load();
-      const msg = e instanceof GenerationError ? 'El ejercicio generado no ha pasado el control de calidad y se ha descartado. Prueba otra vez.' : e instanceof AiError ? aiErrorMessage(e) : 'No se ha podido generar.';
-      toast(msg, 5000);
+      const msg =
+        e instanceof GenerationError
+          ? `El ejercicio generado no ha pasado el control de calidad y se ha descartado (${e.issues[0]}). Prueba otra vez.`
+          : e instanceof AiError
+            ? aiErrorMessage(e)
+            : 'No se ha podido generar.';
+      toast(msg, 7000);
       console.warn(e);
       await load(true);
     }
