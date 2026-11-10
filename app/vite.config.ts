@@ -13,7 +13,7 @@ export default defineConfig({
       injectRegister: false,
       manifest: false, // usamos public/manifest.webmanifest, escrito a mano
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,webmanifest}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,webmanifest,json}'], // json = banco de ejercicios, disponible sin conexión
         globIgnores: ['splash/**'],
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,

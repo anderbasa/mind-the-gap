@@ -10,6 +10,8 @@ import { Hoy, Practicar, Progreso, Vocabulario } from './screens/Tabs';
 import { Ajustes, AjustesConexion, AjustesIA, AjustesPerfil } from './screens/Ajustes';
 import { ChatTheo } from './screens/ChatTheo';
 import { PruebaVoz } from './screens/PruebaVoz';
+import { RueHub } from './screens/rue/RueHub';
+import { RuePlayer } from './screens/rue/RuePlayer';
 import type { ComponentType } from 'preact';
 
 const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
@@ -23,6 +25,7 @@ const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
   '/ajustes/conexion': { C: AjustesConexion, tabs: false },
   '/ajustes/voz': { C: PruebaVoz, tabs: false },
   '/theo': { C: ChatTheo, tabs: false },
+  '/practicar/rue': { C: RueHub, tabs: false },
 };
 
 export function App() {
@@ -37,7 +40,8 @@ export function App() {
   if (!profile.value) return <Splash />;
   if (!profile.value.confirmedAt) return <Onboarding />;
 
-  const r = ROUTES[route.value.path] ?? ROUTES['/'];
+  const path = route.value.path;
+  const r = ROUTES[path] ?? (/^\/practicar\/rue\/p[1-8]$/.test(path) ? { C: RuePlayer, tabs: false } : ROUTES['/']);
   return (
     <>
       <div class="statusbar-shim" />

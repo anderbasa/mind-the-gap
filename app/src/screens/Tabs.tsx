@@ -1,9 +1,10 @@
 // Pestañas principales. En la Fase 1 muestran la estructura y lo que llega en cada fase.
 import type { JSX } from 'preact';
-import { profile } from '../state';
+import { useEffect, useState } from 'preact/hooks';
+import { profile, store } from '../state';
 import { SKILL_ORDER, SKILLS } from '../domain/skills';
 import { navigate } from '../router';
-import { Band, ListItem, MetroLine, Page, SkillLine } from '../ui/components';
+import { Band, ListItem, MetroLine, Page, SkillLine, Spinner } from '../ui/components';
 import { IconTheo } from '../ui/icons';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
@@ -81,13 +82,13 @@ export function Practicar() {
         <section class="stack" style={g(8)}>
           <span class="kicker">Ya disponible</span>
           <div class="list">
+            <ListItem dot={SKILLS.reading.color} title="Reading & Use of English" sub="8 partes · práctica o examen · prioridad P4, P3 y P1" to="/practicar/rue" />
             <ListItem dot="var(--signal)" title="Habla con Theo" sub="Chat por escrito, con correcciones rápidas" to="/theo" />
           </div>
         </section>
         <section class="stack" style={g(8)}>
-          <span class="kicker">El examen</span>
+          <span class="kicker">El examen (próximas fases)</span>
           <div class="list">
-            <ListItem dot={SKILLS.reading.color} title="Reading & Use of English" sub="8 partes · prioridad P4, P3 y P1" right={<PhasePill n={2} />} disabled />
             <ListItem dot={SKILLS.writing.color} title="Writing" sub="Essay, email, proposal, report, review" right={<PhasePill n={3} />} disabled />
             <ListItem dot={SKILLS.listening.color} title="Listening" sub="4 partes, acentos variados, dictados" right={<PhasePill n={4} />} disabled />
             <ListItem dot={SKILLS.speaking.color} title="Speaking" sub="Simulacro con examinador y compañero" right={<PhasePill n={5} />} disabled />
@@ -109,11 +110,60 @@ export function Practicar() {
 
 /* ── Vocabulario ───────────────────────────────────────────────── */
 
+interface VocabRow {
+  id: string;
+  term: string;
+  context: string;
+  createdAt: number;
+}
+
+function SavedWords() {
+  const [rows, setRows] = useState<VocabRow[] | null>(null);
+  useEffect(() => {
+    store()
+      .list<Omit<VocabRow, 'id'>>('vocab', { orderBy: 'createdAt', desc: true, limit: 200 })
+      .then(setRows)
+      .catch(() => setRows([]));
+  }, []);
+  const remove = async (id: string) => {
+    await store().remove(`vocab/${id}`);
+    setRows((r) => (r ?? []).filter((x) => x.id !== id));
+  };
+  if (!rows) return <Spinner />;
+  return (
+    <section class="stack" style={g(8)}>
+      <span class="kicker">Tus palabras guardadas ({rows.length})</span>
+      {rows.length === 0 ? (
+        <p class="muted small">Toca cualquier palabra de un texto del Reading para guardarla aquí, con su frase.</p>
+      ) : (
+        <div class="list">
+          {rows.map((w) => (
+            <div key={w.id} class="list-item" style={{ cursor: 'default', alignItems: 'flex-start' }}>
+              <span class="grow">
+                <span class="list-title" style={{ display: 'block' }}>
+                  {w.term}
+                </span>
+                <span class="list-sub read" style={{ fontSize: '15px' }}>
+                  {w.context}
+                </span>
+              </span>
+              <button class="linkbtn" onClick={() => remove(w.id)}>
+                Quitar
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
 export function Vocabulario() {
   return (
     <>
       <Band kicker="Mind the Gap · Vocabulario" title="Vocabulary" line="var(--line-vocab)" />
       <Page>
+        <SavedWords />
         <section class="card stack" style={g(10)}>
           <div class="spread">
             <h2>Repaso espaciado</h2>

@@ -19,8 +19,10 @@ export const MODELS = {
 export const DEFAULT_CHAINS: Record<TaskId, ModelRef[]> = {
   chat: [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt)],
   'explain-es': [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt)],
-  generate: [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt)],
-  validate: [g(MODELS.geminiFlash), g(MODELS.geminiFlashAlt)],
+  // Generar: primero un Flash (mejor calidad); si se agota su cuota gratuita, Flash-Lite.
+  generate: [g(MODELS.geminiFlashAlt), g(MODELS.geminiLite), g(MODELS.geminiLiteAlt)],
+  // Validar: un modelo distinto del que suele generar.
+  validate: [g(MODELS.geminiFlash), g(MODELS.geminiFlashAlt), g(MODELS.geminiLite)],
   'open-answer': [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt)],
   transcribe: [g(MODELS.geminiFlash), g(MODELS.geminiLite)],
   'ocr-writing': [g(MODELS.geminiFlash), g(MODELS.geminiLite)],

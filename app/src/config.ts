@@ -13,7 +13,8 @@ export const FIREBASE_CONFIG = {
 const LOCAL_HOSTS = ['localhost', '127.0.0.1'];
 
 /** Modo demo: solo en local con ?demo. Datos en este navegador y sin IA real. */
-export const IS_DEMO = LOCAL_HOSTS.includes(location.hostname) && new URLSearchParams(location.search).has('demo');
+export const IS_DEMO =
+  typeof location !== 'undefined' && LOCAL_HOSTS.includes(location.hostname) && new URLSearchParams(location.search).has('demo');
 
 const WORKER_KEY = 'mtg.workerUrl';
 

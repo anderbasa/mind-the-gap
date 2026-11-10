@@ -11,3 +11,4 @@ local/
 .DS_Store
 Thumbs.db
 coverage/
+.claude/
