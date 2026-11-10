@@ -42,7 +42,7 @@ function callProvider(ref: ModelRef, req: AiRequest): Promise<ProviderOutput> {
   return ref.provider === 'claude' ? import('./claude').then((m) => m.callClaude(ref.model, req)) : callGemini(ref.model, req);
 }
 
-const FALLBACK_KINDS = new Set(['rate', 'quota-day', 'overloaded', 'network', 'refusal', 'invalid-output', 'budget', 'bad-request', 'unavailable']);
+const FALLBACK_KINDS = new Set(['rate', 'quota-day', 'overloaded', 'network', 'refusal', 'invalid-output', 'budget', 'bad-request', 'unavailable', 'timeout']);
 
 export async function runAI<T>(req: AiRequest<T>): Promise<AiResult<T>> {
   const cfg = settings.value;
@@ -67,7 +67,7 @@ export async function runAI<T>(req: AiRequest<T>): Promise<AiResult<T>> {
       }
     }
     try {
-      const out = await withRetry(() => callProvider(ref, req));
+      const out = await withRetry(() => callProvider(ref, req), { retries: req.retries ?? 2 });
       let data: T | undefined;
       if (req.schema) {
         const raw = out.data ?? safeJson(out.text);

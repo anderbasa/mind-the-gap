@@ -43,6 +43,12 @@ export interface AiRequest<T = unknown> {
   /** Guardar/leer la respuesta en la caché de Firestore (aiCache). */
   cache?: boolean;
   signal?: AbortSignal;
+  /** Solo Gemini: cuánto «piensa» antes de responder (menos = más rápido). */
+  thinking?: 'minimal' | 'low' | 'medium' | 'high';
+  /** Tiempo máximo por intento; si se pasa, se prueba el siguiente modelo de la cadena. */
+  timeoutMs?: number;
+  /** Reintentos en el mismo modelo ante saturación o límite por minuto (por defecto 2). */
+  retries?: number;
 }
 
 export interface Usage {
@@ -80,6 +86,7 @@ export type AiErrorKind =
   | 'invalid-output' // la respuesta no cumple el esquema
   | 'budget' // superado el tope mensual de Claude
   | 'config' // falta configuración (URL del Worker…)
+  | 'timeout' // el modelo tardó más de lo permitido
   | 'unavailable';
 
 export class AiError extends Error {

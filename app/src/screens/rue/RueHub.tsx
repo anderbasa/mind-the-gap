@@ -135,7 +135,7 @@ export function RueHub() {
             </button>
           )}
           {fillResult && <div class="notice info small">{fillResult}</div>}
-          <p class="muted small">Tarda alrededor de un minuto por ejercicio y usa la cuota gratuita de Gemini. Puedes seguir usando la app mientras tanto en otra pestaña.</p>
+          <p class="muted small">Tarda entre 1 y 3 minutos por ejercicio y usa la cuota gratuita de Gemini. Puedes seguir usando la app mientras tanto en otra pestaña.</p>
         </section>
 
         <section class="card flat stack" style={g(6)}>

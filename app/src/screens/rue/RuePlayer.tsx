@@ -1,22 +1,34 @@
 // Un ejercicio de una parte: cargar (o generar), contestar, corregir y guardar.
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { JSX } from 'preact';
-import { aiErrorMessage } from '../../ai/client';
-import { AiError } from '../../ai/types';
 import { allSets, getProgress, getSet, markDone, pickNext } from '../../rue/bank';
-import { GenerationError, generateSet } from '../../rue/generate';
+import { cancelJob, clearJob, jobs, startJob } from '../../rue/jobs';
 import { markSet, type Answers, type SetResult } from '../../rue/marking';
 import { reviewOpenAnswers } from '../../rue/review';
 import { PARTS, type PartId, type RueSet } from '../../rue/schema';
 import { hasStore, store } from '../../state';
 import { goBack, navigate, route } from '../../router';
-import { Band, Page, Spinner, toast } from '../../ui/components';
+import { Band, Page, Spinner } from '../../ui/components';
 import { PartView } from './parts';
 import { Results } from './Results';
 import { SaveWordBar, picked } from './WordTap';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
-type Phase = { k: 'loading' } | { k: 'empty'; allSeen: boolean; oldest: RueSet | null } | { k: 'generating'; step: string } | { k: 'doing' } | { k: 'marking' } | { k: 'done' };
+type Phase = { k: 'loading' } | { k: 'empty'; allSeen: boolean; oldest: RueSet | null } | { k: 'doing' } | { k: 'marking' } | { k: 'done' };
+
+function Elapsed(props: { since: number }) {
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    const t = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(t);
+  }, []);
+  const s = Math.max(0, Math.floor((now - props.since) / 1000));
+  return (
+    <span class="tabular">
+      {Math.floor(s / 60)}:{String(s % 60).padStart(2, '0')}
+    </span>
+  );
+}
 
 const draftKey = (id: string) => `mtg.rue.draft.${id}`;
 
@@ -55,7 +67,6 @@ export function RuePlayer() {
   const [reviewFailed, setReviewFailed] = useState(0);
   const start = useRef(Date.now());
   const [elapsed, setElapsed] = useState(0);
-  const abort = useRef<AbortController | null>(null);
 
   const begin = (s: RueSet) => {
     setSet(s);
@@ -78,32 +89,30 @@ export function RuePlayer() {
     setPhase({ k: 'empty', allSeen: !!next.set, oldest: next.set });
   };
 
-  const generate = async () => {
-    abort.current = new AbortController();
-    setPhase({ k: 'generating', step: 'Preparando…' });
-    try {
-      const s = await generateSet(part, { signal: abort.current.signal, onStep: (step) => setPhase({ k: 'generating', step }) });
-      begin(s);
-    } catch (e) {
-      if ((e as Error).name === 'AbortError') return load();
-      const msg =
-        e instanceof GenerationError
-          ? `El ejercicio generado no ha pasado el control de calidad y se ha descartado (${e.issues[0]}). Prueba otra vez.`
-          : e instanceof AiError
-            ? aiErrorMessage(e)
-            : 'No se ha podido generar.';
-      toast(msg, 7000);
-      console.warn(e);
-      await load(true);
-    }
+  // La generación vive fuera de esta pantalla (rue/jobs.ts): si sales, sigue.
+  const job = jobs.value[part];
+  const generating = !!job && !job.done && !job.error;
+
+  const generate = () => {
+    clearJob(part);
+    startJob(part);
   };
 
   useEffect(() => {
     picked.value = null;
     void load();
-    return () => abort.current?.abort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [part, wantedId]);
+
+  // Cuando el trabajo termina estando en esta pantalla, empezamos el ejercicio nuevo.
+  useEffect(() => {
+    if (job?.done && (phase.k === 'empty' || phase.k === 'loading')) {
+      const s = job.done;
+      clearJob(part);
+      begin(s);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [job?.done, phase.k]);
 
   const setAnswer = (n: number, v: string) => {
     setAnswers((prev) => {
@@ -193,28 +202,32 @@ export function RuePlayer() {
       <Page>
         {phase.k === 'loading' && <Spinner label="Buscando un ejercicio…" />}
 
-        {phase.k === 'empty' && (
+        {phase.k === 'empty' && generating && job && (
+          <section class="card stack" style={g(12)}>
+            <Spinner label={job.step} />
+            <p class="small">
+              Llevamos <Elapsed since={job.startedAt} />. Suele tardar entre 1 y 3 minutos: un modelo lo escribe y otro lo resuelve a ciegas para comprobarlo.
+            </p>
+            <p class="muted small">Puedes salir de esta pantalla y hacer otra cosa: sigue preparándose y te aviso cuando esté listo.</p>
+            <button class="btn ghost small" onClick={() => cancelJob(part)}>
+              Cancelar
+            </button>
+          </section>
+        )}
+
+        {phase.k === 'empty' && !generating && (
           <section class="card stack" style={g(12)}>
             <h2>{phase.allSeen ? 'Ya los has hecho todos' : 'Aún no hay ejercicios de esta parte'}</h2>
-            <p>Theo puede escribir uno nuevo ahora (tarda entre 20 segundos y un minuto: lo escribe un modelo y lo comprueba otro a ciegas).</p>
+            {job?.error && <div class="notice bad">{job.error}</div>}
+            <p>Theo puede escribir uno nuevo ahora. Suele tardar entre 1 y 3 minutos, y puedes salir de la pantalla mientras tanto.</p>
             <button class="btn signal" onClick={generate}>
-              Generar uno nuevo
+              {job?.error ? 'Probar otra vez' : 'Generar uno nuevo'}
             </button>
             {phase.oldest && (
               <button class="btn ghost" onClick={() => begin(phase.oldest!)}>
                 Repetir el que hiciste hace más tiempo
               </button>
             )}
-          </section>
-        )}
-
-        {phase.k === 'generating' && (
-          <section class="card stack" style={g(12)}>
-            <Spinner label={phase.step} />
-            <p class="muted small">Si se agota la cuota gratuita de hoy, podrás seguir con el banco que ya tienes.</p>
-            <button class="btn ghost small" onClick={() => abort.current?.abort()}>
-              Cancelar
-            </button>
           </section>
         )}
 

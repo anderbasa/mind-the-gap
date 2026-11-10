@@ -39,6 +39,7 @@ export function buildGeminiBody(req: AiRequest): Record<string, unknown> {
     })),
     generationConfig: {
       maxOutputTokens: req.maxTokens ?? 8192,
+      ...(req.thinking ? { thinkingConfig: { thinkingLevel: req.thinking } } : {}),
       ...(req.schema ? { responseMimeType: 'application/json', responseJsonSchema: toGeminiSchema(req.schema) } : {}),
     },
   };
@@ -71,7 +72,7 @@ export function parseGeminiResponse(json: GeminiResponse): ProviderOutput {
 }
 
 export async function callGemini(model: string, req: AiRequest): Promise<ProviderOutput> {
-  const { res, json } = await workerJson<GeminiResponse>(`/gemini/models/${model}:generateContent`, buildGeminiBody(req), req.signal);
+  const { res, json } = await workerJson<GeminiResponse>(`/gemini/models/${model}:generateContent`, buildGeminiBody(req), req.signal, req.timeoutMs);
   if (!res.ok) throw classifyGeminiError(res.status, json, res.headers.get('retry-after'));
   return parseGeminiResponse(json);
 }

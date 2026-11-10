@@ -72,6 +72,9 @@ export async function validateSet(set: RueSet, signal?: AbortSignal): Promise<Ru
     schema: ValidationSchema,
     maxTokens: 4096,
     signal,
+    thinking: 'low',
+    timeoutMs: 90_000,
+    retries: 1,
   });
   const v = r.data!;
   const problems: string[] = [];
@@ -145,6 +148,7 @@ export async function generateSet(part: PartId, opts: { onStep?: (s: string) => 
 }
 
 async function generateSetInner(part: PartId, opts: { onStep?: (s: string) => void; signal?: AbortSignal }): Promise<RueSet> {
+  const t0 = Date.now();
   const existing = await allSets(part);
   const topic = pickTopic(existing.slice(-12).map((s) => `${s.topic} ${s.title}`));
   const gen = getPrompt('rue-generate');
@@ -157,7 +161,11 @@ async function generateSetInner(part: PartId, opts: { onStep?: (s: string) => vo
     schema: GEN_SCHEMAS[part] as unknown as z.ZodType<Record<string, unknown>>,
     maxTokens: 8192,
     signal: opts.signal,
+    thinking: 'low', // con el nivel por defecto (medio) tarda varios minutos
+    timeoutMs: 120_000,
+    retries: 1,
   });
+  const genMs = Date.now() - t0;
   const data = { ...(r.data as Record<string, unknown>) };
   if (typeof data.text === 'string') data.text = normalizeGaps(data.text);
   const set = parseSet({
@@ -175,6 +183,11 @@ async function generateSetInner(part: PartId, opts: { onStep?: (s: string) => vo
   opts.onStep?.('Otro modelo lo está resolviendo a ciegas para comprobarlo…');
   const ok = await validateSet(set, opts.signal);
   await saveAiSet(ok);
+  if (hasStore()) {
+    void store()
+      .add('genlog', { part, stage: 'ok', model: ok.model ?? null, validatedBy: ok.validation?.by ?? null, genMs, totalMs: Date.now() - t0, at: Date.now() })
+      .catch(() => undefined);
+  }
   return ok;
 }
 
