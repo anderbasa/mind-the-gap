@@ -1,13 +1,13 @@
 rules_version = '2';
 
 // Mind the Gap: solo el dueño (un único UID de Google) puede leer o escribir.
-// El UID se fija tras el primer login (ver README, paso «Autorizar tu cuenta»).
+// UID de tu cuenta de Google en este proyecto (no es secreto: identifica, no da acceso).
 service cloud.firestore {
   match /databases/{database}/documents {
     function esDueno(uid) {
       return request.auth != null
         && request.auth.uid == uid
-        && uid == 'PENDIENTE_UID';
+        && uid == '50sQgmkiXNdj7R9zehCXcjViLLs2';
     }
 
     match /users/{uid}/{document=**} {

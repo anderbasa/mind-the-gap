@@ -9,7 +9,7 @@
   "vars": {
     "FIREBASE_PROJECT_ID": "mind-the-gap-ander",
     // Tu UID de Firebase (no es secreto). Vacío = el Worker no atiende a nadie.
-    "ALLOWED_UID": "",
+    "ALLOWED_UID": "50sQgmkiXNdj7R9zehCXcjViLLs2",
     "ALLOWED_ORIGINS": "https://anderbasa.github.io,http://localhost:5181"
   }
 }
