@@ -49,6 +49,11 @@ export interface AiRequest<T = unknown> {
   timeoutMs?: number;
   /** Reintentos en el mismo modelo ante saturación o límite por minuto (por defecto 2). */
   retries?: number;
+  /**
+   * Solo si es true (y «Usar Claude» está encendido en Ajustes) se pueden usar modelos de pago.
+   * Es la manera de que nada gaste saldo sin que lo hayas elegido en esa acción concreta.
+   */
+  allowPaid?: boolean;
 }
 
 export interface Usage {

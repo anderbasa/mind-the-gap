@@ -3,7 +3,7 @@
 Tu profe particular de inglés con IA (**Theo**) para pasar de B2 a **C1 Advanced** (Cambridge, 180+).
 Web instalable en el iPhone (PWA) y usable en el ordenador. La usa una sola persona.
 
-> **Estado:** Fase 1 (base) terminada. Ver «Fases» al final.
+> **Estado:** Fases 1, 2 y 3 terminadas (base, Reading & Use of English, Writing y Reformular). Ver «Fases» al final.
 
 ---
 
@@ -15,7 +15,7 @@ Web instalable en el iPhone (PWA) y usable en el ordenador. La usa una sola pers
 | **Firebase** (plan Spark) | Login con Google (solo tu cuenta) y base de datos Firestore | Gratis |
 | **Cloudflare Worker** (`worker/`) | Guarda las claves de IA y solo atiende a tu cuenta | Gratis |
 | **Gemini** (capa gratuita) | Generar ejercicios, chat de Theo, transcribir audio, voces | 0 € |
-| **Claude Sonnet 5.5** | Corregir writings y speakings (Fases 3 y 5) | ≈2–4 $/mes, tope 5 $ |
+| **Claude Sonnet 5.5** | Corregir writings y speakings, **solo cuando tú lo eliges** en cada corrección | ≈0,10 $ por writing, tope 5 $/mes |
 
 - Las claves de API **nunca** están en la app: viven como secretos en el Worker.
 - Tu perfil y las notas de Theo viven **solo en Firestore**. El repo es público y no contiene datos personales: los prompts (`prompts/`) usan huecos que se rellenan al usarlos.
@@ -57,7 +57,7 @@ El proyecto `mind-the-gap-ander` ya está creado, con Firestore en Madrid y las 
 
 ### 4. Clave de Claude con tope de gasto (tú, 5 minutos, 5 $) — puede esperar
 
-Claude solo se usa para corregir writings y speakings (Fases 3 y 5). Mientras no esté, la app corrige con Gemini 3.8 Flash automáticamente. Cuando cargues el saldo:
+Claude solo se usa para corregir writings y speakings, y **nunca por su cuenta**: tiene que estar encendido en **Ajustes → IA y uso → Usar Claude** y, además, en cada corrección eliges «Corregir gratis (Gemini)» o «Corregir con Claude», que te enseña el coste y te pide confirmación. Mientras no lo cargues, todo se corrige gratis con Gemini. Cuando cargues el saldo:
 
 1. Abre <https://platform.claude.com> y crea una cuenta (o entra si ya tienes).
 2. **Billing** → compra **5 $** de créditos. **Desactiva «Auto-reload»** (recarga automática): así nunca puedes gastar más de lo que has cargado.
@@ -136,6 +136,8 @@ Todo pasa por `runAI({ task, system, messages, schema })` (`app/src/ai/client.ts
 - Valida la salida JSON con Zod y guarda en caché de Firestore lo que se pida.
 - Cuenta peticiones, tokens y coste por día (`usage/`). Respeta el tope mensual de Claude.
 - Lo que necesite IA sí o sí y no pueda hacerse entra en una cola (`queue/`) y se procesa al volver.
+- **Nada gasta saldo sin que lo elijas:** los modelos de pago solo se usan si la petición lleva `allowPaid: true` (una acción que acabas de confirmar) **y** «Usar Claude» está encendido.
+- Modo demo para probar pantallas sin gastar cuota: `http://localhost:5181/mind-the-gap/?demo` (respuestas de ejemplo en `app/src/ai/mockData.ts`).
 
 ---
 
@@ -143,8 +145,8 @@ Todo pasa por `runAI({ task, system, messages, schema })` (`app/src/ai/client.ts
 
 - [x] **0 · Investigación y decisiones** — formato del examen verificado y elección de IA, voz, diseño y stack.
 - [x] **1 · Base** — PWA, login, perfil, Firestore con reglas, navegación, capa de IA, Worker, prompts, prueba de voz.
-- [ ] **2 · Reading & Use of English** — motor de ejercicios, validador, las 8 partes y banco precargado.
-- [ ] **3 · Writing y Reformular**
+- [x] **2 · Reading & Use of English** — las 8 partes en modo práctica y examen, corrección (P4 de 0 a 2), «Explícamelo en castellano», «Reportar pregunta», tocar palabras para guardarlas y un banco de 40 ejercicios escritos a mano. Generar con IA queda como opción experimental, solo cuando la pulsas.
+- [x] **3 · Writing y Reformular** — 12 enunciados (essay, letter, email, proposal, report, review) con plan de párrafos, banco de lenguaje y cronómetro opcional. Entrega escrita (sin autocorrector, con contador 220–260) o en foto (Gemini transcribe tal cual y avisa de lo que no ha leído bien). Corrección con los 4 criterios (0–5), nota orientativa en la escala, errores marcados en tu texto, Upgrade to C1, cohesión, palabras repetidas (las que adoptas van a tu vocabulario), versión modelo y reescritura con comparación de nota. Todos los errores van al cuaderno de errores. **Reformular** (39 frases escritas a mano; hasta 3 versiones corregidas al momento) y **Dímelo mejor** (corregida + neutra, formal y natural).
 - [ ] **4 · Listening**
 - [ ] **5 · Speaking por voz**
 - [ ] **6 · Diagnóstico, cuaderno de errores, vocabulario (FSRS), gramática y memoria de Theo**

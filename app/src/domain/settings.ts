@@ -9,6 +9,8 @@ const ModelRefSchema = z.object({
 export const SettingsSchema = z.object({
   slowRate: z.number().min(0.5).max(1).default(0.8),
   geminiTier: z.enum(['free', 'paid']).default('free'),
+  /** Apagado por defecto: Claude solo se usa si está encendido Y eliges «con Claude» en esa acción concreta. */
+  claudeEnabled: z.boolean().default(false),
   claudeMonthlyCapUsd: z.number().min(0).default(5),
   providerOverrides: z.record(z.string(), z.array(ModelRefSchema)).default({}),
   readiness: z

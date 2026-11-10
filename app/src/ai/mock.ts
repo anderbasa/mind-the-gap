@@ -1,11 +1,16 @@
 // Proveedor falso para el modo demo (localhost?demo): permite probar la interfaz sin IA real.
+import { mockJson } from './mockData';
 import { AiError, type AiRequest, type ModelRef, type ProviderOutput } from './types';
 
 export async function mockProvider(ref: ModelRef, req: AiRequest): Promise<ProviderOutput> {
   await new Promise((r) => setTimeout(r, 450));
   const last = req.messages.at(-1)?.parts.find((p) => 'text' in p) as { text: string } | undefined;
   const said = last?.text ?? '';
-  if (req.schema) throw new AiError('invalid-output', 'El modo demo no genera JSON.');
+  if (req.schema) {
+    const data = mockJson(req);
+    if (data === undefined) throw new AiError('invalid-output', 'El modo demo no genera JSON para esta tarea.');
+    return { text: JSON.stringify(data), data, usage: { inputTokens: 3000, outputTokens: 1500, audioInputTokens: 0, cacheReadTokens: 0, cacheWriteTokens: 0 } };
+  }
   const text =
     req.task === 'explain-es'
       ? `(demo) En castellano: Theo te está diciendo, más o menos, lo siguiente sobre «${said.slice(0, 60)}…».`

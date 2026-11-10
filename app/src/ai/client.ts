@@ -59,6 +59,8 @@ export async function runAI<T>(req: AiRequest<T>): Promise<AiResult<T>> {
   for (let i = 0; i < chain.length; i++) {
     const ref = chain[i];
     if (isExhausted(ref)) continue;
+    // Claude cuesta dinero: solo con «Usar Claude» encendido y si esta acción lo ha pedido expresamente.
+    if (ref.provider === 'claude' && !(req.allowPaid && cfg.claudeEnabled)) continue;
     if (ref.provider === 'claude' && !IS_DEMO) {
       const spent = await claudeSpentThisMonth();
       if (spent >= cfg.claudeMonthlyCapUsd) {

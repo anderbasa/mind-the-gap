@@ -12,6 +12,12 @@ import { ChatTheo } from './screens/ChatTheo';
 import { PruebaVoz } from './screens/PruebaVoz';
 import { RueHub } from './screens/rue/RueHub';
 import { RuePlayer } from './screens/rue/RuePlayer';
+import { WritingHub } from './screens/writing/WritingHub';
+import { WritingEditor } from './screens/writing/WritingEditor';
+import { WritingView } from './screens/writing/WritingView';
+import { WritingLanguage } from './screens/writing/WritingLanguage';
+import { Reformular } from './screens/writing/Reformular';
+import { DimeloMejor } from './screens/writing/DimeloMejor';
 import type { ComponentType } from 'preact';
 
 const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
@@ -26,6 +32,12 @@ const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
   '/ajustes/voz': { C: PruebaVoz, tabs: false },
   '/theo': { C: ChatTheo, tabs: false },
   '/practicar/rue': { C: RueHub, tabs: false },
+  '/practicar/writing': { C: WritingHub, tabs: false },
+  '/practicar/writing/escribir': { C: WritingEditor, tabs: false },
+  '/practicar/writing/ver': { C: WritingView, tabs: false },
+  '/practicar/writing/lenguaje': { C: WritingLanguage, tabs: false },
+  '/practicar/reformular': { C: Reformular, tabs: false },
+  '/practicar/dimelo': { C: DimeloMejor, tabs: false },
 };
 
 export function App() {

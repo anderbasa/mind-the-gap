@@ -76,6 +76,7 @@ export async function validateSet(set: RueSet, signal?: AbortSignal): Promise<Ru
     thinking: 'low',
     timeoutMs: 90_000,
     retries: 1,
+    allowPaid: true, // ya se ha pedido confirmación si fuese a costar dinero (confirmSpend)
   });
   const v = r.data!;
   const problems: string[] = [];
@@ -160,6 +161,7 @@ async function repairSet(set: RueSet, problems: string[], signal?: AbortSignal):
     thinking: 'low',
     timeoutMs: 120_000,
     retries: 1,
+    allowPaid: true, // ya se ha pedido confirmación si fuese a costar dinero (confirmSpend)
   });
   const data = { ...(r.data as Record<string, unknown>) };
   if (typeof data.text === 'string') data.text = normalizeGaps(data.text);
@@ -196,6 +198,7 @@ async function generateSetInner(part: PartId, opts: { onStep?: (s: string) => vo
     thinking: 'low', // con el nivel por defecto (medio) tarda varios minutos
     timeoutMs: 120_000,
     retries: 1,
+    allowPaid: true, // ya se ha pedido confirmación si fuese a costar dinero (confirmSpend)
   });
   const genMs = Date.now() - t0;
   const data = { ...(r.data as Record<string, unknown>) };
@@ -246,7 +249,7 @@ export const EST_COST_PER_SET_USD = 0.03;
 export function generationSpendsMoney(): boolean {
   const cfg = settings.value;
   const chains = [...chainFor('generate', cfg.providerOverrides), ...chainFor('validate', cfg.providerOverrides)];
-  return chains.some((r) => r.provider === 'claude') || cfg.geminiTier === 'paid';
+  return (cfg.claudeEnabled && chains.some((r) => r.provider === 'claude')) || cfg.geminiTier === 'paid';
 }
 
 /** Pide confirmación antes de gastar saldo. Devuelve true si se puede seguir. */

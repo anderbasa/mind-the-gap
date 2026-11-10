@@ -168,6 +168,24 @@ export function AjustesIA() {
           </p>
         </section>
 
+        <section class="card stack" style={g(10)}>
+          <div class="spread">
+            <span class="kicker">Usar Claude</span>
+            <Segmented
+              label="Usar Claude"
+              value={cfg.claudeEnabled ? 'on' : 'off'}
+              onChange={(v) => saveSettings({ claudeEnabled: v === 'on' })}
+              options={[
+                { value: 'off', label: 'No' },
+                { value: 'on', label: 'Sí' },
+              ]}
+            />
+          </div>
+          <p class="muted small">
+            Enciéndelo solo cuando hayas cargado saldo en Claude. Aun encendido, Claude nunca se usa solo: en cada corrección eliges «gratis (Gemini)» o «con Claude», y ves el coste antes.
+          </p>
+        </section>
+
         <section class="card stack" style={g(12)}>
           <div class="spread">
             <span class="kicker">Claude este mes</span>

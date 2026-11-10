@@ -25,9 +25,10 @@ export const DEFAULT_CHAINS: Record<TaskId, ModelRef[]> = {
   validate: [g(MODELS.geminiFlash), g(MODELS.geminiFlashAlt), g(MODELS.geminiLite)],
   'open-answer': [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt)],
   transcribe: [g(MODELS.geminiFlash), g(MODELS.geminiLite)],
-  'ocr-writing': [g(MODELS.geminiFlash), g(MODELS.geminiLite)],
-  'correct-writing': [c(MODELS.claudeSonnet), g(MODELS.geminiFlash)],
-  'assess-speaking': [c(MODELS.claudeSonnet), g(MODELS.geminiFlash)],
+  'ocr-writing': [g(MODELS.geminiFlash), g(MODELS.geminiFlashAlt), g(MODELS.geminiLite)],
+  // Claude solo se usa si lo eliges en esa corrección; si no, la cadena empieza en Gemini (gratis).
+  'correct-writing': [c(MODELS.claudeSonnet), g(MODELS.geminiFlash), g(MODELS.geminiFlashAlt), g(MODELS.geminiLite)],
+  'assess-speaking': [c(MODELS.claudeSonnet), g(MODELS.geminiFlash), g(MODELS.geminiFlashAlt), g(MODELS.geminiLite)],
   rephrase: [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt)],
   roleplay: [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt)],
   'tutor-notes': [g(MODELS.geminiFlash), g(MODELS.geminiLite)],
