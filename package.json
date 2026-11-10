@@ -1,0 +1,31 @@
+{
+  "name": "mind-the-gap",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "app",
+    "worker"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w app",
+    "build": "npm run build -w app",
+    "test": "npm run test -w app && npm run test -w worker",
+    "typecheck": "npm run typecheck -w app && npm run typecheck -w worker",
+    "icons": "node scripts/generar-iconos.mjs",
+    "seed": "node scripts/seed-perfil.mjs",
+    "worker:dev": "npm run dev -w worker",
+    "worker:deploy": "npm run deploy -w worker"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "allowScripts": {
+    "@firebase/util@1.15.3": true,
+    "esbuild@0.28.2": true,
+    "protobufjs@7.6.6": true,
+    "workerd@1.20261110.1": true
+  }
+}

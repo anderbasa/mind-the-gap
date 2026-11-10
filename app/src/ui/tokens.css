@@ -1,0 +1,118 @@
+/* Mind the Gap — tokens de diseño («mapa de metro editorial»).
+   Papel crema + tinta azul marino + rojo buzón, y una «línea» de color por destreza. */
+
+:root {
+  color-scheme: light;
+  --paper: #f6f1e7;
+  --paper-raised: #fcf9f3;
+  --paper-sunk: #ece5d6;
+  --ink: #14213d;
+  --ink-2: #3d4863;
+  --ink-3: #6b7287;
+  --rule: #ddd3c1;
+  --rule-strong: #c4b8a2;
+
+  /* Banda superior tipo cartel de estación (igual en claro y oscuro) */
+  --band: #14213d;
+  --band-ink: #f6f1e7;
+  --band-ink-2: #b9bfd0;
+
+  --signal: #c8102e; /* rojo buzón: racha, avisos, llamada a la acción */
+  --signal-ink: #ffffff;
+  --ok: #1b7a4c;
+  --ok-soft: #dcefe2;
+  --bad: #c8102e;
+  --bad-soft: #f8dde0;
+  --warn: #a5620a;
+  --warn-soft: #f6e8cf;
+
+  /* Líneas por destreza */
+  --line-reading: #1c4fb8;
+  --line-uoe: #7a3b9e;
+  --line-writing: #d4501c;
+  --line-listening: #0f8a5f;
+  --line-speaking: #c99112;
+  --line-vocab: #0e8c9a;
+  --line-grammar: #b0306f;
+
+  --font-read: 'Newsreader', 'Iowan Old Style', 'Charter', Georgia, serif;
+  --font-ui: 'Cabin', 'Gill Sans', 'Gill Sans MT', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 1px 0 rgb(20 33 61 / 0.05), 0 10px 24px -16px rgb(20 33 61 / 0.35);
+  --shadow-press: 0 1px 0 rgb(20 33 61 / 0.05);
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --tabbar-h: 60px;
+  --page-pad: 16px;
+  --maxw: 720px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.2, 0.9, 0.25, 1.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --paper: #0e1525;
+    --paper-raised: #162036;
+    --paper-sunk: #0a101c;
+    --ink: #f1eadb;
+    --ink-2: #c8c1b2;
+    --ink-3: #8e94a5;
+    --rule: #263150;
+    --rule-strong: #36436b;
+    --band: #070d19;
+    --band-ink: #f1eadb;
+    --band-ink-2: #8e94a5;
+    --signal: #ff5466;
+    --signal-ink: #1a0508;
+    --ok: #4fc38c;
+    --ok-soft: #123326;
+    --bad: #ff6b7a;
+    --bad-soft: #3a1620;
+    --warn: #f0b04a;
+    --warn-soft: #36270d;
+    --line-reading: #79a2ff;
+    --line-uoe: #bd8ce6;
+    --line-writing: #ff8a57;
+    --line-listening: #45cc97;
+    --line-speaking: #f2c14e;
+    --line-vocab: #4fcbd8;
+    --line-grammar: #ea72ad;
+    --shadow: 0 1px 0 rgb(0 0 0 / 0.3), 0 12px 28px -18px rgb(0 0 0 / 0.8);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #0e1525;
+  --paper-raised: #162036;
+  --paper-sunk: #0a101c;
+  --ink: #f1eadb;
+  --ink-2: #c8c1b2;
+  --ink-3: #8e94a5;
+  --rule: #263150;
+  --rule-strong: #36436b;
+  --band: #070d19;
+  --band-ink: #f1eadb;
+  --band-ink-2: #8e94a5;
+  --signal: #ff5466;
+  --signal-ink: #1a0508;
+  --ok: #4fc38c;
+  --ok-soft: #123326;
+  --bad: #ff6b7a;
+  --bad-soft: #3a1620;
+  --warn: #f0b04a;
+  --warn-soft: #36270d;
+  --line-reading: #79a2ff;
+  --line-uoe: #bd8ce6;
+  --line-writing: #ff8a57;
+  --line-listening: #45cc97;
+  --line-speaking: #f2c14e;
+  --line-vocab: #4fcbd8;
+  --line-grammar: #ea72ad;
+  --shadow: 0 1px 0 rgb(0 0 0 / 0.3), 0 12px 28px -18px rgb(0 0 0 / 0.8);
+}

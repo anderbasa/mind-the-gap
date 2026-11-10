@@ -1,0 +1,22 @@
+rules_version = '2';
+
+// Mind the Gap: solo el dueño (un único UID de Google) puede leer o escribir.
+// El UID se fija tras el primer login (ver README, paso «Autorizar tu cuenta»).
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function esDueno(uid) {
+      return request.auth != null
+        && request.auth.uid == uid
+        && uid == 'PENDIENTE_UID';
+    }
+
+    match /users/{uid}/{document=**} {
+      allow read, write: if esDueno(uid);
+    }
+
+    // Cualquier otra ruta queda cerrada.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  // Cloudflare Worker de Mind the Gap (plan gratuito).
+  // Las claves NO van aquí: se guardan como secretos con `npx wrangler secret put NOMBRE`.
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "mind-the-gap",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "observability": { "enabled": false },
+  "vars": {
+    "FIREBASE_PROJECT_ID": "mind-the-gap-ander",
+    // Tu UID de Firebase (no es secreto). Vacío = el Worker no atiende a nadie.
+    "ALLOWED_UID": "",
+    "ALLOWED_ORIGINS": "https://anderbasa.github.io,http://localhost:5181"
+  }
+}
