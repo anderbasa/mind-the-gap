@@ -1,0 +1,78 @@
+[
+  {
+    "id": "seed-p2-2",
+    "part": "p2",
+    "source": "seed",
+    "createdAt": 1794441600000,
+    "title": "Fast food before fast food",
+    "topic": "the history and popularity of the sandwich",
+    "text": "Legend has it that the sandwich was invented in the eighteenth century by the Earl of Sandwich, a keen gambler {1} refused to leave the card table for a proper meal. Whether or {2} the story is true, the idea of putting food between two slices of bread is almost certainly much older.\n\nWhat is beyond doubt is that the sandwich has become one of the most popular meals in the world. Part of its appeal lies {3} its convenience: it can be eaten with one hand, prepared in advance and carried almost anywhere. {4} matter how busy people are, there is always time for a sandwich.\n\nIn recent decades, the humble sandwich has also become big business. Supermarkets sell millions every day, and some chains have built {5} entire business around them. As a result, the range of fillings on offer is far wider {6} it used to be, from traditional cheese and pickle to more adventurous combinations.\n\nNot everyone is impressed, {7}. Nutritionists warn that many shop-bought sandwiches contain surprisingly high levels of salt, and that eating them every day is no substitute {8} a balanced diet.",
+    "items": [
+      { "n": 1, "answers": ["who", "that"], "focus": "relative", "hint": "A relative pronoun for a person.", "explanation": "'Who' introduces a relative clause about a person (the Earl, a keen gambler). 'That' is also possible in this defining clause." },
+      { "n": 2, "answers": ["not"], "focus": "fixed phrase", "hint": "Complete the expression 'whether or …'.", "explanation": "'Whether or not' means 'it doesn't matter if… or not': whether or not the story is true." },
+      { "n": 3, "answers": ["in"], "focus": "preposition", "hint": "Which preposition follows 'lie' when we talk about where the appeal or problem is?", "explanation": "'The appeal lies in' something means that is where the attraction comes from. The verb 'lie' is followed by 'in' in this sense." },
+      { "n": 4, "answers": ["no"], "focus": "fixed phrase", "hint": "Complete the expression '… matter how', meaning 'however'.", "explanation": "'No matter how busy people are' means 'however busy they are'. The phrase is always 'no matter + how/what/who'." },
+      { "n": 5, "answers": ["an", "their"], "focus": "article", "hint": "You need a short word before 'entire business'.", "explanation": "'Built an entire business around them' uses the indefinite article before the vowel sound of 'entire'. 'Their' is also correct here." },
+      { "n": 6, "answers": ["than"], "focus": "comparison", "hint": "Look at 'far wider': what follows a comparative?", "explanation": "A comparative adjective ('wider') is followed by 'than': far wider than it used to be." },
+      { "n": 7, "answers": ["however", "though"], "focus": "conjunction", "hint": "A linking word at the end of a sentence that shows contrast with what came before.", "explanation": "'However' (or informally 'though') at the end of the sentence contrasts this paragraph with the success described before." },
+      { "n": 8, "answers": ["for"], "focus": "preposition", "hint": "Which preposition follows 'substitute'?", "explanation": "We say 'a substitute for' something: eating sandwiches every day is no substitute for a balanced diet." }
+    ]
+  },
+  {
+    "id": "seed-p2-3",
+    "part": "p2",
+    "source": "seed",
+    "createdAt": 1794441600000,
+    "title": "Why do we enjoy being scared?",
+    "topic": "the appeal of horror films",
+    "text": "At first glance, the popularity of horror films is something {1} a mystery. Why would anyone pay to spend two hours feeling anxious, tense and occasionally terrified? Psychologists have offered several explanations, {2} of which is entirely convincing on its own.\n\nOne theory is that horror allows us to experience fear in a completely safe environment. However frightening the film, we know that we can leave the cinema {3} any time, and that the monster will not follow us home. {4} a result, we can enjoy the rush of adrenaline without facing any real danger.\n\nAnother explanation focuses on the sense of relief that comes at the end. Having survived the ordeal, viewers often feel more relaxed than they {5} before the film started. Some researchers even argue that watching horror with friends can bring people closer together, {6} sharing a frightening experience creates a strong sense of connection.\n\nOf course, not everyone {7} the appeal. For some people, the experience is simply unpleasant, and no amount of scientific explanation will persuade them {8} watch another zombie film.",
+    "items": [
+      { "n": 1, "answers": ["of"], "focus": "fixed phrase", "hint": "Complete the expression 'something … a mystery', meaning 'quite a mystery'.", "explanation": "'Something of a mystery' means 'rather a mystery'. The expression 'something of a + noun' is common in formal English." },
+      { "n": 2, "answers": ["none"], "focus": "quantifier", "hint": "A quantifier meaning 'not one' that works with 'of which' and more than two things.", "explanation": "'None of which is entirely convincing' means not one of the several explanations. 'Neither' is only used for two things." },
+      { "n": 3, "answers": ["at"], "focus": "preposition", "hint": "Which preposition goes with 'any time'?", "explanation": "'At any time' means whenever we want. Time expressions with 'time' usually take 'at'." },
+      { "n": 4, "answers": ["as"], "focus": "fixed phrase", "hint": "Complete the linker '… a result'.", "explanation": "'As a result' introduces a consequence of what has just been said." },
+      { "n": 5, "answers": ["were", "did"], "focus": "auxiliary", "hint": "You need a verb that avoids repeating 'felt relaxed'.", "explanation": "'More relaxed than they were before' compares two states. 'Did' (replacing 'felt') is also correct." },
+      { "n": 6, "answers": ["because", "as", "since"], "focus": "conjunction", "hint": "A linking word that introduces a reason.", "explanation": "The second clause gives the reason why horror brings people closer: 'because' (or 'as' / 'since') sharing fear creates connection." },
+      { "n": 7, "answers": ["sees", "gets"], "focus": "fixed phrase", "hint": "Which verb completes 'not everyone … the appeal', meaning 'understands why people like it'?", "explanation": "'To see the appeal' of something means to understand why others like it. Informally, 'get the appeal' is also used." },
+      { "n": 8, "answers": ["to"], "focus": "other", "hint": "What follows 'persuade somebody'?", "explanation": "'Persuade somebody to do something' takes the to-infinitive: persuade them to watch." }
+    ]
+  },
+  {
+    "id": "seed-p2-4",
+    "part": "p2",
+    "source": "seed",
+    "createdAt": 1794441600000,
+    "title": "Giving your time",
+    "topic": "the benefits of volunteering",
+    "text": "Volunteering is often seen as something people do purely for the benefit of {1}. Yet research suggests that volunteers themselves gain a great deal from the experience, both personally and professionally.\n\nFor a start, giving up a few hours a week to help others can do wonders {2} your mental health. Volunteers report feeling less stressed and more connected to their community, and some studies have found that they {3} to live longer, although the reasons for this are not entirely clear.\n\nThere are practical advantages, too. Volunteering offers {4} chance to develop skills that employers value, such as teamwork, leadership and problem-solving. For students with little work experience, it can make a CV stand {5}, and it may even lead to a job offer.\n\nThat said, the best reasons for volunteering are not always the most practical ones. {6} though many people start for the sake of their CV, they often find that they stay because they enjoy it. {7} the cause you choose is animal welfare, the environment or helping elderly neighbours, what matters is that it is something you genuinely care {8}.",
+    "items": [
+      { "n": 1, "answers": ["others"], "focus": "pronoun", "hint": "A pronoun meaning 'other people'.", "explanation": "'For the benefit of others' means to help other people. 'Others' is a pronoun here, so it takes -s." },
+      { "n": 2, "answers": ["for"], "focus": "preposition", "hint": "Complete the expression 'do wonders … something'.", "explanation": "'To do wonders for' something means to have a very good effect on it." },
+      { "n": 3, "answers": ["tend", "seem"], "focus": "other", "hint": "A verb followed by 'to' that means 'are generally likely'.", "explanation": "'They tend to live longer' means that this is generally true of volunteers. 'Seem to' is also acceptable." },
+      { "n": 4, "answers": ["a", "the"], "focus": "article", "hint": "You need an article before 'chance'.", "explanation": "'Offers a chance (or the chance) to develop skills'. 'Chance' is countable, so it needs an article." },
+      { "n": 5, "answers": ["out"], "focus": "phrasal particle", "hint": "Which particle makes 'stand' mean 'be easily noticed'?", "explanation": "'To stand out' means to be noticeable or better than others: volunteering makes a CV stand out." },
+      { "n": 6, "answers": ["even"], "focus": "conjunction", "hint": "Which word goes before 'though' to make a stronger contrast?", "explanation": "'Even though' is a stronger form of 'although', used before a fact that contrasts with the main clause." },
+      { "n": 7, "answers": ["whether"], "focus": "conjunction", "hint": "Look at the list joined by 'or': it doesn't matter which of them.", "explanation": "'Whether the cause is X, Y or Z, what matters is…' means it makes no difference which one you choose." },
+      { "n": 8, "answers": ["about"], "focus": "preposition", "hint": "Which preposition follows 'care' when you feel something is important?", "explanation": "We 'care about' things that matter to us. The preposition comes at the end of the relative clause: something you care about." }
+    ]
+  },
+  {
+    "id": "seed-p2-5",
+    "part": "p2",
+    "source": "seed",
+    "createdAt": 1794441600000,
+    "title": "Back to the board",
+    "topic": "the revival of board games",
+    "text": "Not so long ago, board games seemed destined to disappear, unable to compete {1} video games and streaming services. Today, however, they are enjoying a remarkable revival. Specialist cafés, {2} customers can choose from hundreds of games while they eat, have opened in cities across Europe.\n\nWhat explains this unexpected comeback? For many players, the appeal lies in spending time with friends face to face rather {3} staring at a screen. Board games encourage conversation and laughter in a way that online games rarely {4}. They also offer a welcome break from the constant notifications of modern life.\n\nThe games themselves have changed, too. Whereas older classics often depended largely {5} luck, many modern games reward careful planning and strategy. Some are so complex that it takes a whole evening just to learn the rules, {6} others can be explained in a couple of minutes.\n\nWhatever the reason, the trend shows no sign of slowing {7}. According {8} industry figures, sales of board games have grown steadily for more than a decade, and designers launch thousands of new titles every year.",
+    "items": [
+      { "n": 1, "answers": ["with", "against"], "focus": "preposition", "hint": "Which preposition follows 'compete' when you name your rival?", "explanation": "We 'compete with' (or 'against') a rival: board games could not compete with video games." },
+      { "n": 2, "answers": ["where"], "focus": "relative", "hint": "A relative adverb for a place.", "explanation": "'Cafés, where customers can choose…' uses 'where' because the relative clause describes what happens in a place." },
+      { "n": 3, "answers": ["than"], "focus": "fixed phrase", "hint": "Complete the expression 'rather …'.", "explanation": "'Rather than' means 'instead of': spending time face to face rather than staring at a screen." },
+      { "n": 4, "answers": ["do", "can"], "focus": "auxiliary", "hint": "An auxiliary that avoids repeating 'encourage conversation'.", "explanation": "'In a way that online games rarely do' uses 'do' to replace 'encourage conversation and laughter'. 'Can' is also possible." },
+      { "n": 5, "answers": ["on", "upon"], "focus": "preposition", "hint": "Which preposition follows 'depend'?", "explanation": "'Depend on' (or the more formal 'upon') something: older games depended largely on luck." },
+      { "n": 6, "answers": ["while", "whereas", "whilst"], "focus": "conjunction", "hint": "A linking word that contrasts two facts in the same sentence.", "explanation": "'While' (or 'whereas', 'whilst') contrasts the complex games with the simple ones." },
+      { "n": 7, "answers": ["down"], "focus": "phrasal particle", "hint": "Which particle completes 'slow …', meaning 'become slower'?", "explanation": "'Show no sign of slowing down' means the trend is not getting weaker." },
+      { "n": 8, "answers": ["to"], "focus": "preposition", "hint": "Complete 'according …'.", "explanation": "'According to' introduces the source of information: according to industry figures." }
+    ]
+  }
+]

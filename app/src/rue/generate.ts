@@ -7,7 +7,8 @@ import { z } from 'zod';
 import { runAI } from '../ai/client';
 import { fill, getPrompt } from '../ai/prompts';
 import { AiError } from '../ai/types';
-import { hasStore, profile, store } from '../state';
+import { chainFor } from '../ai/providers';
+import { hasStore, profile, settings, store } from '../state';
 import { allSets, getProgress, saveAiSet } from './bank';
 import { checkSet } from './checks';
 import { countWords, hasKeyword, normalize } from './marking';
@@ -233,6 +234,26 @@ async function generateSetInner(part: PartId, opts: { onStep?: (s: string) => vo
       .catch(() => undefined);
   }
   return ok;
+}
+
+/** Coste estimado de generar un ejercicio (escribir + revisar) si se usa un modelo de pago. */
+export const EST_COST_PER_SET_USD = 0.03;
+
+/**
+ * ¿Generar ejercicios gastaría saldo? Solo si en Ajustes se ha puesto Claude para generar/validar,
+ * o si Gemini está en modo de pago. Con la configuración por defecto (Gemini gratis) no.
+ */
+export function generationSpendsMoney(): boolean {
+  const cfg = settings.value;
+  const chains = [...chainFor('generate', cfg.providerOverrides), ...chainFor('validate', cfg.providerOverrides)];
+  return chains.some((r) => r.provider === 'claude') || cfg.geminiTier === 'paid';
+}
+
+/** Pide confirmación antes de gastar saldo. Devuelve true si se puede seguir. */
+export function confirmSpend(sets: number): boolean {
+  if (!generationSpendsMoney()) return true;
+  const total = (sets * EST_COST_PER_SET_USD).toFixed(2).replace('.', ',');
+  return confirm(`Generar ${sets === 1 ? 'este ejercicio' : `hasta ${sets} ejercicios`} gastará de tu saldo (unos ${total} $ como máximo). ¿Seguir?`);
 }
 
 /** Errores de IA que no se arreglan reintentando ahora (cuota, tope, configuración, red). */

@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { JSX } from 'preact';
 import { allSets, getProgress, getSet, markDone, pickNext } from '../../rue/bank';
+import { confirmSpend } from '../../rue/generate';
 import { cancelJob, clearJob, jobs, startJob } from '../../rue/jobs';
 import { markSet, type Answers, type SetResult } from '../../rue/marking';
 import { reviewOpenAnswers } from '../../rue/review';
@@ -94,6 +95,7 @@ export function RuePlayer() {
   const generating = !!job && !job.done && !job.error;
 
   const generate = () => {
+    if (!confirmSpend(1)) return; // solo pregunta si fuese a gastar saldo
     clearJob(part);
     startJob(part);
   };

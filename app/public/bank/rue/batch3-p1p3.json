@@ -1,0 +1,40 @@
+[
+  {
+    "id": "seed-p1-5",
+    "part": "p1",
+    "source": "seed",
+    "createdAt": 1794441600000,
+    "title": "Sleep: the student's forgotten friend",
+    "topic": "sleep and studying",
+    "text": "Ask any student about exam season and you are likely to hear stories of revision sessions that stretched into the {1} hours. Many will proudly admit to having pulled an all-{2} before a deadline, as if staying awake were a badge of honour.\n\n{3} the midnight oil may feel productive at the time, but the evidence suggests otherwise. Memory depends heavily on sleep, and students who are constantly sleep-{4} tend to remember less of what they have studied, not more. Over time, a lack of rest also {5} its toll on mood, concentration and even physical health.\n\nMany students assume they can simply catch {6} on sleep at the weekend. Unfortunately, the body does not work quite like a bank account, and a long lie-in on Sunday cannot fully make up for a week of late nights.\n\nSo what should students do? First and {7}, they should treat sleep as part of their study plan rather than an obstacle to it. When in doubt, it is wiser to {8} on the side of caution and go to bed than to revise for one more hour with a tired brain.",
+    "items": [
+      { "n": 1, "options": { "A": "tiny", "B": "little", "C": "small", "D": "short" }, "answer": "C", "focus": "fixed phrase", "hint": "Which adjective completes the expression for the hours just after midnight?", "explanation": "'The small hours' are the hours after midnight (1, 2, 3 a.m.). The expression is fixed." },
+      { "n": 2, "options": { "A": "nighter", "B": "dayer", "C": "timer", "D": "sleeper" }, "answer": "A", "focus": "idiom", "hint": "Complete the informal expression for staying up all night to work.", "explanation": "'To pull an all-nighter' means to stay awake all night, usually to study or work." },
+      { "n": 3, "options": { "A": "Lighting", "B": "Burning", "C": "Using", "D": "Wasting" }, "answer": "B", "focus": "idiom", "hint": "Complete the idiom meaning 'to work late into the night'.", "explanation": "'To burn the midnight oil' means to work until very late at night. The idiom always uses 'burn'." },
+      { "n": 4, "options": { "A": "denied", "B": "drained", "C": "deficient", "D": "deprived" }, "answer": "D", "focus": "collocation", "hint": "Which adjective forms a compound with 'sleep-' meaning 'not getting enough sleep'?", "explanation": "'Sleep-deprived' means not getting enough sleep. 'Deficient' is used with 'in' (deficient in vitamins), and 'drained' means exhausted in general." },
+      { "n": 5, "options": { "A": "takes", "B": "pays", "C": "costs", "D": "charges" }, "answer": "A", "focus": "collocation", "hint": "Complete the expression '… its toll on something', meaning 'damage it gradually'.", "explanation": "'To take its toll on' something means to have a gradual harmful effect on it." },
+      { "n": 6, "options": { "A": "out", "B": "in", "C": "on", "D": "up" }, "answer": "D", "focus": "phrasal verb", "hint": "Which particle makes 'catch … on sleep' mean 'get the sleep you missed'?", "explanation": "'To catch up on' sleep (or work) means to do what you should have done earlier." },
+      { "n": 7, "options": { "A": "foremost", "B": "best", "C": "most", "D": "main" }, "answer": "A", "focus": "fixed phrase", "hint": "Complete the fixed phrase 'first and …', meaning 'most importantly'.", "explanation": "'First and foremost' means 'above all, most importantly'. The phrase is fixed." },
+      { "n": 8, "options": { "A": "lean", "B": "stay", "C": "err", "D": "fall" }, "answer": "C", "focus": "idiom", "hint": "Complete the idiom meaning 'to be extra careful when you are not sure'.", "explanation": "'To err on the side of caution' means to choose the safer option. The idiom always uses 'err'." }
+    ]
+  },
+  {
+    "id": "seed-p3-5",
+    "part": "p3",
+    "source": "seed",
+    "createdAt": 1794441600000,
+    "title": "The true cost of a cheap T-shirt",
+    "topic": "fast fashion",
+    "text": "Fast fashion has made clothes more {1} than ever before. A T-shirt can now cost less than a sandwich, and many shoppers buy new outfits for a single party, wear them once and throw them away. For many young people, clothes have effectively become disposable. What is less visible are the environmental {2} of this habit.\n\nProducing a single pair of jeans requires an almost {3} amount of water, and much of the clothing we buy ends up in landfill sites {4} quickly. The human cost can be just as high. Garment workers are often paid {5} low wages, and conditions in some factories remain genuinely {6}.\n\nGrowing {7} of these problems has led a number of brands to promise change, from using recycled materials to paying fairer wages. Many critics, however, remain {8}. They point out that as long as the industry depends on selling ever larger quantities of cheap clothes, small improvements will do little to change the overall picture.",
+    "items": [
+      { "n": 1, "base": "AFFORD", "answers": ["affordable"], "focus": "adjective suffix", "hint": "An adjective after 'more': clothes that people can pay for easily.", "explanation": "'Affordable' means cheap enough for people to buy: afford + -able." },
+      { "n": 2, "base": "CONSEQUENT", "answers": ["consequences"], "focus": "noun suffix", "hint": "A plural noun after 'the environmental' (look at the verb 'are').", "explanation": "'Consequences' are results, usually negative ones. The verb 'are' tells you the noun must be plural." },
+      { "n": 3, "base": "BELIEVE", "answers": ["unbelievable"], "focus": "negative prefix", "hint": "An adjective after 'an almost', describing a huge amount.", "explanation": "'An almost unbelievable amount' is so large that it is hard to believe: un- + believe + -able." },
+      { "n": 4, "base": "SURPRISE", "answers": ["surprisingly"], "focus": "adverb", "hint": "An adverb that modifies 'quickly'.", "explanation": "'Surprisingly quickly' means more quickly than you would expect. You need an adverb to modify another adverb." },
+      { "n": 5, "base": "ACCEPT", "answers": ["unacceptably"], "focus": "negative prefix", "hint": "An adverb before 'low' with a negative meaning.", "explanation": "'Unacceptably low wages' are so low that they should not be allowed: un- + accept + -able + -ly." },
+      { "n": 6, "base": "DANGER", "answers": ["dangerous"], "focus": "adjective suffix", "hint": "An adjective after 'remain genuinely'.", "explanation": "'Dangerous' is the adjective from 'danger': conditions that can cause harm." },
+      { "n": 7, "base": "AWARE", "answers": ["awareness"], "focus": "noun suffix", "hint": "After 'Growing' you need a noun followed by 'of'.", "explanation": "'Growing awareness of' a problem means more and more people know about it: aware + -ness." },
+      { "n": 8, "base": "CONVINCE", "answers": ["unconvinced"], "focus": "negative prefix", "hint": "An adjective after 'remain': the critics still don't believe it.", "explanation": "'Remain unconvinced' means they still don't believe the promises: un- + convince + -d." }
+    ]
+  }
+]

@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { JSX } from 'preact';
 import { allSets, countUnseen, getProgress, type Progress } from '../../rue/bank';
-import { topUp } from '../../rue/generate';
+import { confirmSpend, topUp } from '../../rue/generate';
 import { maxMarks } from '../../rue/marking';
 import { PART_IDS, PARTS, type PartId, type RueSet } from '../../rue/schema';
 import { navigate } from '../../router';
@@ -49,6 +49,7 @@ export function RueHub() {
   };
 
   const fill = async () => {
+    if (!confirmSpend(16)) return; // solo pregunta si fuese a gastar saldo
     abort.current = new AbortController();
     setFillResult(null);
     setFilling('Empezando…');
