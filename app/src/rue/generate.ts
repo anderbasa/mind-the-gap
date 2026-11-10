@@ -10,7 +10,7 @@ import { AiError } from '../ai/types';
 import { hasStore, profile, store } from '../state';
 import { allSets, getProgress, saveAiSet } from './bank';
 import { checkSet } from './checks';
-import { countWords, normalize } from './marking';
+import { countWords, hasKeyword, normalize } from './marking';
 import { renderSet } from './render';
 import { GEN_SCHEMAS, PART_ORDER_BY_PRIORITY, PARTS, parseSet, type PartId, type RueSet } from './schema';
 import { pickTopic } from './topics';
@@ -100,7 +100,7 @@ export async function validateSet(set: RueSet, signal?: AbortSignal): Promise<Ru
       const k = it as { keyword: string; answers: string[] };
       const ok = extra.filter((a) => {
         const wc = countWords(a);
-        return wc >= 3 && wc <= 6 && ` ${normalize(a)} `.includes(` ${normalize(k.keyword)} `);
+        return wc >= 3 && wc <= 6 && hasKeyword(a, k.keyword);
       });
       return { ...it, answers: uniq([...k.answers, ...ok]) };
     }

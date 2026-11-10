@@ -42,13 +42,21 @@ export function countWords(s: string): number {
 
 const has = (hay: string, needle: string) => ` ${hay} `.includes(` ${needle} `);
 
+const NEGATIVE: Record<string, string> = { can: "can't", will: "won't", shall: "shan't" };
+
+/** ¿Aparece la palabra clave sin cambiar? Se admite su contracción negativa (had → hadn't). */
+export function hasKeyword(answer: string, keyword: string): boolean {
+  const kw = normalize(keyword);
+  const tokens = normalize(answer).split(' ');
+  return tokens.some((t) => t === kw || t === `${kw}n't` || t === NEGATIVE[kw]);
+}
+
 export function markKeyWord(item: { keyword: string; answers: string[]; chunks: string[][] }, raw: string): Omit<ItemResult, 'n' | 'expected'> {
   const given = raw ?? '';
   const a = normalize(given);
   const base = { max: 2, given };
   if (!a) return { ...base, marks: 0, needsReview: false, reason: 'En blanco.' };
-  const kw = normalize(item.keyword);
-  if (!has(a, kw)) return { ...base, marks: 0, needsReview: false, reason: `Tienes que usar «${item.keyword}» sin cambiarla.` };
+  if (!hasKeyword(a, item.keyword)) return { ...base, marks: 0, needsReview: false, reason: `Tienes que usar «${item.keyword}» sin cambiarla.` };
   const wc = countWords(a);
   if (wc < 3 || wc > 6) return { ...base, marks: 0, needsReview: false, reason: `Son ${wc} palabras: tienen que ser entre 3 y 6 (las contracciones cuentan como dos).` };
   if (item.answers.some((x) => normalize(x) === a)) return { ...base, marks: 2, needsReview: false };

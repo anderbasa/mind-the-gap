@@ -1,0 +1,59 @@
+[
+  {
+    "id": "seed-p3-2",
+    "part": "p3",
+    "source": "seed",
+    "createdAt": 1794355200000,
+    "title": "The four-day week: a working revolution?",
+    "topic": "the four-day working week",
+    "text": "When a handful of companies first experimented with a four-day week, the idea was widely dismissed as {1}. How, critics asked, could anyone maintain the same level of {2} while working twenty per cent fewer hours?\n\nThe results of recent trials have been surprisingly encouraging. Many employers report that staff are more {3} and take fewer days off sick, while the {4} of pointless meetings has freed up time for more valuable work.\n\nThat is not to say the transition is always smooth. In sectors such as healthcare, where shifts must cover every day of the week, the model can be {5}, and some workers find the longer working days {6}. There is also a risk that the benefits are {7} distributed, with office workers gaining far more than those on the shop floor.\n\nNevertheless, supporters argue that the four-day week is no passing fashion. For a generation that values flexibility as highly as salary, the offer of an extra day off may simply prove {8}.",
+    "items": [
+      { "n": 1, "base": "REAL", "answers": ["unrealistic"], "focus": "negative prefix", "hint": "An adjective after 'dismissed as': critics thought the idea could never work.", "explanation": "'Dismissed as unrealistic' = rejected as not practical. You need a negative prefix (un-) and the adjective suffix -istic." },
+      { "n": 2, "base": "PRODUCE", "answers": ["productivity"], "focus": "noun suffix", "hint": "After 'the same level of' you need an uncountable noun.", "explanation": "'Productivity' is how much work people produce. The chain is produce → productive → productivity." },
+      { "n": 3, "base": "MOTIVATE", "answers": ["motivated"], "focus": "adjective suffix", "hint": "An adjective that describes how staff feel.", "explanation": "'More motivated' describes the staff's feelings. '-ed' adjectives describe how people feel; '-ing' adjectives (motivating) describe what causes the feeling." },
+      { "n": 4, "base": "APPEAR", "answers": ["disappearance"], "focus": "noun suffix", "hint": "After 'the' you need a noun: the meetings no longer happen.", "explanation": "The meetings have gone, so we need the opposite of 'appear' (disappear) as a noun: disappearance. Two changes: prefix dis- and suffix -ance." },
+      { "n": 5, "base": "PRACTICE", "answers": ["impractical"], "focus": "negative prefix", "hint": "An adjective: the model does not work well in these sectors.", "explanation": "'Impractical' means not sensible or realistic to do. Before 'p', the negative prefix is 'im-'." },
+      { "n": 6, "base": "EXHAUST", "answers": ["exhausting"], "focus": "adjective suffix", "hint": "'Find something + adjective': which adjective describes the effect the days have?", "explanation": "The long days cause tiredness, so we use the -ing adjective 'exhausting'. 'Exhausted' would describe the workers, not the days." },
+      { "n": 7, "base": "EQUAL", "answers": ["unequally"], "focus": "negative prefix", "hint": "An adverb before 'distributed', with a negative meaning.", "explanation": "'Unequally distributed' means some people get more than others. You need the negative prefix un- and the adverb ending -ly." },
+      { "n": 8, "base": "RESIST", "answers": ["irresistible"], "focus": "negative prefix", "hint": "An adjective: an offer people cannot say no to.", "explanation": "'Irresistible' means too attractive to refuse. Before 'r', the negative prefix is 'ir-', and the suffix is '-ible', not '-able'." }
+    ]
+  },
+  {
+    "id": "seed-p3-3",
+    "part": "p3",
+    "source": "seed",
+    "createdAt": 1794355200000,
+    "title": "In praise of boredom",
+    "topic": "the psychology of boredom",
+    "text": "Few experiences are as universally {1} as boredom. We go to great lengths to avoid it, reaching for our phones at the slightest sign of {2}. Yet a growing number of psychologists believe that our {3} to tolerate a few empty minutes may come at a cost. Some even argue that a little boredom, far from being a waste of time, is actually good for us.\n\nBoredom, they argue, is not simply an {4} feeling to be eliminated. It is a signal that our current activity is no longer meeting our needs, and it can prompt us to look for something more {5}. In one well-known type of study, participants who were first given a {6} task, such as copying numbers from a list, came up with more {7} ideas in a creativity test afterwards.\n\nNone of this means we should seek out tedium deliberately. But the next time you find yourself waiting for a train with nothing to do, resisting the urge to check your messages might be more {8} than you think.",
+    "items": [
+      { "n": 1, "base": "POPULAR", "answers": ["unpopular"], "focus": "negative prefix", "hint": "An adjective: nobody likes boredom.", "explanation": "Boredom is something people dislike, so we need the negative adjective 'unpopular'." },
+      { "n": 2, "base": "ACTIVE", "answers": ["inactivity"], "focus": "negative prefix", "hint": "After 'the slightest sign of' you need a noun meaning 'doing nothing'.", "explanation": "'Inactivity' is the state of doing nothing: negative prefix in- + active + noun suffix -ity." },
+      { "n": 3, "base": "WILLING", "answers": ["unwillingness"], "focus": "negative prefix", "hint": "After 'our' you need a noun, and we are NOT willing.", "explanation": "'Our unwillingness to tolerate…' means we don't want to accept empty time. Two changes: un- and the noun suffix -ness." },
+      { "n": 4, "base": "PLEASE", "answers": ["unpleasant"], "focus": "negative prefix", "hint": "Look at the article 'an': the adjective starts with a vowel.", "explanation": "'An unpleasant feeling' is one we don't enjoy. Notice that 'an' tells you the missing word begins with a vowel sound." },
+      { "n": 5, "base": "MEAN", "answers": ["meaningful"], "focus": "adjective suffix", "hint": "An adjective after 'something more': an activity that has a purpose.", "explanation": "'Meaningful' means having a purpose or value: mean → meaning → meaningful." },
+      { "n": 6, "base": "REPEAT", "answers": ["repetitive"], "focus": "adjective suffix", "hint": "An adjective describing a dull task that involves doing the same thing again and again.", "explanation": "A 'repetitive task' involves doing the same thing many times. Note the spelling change: repeat → repetition → repetitive." },
+      { "n": 7, "base": "IMAGINE", "answers": ["imaginative"], "focus": "adjective suffix", "hint": "An adjective meaning 'creative and original'.", "explanation": "'Imaginative ideas' are creative ones. Don't confuse it with 'imaginary', which means 'not real'." },
+      { "n": 8, "base": "BENEFIT", "answers": ["beneficial"], "focus": "adjective suffix", "hint": "An adjective after 'more': good for you.", "explanation": "'Beneficial' means having a good effect. The noun/verb 'benefit' becomes the adjective 'beneficial'." }
+    ]
+  },
+  {
+    "id": "seed-p3-4",
+    "part": "p3",
+    "source": "seed",
+    "createdAt": 1794355200000,
+    "title": "Making the most of a year abroad",
+    "topic": "studying abroad on Erasmus",
+    "text": "For many students, a year abroad is the {1} highlight of their degree. It offers {2} opportunities to make friends, travel and gain {3} in a foreign language, and many return home feeling that they have grown up more in twelve months than in the previous three years.\n\nYet the experience is not without its difficulties. Some homesickness is almost {4} in the first few weeks, and dealing with an {5} bureaucracy in a second language can test anyone's patience. Some students also report feelings of {6} during the long winter months, when the initial excitement has worn off. Knowing in advance that these feelings are perfectly normal makes them much easier to manage.\n\nExperts recommend joining clubs and societies as early as possible, as they provide a {7} network of people in the same situation. Many universities also run buddy schemes that pair newcomers with local students. Above all, students should remember that a certain amount of {8} is not a sign that something has gone wrong, but a sign that they are learning.",
+    "items": [
+      { "n": 1, "base": "FORGET", "answers": ["unforgettable"], "focus": "negative prefix", "hint": "An adjective: something you will always remember.", "explanation": "'Unforgettable' means impossible to forget. Note the double 't': un- + forget + t + -able." },
+      { "n": 2, "base": "COUNT", "answers": ["countless"], "focus": "adjective suffix", "hint": "An adjective meaning 'too many to count'.", "explanation": "'Countless opportunities' means a very large number of them. The suffix -less means 'without' (here: without a limit you can count)." },
+      { "n": 3, "base": "CONFIDENT", "answers": ["confidence"], "focus": "noun suffix", "hint": "After 'gain' you need a noun.", "explanation": "You 'gain confidence' in something. The adjective 'confident' becomes the noun 'confidence'." },
+      { "n": 4, "base": "AVOID", "answers": ["unavoidable"], "focus": "negative prefix", "hint": "An adjective after 'almost': something that is bound to happen.", "explanation": "'Almost unavoidable' means it will very probably happen. You need both the negative prefix un- and the suffix -able." },
+      { "n": 5, "base": "FAMILIAR", "answers": ["unfamiliar"], "focus": "negative prefix", "hint": "Look at 'an': the adjective starts with a vowel and means 'new to you'.", "explanation": "'An unfamiliar bureaucracy' is a system you don't know. The article 'an' signals a word beginning with a vowel." },
+      { "n": 6, "base": "LONELY", "answers": ["loneliness"], "focus": "noun suffix", "hint": "After 'feelings of' you need a noun.", "explanation": "'Loneliness' is the noun from 'lonely'. Remember that y changes to i before -ness." },
+      { "n": 7, "base": "SUPPORT", "answers": ["supportive"], "focus": "adjective suffix", "hint": "An adjective before 'network'.", "explanation": "A 'supportive network' is a group of people who help and encourage you: support → supportive." },
+      { "n": 8, "base": "COMFORT", "answers": ["discomfort"], "focus": "negative prefix", "hint": "After 'a certain amount of' you need an uncountable noun with a negative meaning.", "explanation": "'Discomfort' is a feeling of slight pain or unease. The negative prefix for 'comfort' is dis-." }
+    ]
+  }
+]

@@ -1,7 +1,7 @@
 // Cómo se ve y se contesta cada parte del Reading and Use of English.
 import { useState } from 'preact/hooks';
 import type { ComponentChildren, JSX } from 'preact';
-import { countWords, examNumber, normalize, type Answers } from '../../rue/marking';
+import { countWords, examNumber, hasKeyword, type Answers } from '../../rue/marking';
 import type { RueSet, SetOf } from '../../rue/schema';
 import { TapParagraph } from './WordTap';
 
@@ -148,7 +148,7 @@ export function P4(props: PartProps<'p4'>) {
       {props.set.items.map((it) => {
         const v = props.answers[it.n] ?? '';
         const wc = v.trim() ? countWords(v) : 0;
-        const hasKw = ` ${normalize(v)} `.includes(` ${normalize(it.keyword)} `);
+        const hasKw = hasKeyword(v, it.keyword);
         return (
           <div key={it.n} class="card qcard stack" style={g(8)} id={`row-${examNumber('p4', it.n)}`}>
             <span class="qnum">{examNumber('p4', it.n)}</span>

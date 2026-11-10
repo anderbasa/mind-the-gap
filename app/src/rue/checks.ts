@@ -1,6 +1,6 @@
 // Comprobaciones deterministas de formato (primera pasada del validador).
 // Devuelven la lista de problemas; vacía = formato correcto.
-import { countWords, normalize } from './marking';
+import { countWords, hasKeyword, normalize } from './marking';
 import type { RueSet } from './schema';
 
 export const wordsIn = (t: string) => t.replace(/\{\d+\}/g, ' ').split(/\s+/).filter(Boolean).length;
@@ -51,7 +51,7 @@ export function checkSet(set: RueSet): string[] {
         for (const a of it.answers) {
           const wc = countWords(a);
           if (wc < 3 || wc > 6) p.push(`Ítem ${it.n}: «${a}» tiene ${wc} palabras (3–6).`);
-          if (!` ${normalize(a)} `.includes(` ${normalize(it.keyword)} `)) p.push(`Ítem ${it.n}: «${a}» no contiene la palabra clave.`);
+          if (!hasKeyword(a, it.keyword)) p.push(`Ítem ${it.n}: «${a}» no contiene la palabra clave.`);
         }
         if (normalize(it.first) === normalize(`${it.before} ${it.answers[0]} ${it.after}`)) p.push(`Ítem ${it.n}: la segunda frase es idéntica a la primera.`);
       }

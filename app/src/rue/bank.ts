@@ -14,11 +14,14 @@ const PROGRESS_DOC = 'meta/rue';
 
 let seedCache: Promise<RueSet[]> | null = null;
 
+/** El banco escrito a mano: bank/rue/index.json lista los archivos (cada uno, una lista de ejercicios). */
 export function loadSeeds(): Promise<RueSet[]> {
   if (!seedCache) {
-    seedCache = fetch(`${import.meta.env.BASE_URL}bank/rue/seed.json`)
-      .then((r) => (r.ok ? r.json() : []))
-      .then((raw: unknown[]) => raw.map(parseSet).filter((x): x is RueSet => x !== null))
+    const base = `${import.meta.env.BASE_URL}bank/rue/`;
+    seedCache = fetch(`${base}index.json`)
+      .then((r) => (r.ok ? (r.json() as Promise<string[]>) : ['seed.json']))
+      .then((files) => Promise.all(files.map((f) => fetch(base + f).then((r) => (r.ok ? (r.json() as Promise<unknown[]>) : [])))))
+      .then((lists) => lists.flat().map(parseSet).filter((x): x is RueSet => x !== null))
       .catch(() => {
         seedCache = null;
         return [];

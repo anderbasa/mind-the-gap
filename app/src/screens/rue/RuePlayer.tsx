@@ -219,15 +219,16 @@ export function RuePlayer() {
           <section class="card stack" style={g(12)}>
             <h2>{phase.allSeen ? 'Ya los has hecho todos' : 'Aún no hay ejercicios de esta parte'}</h2>
             {job?.error && <div class="notice bad">{job.error}</div>}
-            <p>Theo puede escribir uno nuevo ahora. Suele tardar entre 1 y 3 minutos, y puedes salir de la pantalla mientras tanto.</p>
-            <button class="btn signal" onClick={generate}>
-              {job?.error ? 'Probar otra vez' : 'Generar uno nuevo'}
-            </button>
+            <p>El banco de esta parte se va ampliando con ejercicios escritos y revisados a mano. Mientras tanto, repetir uno que hiciste hace tiempo también sirve.</p>
             {phase.oldest && (
-              <button class="btn ghost" onClick={() => begin(phase.oldest!)}>
+              <button class="btn signal" onClick={() => begin(phase.oldest!)}>
                 Repetir el que hiciste hace más tiempo
               </button>
             )}
+            <button class="btn ghost" onClick={generate}>
+              {job?.error ? 'Probar otra vez con IA (experimental)' : 'Probar a generar uno con IA (experimental)'}
+            </button>
+            <p class="muted small">Con Gemini gratis tarda 1–3 minutos y muchos se descartan en el control de calidad.</p>
           </section>
         )}
 

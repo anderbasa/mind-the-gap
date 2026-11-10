@@ -6,17 +6,31 @@ import { toGeminiSchema } from '../ai/gemini';
 import { pickNext, type Progress } from './bank';
 import { checkSet } from './checks';
 import { itemsWithProblems, normalizeGaps } from './generate';
-import { countWords, markKeyWord, markOpen, markSet, normalize } from './marking';
+import { countWords, hasKeyword, markKeyWord, markOpen, markSet, normalize } from './marking';
 import { renderSet } from './render';
 import { sentenceAround } from './review';
 import { GEN_SCHEMAS, PART_IDS, RueSet, type RueSet as RueSetT } from './schema';
 
-const seedPath = join(dirname(fileURLToPath(import.meta.url)), '../../public/bank/rue/seed.json');
-const seeds = (JSON.parse(readFileSync(seedPath, 'utf8')) as unknown[]).map((x) => RueSet.parse(x));
+const bankDir = join(dirname(fileURLToPath(import.meta.url)), '../../public/bank/rue');
+const files = JSON.parse(readFileSync(join(bankDir, 'index.json'), 'utf8')) as string[];
+const seeds = files.flatMap((f) => (JSON.parse(readFileSync(join(bankDir, f), 'utf8')) as unknown[]).map((x) => RueSet.parse(x)));
 
-describe('banco semilla', () => {
-  it('hay un ejercicio de cada parte y todos cumplen el esquema', () => {
+describe('banco escrito a mano', () => {
+  it('hay ejercicios de todas las partes, todos cumplen el esquema y los ids no se repiten', () => {
     expect(new Set(seeds.map((s) => s.part))).toEqual(new Set(PART_IDS));
+    expect(new Set(seeds.map((s) => s.id)).size).toBe(seeds.length);
+  });
+
+  it('las partes prioritarias tienen al menos 4 ejercicios', () => {
+    for (const p of ['p1', 'p3', 'p4'] as const) expect(seeds.filter((s) => s.part === p).length).toBeGreaterThanOrEqual(4);
+  });
+
+  it('en la Parte 4, la primera respuesta saca 2 puntos con el propio corrector', () => {
+    for (const s of seeds.filter((x) => x.part === 'p4')) {
+      for (const it of s.items as { n: number; keyword: string; answers: string[]; chunks: string[][] }[]) {
+        for (const a of it.answers) expect(markKeyWord(it, a).marks, `${s.id} #${it.n}: ${a}`).toBe(2);
+      }
+    }
   });
 
   it.each(seeds.map((s) => [s.id, s] as const))('%s pasa las comprobaciones de formato', (_, set) => {
@@ -68,6 +82,13 @@ describe('corrección', () => {
     expect(markKeyWord(kwt, 'was told to have').marks).toBe(0); // sin la palabra clave
     expect(markKeyWord(kwt, 'is said to have really very completely').marks).toBe(0); // 7 palabras
     expect(markKeyWord(kwt, 'says to have').marks).toBe(0); // palabra clave cambiada
+  });
+
+  it('Parte 4: acepta la contracción negativa de la palabra clave', () => {
+    const had = { keyword: 'HAD', answers: ['had not helped us'], chunks: [['had not', "hadn't"], ['helped']] };
+    expect(markKeyWord(had, "hadn't helped us").marks).toBe(2);
+    expect(hasKeyword("can't have been", 'CAN')).toBe(true);
+    expect(hasKeyword('has helped', 'HAD')).toBe(false);
   });
 
   it('suma bien un ejercicio completo y aplica las notas revisadas por la IA', () => {
