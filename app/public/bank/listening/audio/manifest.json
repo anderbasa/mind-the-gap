@@ -504,10 +504,10 @@
   }
  },
  "status": {
-  "at": "2026-11-11T10:23:20.485Z",
-  "total": 58,
+  "at": "2026-11-11T11:58:36.718Z",
+  "total": 150,
   "done": 10,
   "stoppedBy": "cuota diaria gratuita de voz agotada (en los dos modelos)",
-  "requests": 14
+  "requests": 5
  }
 }
