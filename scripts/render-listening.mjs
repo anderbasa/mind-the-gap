@@ -14,7 +14,15 @@ const BANK = 'app/public/bank/listening';
 const args = process.argv.slice(2);
 const DRY = args.includes('--dry');
 const OUT = args.includes('--out') ? args[args.indexOf('--out') + 1] : path.join(BANK, 'audio');
-const KEY = process.env.GEMINI_API_KEY ?? '';
+/** Limpia errores típicos al pegar el secret: espacios, comillas o «GEMINI_API_KEY=» delante. */
+export function cleanKey(raw) {
+  return String(raw ?? '')
+    .trim()
+    .replace(/^GEMINI_API_KEY\s*=\s*/i, '')
+    .replace(/^["'`]+|["'`]+$/g, '')
+    .trim();
+}
+const KEY = cleanKey(process.env.GEMINI_API_KEY);
 const MAX_REQUESTS = Number(process.env.MAX_REQUESTS ?? 400);
 const PAUSE_MS = Number(process.env.PAUSE_MS ?? (DRY ? 0 : 4000));
 const API = 'https://generativelanguage.googleapis.com/v1beta';
@@ -79,6 +87,9 @@ async function speak(text, voice, style) {
       return { rate: out.rate, pcm: core.trimSilence(out.pcm, 300, 60, out.rate) };
     }
     if (isDailyQuota(r.status, raw)) throw new StopError('cuota diaria gratuita de TTS agotada');
+    if (r.status === 401 || r.status === 403) {
+      throw new StopError(`Google acepta la clave para Gemini pero no para la voz (HTTP ${r.status}). Puede que la API de voz no esté disponible para esta clave.`);
+    }
     if (r.status === 429 || r.status >= 500) {
       const wait = Number(r.headers.get('retry-after')) * 1000 || 15000 * attempt;
       console.log(`  · ${r.status}: espero ${Math.round(wait / 1000)} s (intento ${attempt})`);
@@ -162,6 +173,26 @@ async function main() {
   }
   const keep = new Set(Object.values(manifest.units).map((e) => e.file));
   for (const f of await readdir(OUT)) if (f.endsWith('.mp3') && !keep.has(f) && !units.some((u) => f.startsWith(`${u.id}-`))) await unlink(path.join(OUT, f));
+
+  // Antes de nada: ¿Google acepta la clave? (sin gastar cuota)
+  if (!DRY) {
+    const r = await fetch(`${API}/models?pageSize=1`, { headers: { 'x-goog-api-key': KEY } });
+    if (!r.ok) {
+      const why =
+        r.status === 400 || r.status === 401 || r.status === 403
+          ? `Google no acepta la clave del secret GEMINI_API_KEY (HTTP ${r.status}). Vuelve a pegarla entera desde AI Studio (botón de copiar, no el texto con «…»).`
+          : `No se ha podido comprobar la clave (HTTP ${r.status}).`;
+      console.log(`■ ${why}`);
+      const { at: _a, requests: _q, ...prev } = manifest.status ?? {};
+      const next = { total: units.length, done: Object.keys(manifest.units).length, stoppedBy: why };
+      if (JSON.stringify(prev) !== JSON.stringify(next)) {
+        manifest.status = { at: new Date().toISOString(), ...next, requests: 0 };
+        await save();
+      }
+      return;
+    }
+    console.log('· Clave aceptada por Gemini.');
+  }
 
   const catalog = await listVoices();
   let done = 0;
