@@ -1,6 +1,8 @@
 // Convierte los guiones del banco de Listening en mp3 con Gemini TTS (gratis).
 // Lo ejecuta GitHub Actions (.github/workflows/audio.yml) con la clave en el secret GEMINI_API_KEY.
-// Solo genera lo que falta o ha cambiado; si se acaba la cuota del día, guarda lo hecho y sigue mañana.
+// Solo genera lo que falta o ha cambiado. La capa gratuita da ~10 peticiones de voz al día por
+// modelo, así que se ahorra: una petición por conversación, frases sueltas en lotes y, si se agota
+// un modelo, se sigue con el otro. Si se acaban los dos, guarda lo hecho y sigue al día siguiente.
 //
 //   node scripts/render-listening.mjs              → genera de verdad (necesita GEMINI_API_KEY)
 //   node scripts/render-listening.mjs --dry --out <carpeta>   → prueba local con audio sintético
@@ -14,6 +16,11 @@ const BANK = 'app/public/bank/listening';
 const args = process.argv.slice(2);
 const DRY = args.includes('--dry');
 const OUT = args.includes('--out') ? args[args.indexOf('--out') + 1] : path.join(BANK, 'audio');
+const MAX_REQUESTS = Number(process.env.MAX_REQUESTS ?? 60);
+const PAUSE_MS = Number(process.env.PAUSE_MS ?? (DRY ? 0 : 6000));
+const BATCH = 6;
+const API = 'https://generativelanguage.googleapis.com/v1beta';
+
 /** Limpia errores típicos al pegar el secret: espacios, comillas o «GEMINI_API_KEY=» delante. */
 export function cleanKey(raw) {
   return String(raw ?? '')
@@ -23,9 +30,6 @@ export function cleanKey(raw) {
     .trim();
 }
 const KEY = cleanKey(process.env.GEMINI_API_KEY);
-const MAX_REQUESTS = Number(process.env.MAX_REQUESTS ?? 400);
-const PAUSE_MS = Number(process.env.PAUSE_MS ?? (DRY ? 0 : 4000));
-const API = 'https://generativelanguage.googleapis.com/v1beta';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const readJson = async (f) => JSON.parse(await readFile(f, 'utf8'));
@@ -33,6 +37,8 @@ const readJson = async (f) => JSON.parse(await readFile(f, 'utf8'));
 class StopError extends Error {}
 
 let requests = 0;
+let modelIdx = 0;
+let lastModel = core.TTS_MODEL;
 
 /* ── Gemini ──────────────────────────────────────────────────────── */
 
@@ -57,42 +63,62 @@ async function listVoices() {
   }
 }
 
-function isDailyQuota(status, text) {
-  return status === 429 && /per ?day|PerDay|daily/i.test(text);
+const isDailyQuota = (status, text) => status === 429 && /per ?day|PerDay|daily/i.test(text);
+
+/** Audio sintético para --dry: un tono por frase y silencios entre ellas (largos si hay <long pause>). */
+function synth(body) {
+  const items = body.input[0].content;
+  const parts = [];
+  for (const it of items) {
+    const n = Math.round(core.RATE * Math.max(0.5, it.text.length * 0.05));
+    const tone = new Int16Array(n);
+    for (let i = 0; i < n; i++) tone[i] = Math.round(4000 * Math.sin((2 * Math.PI * 220 * i) / core.RATE));
+    parts.push(tone, new Int16Array(Math.round(core.RATE * (/<long pause>/.test(it.text) ? 1.8 : 0.5))));
+  }
+  const len = parts.reduce((a, p) => a + p.length, 0);
+  const pcm = new Int16Array(len);
+  let at = 0;
+  for (const p of parts) {
+    pcm.set(p, at);
+    at += p.length;
+  }
+  return { rate: core.RATE, pcm };
 }
 
-/** Una intervención → muestras PCM. */
-async function speak(text, voice, style) {
-  if (DRY) {
-    // Prueba local: un tono suave, de longitud proporcional al texto.
-    const n = Math.round(core.RATE * Math.max(0.6, text.length * 0.06));
-    const pcm = new Int16Array(n);
-    for (let i = 0; i < n; i++) pcm[i] = Math.round(3000 * Math.sin((2 * Math.PI * 220 * i) / core.RATE));
-    return { rate: core.RATE, pcm };
-  }
-  for (let attempt = 1; attempt <= 4; attempt++) {
+/** Una petición de voz, con reintentos, cambio de modelo al agotar la cuota y límite por ejecución. */
+async function tts(build) {
+  let tries = 0;
+  for (;;) {
+    const model = core.TTS_MODELS[modelIdx];
+    const body = build(model);
+    if (DRY) return synth(body);
     if (requests >= MAX_REQUESTS) throw new StopError(`límite de ${MAX_REQUESTS} peticiones por ejecución`);
     requests++;
     const r = await fetch(`${API}/interactions`, {
       method: 'POST',
       headers: { 'content-type': 'application/json', 'x-goog-api-key': KEY },
-      body: JSON.stringify(core.interactionBody(text, voice, style)),
+      body: JSON.stringify(body),
     });
     const raw = await r.text();
     if (r.ok) {
       const audio = core.audioFromInteraction(JSON.parse(raw));
       if (!audio) throw new Error('La respuesta no trae audio');
-      const out = core.decodeAudio(new Uint8Array(Buffer.from(audio.data, 'base64')), audio.mime);
+      lastModel = model;
       await sleep(PAUSE_MS);
-      return { rate: out.rate, pcm: core.trimSilence(out.pcm, 300, 60, out.rate) };
+      return core.decodeAudio(new Uint8Array(Buffer.from(audio.data, 'base64')), audio.mime);
     }
-    if (isDailyQuota(r.status, raw)) throw new StopError('cuota diaria gratuita de TTS agotada');
+    if (isDailyQuota(r.status, raw) || (r.status === 404 && modelIdx > 0)) {
+      modelIdx++;
+      if (modelIdx >= core.TTS_MODELS.length) throw new StopError('cuota diaria gratuita de voz agotada (en los dos modelos)');
+      console.log(`  · Cuota de ${model} agotada; sigo con ${core.TTS_MODELS[modelIdx]}.`);
+      continue;
+    }
     if (r.status === 401 || r.status === 403) {
-      throw new StopError(`Google acepta la clave para Gemini pero no para la voz (HTTP ${r.status}). Puede que la API de voz no esté disponible para esta clave.`);
+      throw new StopError(`Google acepta la clave para Gemini pero no para la voz (HTTP ${r.status}).`);
     }
-    if (r.status === 429 || r.status >= 500) {
-      const wait = Number(r.headers.get('retry-after')) * 1000 || 15000 * attempt;
-      console.log(`  · ${r.status}: espero ${Math.round(wait / 1000)} s (intento ${attempt})`);
+    if ((r.status === 429 || r.status >= 500) && ++tries <= 3) {
+      const wait = Number(r.headers.get('retry-after')) * 1000 || 15000 * tries;
+      console.log(`  · ${r.status}: espero ${Math.round(wait / 1000)} s (intento ${tries})`);
       await sleep(wait);
       continue;
     }
@@ -100,8 +126,9 @@ async function speak(text, voice, style) {
     err.status = r.status;
     throw err;
   }
-  throw new Error('Gemini TTS sigue saturado');
 }
+
+const isBadRequest = (e) => e?.status === 400;
 
 /* ── MP3 ─────────────────────────────────────────────────────────── */
 
@@ -115,33 +142,6 @@ function toMp3(pcm, rate) {
   const end = enc.flush();
   if (end.length) chunks.push(Buffer.from(end));
   return Buffer.concat(chunks);
-}
-
-/* ── Una pieza ───────────────────────────────────────────────────── */
-
-async function renderUnit(unit, catalog) {
-  let voices = core.pickVoices(unit.speakers, catalog);
-  const segs = [];
-  let rate = core.RATE;
-  for (const turn of unit.turns) {
-    const sp = unit.speakers.find((s) => s.id === turn.s);
-    let v = voices[turn.s];
-    let seg;
-    try {
-      seg = await speak(turn.text, v.voice, core.styleFor(unit, turn, sp, v.library));
-    } catch (e) {
-      // Si la voz del catálogo no vale, se repite con voces de serie.
-      if (e instanceof StopError || !v.library || e.status !== 400) throw e;
-      console.log(`  · La voz ${v.voice} no funciona (${e.message.slice(0, 80)}); paso a voces de serie.`);
-      voices = core.pickVoices(unit.speakers, []);
-      v = voices[turn.s];
-      seg = await speak(turn.text, v.voice, core.styleFor(unit, turn, sp, false));
-    }
-    rate = seg.rate;
-    segs.push(seg.pcm);
-  }
-  const { pcm, turns } = core.joinSegments(segs, unit.gapMs ?? 450, rate);
-  return { mp3: toMp3(pcm, rate), duration: Math.round((pcm.length / rate) * 100) / 100, turns, voices: Object.fromEntries(Object.entries(voices).map(([k, v]) => [k, v.voice])) };
 }
 
 /* ── Principal ───────────────────────────────────────────────────── */
@@ -174,7 +174,18 @@ async function main() {
   const keep = new Set(Object.values(manifest.units).map((e) => e.file));
   for (const f of await readdir(OUT)) if (f.endsWith('.mp3') && !keep.has(f) && !units.some((u) => f.startsWith(`${u.id}-`))) await unlink(path.join(OUT, f));
 
-  // Antes de nada: ¿Google acepta la clave? (sin gastar cuota)
+  const finish = async (made, stoppedBy) => {
+    const done = units.filter((u) => manifest.units[u.id]).length;
+    const next = { total: units.length, done, ...(stoppedBy ? { stoppedBy } : {}) };
+    const { at: _at, requests: _r, ...prev } = manifest.status ?? {};
+    if (made > 0 || removed > 0 || JSON.stringify(prev) !== JSON.stringify(next)) {
+      manifest.status = { at: new Date().toISOString(), ...next, requests };
+      await save();
+    }
+    console.log(`Listo: ${made} nuevas · ${done}/${units.length} piezas con audio · ${requests} peticiones${stoppedBy ? ` · parado: ${stoppedBy}` : ''}`);
+  };
+
+  // Antes de nada: ¿Google acepta la clave? (sin gastar cuota de voz)
   if (!DRY) {
     const r = await fetch(`${API}/models?pageSize=1`, { headers: { 'x-goog-api-key': KEY } });
     if (!r.ok) {
@@ -183,63 +194,105 @@ async function main() {
           ? `Google no acepta la clave del secret GEMINI_API_KEY (HTTP ${r.status}). Vuelve a pegarla entera desde AI Studio (botón de copiar, no el texto con «…»).`
           : `No se ha podido comprobar la clave (HTTP ${r.status}).`;
       console.log(`■ ${why}`);
-      const { at: _a, requests: _q, ...prev } = manifest.status ?? {};
-      const next = { total: units.length, done: Object.keys(manifest.units).length, stoppedBy: why };
-      if (JSON.stringify(prev) !== JSON.stringify(next)) {
-        manifest.status = { at: new Date().toISOString(), ...next, requests: 0 };
-        await save();
-      }
-      return;
+      return finish(0, why);
     }
     console.log('· Clave aceptada por Gemini.');
   }
 
-  const catalog = await listVoices();
-  let done = 0;
-  let made = 0;
-  let stoppedBy;
-  let failures = 0;
+  // Lo que falta, con su huella.
+  const pending = [];
   for (const unit of units) {
     const hash = await core.unitHash(unit);
     const cur = manifest.units[unit.id];
-    if (cur && cur.hash === hash && existsSync(path.join(OUT, cur.file))) {
-      done++;
-      continue;
-    }
-    console.log(`→ ${unit.id} (${unit.turns.length} intervenciones)`);
-    try {
-      const r = await renderUnit(unit, catalog);
-      const file = `${unit.id}-${hash}.mp3`;
-      await writeFile(path.join(OUT, file), r.mp3);
-      if (cur?.file && cur.file !== file && existsSync(path.join(OUT, cur.file))) await unlink(path.join(OUT, cur.file));
-      manifest.units[unit.id] = { hash, file, duration: r.duration, turns: r.turns, voices: r.voices };
-      await save();
-      done++;
-      made++;
-      failures = 0;
-      console.log(`  ✓ ${file} · ${r.duration} s · ${Math.round(r.mp3.length / 1024)} KB`);
-    } catch (e) {
-      if (e instanceof StopError) {
-        stoppedBy = e.message;
-        console.log(`■ Me paro: ${stoppedBy}`);
-        break;
-      }
-      failures++;
-      console.log(`  ✗ ${unit.id}: ${e.message}`);
-      if (failures >= 3) {
-        stoppedBy = `tres fallos seguidos (último: ${e.message.slice(0, 160)})`;
-        break;
-      }
-    }
+    if (cur && cur.hash === hash && existsSync(path.join(OUT, cur.file))) continue;
+    pending.push({ unit, hash });
   }
-  // El estado solo se reescribe si algo ha cambiado (así no hay un commit diario vacío).
-  const next = { total: units.length, done, ...(stoppedBy ? { stoppedBy } : {}) };
-  const { at: _at, requests: _r, ...prev } = manifest.status ?? {};
-  if (made > 0 || removed > 0 || JSON.stringify(prev) !== JSON.stringify(next)) {
-    manifest.status = { at: new Date().toISOString(), ...next, requests };
+  console.log(`· Pendientes: ${pending.length} de ${units.length}`);
+  if (!pending.length) return finish(0);
+
+  const catalog = await listVoices();
+
+  const store = async ({ unit, hash }, pcm, rate, turns, voices) => {
+    const mp3 = toMp3(pcm, rate);
+    const file = `${unit.id}-${hash}.mp3`;
+    await writeFile(path.join(OUT, file), mp3);
+    const old = manifest.units[unit.id]?.file;
+    if (old && old !== file && existsSync(path.join(OUT, old))) await unlink(path.join(OUT, old));
+    manifest.units[unit.id] = {
+      hash,
+      file,
+      duration: Math.round((pcm.length / rate) * 100) / 100,
+      turns,
+      voices: Object.fromEntries(Object.entries(voices).map(([k, v]) => [k, v.voice])),
+      model: lastModel,
+    };
     await save();
+    console.log(`  ✓ ${file} · ${manifest.units[unit.id].duration} s · ${Math.round(mp3.length / 1024)} KB`);
+  };
+
+  // Primero los listenings (una petición por conversación); después las frases sueltas en lotes.
+  const singles = pending.filter((p) => core.batchKey(p.unit) && (p.unit.id.startsWith('dict-') || p.unit.id.startsWith('cs-')));
+  const whole = pending.filter((p) => !singles.includes(p));
+  const groups = new Map();
+  for (const p of singles) {
+    const k = core.batchKey(p.unit);
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k).push(p);
   }
-  console.log(`Listo: ${made} nuevas · ${done}/${units.length} piezas con audio · ${requests} peticiones${stoppedBy ? ` · parado: ${stoppedBy}` : ''}`);
+
+  let made = 0;
+  let failures = 0;
+  const renderOne = async (p) => {
+    console.log(`→ ${p.unit.id} (${p.unit.turns.length} intervenciones, ${core.planChunks(p.unit).length} petición/es)`);
+    const r = await core.renderUnit(p.unit, core.pickVoices(p.unit.speakers, catalog), tts, isBadRequest);
+    await store(p, r.pcm, r.rate, r.turns, r.voices);
+    made++;
+  };
+
+  try {
+    for (const p of whole) {
+      try {
+        await renderOne(p);
+        failures = 0;
+      } catch (e) {
+        if (e instanceof StopError) throw e;
+        console.log(`  ✗ ${p.unit.id}: ${e.message}`);
+        if (++failures >= 3) throw new StopError(`tres fallos seguidos (último: ${e.message.slice(0, 160)})`);
+      }
+    }
+    for (const list of groups.values()) {
+      for (let i = 0; i < list.length; i += BATCH) {
+        const batch = list.slice(i, i + BATCH);
+        const voices = core.pickVoices(batch[0].unit.speakers, catalog);
+        console.log(`→ Lote de ${batch.length}: ${batch.map((b) => b.unit.id).join(', ')}`);
+        let res = null;
+        try {
+          res = batch.length > 1 ? await core.renderBatch(batch.map((b) => b.unit), voices, tts) : null;
+        } catch (e) {
+          if (e instanceof StopError) throw e;
+          console.log(`  ✗ lote: ${e.message}`);
+        }
+        if (res) {
+          for (let k = 0; k < batch.length; k++) {
+            const seg = res.pcms[k];
+            const { pcm, turns } = core.joinSegments([seg], 0, res.rate);
+            await store(batch[k], pcm, res.rate, turns, voices);
+            made++;
+          }
+        } else {
+          if (batch.length > 1) console.log('  · No se distinguen bien las pausas: las pido una a una.');
+          for (const p of batch) await renderOne(p);
+        }
+      }
+    }
+  } catch (e) {
+    if (e instanceof StopError) {
+      console.log(`■ Me paro: ${e.message}`);
+      return finish(made, e.message);
+    }
+    throw e;
+  }
+  return finish(made);
 }
 
 main().catch((e) => {

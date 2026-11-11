@@ -236,6 +236,8 @@ export interface ManifestEntry {
   duration: number;
   turns: [number, number][];
   voices: Record<string, string>;
+  /** Modelo de voz que lo generó. */
+  model?: string;
 }
 
 export interface Manifest {
@@ -274,4 +276,234 @@ export function connectedUnitOf(c: BankLine & { spoken: string }): UnitSpec {
 /** Todas las piezas, en el orden en que conviene generarlas (los sets primero). */
 export function bankUnits(sets: BankSet[], dictation: (BankLine & { text: string })[], connected: (BankLine & { spoken: string })[]): UnitSpec[] {
   return [...sets.flatMap(setUnits), ...dictation.map(dictationUnitOf), ...connected.map(connectedUnitOf)];
+}
+
+/* ── Ahorro de cuota: pocas peticiones por audio ────────────────── */
+// La capa gratuita de voz da ~10 peticiones al día por modelo. Por eso:
+//  · una conversación de dos personas va entera en UNA petición (dos voces a la vez);
+//  · con más de dos hablantes (Parte 4), una petición por hablante;
+//  · las frases sueltas de la misma voz (dictados…) van varias por petición y se cortan por las pausas;
+//  · si se agota la cuota de un modelo, se sigue con el siguiente.
+
+export const TTS_LITE = 'gemini-3.8-flash-lite-tts';
+export const TTS_MODELS = [TTS_MODEL, TTS_LITE];
+
+export type Voices = Record<string, { voice: string; library: boolean }>;
+
+export interface Chunk {
+  turns: number[];
+  speakers: string[];
+}
+
+/** Qué intervenciones van juntas en cada petición. */
+export function planChunks(unit: UnitSpec): Chunk[] {
+  const distinct = [...new Set(unit.turns.map((t) => t.s))];
+  if (distinct.length <= 2) return [{ turns: unit.turns.map((_, i) => i), speakers: distinct }];
+  return unit.turns.map((t, i) => ({ turns: [i], speakers: [t.s] }));
+}
+
+function speakerName(unit: UnitSpec, id: string): string {
+  return unit.speakers.find((s) => s.id === id)?.name ?? id;
+}
+
+/** Cuerpo de la petición de un trozo: una voz, o dos voces con «speaker» en cada intervención. */
+export function chunkBody(unit: UnitSpec, chunk: Chunk, voices: Voices, model = TTS_MODEL): Record<string, unknown> {
+  const multi = chunk.speakers.length === 2;
+  const content = chunk.turns.map((i) => {
+    const t = unit.turns[i];
+    const sp = unit.speakers.find((s) => s.id === t.s);
+    const style = styleFor(unit, t, sp, voices[t.s].library);
+    return { type: 'text', text: t.text, annotations: [{ type: 'speech_metadata', ...(multi ? { speaker: speakerName(unit, t.s) } : {}), style }] };
+  });
+  const speech_config = multi ? { speakers: chunk.speakers.map((id) => ({ speaker: speakerName(unit, id), voice: voices[id].voice })) } : [{ voice: voices[chunk.speakers[0]].voice }];
+  return {
+    model,
+    input: [{ type: 'user_input', content }],
+    response_format: { type: 'audio', mime_type: 'audio/wav', sample_rate: RATE },
+    generation_config: { speech_config },
+  };
+}
+
+/** Varias frases de la misma voz en una petición, con una pausa larga entre ellas. */
+export function batchBody(texts: string[], voice: string, style: string, model = TTS_MODEL): Record<string, unknown> {
+  const content = texts.map((text, i) => ({
+    type: 'text',
+    text: i < texts.length - 1 ? `${text} <long pause>` : text,
+    annotations: [{ type: 'speech_metadata', style: `${style}. Leave a clear pause of about two seconds between sentences` }],
+  }));
+  return {
+    model,
+    input: [{ type: 'user_input', content }],
+    response_format: { type: 'audio', mime_type: 'audio/wav', sample_rate: RATE },
+    generation_config: { speech_config: [{ voice }] },
+  };
+}
+
+/* ── Pausas ──────────────────────────────────────────────────────── */
+
+/** Tramos de silencio (en muestras), con un mínimo de duración. */
+export function findSilences(pcm: Int16Array, rate = RATE, minMs = 250, threshold = 400): { start: number; end: number }[] {
+  const frame = Math.max(1, Math.round(rate / 100)); // 10 ms
+  const out: { start: number; end: number }[] = [];
+  let runStart = -1;
+  for (let f = 0; f * frame < pcm.length; f++) {
+    let peak = 0;
+    const end = Math.min(pcm.length, (f + 1) * frame);
+    for (let i = f * frame; i < end; i++) {
+      const a = Math.abs(pcm[i]);
+      if (a > peak) peak = a;
+    }
+    if (peak < threshold) {
+      if (runStart < 0) runStart = f * frame;
+    } else if (runStart >= 0) {
+      out.push({ start: runStart, end: f * frame });
+      runStart = -1;
+    }
+  }
+  if (runStart >= 0) out.push({ start: runStart, end: pcm.length });
+  const min = (minMs / 1000) * rate;
+  return out.filter((s) => s.end - s.start >= min);
+}
+
+/**
+ * Dónde cortar un audio en N trozos de longitudes parecidas a `weights` (p. ej. nº de letras):
+ * para cada corte esperado, el silencio más cercano. `strict` = si falta un silencio claro, null.
+ */
+export function splitPoints(pcm: Int16Array, weights: number[], opts: { rate?: number; minMs?: number; strict?: boolean } = {}): number[] | null {
+  const rate = opts.rate ?? RATE;
+  if (weights.length <= 1) return [];
+  const all = findSilences(pcm, rate, opts.minMs ?? 250);
+  // Parte con voz: del primer al último sonido.
+  const lead = all.length && all[0].start === 0 ? all[0].end : 0;
+  const tail = all.length && all[all.length - 1].end === pcm.length ? all[all.length - 1].start : pcm.length;
+  const inner = all.filter((s) => s.start > lead && s.end < tail);
+  const total = weights.reduce((a, b) => a + b, 0) || 1;
+  const span = tail - lead;
+  const avg = span / weights.length;
+  const cuts: number[] = [];
+  let acc = 0;
+  let after = lead;
+  const used = new Set<number>();
+  for (let k = 0; k < weights.length - 1; k++) {
+    acc += weights[k];
+    const expected = lead + (acc / total) * span;
+    let best = -1;
+    let bestScore = Infinity;
+    inner.forEach((s, i) => {
+      if (used.has(i) || s.start <= after) return;
+      const c = (s.start + s.end) / 2;
+      const dist = Math.abs(c - expected);
+      if (dist > avg * 0.6) return;
+      const score = dist - (s.end - s.start) * 0.5; // a igual distancia, mejor la pausa más larga
+      if (score < bestScore) {
+        bestScore = score;
+        best = i;
+      }
+    });
+    if (best < 0) {
+      if (opts.strict) return null;
+      cuts.push(Math.round(expected));
+      after = Math.round(expected);
+      continue;
+    }
+    used.add(best);
+    const c = Math.round((inner[best].start + inner[best].end) / 2);
+    cuts.push(c);
+    after = c;
+  }
+  return cuts;
+}
+
+/** Corta en trozos por las posiciones dadas y quita el silencio de los bordes de cada uno. */
+export function cutAt(pcm: Int16Array, cuts: number[], rate = RATE): Int16Array[] {
+  const bounds = [0, ...cuts, pcm.length];
+  const out: Int16Array[] = [];
+  for (let i = 0; i < bounds.length - 1; i++) out.push(trimSilence(pcm.subarray(bounds[i], bounds[i + 1]), 300, 60, rate));
+  return out;
+}
+
+/* ── Generar una pieza (lo usan el script y la app) ─────────────── */
+
+export type TtsCall = (build: (model: string) => Record<string, unknown>) => Promise<{ rate: number; pcm: Int16Array }>;
+
+/**
+ * Genera una pieza entera con las mínimas peticiones. Las conversaciones salen de una sola
+ * petición; los tiempos de cada intervención se calculan por las pausas (aproximados).
+ * Si las voces del catálogo no valen (petición rechazada), repite con voces de serie.
+ */
+export async function renderUnit(
+  unit: UnitSpec,
+  voices: Voices,
+  tts: TtsCall,
+  isBadRequest: (e: unknown) => boolean,
+): Promise<{ pcm: Int16Array; rate: number; turns: [number, number][]; voices: Voices }> {
+  let vs = voices;
+  const chunks = planChunks(unit);
+  const pieces: { pcm: Int16Array; spans: [number, number][] }[] = [];
+  let rate = RATE;
+  for (const chunk of chunks) {
+    let out: { rate: number; pcm: Int16Array };
+    try {
+      out = await tts((model) => chunkBody(unit, chunk, vs, model));
+    } catch (e) {
+      const usesLibrary = chunk.speakers.some((id) => vs[id].library);
+      if (!usesLibrary || !isBadRequest(e)) throw e;
+      vs = pickVoices(unit.speakers, []);
+      out = await tts((model) => chunkBody(unit, chunk, vs, model));
+    }
+    rate = out.rate;
+    const pcm = trimSilence(out.pcm, 300, 60, rate);
+    let spans: [number, number][] = [[0, pcm.length]];
+    if (chunk.turns.length > 1) {
+      const cuts = splitPoints(pcm, chunk.turns.map((i) => unit.turns[i].text.length), { rate }) ?? [];
+      const b = [0, ...cuts, pcm.length];
+      spans = chunk.turns.map((_, i) => [b[i], b[i + 1]] as [number, number]);
+    }
+    pieces.push({ pcm, spans });
+  }
+  const joined = joinSegments(
+    pieces.map((p) => p.pcm),
+    unit.gapMs ?? 450,
+    rate,
+  );
+  const turns: [number, number][] = [];
+  pieces.forEach((p, k) => {
+    const offset = joined.turns[k][0] * rate;
+    for (const [a, b] of p.spans) turns.push([round2((offset + a) / rate), round2((offset + b) / rate)]);
+  });
+  return { pcm: joined.pcm, rate, turns, voices: vs };
+}
+
+/** Piezas de una sola frase con la misma voz y estilo: se pueden pedir juntas. */
+export function batchKey(unit: UnitSpec): string | null {
+  if (unit.turns.length !== 1 || unit.speakers.length !== 1) return null;
+  const s = unit.speakers[0];
+  return JSON.stringify([s.name, s.gender, s.accent, unit.style ?? '', unit.turns[0].style ?? '']);
+}
+
+/**
+ * Genera varias frases sueltas (misma voz) en una petición y las separa por las pausas.
+ * Devuelve null si no se distinguen bien los cortes: entonces hay que pedirlas una a una.
+ */
+export async function renderBatch(units: UnitSpec[], voices: Voices, tts: TtsCall): Promise<{ rate: number; pcms: Int16Array[] } | null> {
+  const u0 = units[0];
+  const sp = u0.speakers[0];
+  const v = voices[sp.id];
+  const style = styleFor(u0, u0.turns[0], sp, v.library);
+  const out = await tts((model) =>
+    batchBody(
+      units.map((u) => u.turns[0].text),
+      v.voice,
+      style,
+      model,
+    ),
+  );
+  const pcm = trimSilence(out.pcm, 300, 60, out.rate);
+  const cuts = splitPoints(
+    pcm,
+    units.map((u) => u.turns[0].text.length),
+    { rate: out.rate, minMs: 450, strict: true },
+  );
+  if (!cuts) return null;
+  return { rate: out.rate, pcms: cutAt(pcm, cuts, out.rate) };
 }

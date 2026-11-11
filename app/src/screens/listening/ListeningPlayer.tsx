@@ -39,7 +39,7 @@ function AudioBlock(props: { unit: UnitT; exam: boolean; readSec: number; autoSt
   const make = async () => {
     setMaking('Empezando…');
     try {
-      const a = await renderOnDevice(props.unit, (d, t) => setMaking(`Generando la voz… ${d}/${t} frases`));
+      const a = await renderOnDevice(props.unit, (d, t) => setMaking(`Generando la voz… (${d} de ${t})`));
       setAudio(a);
     } catch (e) {
       toast(aiErrorMessage(e), 5000);

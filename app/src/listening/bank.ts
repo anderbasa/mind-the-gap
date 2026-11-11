@@ -11,13 +11,13 @@ import {
   audioFromInteraction,
   decodeAudio,
   encodeWav,
-  interactionBody,
-  joinSegments,
   pickVoices,
-  styleFor,
-  trimSilence,
+  planChunks,
+  renderUnit,
+  TTS_MODELS,
   unitHash,
   type Manifest,
+  type TtsCall,
   type UnitSpec,
   type VoiceInfo,
 } from './ttsCore';
@@ -134,57 +134,54 @@ async function voiceCatalog(): Promise<VoiceInfo[]> {
   return catalog;
 }
 
-async function speakTurn(text: string, voice: string, style: string): Promise<{ rate: number; pcm: Int16Array }> {
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    const { res, json } = await workerJson<unknown>('/gemini/interactions', interactionBody(text, voice, style), undefined, 90_000);
+/** Modelo de voz que se está usando en este dispositivo (pasa al siguiente si se agota la cuota). */
+let modelIdx = 0;
+
+/** Una petición de voz a través del Worker: reintentos y cambio de modelo al agotar la cuota diaria. */
+const deviceTts: TtsCall = async (build) => {
+  let tries = 0;
+  for (;;) {
+    const model = TTS_MODELS[modelIdx];
+    const { res, json } = await workerJson<unknown>('/gemini/interactions', build(model), undefined, 150_000);
     if (res.ok) {
       const a = audioFromInteraction(json);
       if (!a) throw new AiError('invalid-output', 'Gemini no ha devuelto audio.');
       const bin = atob(a.data);
       const bytes = new Uint8Array(bin.length);
       for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-      const out = decodeAudio(bytes, a.mime);
-      return { rate: out.rate, pcm: trimSilence(out.pcm, 300, 60, out.rate) };
+      return decodeAudio(bytes, a.mime);
     }
     const err = classifyGeminiError(res.status, json, res.headers.get('retry-after'));
-    if ((err.kind === 'rate' || err.kind === 'overloaded') && attempt < 3) {
-      await new Promise((r) => setTimeout(r, err.opts.retryAfterMs ?? 8000 * attempt));
+    if (err.kind === 'quota-day' && modelIdx < TTS_MODELS.length - 1) {
+      modelIdx++;
+      continue;
+    }
+    if ((err.kind === 'rate' || err.kind === 'overloaded') && ++tries < 3) {
+      await new Promise((r) => setTimeout(r, err.opts.retryAfterMs ?? 8000 * tries));
       continue;
     }
     throw err;
   }
-  throw new AiError('overloaded', 'La voz de Gemini está saturada.');
-}
+};
 
 /** Genera el audio en este dispositivo (gratis, cuota de Gemini) y lo guarda aquí. */
 export async function renderOnDevice(unit: UnitSpec, onProgress?: (done: number, total: number) => void): Promise<UnitAudio> {
   const hash = await unitHash(unit);
   const voices = pickVoices(unit.speakers, await voiceCatalog());
-  const segs: Int16Array[] = [];
-  let rate = 24000;
-  for (let i = 0; i < unit.turns.length; i++) {
-    onProgress?.(i, unit.turns.length);
-    const t = unit.turns[i];
-    const sp = unit.speakers.find((s) => s.id === t.s);
-    const v = voices[t.s];
-    let seg;
-    try {
-      seg = await speakTurn(t.text, v.voice, styleFor(unit, t, sp, v.library));
-    } catch (e) {
-      if (!v.library || !(e instanceof AiError) || e.kind !== 'bad-request') throw e;
-      const pre = pickVoices(unit.speakers, [])[t.s];
-      seg = await speakTurn(t.text, pre.voice, styleFor(unit, t, sp, false));
-    }
-    rate = seg.rate;
-    segs.push(seg.pcm);
-  }
-  onProgress?.(unit.turns.length, unit.turns.length);
-  const { pcm, turns } = joinSegments(segs, unit.gapMs ?? 450, rate);
-  const wav = encodeWav(pcm, rate);
+  const total = planChunks(unit).length;
+  let done = 0;
+  onProgress?.(0, total);
+  const counted: TtsCall = async (build) => {
+    const out = await deviceTts(build);
+    onProgress?.(++done, total);
+    return out;
+  };
+  const r = await renderUnit(unit, voices, counted, (e) => e instanceof AiError && e.kind === 'bad-request');
+  const wav = encodeWav(r.pcm, r.rate);
   const blob = new Blob([wav as BlobPart], { type: 'audio/wav' });
-  const dev: DeviceAudio = { blob, turns, duration: Math.round((pcm.length / rate) * 100) / 100 };
+  const dev: DeviceAudio = { blob, turns: r.turns, duration: Math.round((r.pcm.length / r.rate) * 100) / 100 };
   await putCached(`dev-${unit.id}-${hash}`, dev).catch(() => undefined);
-  return { url: objectUrl(`dev-${unit.id}-${hash}`, blob), turns, duration: dev.duration, source: 'device' };
+  return { url: objectUrl(`dev-${unit.id}-${hash}`, blob), turns: r.turns, duration: dev.duration, source: 'device' };
 }
 
 /* ── Progreso ───────────────────────────────────────────────────── */
