@@ -1,0 +1,11 @@
+{
+ "version": 1,
+ "units": {},
+ "status": {
+  "at": "2026-11-11T09:37:58.595Z",
+  "total": 58,
+  "done": 0,
+  "stoppedBy": "tres fallos seguidos (último: HTTP 401: [{\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"API key not valid. Please pass a valid API key.\",\n    \"status\": \"UNAUTHENTICATED\",\n    \"details\": [\n )",
+  "requests": 3
+ }
+}
