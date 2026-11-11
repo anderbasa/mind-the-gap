@@ -25,6 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Lanzado a mano o por los audios: siempre lo último de main (incluye los mp3 recién subidos).
+          ref: ${{ github.event_name == 'workflow_dispatch' && 'main' || github.sha }}
 
       - uses: actions/setup-node@v5
         with:
