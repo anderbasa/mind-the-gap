@@ -13,6 +13,7 @@ on:
     paths:
       - 'app/public/bank/listening/**'
       - '!app/public/bank/listening/audio/**'
+      - 'app/public/bank/speaking/**'
       - 'app/src/listening/ttsCore.ts'
       - 'scripts/render-listening.mjs'
   schedule:

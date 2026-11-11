@@ -155,7 +155,8 @@ async function main() {
   const sets = await Promise.all(index.map((f) => readJson(path.join(BANK, f))));
   const dictation = await readJson(path.join(BANK, 'dictation.json'));
   const connected = await readJson(path.join(BANK, 'connected.json'));
-  const units = core.bankUnits(sets, dictation, connected);
+  const speaking = existsSync('app/public/bank/speaking/bank.json') ? await readJson('app/public/bank/speaking/bank.json') : null;
+  const units = [...core.bankUnits(sets, dictation, connected), ...(speaking ? core.speakingLines(speaking).map(core.speakingUnitOf) : [])];
 
   await mkdir(OUT, { recursive: true });
   const manifestPath = path.join(OUT, 'manifest.json');
@@ -231,7 +232,7 @@ async function main() {
   };
 
   // Primero los listenings (una petición por conversación); después las frases sueltas en lotes.
-  const singles = pending.filter((p) => core.batchKey(p.unit) && (p.unit.id.startsWith('dict-') || p.unit.id.startsWith('cs-')));
+  const singles = pending.filter((p) => core.batchKey(p.unit) && /^(dict|cs|sp)-/.test(p.unit.id) && p.unit.turns[0].text.length <= core.BATCH_MAX_CHARS);
   const whole = pending.filter((p) => !singles.includes(p));
   const groups = new Map();
   for (const p of singles) {

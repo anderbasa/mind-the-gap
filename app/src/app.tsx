@@ -21,6 +21,11 @@ import { DimeloMejor } from './screens/writing/DimeloMejor';
 import { Escuchar, ListeningHub } from './screens/listening/ListeningHub';
 import { ListeningPlayer } from './screens/listening/ListeningPlayer';
 import { Dictados, HablaReal } from './screens/listening/ListeningTools';
+import { SpeakingHub } from './screens/speaking/SpeakingHub';
+import { MockExam } from './screens/speaking/MockExam';
+import { SpeakingFeedback } from './screens/speaking/SpeakingFeedback';
+import { LongTurn } from './screens/speaking/LongTurn';
+import { Conversation } from './screens/speaking/Conversation';
 import type { ComponentType } from 'preact';
 
 const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
@@ -45,6 +50,11 @@ const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
   '/practicar/listening/dictados': { C: Dictados, tabs: false },
   '/practicar/listening/habla-real': { C: HablaReal, tabs: false },
   '/practicar/listening/escuchar': { C: Escuchar, tabs: false },
+  '/practicar/speaking': { C: SpeakingHub, tabs: false },
+  '/practicar/speaking/simulacro': { C: MockExam, tabs: false },
+  '/practicar/speaking/ver': { C: SpeakingFeedback, tabs: false },
+  '/practicar/speaking/long-turn': { C: LongTurn, tabs: false },
+  '/practicar/speaking/conversacion': { C: Conversation, tabs: false },
 };
 
 export function App() {

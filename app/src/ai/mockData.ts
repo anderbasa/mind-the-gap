@@ -104,8 +104,39 @@ const GENERATED = {
   ],
 };
 
+const LISTEN = {
+  transcript: "Well, um, I think the main thing is that, er, both pictures show people who are, like, trying something new. [pause] In the first one the woman is learning guitar, whereas the man is at a computer class, and I'd imagine he finds it quite frustrating at first.",
+  pronunciation: {
+    comment: 'Generally easy to follow; a few vowel sounds and word stress patterns are influenced by Spanish.',
+    issues: [
+      { word: 'comfortable', heard: 'com-for-TA-ble', tip: 'Stress the first syllable: COMF-tə-bl.' },
+      { word: 'think', heard: 'tink', tip: 'Put your tongue between your teeth for /θ/.' },
+    ],
+    strengths: ['Clear sentence rhythm', 'Good use of linking'],
+  },
+};
+
+const ASSESS = {
+  scores: { grammar: 3, vocabulary: 3, discourse: 3, pronunciation: 3, interaction: 4, global: 3 },
+  summary: 'You kept going and compared the pictures, which is exactly the task. The fillers at the start cost you some fluency, and your vocabulary plays it safe: aim for more precise words.',
+  errors: [
+    { quote: 'people who are trying something new', correction: 'people trying something new', why: 'A reduced relative clause sounds more natural and concise.', example: 'People living abroad often feel homesick.', category: 'grammar' },
+  ],
+  sayItBetter: [{ original: 'he finds it quite frustrating', better: "he's probably finding it a real uphill struggle", note: 'Idiomatic and more vivid.' }],
+  c1Resources: [{ resource: 'whereas (contrast)', quote: 'whereas the man is at a computer class' }, { resource: 'speculation: I\'d imagine', quote: "I'd imagine he finds it" }],
+  missedResources: ['It looks as if…', 'What strikes me is…', 'They might well be…'],
+  fluency: 'About 120 words per minute with several fillers at the start: once you get going, your pace is natural.',
+  interaction: 'You responded to your partner but rarely asked for their opinion.',
+  nextFocus: 'Start your long turn with a ready-made opener instead of "um, I think".',
+};
+
+const HELP = { phrase: 'a steep learning curve', example: "Learning to code has been a steep learning curve for me.", es: 'algo que cuesta mucho aprender al principio' };
+
 export function mockJson(req: AiRequest): unknown | undefined {
   const sys = req.system ?? '';
+  if (req.task === 'transcribe' && sys.includes('pronunciation')) return LISTEN;
+  if (req.task === 'assess-speaking') return ASSESS;
+  if (req.task === 'chat' && sys.includes('They got stuck')) return HELP;
   if (req.task === 'correct-writing') return FEEDBACK;
   if (req.task === 'ocr-writing') return OCR;
   if (req.task === 'rephrase') return sys.includes('MODE: Say it better') ? SAY : CHECK;

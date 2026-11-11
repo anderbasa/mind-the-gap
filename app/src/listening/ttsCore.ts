@@ -507,3 +507,68 @@ export async function renderBatch(units: UnitSpec[], voices: Voices, tts: TtsCal
   if (!cuts) return null;
   return { rate: out.rate, pcms: cutAt(pcm, cuts, out.rate) };
 }
+
+/* ── Speaking: frases del examinador y del compañero (pregrabadas) ── */
+
+export const EXAMINER_STYLE = 'a friendly, experienced speaking examiner reading the exam script: clear, measured and natural';
+export const PARTNER_STYLE = 'a candidate in an English speaking exam: natural and spontaneous, thinking aloud at times, at a normal pace';
+/** Por encima de esta longitud, una frase se pide sola (cortar monólogos largos por pausas es poco fiable). */
+export const BATCH_MAX_CHARS = 260;
+
+interface SpeakingBankLite {
+  examiner: SpeakerSpec;
+  frame: Record<string, string>;
+  p1: { questions: { id: string; text: string }[] }[];
+  tests: {
+    id: string;
+    partner: SpeakerSpec;
+    intro: string;
+    p2: { studentIntro: string; partnerQuestion: string; partnerAnswer: string; partnerIntro: string; partnerLongTurn: string; studentQuestion: string };
+    p3: { intro: string; partnerLines: string[]; decision: string; decisionLines: string[] };
+    p4: { q: string; partner?: string }[];
+  }[];
+}
+
+export interface SpeakingLine {
+  id: string;
+  who: 'examiner' | 'partner';
+  text: string;
+  speaker: SpeakerSpec;
+}
+
+export function speakingLines(bank: SpeakingBankLite): SpeakingLine[] {
+  const E = bank.examiner;
+  const out: SpeakingLine[] = [];
+  const ex = (id: string, text: string) => out.push({ id, who: 'examiner', text, speaker: E });
+  for (const [k, v] of Object.entries(bank.frame)) ex(`frame-${k}`, v);
+  for (const t of bank.p1) for (const q of t.questions) ex(`p1-${q.id}`, q.text);
+  for (const t of bank.tests) {
+    const P = t.partner;
+    const pa = (id: string, text: string) => out.push({ id, who: 'partner', text, speaker: P });
+    ex(`${t.id}-intro`, t.intro);
+    ex(`${t.id}-p2-sa`, t.p2.studentIntro);
+    ex(`${t.id}-p2-pq`, t.p2.partnerQuestion);
+    pa(`${t.id}-p2-pa`, t.p2.partnerAnswer);
+    ex(`${t.id}-p2-pi`, t.p2.partnerIntro);
+    pa(`${t.id}-p2-pl`, t.p2.partnerLongTurn);
+    ex(`${t.id}-p2-sq`, t.p2.studentQuestion);
+    ex(`${t.id}-p3-in`, t.p3.intro);
+    t.p3.partnerLines.forEach((l, i) => pa(`${t.id}-p3-l${i}`, l));
+    ex(`${t.id}-p3-de`, t.p3.decision);
+    t.p3.decisionLines.forEach((l, i) => pa(`${t.id}-p3-d${i}`, l));
+    t.p4.forEach((x, i) => {
+      ex(`${t.id}-p4-q${i}`, x.q);
+      if (x.partner) pa(`${t.id}-p4-a${i}`, x.partner);
+    });
+  }
+  return out;
+}
+
+export function speakingUnitOf(line: SpeakingLine): UnitSpec {
+  return {
+    id: `sp-${line.id}`,
+    speakers: [line.speaker],
+    turns: [{ s: line.speaker.id, text: line.text }],
+    style: line.who === 'examiner' ? EXAMINER_STYLE : PARTNER_STYLE,
+  };
+}

@@ -55,21 +55,22 @@ function passthrough(upstream: Response): Response {
 
 async function createLiveToken(model: string, env: Env): Promise<Response> {
   const now = Date.now();
-  const token = {
+  const base = {
     uses: 1,
     expireTime: new Date(now + 30 * 60_000).toISOString(),
     newSessionExpireTime: new Date(now + 2 * 60_000).toISOString(),
-    bidiGenerateContentSetup: { model: `models/${model}` },
   };
+  // Formato actual (nov. 2026): liveConnectConstraints. El antiguo (bidiGenerateContentSetup) queda de respaldo.
+  const token = { ...base, liveConnectConstraints: { model: `models/${model}`, config: { responseModalities: ['AUDIO'], sessionResumption: {} } } };
+  const legacy = { ...base, bidiGenerateContentSetup: { model: `models/${model}` } };
   const call = (body: unknown) =>
     fetch(`${GEMINI}/auth_tokens`, {
       method: 'POST',
       headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY! },
       body: JSON.stringify(body),
     });
-  // La API REST acepta el AuthToken directamente; algunas versiones lo piden envuelto.
   let r = await call(token);
-  if (r.status === 400) r = await call({ authToken: token });
+  if (r.status === 400) r = await call(legacy);
   const data = (await r.json().catch(() => ({}))) as { name?: string; expireTime?: string };
   if (!r.ok || !data.name) return json(r.ok ? 502 : r.status, data);
   return json(200, { token: data.name, expireTime: data.expireTime ?? token.expireTime });

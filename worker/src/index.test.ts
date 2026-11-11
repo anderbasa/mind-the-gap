@@ -150,6 +150,22 @@ describe('proxy', () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
+  it('Live: pide el token efímero con liveConnectConstraints y devuelve su nombre', async () => {
+    const fetchMock = vi.fn(async () => new Response(JSON.stringify({ name: 'auth_tokens/abc', expireTime: 'x' }), { status: 200 }));
+    vi.stubGlobal('fetch', fetchMock);
+    const r = await handler.fetch(
+      req('/gemini/live-token', { method: 'POST', headers: { Authorization: `Bearer ${await token()}` }, body: JSON.stringify({ model: 'gemini-3.8-live' }) }),
+      env,
+    );
+    expect(r.status).toBe(200);
+    expect(await r.json()).toEqual({ token: 'auth_tokens/abc', expireTime: 'x' });
+    const [url, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
+    expect(url).toBe('https://generativelanguage.googleapis.com/v1beta/auth_tokens');
+    const body = JSON.parse(String(init.body));
+    expect(body.uses).toBe(1);
+    expect(body.liveConnectConstraints.model).toBe('models/gemini-3.8-live');
+  });
+
   it('voces: solo pasa los filtros conocidos', async () => {
     const fetchMock = vi.fn(async () => new Response('{"voices":[]}', { status: 200 }));
     vi.stubGlobal('fetch', fetchMock);

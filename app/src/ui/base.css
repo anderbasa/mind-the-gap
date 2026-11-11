@@ -933,3 +933,130 @@ mark.ev sup {
   color: var(--ok);
   font-weight: 700;
 }
+
+/* ── Speaking ────────────────────────────────────────── */
+
+.recpanel {
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--line-speaking) 10%, var(--paper-raised));
+  border: 1px solid color-mix(in srgb, var(--line-speaking) 40%, var(--rule));
+}
+.level {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--paper-sunk);
+  overflow: hidden;
+}
+.level span {
+  display: block;
+  height: 100%;
+  background: var(--line-speaking);
+  transition: width 0.08s linear;
+}
+.speaker {
+  border-left: 5px solid var(--line-speaking);
+}
+.speaker.partner {
+  border-left-color: var(--line-listening);
+}
+.sphotos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+@media (min-width: 560px) {
+  .sphotos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.sphoto {
+  margin: 0;
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--paper-sunk);
+}
+.sphoto img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.sphoto figcaption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  font-size: 11px;
+  color: var(--ink-3);
+}
+.sphoto figcaption a {
+  color: inherit;
+}
+.sphoto-text {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  min-height: 72px;
+  align-items: flex-start;
+}
+.pnum {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 12px;
+  font-weight: 800;
+}
+.mindmap .mm-q {
+  text-align: center;
+  font-size: 18px;
+}
+.mm-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.mm-p {
+  padding: 8px 12px;
+  border: 1.5px solid var(--line-speaking);
+  border-radius: 999px;
+  font-size: 15px;
+}
+.chat {
+  min-height: 80px;
+}
+.bubble {
+  max-width: 86%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+}
+.bubble.you {
+  align-self: flex-end;
+  background: color-mix(in srgb, var(--line-speaking) 12%, var(--paper-raised));
+}
+.bubble.theo {
+  align-self: flex-start;
+}
+.critbar.sp span.on {
+  background: var(--line-speaking);
+}
+table.cmp {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.cmp td {
+  padding: 6px 4px;
+  border-top: 1px solid var(--rule);
+}
+table.cmp td:not(:first-child) {
+  text-align: right;
+}
