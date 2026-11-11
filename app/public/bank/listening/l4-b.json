@@ -1,0 +1,60 @@
+{
+  "id": "l4-b",
+  "part": "l4",
+  "title": "Living abroad",
+  "context": "You will hear five short extracts in which people talk about a time when they lived abroad.",
+  "unit": {
+    "id": "l4-b",
+    "speakers": [
+      { "id": "1", "name": "Ben", "gender": "male", "accent": "British" },
+      { "id": "2", "name": "Kelsey", "gender": "female", "accent": "American" },
+      { "id": "3", "name": "Declan", "gender": "male", "accent": "Irish" },
+      { "id": "4", "name": "Sophie", "gender": "female", "accent": "Australian" },
+      { "id": "5", "name": "Ravi", "gender": "male", "accent": "British" }
+    ],
+    "style": "spontaneous and natural, as if talking to an interviewer, at a normal pace",
+    "gapMs": 2500,
+    "turns": [
+      { "s": "1", "text": "My company has an office in Osaka, and when they asked for volunteers to transfer there for two years, I put my hand up before I'd really thought about it. I'd never been to Asia, not even on holiday. I'd read so much about how reserved people would be that I expected to feel lonely, but my neighbours practically adopted me. What genuinely surprised me was the paperwork. Registering my address, getting a phone contract, opening a bank account: each one took several visits and a small mountain of forms. I've never filled in so many boxes in my life." },
+      { "s": "2", "text": "I went to Lisbon because my boyfriend had been offered a place on a master's course there, and I didn't want to spend two years on video calls. I found remote work, so the move itself was easy. I'd promised myself I'd make Portuguese friends and really become part of the city. It didn't quite work out. Nearly everyone I got close to was from somewhere else: Germany, Brazil, Canada. I suppose we were all in the same situation. As for the food, everyone warned me I'd miss home cooking, but I didn't, not once." },
+      { "s": "3", "text": "I'd entered a photography competition without much hope, and somehow I won. The prize was a six-month residency in Mexico City, with a flat and a small grant. I'd done a bit of Spanish at school, so I threw myself into it, and by the end I was dreaming in Spanish. The strange thing was what happened to my English. I'd be on the phone to my mum and find myself stuck for really basic words, like spoon or Tuesday. She thought it was hilarious. Everyone had warned me about the size of the city and the traffic, but I adapted to that in days." },
+      { "s": "4", "text": "My grandmother lives on her own in a village near Edinburgh, and when she had a fall a couple of years ago, someone needed to stay with her for a while. My parents couldn't leave their jobs, so I volunteered. I was braced for the cold and the rain, and to be fair, the weather was every bit as bad as people said. What I wasn't ready for was how chatty everyone was. Total strangers at the bus stop would tell me about their operations or their grandchildren. In Melbourne, nobody talks to you on public transport." },
+      { "s": "5", "text": "I'd spent a week in Copenhagen on holiday and couldn't stop thinking about it afterwards: the bikes, the harbour, the way the whole city seemed to work. So, a bit impulsively, I started applying for jobs there, and eight months later I'd moved. Everything was expensive, but no worse than London, so that wasn't an issue. The adjustment was the rhythm of the day. People leave the office at four to pick up their children, and nobody sends emails at night. For the first few months I felt guilty going home on time, as if I'd be found out." }
+    ]
+  },
+  "task1": {
+    "prompt": "TASK ONE · For questions 21–25, choose from the list (A–H) why each speaker went to live abroad.",
+    "options": {
+      "A": "to study a language",
+      "B": "to be with a partner",
+      "C": "a transfer at work",
+      "D": "to escape a difficult situation",
+      "E": "to care for a family member",
+      "F": "to do volunteer work",
+      "G": "winning a prize",
+      "H": "wanting to return to a place they had visited"
+    }
+  },
+  "task2": {
+    "prompt": "TASK TWO · For questions 26–30, choose from the list (A–H) what surprised each speaker most.",
+    "options": {
+      "A": "how friendly strangers were",
+      "B": "the cost of living",
+      "C": "missing food from home",
+      "D": "the amount of paperwork",
+      "E": "the weather",
+      "F": "losing fluency in their own language",
+      "G": "a different pace of working life",
+      "H": "mixing mainly with other foreigners"
+    }
+  },
+  "answers1": ["C", "B", "G", "E", "H"],
+  "answers2": ["D", "H", "F", "A", "G"],
+  "notes": [
+    { "evidence1": "when they asked for volunteers to transfer there for two years", "evidence2": "What genuinely surprised me was the paperwork.", "explanation": "A work transfer. The friendly neighbours are mentioned, but the surprise was the forms." },
+    { "evidence1": "my boyfriend had been offered a place on a master's course there", "evidence2": "Nearly everyone I got close to was from somewhere else", "explanation": "She went to be with her boyfriend. She expected to miss food but didn't." },
+    { "evidence1": "The prize was a six-month residency in Mexico City", "evidence2": "find myself stuck for really basic words", "explanation": "He won a competition. He learnt Spanish there, but he didn't go to study it; the surprise was forgetting English words." },
+    { "evidence1": "someone needed to stay with her for a while", "evidence2": "What I wasn't ready for was how chatty everyone was.", "explanation": "She went to look after her grandmother ('I volunteered' doesn't mean volunteer work). The weather was as bad as expected, so it wasn't a surprise." },
+    { "evidence1": "I'd spent a week in Copenhagen on holiday and couldn't stop thinking about it afterwards", "evidence2": "The adjustment was the rhythm of the day.", "explanation": "He went back to a city he had visited. Prices weren't an issue; the working rhythm was." }
+  ]
+}

@@ -15,6 +15,9 @@ const GEMINI = 'https://generativelanguage.googleapis.com/v1beta';
 const ANTHROPIC = 'https://api.anthropic.com';
 const GEMINI_ROUTE = /^\/gemini\/models\/(gemini-[a-z0-9.-]+):(generateContent|countTokens)$/;
 const LIVE_MODEL = /^gemini-[a-z0-9.-]*(live|native-audio)[a-z0-9.-]*$/;
+/** API de Interactions: solo para voz (modelos TTS). */
+const TTS_MODEL = /^gemini-[a-z0-9.-]+-tts(-preview)?$/;
+const VOICE_FILTERS = ['language_code', 'region_code', 'accent', 'gender', 'pitch', 'persona', 'context', 'type', 'search', 'page_size', 'page_token'];
 const CLAUDE_ROUTES = new Set(['/claude/v1/messages', '/claude/v1/messages/count_tokens']);
 
 function allowedOrigin(origin: string | null, env: Env): boolean {
@@ -120,6 +123,34 @@ export function createHandler(verify: Verifier = verifyFirebaseToken) {
           headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
           body: req.body,
         });
+        return respond(passthrough(upstream));
+      }
+
+      // ── Gemini TTS (API de Interactions): voces de los listenings ──
+      if (url.pathname === '/gemini/interactions' && req.method === 'POST') {
+        if (!env.GEMINI_API_KEY) return respond(fail(500, 'config', 'Falta GEMINI_API_KEY en el Worker.'));
+        const raw = await req.text();
+        let model = '';
+        try {
+          model = String((JSON.parse(raw) as { model?: unknown }).model ?? '');
+        } catch {
+          return respond(fail(400, 'bad-request', 'Cuerpo no válido.'));
+        }
+        if (!TTS_MODEL.test(model)) return respond(fail(400, 'bad-request', 'Por aquí solo pasan modelos de voz (TTS).'));
+        const upstream = await fetch(`${GEMINI}/interactions`, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
+          body: raw,
+        });
+        return respond(passthrough(upstream));
+      }
+
+      // ── Catálogo de voces (acentos) ──
+      if (url.pathname === '/gemini/voices' && req.method === 'GET') {
+        if (!env.GEMINI_API_KEY) return respond(fail(500, 'config', 'Falta GEMINI_API_KEY en el Worker.'));
+        const q = new URLSearchParams();
+        for (const [k, v] of url.searchParams) if (VOICE_FILTERS.includes(k)) q.append(k, v);
+        const upstream = await fetch(`${GEMINI}/voices?${q}`, { headers: { 'x-goog-api-key': env.GEMINI_API_KEY } });
         return respond(passthrough(upstream));
       }
 

@@ -1,0 +1,83 @@
+{
+  "id": "l3-a",
+  "part": "l3",
+  "title": "Why we are bad at saving",
+  "context": "You will hear a radio interview with Helen Marsh, a behavioural economist, about why people find it hard to save money.",
+  "unit": {
+    "id": "l3-a",
+    "speakers": [
+      { "id": "A", "name": "Adam", "gender": "male", "accent": "British" },
+      { "id": "B", "name": "Helen", "gender": "female", "accent": "Scottish" }
+    ],
+    "style": "a natural radio interview, thoughtful and articulate, at a normal pace",
+    "gapMs": 450,
+    "turns": [
+      { "s": "A", "text": "With me today is Doctor Helen Marsh, a behavioural economist who studies how people make decisions about money. Helen, you've said that most of us are terrible savers by design. What do you mean by that?" },
+      { "s": "B", "text": "Well, I don't mean that people are foolish. I mean that our brains evolved to deal with immediate problems. The reward of spending is right in front of us, the new phone, the meal out, whereas the benefit of saving is decades away and quite abstract. So when we fail to save, it's not usually a lack of information. Most people know perfectly well that they should put money aside. The problem is that knowing doesn't change behaviour." },
+      { "s": "A", "text": "So financial education doesn't work?" },
+      { "s": "B", "text": "I wouldn't go that far. It has some effect, particularly on young people, but the effect is smaller than many politicians assume, and it fades surprisingly quickly. If you test people a year after a course, a lot of what they learnt has gone. What works much better is changing the default, the option that happens if you do nothing." },
+      { "s": "A", "text": "Can you give an example?" },
+      { "s": "B", "text": "The best-known one is workplace pensions. When employees had to actively sign up, a lot of them never got round to it, even though they intended to. When companies switched to enrolling everyone automatically, with the option to leave, participation shot up. People could still say no. Almost nobody did. Inertia, which is usually our enemy, suddenly became our friend." },
+      { "s": "A", "text": "Some people would call that manipulation." },
+      { "s": "B", "text": "It's a fair concern, and I take it seriously. But there's no such thing as a neutral design. If the form says tick here to join, that's also a choice someone made, and it pushes people in the other direction. The question isn't whether to influence people, but whether the influence is in their interest and whether they can easily opt out. I think transparency is essential. People should be told exactly what's happening." },
+      { "s": "A", "text": "You've also done research on young adults and saving. What did you find?" },
+      { "s": "B", "text": "We were surprised, actually. We expected the main obstacle to be low income, and of course that matters. But the biggest factor was something we called future fog. Many twenty-year-olds simply couldn't imagine themselves at sixty, so saving for that person felt like giving money to a stranger. When we showed participants digitally aged photos of themselves, they put noticeably more into a savings account in the following weeks." },
+      { "s": "A", "text": "That sounds almost like a gimmick." },
+      { "s": "B", "text": "It does, and I was sceptical myself. To be honest, the effect wasn't huge, and we don't yet know how long it lasts. But it told us something important: the barrier is often emotional rather than mathematical." },
+      { "s": "A", "text": "Does all this apply to people on any income?" },
+      { "s": "B", "text": "Broadly, yes, although I'm careful not to blame people on low incomes for not saving. If there's nothing left at the end of the month, no amount of clever design will change that. Our findings are really about people who could put something aside but don't. For them, small changes in how choices are presented can make a real difference." },
+      { "s": "A", "text": "Finally, what's one thing listeners could do this week?" },
+      { "s": "B", "text": "Automate one small decision. Set up a transfer of a modest amount on the day you get paid, so the money moves before you've had a chance to miss it. Start small enough that you won't be tempted to cancel it. You can always increase it later, and the research says most people eventually do." }
+    ]
+  },
+  "questions": [
+    {
+      "n": 15,
+      "stem": "According to Helen, what is the main reason people fail to save?",
+      "options": { "A": "They do not understand how saving works.", "B": "They are given misleading information.", "C": "They find it hard to value distant benefits.", "D": "They have too many urgent expenses." },
+      "answer": "C",
+      "explanation": "Spending gives an immediate reward, while the benefit of saving is decades away and abstract. She says it is not a lack of information.",
+      "evidence": "the benefit of saving is decades away and quite abstract"
+    },
+    {
+      "n": 16,
+      "stem": "What is Helen's view of financial education?",
+      "options": { "A": "It is more effective for older people.", "B": "Its benefits tend to be short-lived.", "C": "It should replace changes to defaults.", "D": "It is rarely taught well." },
+      "answer": "B",
+      "explanation": "It has some effect, but it fades quickly: a year later much of it has gone.",
+      "evidence": "it fades surprisingly quickly"
+    },
+    {
+      "n": 17,
+      "stem": "According to Helen, automatic enrolment in pensions worked because",
+      "options": { "A": "employees were given better information.", "B": "companies added extra money.", "C": "the sign-up process was simplified.", "D": "people rarely took action to leave." },
+      "answer": "D",
+      "explanation": "Everyone was enrolled and could opt out, but almost nobody did: inertia worked in their favour.",
+      "evidence": "People could still say no. Almost nobody did."
+    },
+    {
+      "n": 18,
+      "stem": "How does Helen respond to the suggestion that changing defaults is manipulation?",
+      "options": { "A": "She argues that every design influences people's choices.", "B": "She admits that it should be used only rarely.", "C": "She says people are rarely aware of it.", "D": "She claims it is mainly a problem for governments." },
+      "answer": "A",
+      "explanation": "There is no neutral design: even 'tick here to join' pushes people one way. What matters is whose interest it serves and whether people can opt out.",
+      "evidence": "there's no such thing as a neutral design"
+    },
+    {
+      "n": 19,
+      "stem": "What did Helen's research reveal about young adults?",
+      "options": { "A": "They found it hard to relate to their older selves.", "B": "Their income was the most important factor.", "C": "They were unwilling to look at aged photos.", "D": "They saved more once they saw their money grow." },
+      "answer": "A",
+      "explanation": "The biggest factor was 'future fog': they couldn't imagine themselves at sixty. Low income was what they expected, not what they found.",
+      "evidence": "Many twenty-year-olds simply couldn't imagine themselves at sixty"
+    },
+    {
+      "n": 20,
+      "stem": "What does Helen conclude from the experiment with aged photos?",
+      "options": { "A": "Saving is mainly a mathematical problem.", "B": "The effect was larger than expected.", "C": "Feelings play an important part in saving.", "D": "The results have been repeated many times." },
+      "answer": "C",
+      "explanation": "The effect was small and its length unknown, but it showed the barrier is emotional rather than mathematical.",
+      "evidence": "the barrier is often emotional rather than mathematical"
+    }
+  ]
+}

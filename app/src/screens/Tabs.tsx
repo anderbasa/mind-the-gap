@@ -61,8 +61,8 @@ export function Hoy() {
           <div class="list">
             <ListItem dot="var(--ok)" title="Fase 1 · Base" sub="Login, perfil, Theo, capa de IA, prueba de voz" right={<span class="pill ok">Hecha</span>} />
             <ListItem dot="var(--line-uoe)" title="Fase 2 · Reading & Use of English" sub="Las 8 partes, modo práctica y examen" right={<span class="pill ok">Hecha</span>} />
-            <ListItem dot="var(--line-writing)" title="Fase 3 · Writing y Reformular" sub="Corrección, Upgrade to C1, reescritura, Dímelo mejor" right={<span class="pill signal">Ahora</span>} />
-            <ListItem dot="var(--line-listening)" title="Fase 4 · Listening" sub="Audios con varios acentos, dictados" />
+            <ListItem dot="var(--line-writing)" title="Fase 3 · Writing y Reformular" sub="Corrección, Upgrade to C1, reescritura, Dímelo mejor" right={<span class="pill ok">Hecha</span>} />
+            <ListItem dot="var(--line-listening)" title="Fase 4 · Listening" sub="4 partes con varios acentos, dictados, inglés hablado real" right={<span class="pill signal">Ahora</span>} />
             <ListItem dot="var(--line-speaking)" title="Fase 5 · Speaking por voz" sub="Simulacro, role-plays, long turn" />
             <ListItem dot="var(--line-vocab)" title="Fases 6–8" sub="Diagnóstico, SRS, sesión diaria, ¿Estoy listo?, Telegram" />
           </div>
@@ -84,6 +84,7 @@ export function Practicar() {
           <div class="list">
             <ListItem dot={SKILLS.reading.color} title="Reading & Use of English" sub="8 partes · práctica o examen · prioridad P4, P3 y P1" to="/practicar/rue" />
             <ListItem dot={SKILLS.writing.color} title="Writing" sub="Essay, email, letter, proposal, report, review · escrito o en foto" to="/practicar/writing" />
+            <ListItem dot={SKILLS.listening.color} title="Listening" sub="4 partes con acentos variados, dictados e inglés hablado real" to="/practicar/listening" />
             <ListItem dot="var(--line-grammar)" title="Reformular" sub="Una frase y una instrucción: hasta 3 formas de decirlo" to="/practicar/reformular" />
             <ListItem dot="var(--line-grammar)" title="Dímelo mejor" sub="Pega una frase tuya: corregida, neutra, formal y natural" to="/practicar/dimelo" />
             <ListItem dot="var(--signal)" title="Habla con Theo" sub="Chat por escrito, con correcciones rápidas" to="/theo" />
@@ -92,7 +93,6 @@ export function Practicar() {
         <section class="stack" style={g(8)}>
           <span class="kicker">El examen (próximas fases)</span>
           <div class="list">
-            <ListItem dot={SKILLS.listening.color} title="Listening" sub="4 partes, acentos variados, dictados" right={<PhasePill n={4} />} disabled />
             <ListItem dot={SKILLS.speaking.color} title="Speaking" sub="Simulacro con examinador y compañero" right={<PhasePill n={5} />} disabled />
             <ListItem dot="var(--ink)" title="Simulacros" sub="Por paper o completos, en pantalla o en papel" right={<PhasePill n={7} />} disabled />
           </div>

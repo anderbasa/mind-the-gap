@@ -1,0 +1,85 @@
+{
+  "id": "l3-b",
+  "part": "l3",
+  "title": "Renting your wardrobe",
+  "context": "You will hear an interview with Jess Morgan, who started a clothing-rental business while she was at university.",
+  "unit": {
+    "id": "l3-b",
+    "speakers": [
+      { "id": "A", "name": "Ciaran", "gender": "male", "accent": "Irish" },
+      { "id": "B", "name": "Jess", "gender": "female", "accent": "Australian" }
+    ],
+    "style": "a natural radio interview, lively and articulate, at a normal pace",
+    "gapMs": 450,
+    "turns": [
+      { "s": "A", "text": "My guest today is Jess Morgan, who started a clothing-rental business while she was still at university. Jess, where did the idea come from?" },
+      { "s": "B", "text": "Honestly, from my own wardrobe. I had a cupboard full of clothes I'd worn once, for a wedding or a party, and then never again. I worked out that I'd spent more on those than on my rent one year, which was a bit of a shock. And when I asked my friends, they all had the same problem. So the idea wasn't really clever. It was just obvious once you looked." },
+      { "s": "A", "text": "Lots of people have obvious ideas. What made you actually do it?" },
+      { "s": "B", "text": "A business competition at my university. There was a prize of five thousand pounds, and I entered mainly because a friend dared me to. I didn't win, as it happens. I came third. But one of the judges ran a logistics company, and she offered to give me advice. That turned out to be worth far more than the prize money." },
+      { "s": "A", "text": "Why logistics, in particular?" },
+      { "s": "B", "text": "Because that's the hard part of renting clothes, and I hadn't realised. Everyone imagines the challenge is finding customers. It isn't. The challenge is getting a dress cleaned, checked and back to the next person in forty-eight hours without losing it. In our first year, we lost more money on delivery mistakes than on anything else." },
+      { "s": "A", "text": "Was it hard to persuade people to rent rather than buy?" },
+      { "s": "B", "text": "Less than I'd feared. Our first customers were students going to weddings and parties, and for them it was obvious: why spend two hundred pounds on a dress you'll wear once? The harder group has been people over forty, who tend to feel that renting clothes means you can't afford to buy them. That attitude is changing, but slowly." },
+      { "s": "A", "text": "So, the delivery mistakes. How did you fix that?" },
+      { "s": "B", "text": "We stopped trying to cover the whole country. We focused on just two cities, where we could use local couriers and a laundry we trusted. Growing more slowly felt like failure at the time, and investors kept asking why we weren't expanding, but it's the reason we're still here." },
+      { "s": "A", "text": "How do you decide which clothes to stock?" },
+      { "s": "B", "text": "Mostly from data. We track what people search for and can't find, and then we buy that. Instinct still plays a part, but I've been wrong often enough to trust the numbers more than my own taste." },
+      { "s": "A", "text": "You've been quite critical of the way fashion start-ups talk about sustainability." },
+      { "s": "B", "text": "I have. A lot of companies, including us at the beginning, made big claims without really measuring anything. If a dress is rented ten times, but each rental involves two journeys in a van and a chemical clean, is that actually better for the planet than one person owning it? It depends. So we now publish the numbers for every item, even when they don't make us look good." },
+      { "s": "A", "text": "Isn't that risky?" },
+      { "s": "B", "text": "Customers have been more understanding than I expected. What they don't forgive is being misled." },
+      { "s": "A", "text": "And what's next?" },
+      { "s": "B", "text": "We're testing something with a few universities. Students can rent formal clothes for graduation and job interviews at a reduced price. It won't make much money, but it brings in customers who'll hopefully stay with us for years. And frankly, it's the service I wish I'd had." }
+    ]
+  },
+  "questions": [
+    {
+      "n": 15,
+      "stem": "What made Jess realise there was a need for her business?",
+      "options": { "A": "seeing how much her friends spent on clothes", "B": "calculating what she had spent on clothes she rarely wore", "C": "reading about the cost of fashion", "D": "being asked to lend clothes to friends" },
+      "answer": "B",
+      "explanation": "She worked out that she had spent more on clothes worn once than on rent. Her friends only confirmed it later.",
+      "evidence": "I worked out that I'd spent more on those than on my rent one year"
+    },
+    {
+      "n": 16,
+      "stem": "What does Jess say about the university competition?",
+      "options": { "A": "It gave her the money to start the company.", "B": "She entered because she was sure she would win.", "C": "It led to a valuable professional contact.", "D": "The judges criticised her business plan." },
+      "answer": "C",
+      "explanation": "She came third, but a judge who ran a logistics company offered her advice, which was worth more than the prize.",
+      "evidence": "That turned out to be worth far more than the prize money."
+    },
+    {
+      "n": 17,
+      "stem": "According to Jess, the main difficulty in her business is",
+      "options": { "A": "attracting enough customers.", "B": "returning items quickly and safely.", "C": "finding reliable suppliers of clothes.", "D": "keeping the clothes in fashion." },
+      "answer": "B",
+      "explanation": "Everyone thinks it is finding customers, but the real challenge is cleaning, checking and sending each item on within 48 hours.",
+      "evidence": "The challenge is getting a dress cleaned, checked and back to the next person in forty-eight hours without losing it."
+    },
+    {
+      "n": 18,
+      "stem": "How does Jess feel now about the decision to grow slowly?",
+      "options": { "A": "She thinks it was necessary for survival.", "B": "She regrets disappointing investors.", "C": "She believes it was forced on the company.", "D": "She plans to change it soon." },
+      "answer": "A",
+      "explanation": "It felt like failure then, but she says it is the reason the company still exists.",
+      "evidence": "it's the reason we're still here"
+    },
+    {
+      "n": 19,
+      "stem": "What does Jess say about sustainability?",
+      "options": { "A": "Renting is always better for the environment.", "B": "Customers are not interested in the figures.", "C": "Vans cause most of the environmental damage.", "D": "Her company now shares its data openly." },
+      "answer": "D",
+      "explanation": "Rental is not automatically greener ('it depends'), so they publish the numbers for every item.",
+      "evidence": "we now publish the numbers for every item, even when they don't make us look good"
+    },
+    {
+      "n": 20,
+      "stem": "Why is the company offering cheaper rentals to students?",
+      "options": { "A": "to make up for lost profits", "B": "to test new types of clothing", "C": "to build long-term customer relationships", "D": "to compete with other rental firms" },
+      "answer": "C",
+      "explanation": "It won't make much money, but it brings in customers who may stay for years.",
+      "evidence": "it brings in customers who'll hopefully stay with us for years"
+    }
+  ]
+}

@@ -17,6 +17,7 @@
     "worker:deploy": "npm run deploy -w worker"
   },
   "devDependencies": {
+    "@breezystack/lamejs": "^1.2.7",
     "@resvg/resvg-js": "^2.6.2"
   },
   "engines": {

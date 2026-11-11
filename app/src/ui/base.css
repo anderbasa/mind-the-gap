@@ -859,3 +859,77 @@ ol.tight {
   display: grid;
   gap: 4px;
 }
+
+/* ── Listening ───────────────────────────────────────── */
+
+.player {
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--line-listening) 9%, var(--paper-raised));
+  border: 1px solid color-mix(in srgb, var(--line-listening) 35%, var(--rule));
+}
+.pbar {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--paper-sunk);
+  overflow: hidden;
+}
+.pbar span {
+  display: block;
+  height: 100%;
+  background: var(--line-listening);
+  transition: width 0.25s linear;
+}
+.seek {
+  width: 100%;
+  accent-color: var(--line-listening);
+}
+.tline {
+  display: grid;
+  gap: 2px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+}
+.tline:active {
+  background: var(--paper-sunk);
+}
+mark.ev {
+  background: color-mix(in srgb, var(--line-listening) 22%, transparent);
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+mark.ev sup {
+  margin-left: 2px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 800;
+}
+.gapinput {
+  display: inline-block;
+  width: 11em;
+  max-width: 100%;
+  min-height: 40px;
+  margin: 2px 4px;
+  padding: 6px 10px;
+  font-family: var(--font-ui);
+  vertical-align: baseline;
+}
+.diff .d-miss {
+  color: var(--bad);
+  font-weight: 700;
+  text-decoration: underline wavy;
+  text-underline-offset: 4px;
+}
+.diff .d-extra {
+  color: var(--ink-3);
+}
+.diff .d-fix {
+  color: var(--ok);
+  font-weight: 700;
+}

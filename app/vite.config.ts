@@ -32,7 +32,7 @@ export default defineConfig({
             options: { cacheName: 'fuentes', expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 365 } },
           },
           {
-            urlPattern: ({ url }) => url.pathname.includes('/bank/'),
+            urlPattern: ({ url }) => url.pathname.includes('/bank/') && !url.pathname.endsWith('.mp3'), // los mp3 van a IndexedDB
             handler: 'CacheFirst',
             options: { cacheName: 'banco', expiration: { maxEntries: 400 } },
           },

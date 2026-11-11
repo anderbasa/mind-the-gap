@@ -3,7 +3,7 @@
 Tu profe particular de inglés con IA (**Theo**) para pasar de B2 a **C1 Advanced** (Cambridge, 180+).
 Web instalable en el iPhone (PWA) y usable en el ordenador. La usa una sola persona.
 
-> **Estado:** Fases 1, 2 y 3 terminadas (base, Reading & Use of English, Writing y Reformular). Ver «Fases» al final.
+> **Estado:** Fases 1 a 4 terminadas (base, Reading & Use of English, Writing y Reformular, Listening). Ver «Fases» al final.
 
 ---
 
@@ -94,6 +94,17 @@ Claude solo se usa para corregir writings y speakings, y **nunca por su cuenta**
 2. En la app: **Ajustes → Prueba de voz**. Hazla **dos veces**: una en Safari y otra desde el icono. Mejor en casa, porque hay que hablar.
 3. Los resultados se guardan solos y yo los puedo revisar.
 
+### 8. Clave de Gemini en GitHub para los audios del Listening (tú, 2 minutos, gratis)
+
+Los audios del Listening se generan **una sola vez** en GitHub (con la voz de Gemini, gratis) y se guardan en el repo como mp3. Para eso GitHub necesita tu clave de Gemini como «secret» (cifrado: nadie la ve, ni yo).
+
+1. Abre <https://github.com/anderbasa/mind-the-gap/settings/secrets/actions>.
+2. **New repository secret**. Name: `GEMINI_API_KEY`. Secret: tu clave de Gemini (la de AI Studio, la misma que pusiste en Cloudflare). **Add secret**.
+3. Abre la pestaña **Actions** → **Audios del Listening** → **Run workflow** → **Run workflow**.
+4. Tarda unos minutos. Si la cuota gratuita del día se acaba, sigue sola al día siguiente (se ejecuta cada mañana). En la app, **Practicar → Listening** te dice cuántos audios hay listos.
+
+Mientras tanto, cada listening tiene un botón **«Generarlo aquí (gratis)»** que crea el audio en tu dispositivo.
+
 ---
 
 ## Desarrollo
@@ -123,7 +134,7 @@ Reglas de Firestore: `firebase deploy --only firestore:rules --project mind-the-
 app/        La web (Preact + TypeScript). src/ai = capa de IA, src/voice = audio, src/screens = pantallas
 worker/     Cloudflare Worker: verifica tu sesión y reenvía a Gemini / Claude / Pexels
 prompts/    Prompts de Theo, versionados (tutor-system.md + tasks/)
-scripts/    Iconos, siembra del perfil (y en fases siguientes: banco de ejercicios, Telegram)
+scripts/    Iconos, siembra del perfil, audios del Listening (render-listening.mjs; prueba local: --dry --out <carpeta>)
 local/      Tus datos personales para sembrar el perfil. NO se sube (está en .gitignore)
 ```
 
@@ -147,7 +158,7 @@ Todo pasa por `runAI({ task, system, messages, schema })` (`app/src/ai/client.ts
 - [x] **1 · Base** — PWA, login, perfil, Firestore con reglas, navegación, capa de IA, Worker, prompts, prueba de voz.
 - [x] **2 · Reading & Use of English** — las 8 partes en modo práctica y examen, corrección (P4 de 0 a 2), «Explícamelo en castellano», «Reportar pregunta», tocar palabras para guardarlas y un banco de 40 ejercicios escritos a mano. Generar con IA queda como opción experimental, solo cuando la pulsas.
 - [x] **3 · Writing y Reformular** — 12 enunciados (essay, letter, email, proposal, report, review) con plan de párrafos, banco de lenguaje y cronómetro opcional. Entrega escrita (sin autocorrector, con contador 220–260) o en foto (Gemini transcribe tal cual y avisa de lo que no ha leído bien). Corrección con los 4 criterios (0–5), nota orientativa en la escala, errores marcados en tu texto, Upgrade to C1, cohesión, palabras repetidas (las que adoptas van a tu vocabulario), versión modelo y reescritura con comparación de nota. Todos los errores van al cuaderno de errores. **Reformular** (39 frases escritas a mano; hasta 3 versiones corregidas al momento) y **Dímelo mejor** (corregida + neutra, formal y natural).
-- [ ] **4 · Listening**
+- [x] **4 · Listening** — guiones originales de las 4 partes (2 por parte para empezar) con voces y acentos variados (británico, americano, australiano, irlandés, escocés). Modo examen (tiempo de lectura y cada audio dos veces sin pausa) y práctica (pausa, velocidad sin cambiar el tono, «Repetir frase»). Corrección con la transcripción y la frase exacta de cada respuesta; tocar una frase la vuelve a reproducir. 24 dictados en tres niveles con comparación palabra a palabra, 22 fenómenos de «inglés hablado real» con audio y enlaces a podcasts, radio y series. Los audios los genera GitHub una vez (`.github/workflows/audio.yml`) y, si falta alguno, se puede generar en el dispositivo.
 - [ ] **5 · Speaking por voz**
 - [ ] **6 · Diagnóstico, cuaderno de errores, vocabulario (FSRS), gramática y memoria de Theo**
 - [ ] **7 · Sesión de hoy, simulacros y «¿Estoy listo?»**

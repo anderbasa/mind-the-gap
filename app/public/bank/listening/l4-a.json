@@ -1,0 +1,60 @@
+{
+  "id": "l4-a",
+  "part": "l4",
+  "title": "Changing careers",
+  "context": "You will hear five short extracts in which people talk about changing their careers.",
+  "unit": {
+    "id": "l4-a",
+    "speakers": [
+      { "id": "1", "name": "Rachel", "gender": "female", "accent": "British" },
+      { "id": "2", "name": "Greg", "gender": "male", "accent": "American" },
+      { "id": "3", "name": "Aoife", "gender": "female", "accent": "Irish" },
+      { "id": "4", "name": "Mitch", "gender": "male", "accent": "Australian" },
+      { "id": "5", "name": "Isla", "gender": "female", "accent": "Scottish" }
+    ],
+    "style": "spontaneous and natural, as if talking to an interviewer, at a normal pace",
+    "gapMs": 2500,
+    "turns": [
+      { "s": "1", "text": "For eight years I worked as an accountant for a big firm in Leeds. I was good at it, and the pay was excellent, but I could go a whole day without a proper conversation. Everything happened through a screen. In the end, I realised what I missed most was simply people, so I retrained as a primary teacher. Friends warned me about the marking at weekends, but honestly, that hasn't bothered me. What I do find hard is being the beginner again. Some of my colleagues are barely out of university, and they handle a noisy class far better than I can. That takes some getting used to." },
+      { "s": "2", "text": "I was a corporate lawyer for twelve years, and if I'm honest, I'd probably still be one if my back hadn't given out. After my second operation, the doctor told me plainly that another decade at a desk would do serious damage. My family thought I'd lost my mind when I said I wanted to make furniture, but I'd always loved working with wood. People assume the physical work must be exhausting. Actually, it's done wonders for my back. The real struggle is the money. One month I'll have three commissions, and the next month nothing at all. I knew it would be like that, but living with it is another matter." },
+      { "s": "3", "text": "I'd been on the front desk of a hotel in Galway for six years when it closed down, more or less overnight. All forty of us lost our jobs. I'd done a bit of coding for fun, so I used my redundancy money for a twelve-week course, and now I build websites for a small agency. I was worried the technical side would be too much for me, but it's been less of a struggle than I feared. What I didn't expect was how isolated I'd feel. I work from home, and some days I don't speak to a soul until my partner gets back. I hadn't realised how much I relied on chatting to guests." },
+      { "s": "4", "text": "I was a civil engineer in Sydney, designing bridges, and it was a good job. I can't say I'd always dreamt of doing anything else. But I'd hardly been outside Australia, and when a company offered me work leading walking tours in Europe, it felt like the chance to finally see the world. So here I am, in the Alps one week and Portugal the next. Guests leave the occasional bad review, but that doesn't really get to me. What does get to me is that there's no pattern to anything. I never know where I'll be sleeping next week, and I've discovered I'm someone who needs a routine." },
+      { "s": "5", "text": "Ever since I was about nine, I'd wanted to write novels. I became a nurse because it was a sensible job, and I did love it, but the idea never went away. When I turned forty, I decided that if I didn't try then, I never would. I'm earning a fraction of what I used to, but I'd prepared for that. The thing I find hardest is the feedback. My editor is always fair, but when I read that a chapter doesn't work, it still feels like a personal attack. I'm learning not to take it to heart, slowly." }
+    ]
+  },
+  "task1": {
+    "prompt": "TASK ONE · For questions 21–25, choose from the list (A–H) the main reason each speaker gives for changing career.",
+    "options": {
+      "A": "wanting more contact with people",
+      "B": "a health problem",
+      "C": "pressure from family",
+      "D": "the chance to travel",
+      "E": "feeling their skills were wasted",
+      "F": "a financial opportunity",
+      "G": "losing their previous job",
+      "H": "a childhood ambition"
+    }
+  },
+  "task2": {
+    "prompt": "TASK TWO · For questions 26–30, choose from the list (A–H) what each speaker finds most challenging now.",
+    "options": {
+      "A": "an unpredictable income",
+      "B": "learning technical skills",
+      "C": "a sense of isolation",
+      "D": "working at weekends",
+      "E": "being less experienced than colleagues",
+      "F": "coping with criticism",
+      "G": "a lack of routine",
+      "H": "physical exhaustion"
+    }
+  },
+  "answers1": ["A", "B", "G", "D", "H"],
+  "answers2": ["E", "A", "C", "G", "F"],
+  "notes": [
+    { "evidence1": "what I missed most was simply people", "evidence2": "Some of my colleagues are barely out of university, and they handle a noisy class far better than I can.", "explanation": "She left accounting because she missed people. Weekend marking is mentioned, but it hasn't bothered her." },
+    { "evidence1": "if my back hadn't given out", "evidence2": "One month I'll have three commissions, and the next month nothing at all.", "explanation": "His back forced the change; his family's reaction was disbelief, not pressure. The physical work has helped him, not exhausted him." },
+    { "evidence1": "All forty of us lost our jobs.", "evidence2": "some days I don't speak to a soul until my partner gets back", "explanation": "The hotel closed and she lost her job. The technical side was easier than she feared; the isolation is what's hard." },
+    { "evidence1": "it felt like the chance to finally see the world", "evidence2": "there's no pattern to anything", "explanation": "He had never dreamt of another career; travel was the reason. Bad reviews don't worry him; the lack of routine does." },
+    { "evidence1": "Ever since I was about nine, I'd wanted to write novels.", "evidence2": "The thing I find hardest is the feedback.", "explanation": "A childhood ambition. Earning less was expected; criticism from her editor is what she finds hardest." }
+  ]
+}

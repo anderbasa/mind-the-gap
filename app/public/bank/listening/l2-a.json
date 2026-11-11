@@ -1,0 +1,31 @@
+{
+  "id": "l2-a",
+  "part": "l2",
+  "title": "Bees on the roof",
+  "context": "You will hear a woman called Nadia talking about her work keeping bees on the roofs of office buildings.",
+  "unit": {
+    "id": "l2-a",
+    "speakers": [{ "id": "A", "name": "Nadia", "gender": "female", "accent": "British" }],
+    "style": "a relaxed, engaging talk to an audience, at a natural pace",
+    "gapMs": 700,
+    "turns": [
+      { "s": "A", "text": "Hi everyone. I'm Nadia, and for the past two years I've been looking after beehives on the roofs of office buildings in central London. When people hear that, they usually picture me in a garden, but my first hives were actually on top of an insurance company, eleven floors up, next to the air-conditioning units." },
+      { "s": "A", "text": "I didn't plan any of this. I studied geography, and I was working in a café when a regular customer, who turned out to be a beekeeper, asked if I'd help him lift some boxes. That was the beginning. He taught me everything, and the first thing he made me learn wasn't about bees at all. It was how to read a weather forecast properly, because you never open a hive when it's cold or about to rain." },
+      { "s": "A", "text": "People often ask whether the bees mind living so high up. In fact, they seem to do very well. London has more variety of flowers than most farmland, thanks to parks, gardens and even the plants people grow on their balconies. Our honey changes colour through the year. In spring it's pale, almost like lemon juice, and by late summer it's dark, a bit like strong tea, because of the lime trees." },
+      { "s": "A", "text": "The companies don't keep hives for the honey, of course. Most of them see it as a way to show their staff that they care about the environment. The part I enjoy most is running workshops for employees. I've had senior managers who were terrified at the start, and by the end they're holding a frame covered in bees and asking if they can come back next week." },
+      { "s": "A", "text": "Looking after the hives takes less time than people imagine. In summer I check each one about once a week, mainly to make sure the colony has enough space and isn't getting ready to leave. In winter there's very little to do, apart from making sure the bees have enough food stored and that nothing has disturbed the boxes. The busiest season is actually spring, when everything seems to happen at once." },
+      { "s": "A", "text": "It isn't all positive, though. Some scientists worry that there are now too many hives in the city, and that honeybees are competing with wild bees for food. I take that seriously. These days I advise companies to plant flowers before they get a hive, and in a couple of cases I've told a business not to get one at all. That doesn't make me very popular with my employer, but I think it's the right thing to do." },
+      { "s": "A", "text": "If you're tempted to try beekeeping yourself, my advice is simple: join a local association first, and spend a season helping someone else before you buy anything. And invest in a good pair of gloves. I learnt that the hard way." }
+    ]
+  },
+  "items": [
+    { "n": 7, "sentence": "Nadia's first hives were on the roof of a(n) ___ company.", "answers": ["insurance"], "explanation": "She says her first hives were on top of an insurance company. The air-conditioning units were just next to them.", "evidence": "on top of an insurance company" },
+    { "n": 8, "sentence": "Before she became a beekeeper, Nadia was working in a ___.", "answers": ["café", "cafe"], "explanation": "She studied geography, but she was working in a café when she met the beekeeper.", "evidence": "I was working in a café" },
+    { "n": 9, "sentence": "The first thing Nadia had to learn was how to read a ___ properly.", "answers": ["weather forecast", "forecast"], "explanation": "Her teacher made her learn to read a weather forecast, because you never open a hive in cold or rainy weather.", "evidence": "how to read a weather forecast properly" },
+    { "n": 10, "sentence": "Nadia says London has a greater ___ of flowers than most farmland.", "answers": ["variety"], "explanation": "London has more variety of flowers than most farmland.", "evidence": "London has more variety of flowers than most farmland" },
+    { "n": 11, "sentence": "Nadia compares the colour of late-summer honey to ___.", "answers": ["strong tea", "tea"], "explanation": "Spring honey is like lemon juice; late-summer honey is like strong tea.", "evidence": "a bit like strong tea" },
+    { "n": 12, "sentence": "The part of the job Nadia enjoys most is running ___ for company staff.", "answers": ["workshops", "workshop"], "explanation": "She enjoys running workshops for employees most.", "evidence": "The part I enjoy most is running workshops for employees." },
+    { "n": 13, "sentence": "Some scientists believe honeybees in the city compete with ___ for food.", "answers": ["wild bees"], "explanation": "The concern is that honeybees compete with wild bees.", "evidence": "honeybees are competing with wild bees for food" },
+    { "n": 14, "sentence": "Nadia recommends that beginners join a local ___ before buying anything.", "answers": ["association", "beekeeping association"], "explanation": "Her advice is to join a local association and help someone for a season first.", "evidence": "join a local association first" }
+  ]
+}

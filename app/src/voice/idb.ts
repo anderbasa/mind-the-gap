@@ -66,3 +66,12 @@ export async function getAudio(key: string): Promise<Blob | undefined> {
 export async function putAudio(key: string, blob: Blob): Promise<void> {
   await tx('audio', 'readwrite', (s) => s.put(blob, key));
 }
+
+/** Cualquier valor clonable (p. ej. audio generado en el dispositivo + tiempos de cada frase). */
+export async function getCached<T>(key: string): Promise<T | undefined> {
+  return tx<T | undefined>('audio', 'readonly', (s) => s.get(key) as IDBRequest<T | undefined>);
+}
+
+export async function putCached(key: string, value: unknown): Promise<void> {
+  await tx('audio', 'readwrite', (s) => s.put(value, key));
+}

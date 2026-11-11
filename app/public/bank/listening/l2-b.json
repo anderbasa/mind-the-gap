@@ -1,0 +1,31 @@
+{
+  "id": "l2-b",
+  "part": "l2",
+  "title": "The sound of footsteps",
+  "context": "You will hear a man called Liam talking about his work as a foley artist, creating sound effects for films.",
+  "unit": {
+    "id": "l2-b",
+    "speakers": [{ "id": "A", "name": "Liam", "gender": "male", "accent": "Irish" }],
+    "style": "a relaxed, engaging talk to an audience, at a natural pace",
+    "gapMs": 700,
+    "turns": [
+      { "s": "A", "text": "Good afternoon. My name's Liam, and I'm what's called a foley artist. That means I create the everyday sounds you hear in films, like footsteps, doors or the rustle of a coat, which are almost never recorded during filming itself. The microphones on set are there to capture the actors' voices, and everything else tends to get lost." },
+      { "s": "A", "text": "I got into this by accident. I trained as a drummer, and I was doing some session work in a studio in Dublin when the foley artist there broke his wrist. They needed someone with a good sense of rhythm to do footsteps, and I was the only person in the building. I've been doing it ever since." },
+      { "s": "A", "text": "Our studio looks a bit like a junk shop. We've got a floor divided into sections, each with a different surface: gravel, wood, concrete, even a small pool of water. And we keep a huge collection of shoes, because a heavy boot and a trainer sound completely different. The most useful object we own, though, is an old leather bag. It's been the sound of a saddle, a punch and a creaking ship." },
+      { "s": "A", "text": "A typical day starts with watching a scene a few times without making a sound, just to understand how each character moves. Then we choose the props. For a two-minute scene in a kitchen, we might record twenty separate layers: the footsteps, the cutlery, a chair, a cup being put down, even the movement of an apron. Most of it you'd never notice on its own, but if we took it away, the scene would feel strangely empty." },
+      { "s": "A", "text": "A lot of the job is about faking things. Real sounds often don't sound real on screen. If you record actual snow, it sounds like nothing at all, so for footsteps in snow we squeeze a bag of cornflour. Audiences never question it. For fire, a sheet of plastic does a better job than a real flame." },
+      { "s": "A", "text": "The hardest thing to get right is timing. If a footstep is even a fraction of a second late, people won't consciously notice, but they'll feel that something is wrong with the scene. That's why we perform everything live while watching the film, rather than adding sounds one by one." },
+      { "s": "A", "text": "People sometimes ask whether computers will replace us. There are huge libraries of recorded sounds now, and they're useful for things like traffic or crowds. But for anything an actor touches, a human performance still works best. Every character moves differently, and you can't download personality." }
+    ]
+  },
+  "items": [
+    { "n": 7, "sentence": "Liam explains that the microphones used during filming mainly record the actors' ___.", "answers": ["voices", "voice"], "explanation": "The microphones on set are there to capture the actors' voices; other sounds get lost.", "evidence": "capture the actors' voices" },
+    { "n": 8, "sentence": "Before working in films, Liam trained as a ___.", "answers": ["drummer"], "explanation": "He trained as a drummer and was doing session work in a studio.", "evidence": "I trained as a drummer" },
+    { "n": 9, "sentence": "Liam got his first foley job because the studio's foley artist had broken his ___.", "answers": ["wrist"], "explanation": "The foley artist broke his wrist and Liam was the only person available.", "evidence": "broke his wrist" },
+    { "n": 10, "sentence": "The studio keeps a large collection of ___ to create different footsteps.", "answers": ["shoes"], "explanation": "A heavy boot and a trainer sound different, so they keep a huge collection of shoes.", "evidence": "we keep a huge collection of shoes" },
+    { "n": 11, "sentence": "The most useful object in the studio is an old leather ___.", "answers": ["bag"], "explanation": "The old leather bag has been a saddle, a punch and a creaking ship.", "evidence": "an old leather bag" },
+    { "n": 12, "sentence": "To create footsteps in snow, they squeeze a bag of ___.", "answers": ["cornflour", "corn flour"], "explanation": "Real snow sounds like nothing on screen, so they squeeze a bag of cornflour.", "evidence": "we squeeze a bag of cornflour" },
+    { "n": 13, "sentence": "According to Liam, the most difficult aspect of the work is ___.", "answers": ["timing"], "explanation": "The hardest thing to get right is timing: a late footstep makes the scene feel wrong.", "evidence": "The hardest thing to get right is timing." },
+    { "n": 14, "sentence": "Recorded sound libraries are useful for sounds such as traffic or ___.", "answers": ["crowds", "crowd"], "explanation": "Libraries work for traffic or crowds, but not for anything an actor touches.", "evidence": "useful for things like traffic or crowds" }
+  ]
+}

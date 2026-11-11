@@ -1,0 +1,121 @@
+{
+  "id": "l1-b",
+  "part": "l1",
+  "title": "Novels, roundabouts and returns",
+  "extracts": [
+    {
+      "context": "You hear two friends discussing a novel they have both read.",
+      "unit": {
+        "id": "l1-b-x1",
+        "speakers": [
+          { "id": "A", "name": "Sam", "gender": "male", "accent": "British" },
+          { "id": "B", "name": "Lucy", "gender": "female", "accent": "Irish" }
+        ],
+        "turns": [
+          { "s": "A", "text": "Did you finish that novel in the end? The one about the lighthouse keeper?" },
+          { "s": "B", "text": "I did, last night. I stayed up far too late." },
+          { "s": "A", "text": "So you liked it, then. I have to say, I struggled. Nothing really happens for the first hundred pages." },
+          { "s": "B", "text": "That's true, but I think that's deliberate. You're supposed to feel how slow and lonely his life is before anything changes. By the time the storm arrives, you really feel it." },
+          { "s": "A", "text": "Maybe. I just found the main character hard to care about. He's so cold to everyone." },
+          { "s": "B", "text": "Well, he is, but the letters to his daughter show a completely different side to him. That's what made it for me: the gap between how he behaves and what he actually feels." },
+          { "s": "A", "text": "I must admit I skimmed some of those letters." },
+          { "s": "B", "text": "Well, there's your problem! Go back and read them properly." }
+        ]
+      },
+      "questions": [
+        {
+          "n": 1,
+          "stem": "What does the woman say about the beginning of the novel?",
+          "options": { "A": "It is slow for a good reason.", "B": "It is less engaging than the ending.", "C": "It gives too much background." },
+          "answer": "A",
+          "explanation": "She agrees that little happens, but says the slowness is deliberate: it makes you feel the character's slow, lonely life.",
+          "evidence": "That's true, but I think that's deliberate."
+        },
+        {
+          "n": 2,
+          "stem": "What did the woman particularly appreciate about the main character?",
+          "options": { "A": "his courage during the storm", "B": "the contrast between his actions and his feelings", "C": "his relationship with his daughter" },
+          "answer": "B",
+          "explanation": "The letters matter because they reveal the gap between how he behaves and what he feels; the daughter herself is not the point.",
+          "evidence": "the gap between how he behaves and what he actually feels"
+        }
+      ]
+    },
+    {
+      "context": "You hear a man talking to a friend about his driving lessons.",
+      "unit": {
+        "id": "l1-b-x2",
+        "speakers": [
+          { "id": "A", "name": "Grace", "gender": "female", "accent": "Scottish" },
+          { "id": "B", "name": "Ollie", "gender": "male", "accent": "British" }
+        ],
+        "turns": [
+          { "s": "A", "text": "How are the driving lessons going? You must be nearly ready for your test by now." },
+          { "s": "B", "text": "You'd think so, after twenty lessons. But my instructor keeps saying I'm not quite there." },
+          { "s": "A", "text": "Is it the parking? Everyone hates the parking." },
+          { "s": "B", "text": "No, I'm actually quite good at that. It's roundabouts. I hesitate too long before I go, and the cars behind me start getting impatient, which makes it worse." },
+          { "s": "A", "text": "Have you thought about practising with someone else between lessons? My dad took me out every Sunday, and it made a huge difference." },
+          { "s": "B", "text": "My mum offered, but we'd end up arguing in the first five minutes. No, what I've done is book a couple of lessons with a different instructor. Sometimes hearing the same thing explained in a different way helps." },
+          { "s": "A", "text": "That's a good idea. My first instructor used to shout at me, so I'd definitely recommend a change." },
+          { "s": "B", "text": "Mine doesn't shout. He just sighs a lot." }
+        ]
+      },
+      "questions": [
+        {
+          "n": 3,
+          "stem": "What is the man finding difficult?",
+          "options": { "A": "parking in small spaces", "B": "staying calm when other drivers are impatient", "C": "deciding when to go at roundabouts" },
+          "answer": "C",
+          "explanation": "His problem is hesitating too long at roundabouts. The impatient drivers are a consequence, and he says he is good at parking.",
+          "evidence": "It's roundabouts. I hesitate too long before I go"
+        },
+        {
+          "n": 4,
+          "stem": "What has the man decided to do?",
+          "options": { "A": "practise with a member of his family", "B": "have some lessons with another teacher", "C": "take his test sooner than planned" },
+          "answer": "B",
+          "explanation": "He rejects practising with his mum and books lessons with a different instructor.",
+          "evidence": "what I've done is book a couple of lessons with a different instructor"
+        }
+      ]
+    },
+    {
+      "context": "You hear part of a radio discussion about online shopping.",
+      "unit": {
+        "id": "l1-b-x3",
+        "speakers": [
+          { "id": "A", "name": "Ruth", "gender": "female", "accent": "British" },
+          { "id": "B", "name": "Mark", "gender": "male", "accent": "American" }
+        ],
+        "turns": [
+          { "s": "A", "text": "Mark, retailers say returns are costing them a fortune. Why is it such a problem?" },
+          { "s": "B", "text": "Well, part of it is simply that free returns have changed how people shop. A lot of customers now order the same jacket in three sizes, keep one and send two back. From the shopper's point of view, that's perfectly rational." },
+          { "s": "A", "text": "And from the retailer's?" },
+          { "s": "B", "text": "It's a nightmare. Every returned item has to be checked, repackaged and often sold at a discount. Some never go back on sale at all." },
+          { "s": "A", "text": "Several big brands have started charging for returns. Is that the answer?" },
+          { "s": "B", "text": "It'll reduce the numbers, certainly, but I'm not convinced it's the smartest approach. If you ask me, the real opportunity is better information before people buy: accurate sizing, honest photos, proper reviews. Most returns happen because the product isn't what the customer expected." },
+          { "s": "A", "text": "So the problem starts on the website, not in the warehouse." },
+          { "s": "B", "text": "Exactly." }
+        ]
+      },
+      "questions": [
+        {
+          "n": 5,
+          "stem": "According to Mark, why do many customers return items?",
+          "options": { "A": "They find cheaper alternatives elsewhere.", "B": "They change their minds after delivery.", "C": "They deliberately order more than they need." },
+          "answer": "C",
+          "explanation": "Customers order the same item in several sizes knowing they will send most of them back.",
+          "evidence": "A lot of customers now order the same jacket in three sizes, keep one and send two back."
+        },
+        {
+          "n": 6,
+          "stem": "What does Mark think retailers should focus on?",
+          "options": { "A": "charging customers for returns", "B": "giving customers more reliable product details", "C": "improving the way returned items are processed" },
+          "answer": "B",
+          "explanation": "He thinks charging will reduce returns but is not the smartest approach; the real opportunity is better information before people buy.",
+          "evidence": "the real opportunity is better information before people buy"
+        }
+      ]
+    }
+  ]
+}

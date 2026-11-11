@@ -1,0 +1,121 @@
+{
+  "id": "l1-a",
+  "part": "l1",
+  "title": "Projects, races and new rules",
+  "extracts": [
+    {
+      "context": "You hear two students talking about a group project they have just presented.",
+      "unit": {
+        "id": "l1-a-x1",
+        "speakers": [
+          { "id": "A", "name": "Hannah", "gender": "female", "accent": "British" },
+          { "id": "B", "name": "Tom", "gender": "male", "accent": "British" }
+        ],
+        "turns": [
+          { "s": "A", "text": "So, how do you think the presentation went? I thought the lecturer looked pretty impressed by the cash-flow model." },
+          { "s": "B", "text": "The model was fine, but honestly, I'm not sure that's what impressed her. I think it was the way you handled her questions at the end. You didn't panic when she challenged the growth figures." },
+          { "s": "A", "text": "Only because I'd spent the whole weekend going over them. If she'd asked about the marketing section, I'd have been completely lost." },
+          { "s": "B", "text": "Well, that's the thing. We split the work so neatly that none of us really understood the other sections. Next time I'd rather we all met halfway through and talked each other through what we'd done." },
+          { "s": "A", "text": "That would have saved us that panic on Thursday night, when we realised the figures in two of the sections didn't match." },
+          { "s": "B", "text": "Exactly. It's not about doing less work individually. It's about not working in separate boxes." },
+          { "s": "A", "text": "Fair enough. Although I still think Marco could have answered his emails a bit faster." },
+          { "s": "B", "text": "Ha. That too." }
+        ]
+      },
+      "questions": [
+        {
+          "n": 1,
+          "stem": "What does Tom think impressed the lecturer most?",
+          "options": { "A": "the way Hannah dealt with questions", "B": "the accuracy of the cash-flow model", "C": "the clarity of the growth figures" },
+          "answer": "A",
+          "explanation": "Tom says the model was fine but not what impressed her: it was how Hannah handled the lecturer's questions. The growth figures are what the lecturer challenged, not what impressed her.",
+          "evidence": "I think it was the way you handled her questions at the end."
+        },
+        {
+          "n": 2,
+          "stem": "What do they agree they should do differently next time?",
+          "options": { "A": "divide the tasks more evenly", "B": "reply to messages more promptly", "C": "check each other's progress during the project" },
+          "answer": "C",
+          "explanation": "Tom wants them to meet halfway through and explain their parts to each other, and Hannah agrees. Replying to emails faster is only Hannah's complaint about Marco.",
+          "evidence": "Next time I'd rather we all met halfway through and talked each other through what we'd done."
+        }
+      ]
+    },
+    {
+      "context": "You hear a woman telling a friend about a half marathon she has just run.",
+      "unit": {
+        "id": "l1-a-x2",
+        "speakers": [
+          { "id": "A", "name": "Daniel", "gender": "male", "accent": "British" },
+          { "id": "B", "name": "Megan", "gender": "female", "accent": "Australian" }
+        ],
+        "turns": [
+          { "s": "A", "text": "So, did you actually finish the half marathon in the end?" },
+          { "s": "B", "text": "I did, though not in the time I'd planned. I'd been training for a personal best, and for the first ten kilometres I was well ahead of it." },
+          { "s": "A", "text": "What went wrong?" },
+          { "s": "B", "text": "Nothing dramatic. I just got carried away at the start, because everyone around me was going so fast, and by the hills at the end I had nothing left. It's the oldest mistake in the book, and I knew it, which is the annoying part." },
+          { "s": "A", "text": "Still, finishing is something." },
+          { "s": "B", "text": "It is. And to be honest, the bit I'll remember isn't the time anyway. There was an old man running next to me for the last two kilometres who kept telling me I was nearly there. I don't think I'd have kept going without him. I didn't even get his name." },
+          { "s": "A", "text": "So are you going to have another go?" },
+          { "s": "B", "text": "Definitely. But this time I'm going to start at the back and ignore everyone." }
+        ]
+      },
+      "questions": [
+        {
+          "n": 3,
+          "stem": "Why didn't the woman achieve the time she wanted?",
+          "options": { "A": "She had not trained enough for the hills.", "B": "She started the race too quickly.", "C": "She was held up by the crowds at the start." },
+          "answer": "B",
+          "explanation": "She got carried away and ran too fast at the beginning, so she had no energy left for the hills. The crowds didn't slow her down: they made her go faster.",
+          "evidence": "I just got carried away at the start, because everyone around me was going so fast"
+        },
+        {
+          "n": 4,
+          "stem": "What does she say she will remember most about the race?",
+          "options": { "A": "the encouragement of another runner", "B": "finishing despite her disappointment", "C": "the difficult final section" },
+          "answer": "A",
+          "explanation": "The memorable part was the old man who kept encouraging her for the last two kilometres.",
+          "evidence": "There was an old man running next to me for the last two kilometres who kept telling me I was nearly there."
+        }
+      ]
+    },
+    {
+      "context": "You hear two colleagues discussing a new policy at their company.",
+      "unit": {
+        "id": "l1-a-x3",
+        "speakers": [
+          { "id": "A", "name": "James", "gender": "male", "accent": "American" },
+          { "id": "B", "name": "Priya", "gender": "female", "accent": "British" }
+        ],
+        "turns": [
+          { "s": "A", "text": "Have you seen the email about the new policy? No work messages after seven in the evening." },
+          { "s": "B", "text": "I have. I know a lot of people are celebrating, but I've got mixed feelings about it." },
+          { "s": "A", "text": "Really? I'd have thought you'd be the first to welcome it. You're always complaining about messages at midnight." },
+          { "s": "B", "text": "Oh, I'm all for the principle. My worry is what happens in practice. Half our clients are in New York, so their afternoon is our evening. If we can't reply until the next morning, we'll just look slow." },
+          { "s": "A", "text": "But the policy says client emails are an exception." },
+          { "s": "B", "text": "Does it? Then I suppose my real concern is that it'll be applied unevenly. Some managers will stick to it, and others will quietly expect us to keep answering anyway." },
+          { "s": "A", "text": "That's a fair point. Mind you, it's only a trial for three months." },
+          { "s": "B", "text": "True. And at least they're asking for feedback, which is more than they did with the open-plan office." }
+        ]
+      },
+      "questions": [
+        {
+          "n": 5,
+          "stem": "What is the woman's main concern about the policy?",
+          "options": { "A": "It will damage relationships with clients.", "B": "It will not be followed consistently.", "C": "It will only last for a short time." },
+          "answer": "B",
+          "explanation": "Her first worry was the clients, but once she hears they are an exception, her real concern is that some managers will apply the rule and others won't.",
+          "evidence": "my real concern is that it'll be applied unevenly"
+        },
+        {
+          "n": 6,
+          "stem": "What does the woman say about the way the company is introducing the policy?",
+          "options": { "A": "It has failed to explain the exceptions clearly.", "B": "It has introduced it without enough warning.", "C": "It is handling it better than a previous change." },
+          "answer": "C",
+          "explanation": "She praises the fact that they are asking for feedback, unlike when they introduced the open-plan office.",
+          "evidence": "at least they're asking for feedback, which is more than they did with the open-plan office"
+        }
+      ]
+    }
+  ]
+}

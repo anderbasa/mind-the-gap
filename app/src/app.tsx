@@ -18,6 +18,9 @@ import { WritingView } from './screens/writing/WritingView';
 import { WritingLanguage } from './screens/writing/WritingLanguage';
 import { Reformular } from './screens/writing/Reformular';
 import { DimeloMejor } from './screens/writing/DimeloMejor';
+import { Escuchar, ListeningHub } from './screens/listening/ListeningHub';
+import { ListeningPlayer } from './screens/listening/ListeningPlayer';
+import { Dictados, HablaReal } from './screens/listening/ListeningTools';
 import type { ComponentType } from 'preact';
 
 const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
@@ -38,6 +41,10 @@ const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
   '/practicar/writing/lenguaje': { C: WritingLanguage, tabs: false },
   '/practicar/reformular': { C: Reformular, tabs: false },
   '/practicar/dimelo': { C: DimeloMejor, tabs: false },
+  '/practicar/listening': { C: ListeningHub, tabs: false },
+  '/practicar/listening/dictados': { C: Dictados, tabs: false },
+  '/practicar/listening/habla-real': { C: HablaReal, tabs: false },
+  '/practicar/listening/escuchar': { C: Escuchar, tabs: false },
 };
 
 export function App() {
@@ -53,12 +60,18 @@ export function App() {
   if (!profile.value.confirmedAt) return <Onboarding />;
 
   const path = route.value.path;
-  const r = ROUTES[path] ?? (/^\/practicar\/rue\/p[1-8]$/.test(path) ? { C: RuePlayer, tabs: false } : ROUTES['/']);
+  const r =
+    ROUTES[path] ??
+    (/^\/practicar\/rue\/p[1-8]$/.test(path)
+      ? { C: RuePlayer, tabs: false }
+      : /^\/practicar\/listening\/l[1-4]$/.test(path)
+        ? { C: ListeningPlayer, tabs: false }
+        : ROUTES['/']);
   return (
     <>
       <div class="statusbar-shim" />
       <div class={`shell${r.tabs ? '' : ' no-tabs'}`}>
-        <r.C />
+        <r.C key={path} />
       </div>
       {r.tabs && <TabBar />}
       <ToastHost />

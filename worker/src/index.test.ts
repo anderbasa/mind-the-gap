@@ -136,6 +136,29 @@ describe('proxy', () => {
     expect(h.get('anthropic-beta')).toBe('server-side-fallback-2026-07-01');
   });
 
+  it('voz: reenvía a Interactions solo con modelos TTS', async () => {
+    const fetchMock = vi.fn(async () => new Response('{"steps":[]}', { status: 200, headers: { 'content-type': 'application/json' } }));
+    vi.stubGlobal('fetch', fetchMock);
+    const auth = { Authorization: `Bearer ${await token()}`, 'content-type': 'application/json' };
+    const ok = await handler.fetch(req('/gemini/interactions', { method: 'POST', headers: auth, body: JSON.stringify({ model: 'gemini-3.8-flash-tts', input: [] }) }), env);
+    expect(ok.status).toBe(200);
+    const [url, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
+    expect(url).toBe('https://generativelanguage.googleapis.com/v1beta/interactions');
+    expect(new Headers(init.headers).get('x-goog-api-key')).toBe('gemini-secreta');
+    const bad = await handler.fetch(req('/gemini/interactions', { method: 'POST', headers: auth, body: JSON.stringify({ model: 'gemini-3.8-flash' }) }), env);
+    expect(bad.status).toBe(400);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('voces: solo pasa los filtros conocidos', async () => {
+    const fetchMock = vi.fn(async () => new Response('{"voices":[]}', { status: 200 }));
+    vi.stubGlobal('fetch', fetchMock);
+    const r = await handler.fetch(req('/gemini/voices?language_code=en-GB&gender=female&key=robada', { headers: { Authorization: `Bearer ${await token()}` } }), env);
+    expect(r.status).toBe(200);
+    const [url] = fetchMock.mock.calls[0] as unknown as [string];
+    expect(url).toBe('https://generativelanguage.googleapis.com/v1beta/voices?language_code=en-GB&gender=female');
+  });
+
   it('sin clave de Claude responde 501 para que la app use el respaldo', async () => {
     const fetchMock = vi.fn();
     vi.stubGlobal('fetch', fetchMock);

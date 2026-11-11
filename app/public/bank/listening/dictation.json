@@ -1,0 +1,266 @@
+[
+ {
+  "id": "d01",
+  "level": 1,
+  "text": "The meeting has been moved to Thursday afternoon because the director is away.",
+  "speaker": {
+   "id": "A",
+   "name": "Eleanor",
+   "gender": "female",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "d02",
+  "level": 1,
+  "text": "Most of the students had already left by the time the results were published.",
+  "speaker": {
+   "id": "A",
+   "name": "Oliver",
+   "gender": "male",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "d03",
+  "level": 1,
+  "text": "I'd rather walk to the station than wait another twenty minutes for the bus.",
+  "speaker": {
+   "id": "A",
+   "name": "Rachel",
+   "gender": "female",
+   "accent": "American"
+  }
+ },
+ {
+  "id": "d04",
+  "level": 1,
+  "text": "She's been working on her dissertation since the beginning of October.",
+  "speaker": {
+   "id": "A",
+   "name": "Liam",
+   "gender": "male",
+   "accent": "Irish"
+  }
+ },
+ {
+  "id": "d05",
+  "level": 1,
+  "text": "If you'd told me earlier, I could have booked a table for six.",
+  "speaker": {
+   "id": "A",
+   "name": "Chloe",
+   "gender": "female",
+   "accent": "Australian"
+  }
+ },
+ {
+  "id": "d06",
+  "level": 1,
+  "text": "The museum is free on the first Sunday of every month.",
+  "speaker": {
+   "id": "A",
+   "name": "Callum",
+   "gender": "male",
+   "accent": "Scottish"
+  }
+ },
+ {
+  "id": "d07",
+  "level": 1,
+  "text": "We were advised to keep a copy of every receipt for at least a year.",
+  "speaker": {
+   "id": "A",
+   "name": "Eleanor",
+   "gender": "female",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "d08",
+  "level": 1,
+  "text": "He apologised for the delay and promised to send the report by Friday.",
+  "speaker": {
+   "id": "A",
+   "name": "Oliver",
+   "gender": "male",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "d09",
+  "level": 2,
+  "text": "There's been a significant increase in the number of people choosing to work from home.",
+  "speaker": {
+   "id": "A",
+   "name": "Rachel",
+   "gender": "female",
+   "accent": "American"
+  }
+ },
+ {
+  "id": "d10",
+  "level": 2,
+  "text": "What surprised me most was how quickly the new system was accepted by the staff.",
+  "speaker": {
+   "id": "A",
+   "name": "Liam",
+   "gender": "male",
+   "accent": "Irish"
+  }
+ },
+ {
+  "id": "d11",
+  "level": 2,
+  "text": "Had the weather been better, we would have gone hiking instead of staying indoors.",
+  "speaker": {
+   "id": "A",
+   "name": "Chloe",
+   "gender": "female",
+   "accent": "Australian"
+  }
+ },
+ {
+  "id": "d12",
+  "level": 2,
+  "text": "The company's profits fell by twelve per cent, largely as a result of rising energy costs.",
+  "speaker": {
+   "id": "A",
+   "name": "Callum",
+   "gender": "male",
+   "accent": "Scottish"
+  }
+ },
+ {
+  "id": "d13",
+  "level": 2,
+  "text": "Not only did they lower their prices, but they also extended their opening hours.",
+  "speaker": {
+   "id": "A",
+   "name": "Eleanor",
+   "gender": "female",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "d14",
+  "level": 2,
+  "text": "I'm not sure whether I'll be able to make it, but I'll let you know by tonight.",
+  "speaker": {
+   "id": "A",
+   "name": "Oliver",
+   "gender": "male",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "d15",
+  "level": 2,
+  "text": "Applicants are expected to have at least two years' experience in a similar role.",
+  "speaker": {
+   "id": "A",
+   "name": "Rachel",
+   "gender": "female",
+   "accent": "American"
+  }
+ },
+ {
+  "id": "d16",
+  "level": 2,
+  "text": "It's widely believed that the decision was made long before the public consultation began.",
+  "speaker": {
+   "id": "A",
+   "name": "Liam",
+   "gender": "male",
+   "accent": "Irish"
+  }
+ },
+ {
+  "id": "d17",
+  "level": 3,
+  "text": "Despite having been warned about the risks, the investors went ahead with the deal, which turned out to be a costly mistake.",
+  "speaker": {
+   "id": "A",
+   "name": "Chloe",
+   "gender": "female",
+   "accent": "Australian"
+  }
+ },
+ {
+  "id": "d18",
+  "level": 3,
+  "text": "The government has come under increasing pressure to address the shortage of affordable housing in the capital.",
+  "speaker": {
+   "id": "A",
+   "name": "Callum",
+   "gender": "male",
+   "accent": "Scottish"
+  }
+ },
+ {
+  "id": "d19",
+  "level": 3,
+  "text": "What we need isn't more regulation, but a clearer understanding of how the existing rules are being applied.",
+  "speaker": {
+   "id": "A",
+   "name": "Eleanor",
+   "gender": "female",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "d20",
+  "level": 3,
+  "text": "By the time the negotiations had finished, both sides had made far more concessions than they'd originally intended.",
+  "speaker": {
+   "id": "A",
+   "name": "Oliver",
+   "gender": "male",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "d21",
+  "level": 3,
+  "text": "Researchers suggest that checking our phones first thing in the morning may be affecting our concentration.",
+  "speaker": {
+   "id": "A",
+   "name": "Rachel",
+   "gender": "female",
+   "accent": "American"
+  }
+ },
+ {
+  "id": "d22",
+  "level": 3,
+  "text": "Had it not been for the generosity of local businesses, the festival would almost certainly have been cancelled.",
+  "speaker": {
+   "id": "A",
+   "name": "Liam",
+   "gender": "male",
+   "accent": "Irish"
+  }
+ },
+ {
+  "id": "d23",
+  "level": 3,
+  "text": "The more you practise listening to natural speech, the less you'll depend on subtitles.",
+  "speaker": {
+   "id": "A",
+   "name": "Chloe",
+   "gender": "female",
+   "accent": "Australian"
+  }
+ },
+ {
+  "id": "d24",
+  "level": 3,
+  "text": "Whether or not the scheme succeeds will depend largely on how willing people are to change their habits.",
+  "speaker": {
+   "id": "A",
+   "name": "Callum",
+   "gender": "male",
+   "accent": "Scottish"
+  }
+ }
+]

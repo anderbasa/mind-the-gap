@@ -1,0 +1,310 @@
+[
+ {
+  "id": "gonna",
+  "kind": "informal",
+  "title": "gonna = going to · d'you = do you",
+  "es": "En el habla rápida «going to» (de futuro) se convierte en «gonna», y «do you» en «d'you». No se escribe así en el examen, pero lo oirás constantemente.",
+  "spoken": "I'm gonna grab a coffee before the lecture. D'you want one?",
+  "full": "I'm going to grab a coffee before the lecture. Do you want one?",
+  "speaker": {
+   "id": "A",
+   "name": "Jake",
+   "gender": "male",
+   "accent": "American"
+  }
+ },
+ {
+  "id": "wanna",
+  "kind": "informal",
+  "title": "wanna = want to",
+  "es": "«Want to» se funde en «wanna». Ojo: «wants to» (he wants to) no se reduce así.",
+  "spoken": "Do you wanna come round on Saturday? We're gonna watch the match.",
+  "full": "Do you want to come round on Saturday? We're going to watch the match.",
+  "speaker": {
+   "id": "A",
+   "name": "Rachel",
+   "gender": "female",
+   "accent": "American"
+  }
+ },
+ {
+  "id": "gotta",
+  "kind": "informal",
+  "title": "gotta = got to · hafta = have to",
+  "es": "«Have got to» y «have to» (obligación) suenan «gotta» y «hafta»: la v de «have» se ensordece delante de «to».",
+  "spoken": "I've gotta finish this essay tonight, so I hafta say no.",
+  "full": "I've got to finish this essay tonight, so I have to say no.",
+  "speaker": {
+   "id": "A",
+   "name": "Oliver",
+   "gender": "male",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "dunno",
+  "kind": "informal",
+  "title": "dunno = don't know · lemme = let me",
+  "es": "Dos reducciones muy frecuentes en conversación informal.",
+  "spoken": "I dunno where I left my keys. Lemme check my bag.",
+  "full": "I don't know where I left my keys. Let me check my bag.",
+  "speaker": {
+   "id": "A",
+   "name": "Eleanor",
+   "gender": "female",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "wouldve",
+  "kind": "contraction",
+  "title": "would've = would have",
+  "es": "«Would have» suena «wudəv». Por eso hay nativos que escriben mal «would of»: es el mismo sonido. Tú escribe siempre «would have» o «would've».",
+  "spoken": "I would've called you, but my phone died.",
+  "full": "I would have called you, but my phone died.",
+  "speaker": {
+   "id": "A",
+   "name": "Oliver",
+   "gender": "male",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "shouldve",
+  "kind": "contraction",
+  "title": "should've · could've",
+  "es": "Igual que «would've»: el «have» queda reducido a «əv».",
+  "spoken": "You should've told me. I could've helped.",
+  "full": "You should have told me. I could have helped.",
+  "speaker": {
+   "id": "A",
+   "name": "Chloe",
+   "gender": "female",
+   "accent": "Australian"
+  }
+ },
+ {
+  "id": "itd",
+  "kind": "contraction",
+  "title": "it'd = it would / it had",
+  "es": "«It'd» puede ser «it would» o «it had»: lo decide lo que viene detrás (infinitivo → would; participio → had).",
+  "spoken": "It'd be easier if we took the train. It'd already left when we got there.",
+  "full": "It would be easier if we took the train. It had already left when we got there.",
+  "speaker": {
+   "id": "A",
+   "name": "Eleanor",
+   "gender": "female",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "to",
+  "kind": "weak",
+  "title": "Formas débiles: to = /tə/",
+  "es": "Las palabras gramaticales sin acento se reducen a una vocal neutra (schwa). «To» suena casi «tə».",
+  "spoken": "I'm going to the bank to pay in a cheque.",
+  "full": "I'm going to the bank to pay in a cheque.",
+  "speaker": {
+   "id": "A",
+   "name": "Oliver",
+   "gender": "male",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "of",
+  "kind": "weak",
+  "title": "of = /əv/ · a lot of → «a lotta»",
+  "es": "«Of» se reduce a «əv» o incluso a «ə»: «a lot of» suena «a lotta», «sort of» suena «sorta».",
+  "spoken": "A lot of people were sort of confused by the instructions.",
+  "full": "A lot of people were sort of confused by the instructions.",
+  "speaker": {
+   "id": "A",
+   "name": "Rachel",
+   "gender": "female",
+   "accent": "American"
+  }
+ },
+ {
+  "id": "can",
+  "kind": "weak",
+  "title": "can /kən/ frente a can't /kɑːnt/",
+  "es": "En afirmativa «can» casi desaparece (kən); «can't» se pronuncia entero y acentuado. Fíjate en la vocal y el acento, no en la t final, que a veces no se oye.",
+  "spoken": "I can swim, but I can't dive.",
+  "full": "I can swim, but I can't dive.",
+  "speaker": {
+   "id": "A",
+   "name": "Eleanor",
+   "gender": "female",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "and",
+  "kind": "weak",
+  "title": "and = /ən/ o /n/",
+  "es": "«And» entre dos palabras se reduce a «ən» o solo «n»: «fish and chips» suena «fish'n'chips».",
+  "spoken": "Fish and chips, salt and vinegar, and a cup of tea, please.",
+  "full": "Fish and chips, salt and vinegar, and a cup of tea, please.",
+  "speaker": {
+   "id": "A",
+   "name": "Oliver",
+   "gender": "male",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "was",
+  "kind": "weak",
+  "title": "was /wəz/ · were /wə/",
+  "es": "En medio de la frase «was» y «were» se reducen. Solo suenan fuertes al final o en respuestas cortas («Yes, I was»).",
+  "spoken": "They were waiting for ages, but she was late anyway.",
+  "full": "They were waiting for ages, but she was late anyway.",
+  "speaker": {
+   "id": "A",
+   "name": "Liam",
+   "gender": "male",
+   "accent": "Irish"
+  }
+ },
+ {
+  "id": "have",
+  "kind": "weak",
+  "title": "have /əv/ como auxiliar",
+  "es": "Como auxiliar, «have» se reduce: «Where have you been?» suena «where'v you been?».",
+  "spoken": "Where have you been? We've been looking for you everywhere.",
+  "full": "Where have you been? We've been looking for you everywhere.",
+  "speaker": {
+   "id": "A",
+   "name": "Chloe",
+   "gender": "female",
+   "accent": "Australian"
+  }
+ },
+ {
+  "id": "linking",
+  "kind": "linking",
+  "title": "Unión consonante + vocal: turn_it_off",
+  "es": "Si una palabra acaba en consonante y la siguiente empieza por vocal, se pegan: «turn it off» suena «tur-ni-toff». Por eso parece una sola palabra.",
+  "spoken": "Turn it off and put it away, please.",
+  "full": "Turn it off and put it away, please.",
+  "speaker": {
+   "id": "A",
+   "name": "Eleanor",
+   "gender": "female",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "elision",
+  "kind": "elision",
+  "title": "Elisión: nex' day, las' bus",
+  "es": "La t y la d entre dos consonantes suelen desaparecer: «next day» suena «nex' day», «last bus» suena «las' bus».",
+  "spoken": "We left the next day and nearly missed the last bus.",
+  "full": "We left the next day and nearly missed the last bus.",
+  "speaker": {
+   "id": "A",
+   "name": "Oliver",
+   "gender": "male",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "didja",
+  "kind": "assimilation",
+  "title": "did you → «didja» · what do you → «whaddya»",
+  "es": "La d + y se funden en un sonido «ya». «Did you» suena «didja» y «what do you» suena «whaddya».",
+  "spoken": "Didja see that? Whaddya think?",
+  "full": "Did you see that? What do you think?",
+  "speaker": {
+   "id": "A",
+   "name": "Jake",
+   "gender": "male",
+   "accent": "American"
+  }
+ },
+ {
+  "id": "doncha",
+  "kind": "assimilation",
+  "title": "don't you → «doncha»",
+  "es": "La t + y se funden en «ch»: «don't you» suena «doncha», «got you» suena «gotcha».",
+  "spoken": "Why doncha come with us? Gotcha, see you there.",
+  "full": "Why don't you come with us? Got you, see you there.",
+  "speaker": {
+   "id": "A",
+   "name": "Rachel",
+   "gender": "female",
+   "accent": "American"
+  }
+ },
+ {
+  "id": "kinda",
+  "kind": "informal",
+  "title": "kinda = kind of · sorta = sort of",
+  "es": "«Kind of» y «sort of» (un poco, más o menos) se reducen a «kinda» y «sorta».",
+  "spoken": "It was kinda weird, sorta like a dream.",
+  "full": "It was kind of weird, sort of like a dream.",
+  "speaker": {
+   "id": "A",
+   "name": "Rachel",
+   "gender": "female",
+   "accent": "American"
+  }
+ },
+ {
+  "id": "glottal",
+  "kind": "elision",
+  "title": "Golpe glótico: bo'le, wa'er",
+  "es": "En muchos acentos británicos la t entre vocales se sustituye por un corte en la garganta: «bottle» suena «bo'le», «water» suena «wa'er».",
+  "spoken": "Could I have a bottle of water, please? It's a bit hot.",
+  "full": "Could I have a bottle of water, please? It's a bit hot.",
+  "speaker": {
+   "id": "A",
+   "name": "Oliver",
+   "gender": "male",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "linkingr",
+  "kind": "linking",
+  "title": "R de unión: there_are, far_away",
+  "es": "En inglés británico la r final no suena… salvo si la siguiente palabra empieza por vocal: «far away» suena «fa-ra-way».",
+  "spoken": "The car is far away, over there on the corner.",
+  "full": "The car is far away, over there on the corner.",
+  "speaker": {
+   "id": "A",
+   "name": "Eleanor",
+   "gender": "female",
+   "accent": "British"
+  }
+ },
+ {
+  "id": "em",
+  "kind": "informal",
+  "title": "'em = them",
+  "es": "«Them» se reduce a «'em»: «tell 'em», «let 'em know».",
+  "spoken": "Tell 'em I'll be late, and let 'em start without me.",
+  "full": "Tell them I'll be late, and let them start without me.",
+  "speaker": {
+   "id": "A",
+   "name": "Chloe",
+   "gender": "female",
+   "accent": "Australian"
+  }
+ },
+ {
+  "id": "innit",
+  "kind": "informal",
+  "title": "innit = isn't it · y'know = you know",
+  "es": "«Innit» es muy británico e informal (sobre todo en Londres). «Y'know» es una muletilla que oirás en cualquier acento.",
+  "spoken": "It's a bit expensive, innit? But, y'know, it's worth it.",
+  "full": "It's a bit expensive, isn't it? But, you know, it's worth it.",
+  "speaker": {
+   "id": "A",
+   "name": "Oliver",
+   "gender": "male",
+   "accent": "British"
+  }
+ }
+]
