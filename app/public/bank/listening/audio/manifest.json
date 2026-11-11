@@ -1,11 +1,55 @@
 {
  "version": 1,
- "units": {},
+ "units": {
+  "l1-a-x1": {
+   "hash": "fb2ffa47ba0e",
+   "file": "l1-a-x1-fb2ffa47ba0e.mp3",
+   "duration": 53,
+   "turns": [
+    [
+     0.3,
+     5.81
+    ],
+    [
+     6.26,
+     15.53
+    ],
+    [
+     15.98,
+     22.12
+    ],
+    [
+     22.57,
+     32.8
+    ],
+    [
+     33.25,
+     39.2
+    ],
+    [
+     39.65,
+     46.35
+    ],
+    [
+     46.8,
+     51.03
+    ],
+    [
+     51.48,
+     52.7
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-training-4",
+    "B": "en-gb-storyteller-4"
+   }
+  }
+ },
  "status": {
-  "at": "2026-11-11T09:42:09.597Z",
+  "at": "2026-11-11T10:07:37.363Z",
   "total": 58,
-  "done": 0,
-  "stoppedBy": "Google no acepta la clave del secret GEMINI_API_KEY (HTTP 401). Vuelve a pegarla entera desde AI Studio (botón de copiar, no el texto con «…»).",
-  "requests": 0
+  "done": 1,
+  "stoppedBy": "cuota diaria gratuita de TTS agotada",
+  "requests": 12
  }
 }
