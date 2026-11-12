@@ -36,7 +36,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
+      # Siempre la última versión de main (no la del push que lo lanzó): si dos lanzamientos van en cola,
+      # el segundo ve los audios que ya subió el primero y no los repite (ni choca al guardar el manifest).
       - uses: actions/checkout@v5
+        with:
+          ref: main
 
       - uses: actions/setup-node@v5
         with:
