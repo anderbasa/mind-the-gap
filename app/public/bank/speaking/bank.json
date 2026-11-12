@@ -1,5 +1,10 @@
 {
-  "examiner": { "id": "E", "name": "Theo", "gender": "male", "accent": "British" },
+  "examiner": {
+    "id": "E",
+    "name": "Theo",
+    "gender": "male",
+    "accent": "British"
+  },
   "frame": {
     "p1Start": "First of all, I'd like to find out a little about you.",
     "p2Start": "In this part, each of you will get three pictures. I'd like you to talk about two of them on your own for about a minute, and then answer a short question about your partner's pictures.",
@@ -9,85 +14,266 @@
     "end": "Thank you very much. That's the end of the test."
   },
   "p1": [
-    { "id": "studies", "topic": "Studies", "questions": [
-      { "id": "studies-1", "text": "What do you enjoy most about your studies?" },
-      { "id": "studies-2", "text": "Is there a subject you'd like to study that you haven't had the chance to?" },
-      { "id": "studies-3", "text": "How do you usually prepare for an important exam?" },
-      { "id": "studies-4", "text": "Would you rather study on your own or with other people? Why?" },
-      { "id": "studies-5", "text": "How do you think your studies will help you in the future?" }
-    ] },
-    { "id": "free", "topic": "Free time", "questions": [
-      { "id": "free-1", "text": "How do you like to spend your weekends?" },
-      { "id": "free-2", "text": "Is there a hobby you've given up that you'd like to take up again?" },
-      { "id": "free-3", "text": "Do you think people have less free time than they used to?" },
-      { "id": "free-4", "text": "What's something new you've tried recently?" },
-      { "id": "free-5", "text": "How important is it for you to spend time on your own?" }
-    ] },
-    { "id": "town", "topic": "Where you live", "questions": [
-      { "id": "town-1", "text": "What do you like most about the place where you live?" },
-      { "id": "town-2", "text": "If you could change one thing about your town, what would it be?" },
-      { "id": "town-3", "text": "Is your town a good place for young people? Why or why not?" },
-      { "id": "town-4", "text": "How has your area changed since you were a child?" },
-      { "id": "town-5", "text": "Would you like to live in another country one day?" }
-    ] },
-    { "id": "tech", "topic": "Technology", "questions": [
-      { "id": "tech-1", "text": "Roughly how much time do you spend on your phone each day?" },
-      { "id": "tech-2", "text": "Which app couldn't you live without?" },
-      { "id": "tech-3", "text": "Do you think technology makes us more or less sociable?" },
-      { "id": "tech-4", "text": "Have you ever tried to spend a whole day without the internet?" },
-      { "id": "tech-5", "text": "Which piece of technology do you think will change our lives most in the next ten years?" }
-    ] },
-    { "id": "travel", "topic": "Travel", "questions": [
-      { "id": "travel-1", "text": "What's the most memorable trip you've ever been on?" },
-      { "id": "travel-2", "text": "Do you prefer to plan a trip carefully or to be spontaneous?" },
-      { "id": "travel-3", "text": "Is there a place you'd love to visit but haven't been to yet?" },
-      { "id": "travel-4", "text": "What do you find most tiring about travelling?" },
-      { "id": "travel-5", "text": "Is it important to learn a little of the language before you visit a country?" }
-    ] },
-    { "id": "work", "topic": "Work and money", "questions": [
-      { "id": "work-1", "text": "Have you ever had a part-time job? What did you learn from it?" },
-      { "id": "work-2", "text": "What would your ideal job be like?" },
-      { "id": "work-3", "text": "Are you good at saving money?" },
-      { "id": "work-4", "text": "Would you prefer a well-paid job or one you really enjoy?" },
-      { "id": "work-5", "text": "Who has given you the best advice about money?" }
-    ] },
-    { "id": "food", "topic": "Food", "questions": [
-      { "id": "food-1", "text": "Do you enjoy cooking?" },
-      { "id": "food-2", "text": "What's a dish from your region that visitors should try?" },
-      { "id": "food-3", "text": "Have your eating habits changed in recent years?" },
-      { "id": "food-4", "text": "Do you prefer eating out or eating at home? Why?" },
-      { "id": "food-5", "text": "Is there a food you didn't like as a child but enjoy now?" }
-    ] },
-    { "id": "health", "topic": "Sport and health", "questions": [
-      { "id": "health-1", "text": "Do you do any sport regularly?" },
-      { "id": "health-2", "text": "What do you do to relax when you're stressed?" },
-      { "id": "health-3", "text": "Do you think young people today are healthier than previous generations?" },
-      { "id": "health-4", "text": "Is there a sport you've always wanted to try?" },
-      { "id": "health-5", "text": "How important is sleep to you?" }
-    ] }
+    {
+      "id": "studies",
+      "topic": "Studies",
+      "questions": [
+        {
+          "id": "studies-1",
+          "text": "What do you enjoy most about your studies?"
+        },
+        {
+          "id": "studies-2",
+          "text": "Is there a subject you'd like to study that you haven't had the chance to?"
+        },
+        {
+          "id": "studies-3",
+          "text": "How do you usually prepare for an important exam?"
+        },
+        {
+          "id": "studies-4",
+          "text": "Would you rather study on your own or with other people? Why?"
+        },
+        {
+          "id": "studies-5",
+          "text": "How do you think your studies will help you in the future?"
+        }
+      ]
+    },
+    {
+      "id": "free",
+      "topic": "Free time",
+      "questions": [
+        {
+          "id": "free-1",
+          "text": "How do you like to spend your weekends?"
+        },
+        {
+          "id": "free-2",
+          "text": "Is there a hobby you've given up that you'd like to take up again?"
+        },
+        {
+          "id": "free-3",
+          "text": "Do you think people have less free time than they used to?"
+        },
+        {
+          "id": "free-4",
+          "text": "What's something new you've tried recently?"
+        },
+        {
+          "id": "free-5",
+          "text": "How important is it for you to spend time on your own?"
+        }
+      ]
+    },
+    {
+      "id": "town",
+      "topic": "Where you live",
+      "questions": [
+        {
+          "id": "town-1",
+          "text": "What do you like most about the place where you live?"
+        },
+        {
+          "id": "town-2",
+          "text": "If you could change one thing about your town, what would it be?"
+        },
+        {
+          "id": "town-3",
+          "text": "Is your town a good place for young people? Why or why not?"
+        },
+        {
+          "id": "town-4",
+          "text": "How has your area changed since you were a child?"
+        },
+        {
+          "id": "town-5",
+          "text": "Would you like to live in another country one day?"
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "topic": "Technology",
+      "questions": [
+        {
+          "id": "tech-1",
+          "text": "Roughly how much time do you spend on your phone each day?"
+        },
+        {
+          "id": "tech-2",
+          "text": "Which app couldn't you live without?"
+        },
+        {
+          "id": "tech-3",
+          "text": "Do you think technology makes us more or less sociable?"
+        },
+        {
+          "id": "tech-4",
+          "text": "Have you ever tried to spend a whole day without the internet?"
+        },
+        {
+          "id": "tech-5",
+          "text": "Which piece of technology do you think will change our lives most in the next ten years?"
+        }
+      ]
+    },
+    {
+      "id": "travel",
+      "topic": "Travel",
+      "questions": [
+        {
+          "id": "travel-1",
+          "text": "What's the most memorable trip you've ever been on?"
+        },
+        {
+          "id": "travel-2",
+          "text": "Do you prefer to plan a trip carefully or to be spontaneous?"
+        },
+        {
+          "id": "travel-3",
+          "text": "Is there a place you'd love to visit but haven't been to yet?"
+        },
+        {
+          "id": "travel-4",
+          "text": "What do you find most tiring about travelling?"
+        },
+        {
+          "id": "travel-5",
+          "text": "Is it important to learn a little of the language before you visit a country?"
+        }
+      ]
+    },
+    {
+      "id": "work",
+      "topic": "Work and money",
+      "questions": [
+        {
+          "id": "work-1",
+          "text": "Have you ever had a part-time job? What did you learn from it?"
+        },
+        {
+          "id": "work-2",
+          "text": "What would your ideal job be like?"
+        },
+        {
+          "id": "work-3",
+          "text": "Are you good at saving money?"
+        },
+        {
+          "id": "work-4",
+          "text": "Would you prefer a well-paid job or one you really enjoy?"
+        },
+        {
+          "id": "work-5",
+          "text": "Who has given you the best advice about money?"
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "topic": "Food",
+      "questions": [
+        {
+          "id": "food-1",
+          "text": "Do you enjoy cooking?"
+        },
+        {
+          "id": "food-2",
+          "text": "What's a dish from your region that visitors should try?"
+        },
+        {
+          "id": "food-3",
+          "text": "Have your eating habits changed in recent years?"
+        },
+        {
+          "id": "food-4",
+          "text": "Do you prefer eating out or eating at home? Why?"
+        },
+        {
+          "id": "food-5",
+          "text": "Is there a food you didn't like as a child but enjoy now?"
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "topic": "Sport and health",
+      "questions": [
+        {
+          "id": "health-1",
+          "text": "Do you do any sport regularly?"
+        },
+        {
+          "id": "health-2",
+          "text": "What do you do to relax when you're stressed?"
+        },
+        {
+          "id": "health-3",
+          "text": "Do you think young people today are healthier than previous generations?"
+        },
+        {
+          "id": "health-4",
+          "text": "Is there a sport you've always wanted to try?"
+        },
+        {
+          "id": "health-5",
+          "text": "How important is sleep to you?"
+        }
+      ]
+    }
   ],
   "tests": [
     {
       "id": "ta",
       "title": "Skills, teamwork and independence",
-      "partner": { "id": "P", "name": "Laura", "gender": "female", "accent": "Irish" },
+      "partner": {
+        "id": "P",
+        "name": "Laura",
+        "gender": "female",
+        "accent": "Irish"
+      },
       "intro": "Good morning. My name's Theo, and I'll be your examiner today. Your partner is Laura. Let's begin.",
       "p2": {
         "studentIntro": "Here are your pictures. They show people learning new skills in different situations. I'd like you to compare two of the pictures, and say what the people might find difficult about learning these skills, and how they might feel when they succeed.",
-        "studentQuestions": ["What might the people find difficult about learning these skills?", "How might they feel when they succeed?"],
+        "studentQuestions": [
+          "What might the people find difficult about learning these skills?",
+          "How might they feel when they succeed?"
+        ],
         "studentPhotos": [
-          { "query": "person learning to play guitar", "alt": "A young woman practising chords on a guitar, looking concentrated." },
-          { "query": "senior man learning computer class", "alt": "An older man at a computer class, with a teacher pointing at the screen." },
-          { "query": "child learning to ride bicycle", "alt": "A father holding the back of a bike while his daughter learns to ride." }
+          {
+            "query": "person learning to play guitar",
+            "alt": "A young woman practising chords on a guitar, looking concentrated."
+          },
+          {
+            "query": "senior man learning computer class",
+            "alt": "An older man at a computer class, with a teacher pointing at the screen."
+          },
+          {
+            "query": "child learning to ride bicycle",
+            "alt": "A father holding the back of a bike while his daughter learns to ride."
+          }
         ],
         "partnerQuestion": "Laura, which of these skills do you think is the most useful to learn? Why?",
         "partnerAnswer": "I'd probably go for the computer one, to be honest. These days so much depends on being able to get online, whether it's booking a doctor's appointment or paying bills. If you can't do that, you're at a real disadvantage. The guitar is lovely, but it's more of a luxury, isn't it?",
         "partnerIntro": "Now, Laura, here are your pictures. They show people working together in different situations. I'd like you to compare two of the pictures, and say why the people might be working together, and how important it is for them to communicate well.",
-        "partnerQuestions": ["Why might the people be working together?", "How important is it for them to communicate well?"],
+        "partnerQuestions": [
+          "Why might the people be working together?",
+          "How important is it for them to communicate well?"
+        ],
         "partnerPhotos": [
-          { "query": "surgeons team operating room", "alt": "A team of surgeons and nurses during an operation." },
-          { "query": "rowing team race", "alt": "A rowing crew pulling hard during a race on a river." },
-          { "query": "colleagues brainstorming office whiteboard", "alt": "Colleagues sharing ideas in front of a whiteboard covered in notes." }
+          {
+            "query": "surgeons team operating room",
+            "alt": "A team of surgeons and nurses during an operation."
+          },
+          {
+            "query": "rowing team race",
+            "alt": "A rowing crew pulling hard during a race on a river."
+          },
+          {
+            "query": "colleagues brainstorming office whiteboard",
+            "alt": "Colleagues sharing ideas in front of a whiteboard covered in notes."
+          }
         ],
         "partnerLongTurn": "Well, in the first picture there's a team of surgeons in an operating theatre, and in the second there's a rowing crew in the middle of a race. I suppose in both cases they're working together because the job simply can't be done by one person. The surgeons need each other's specialist skills, whereas the rowers need to combine their strength. As for communication, I'd say it's vital in both, but in different ways. For the surgeons, a misunderstanding could literally cost someone their life, so everything has to be extremely clear. The rowers, on the other hand, probably don't talk much at all during the race. They rely on rhythm, and on the person at the back calling out instructions. So communication matters more in the operating theatre, but in the boat, timing is everything.",
         "studentQuestion": "Which of these situations do you think would be the most stressful to be in? Why?"
@@ -95,7 +281,13 @@
       "p3": {
         "intro": "Now, I'd like you to talk about something together. Here are some things that might help young people become more independent, and a question for you to discuss. First, you have some time to look at the task.",
         "question": "How might these things help young people become more independent?",
-        "prompts": ["having a part-time job", "living away from home", "travelling alone", "managing their own money", "learning to cook"],
+        "prompts": [
+          "having a part-time job",
+          "living away from home",
+          "travelling alone",
+          "managing their own money",
+          "learning to cook"
+        ],
         "partnerLines": [
           "Shall I start? I think having a part-time job is a really good one, because you learn to deal with responsibility, and with people who aren't your friends or family. What do you think?",
           "That's true. And what about living away from home? For me, that's where you really grow up, because suddenly there's nobody to sort things out for you.",
@@ -110,34 +302,75 @@
         ]
       },
       "p4": [
-        { "q": "Some people say young people today stay at home with their parents for too long. What do you think?", "partner": "I think it's often not their choice, really. Rents are so high that it's almost impossible to move out before thirty in some cities." },
-        { "q": "Is it better to learn from your own mistakes or from other people's advice?" },
-        { "q": "Should schools teach practical skills like cooking and managing money?", "partner": "I'd be in favour, as long as it doesn't replace the more academic subjects." },
-        { "q": "How has technology changed the way young people become independent?" },
-        { "q": "Do you think it's harder to become independent now than it was for your parents' generation?" }
+        {
+          "q": "Some people say young people today stay at home with their parents for too long. What do you think?",
+          "partner": "I think it's often not their choice, really. Rents are so high that it's almost impossible to move out before thirty in some cities."
+        },
+        {
+          "q": "Is it better to learn from your own mistakes or from other people's advice?"
+        },
+        {
+          "q": "Should schools teach practical skills like cooking and managing money?",
+          "partner": "I'd be in favour, as long as it doesn't replace the more academic subjects."
+        },
+        {
+          "q": "How has technology changed the way young people become independent?"
+        },
+        {
+          "q": "Do you think it's harder to become independent now than it was for your parents' generation?"
+        }
       ]
     },
     {
       "id": "tb",
       "title": "Relaxing, weather and communication",
-      "partner": { "id": "P", "name": "Marcus", "gender": "male", "accent": "American" },
+      "partner": {
+        "id": "P",
+        "name": "Marcus",
+        "gender": "male",
+        "accent": "American"
+      },
       "intro": "Good afternoon. My name's Theo, and I'll be your examiner today. Your partner is Marcus. Let's begin.",
       "p2": {
         "studentIntro": "Here are your pictures. They show people relaxing in different ways. I'd like you to compare two of the pictures, and say why the people might have chosen to relax in this way, and how relaxed they might feel afterwards.",
-        "studentQuestions": ["Why might the people have chosen to relax in this way?", "How relaxed might they feel afterwards?"],
+        "studentQuestions": [
+          "Why might the people have chosen to relax in this way?",
+          "How relaxed might they feel afterwards?"
+        ],
         "studentPhotos": [
-          { "query": "woman reading book in park", "alt": "A woman reading a book on the grass in a sunny park." },
-          { "query": "friends playing video games sofa", "alt": "Three friends on a sofa playing a video game, laughing." },
-          { "query": "yoga class group", "alt": "A group of people doing yoga together in a bright studio." }
+          {
+            "query": "woman reading book in park",
+            "alt": "A woman reading a book on the grass in a sunny park."
+          },
+          {
+            "query": "friends playing video games sofa",
+            "alt": "Three friends on a sofa playing a video game, laughing."
+          },
+          {
+            "query": "yoga class group",
+            "alt": "A group of people doing yoga together in a bright studio."
+          }
         ],
         "partnerQuestion": "Marcus, which of these ways of relaxing would you choose? Why?",
         "partnerAnswer": "Oh, definitely reading in the park. I spend most of my day in front of a screen, so the last thing I want when I'm trying to unwind is another screen. Being outside makes a big difference too, I find.",
         "partnerIntro": "Now, Marcus, here are your pictures. They show people dealing with difficult weather. I'd like you to compare two of the pictures, and say what problems the weather might be causing, and how the people might be feeling.",
-        "partnerQuestions": ["What problems might the weather be causing?", "How might the people be feeling?"],
+        "partnerQuestions": [
+          "What problems might the weather be causing?",
+          "How might the people be feeling?"
+        ],
         "partnerPhotos": [
-          { "query": "people walking heavy rain umbrellas", "alt": "People hurrying along a city street in heavy rain, holding umbrellas." },
-          { "query": "car stuck in snow", "alt": "A car stuck in deep snow on a country road." },
-          { "query": "heatwave city people", "alt": "People in a hot city square, fanning themselves in the sun." }
+          {
+            "query": "people walking heavy rain umbrellas",
+            "alt": "People hurrying along a city street in heavy rain, holding umbrellas."
+          },
+          {
+            "query": "car stuck in snow",
+            "alt": "A car stuck in deep snow on a country road."
+          },
+          {
+            "query": "heatwave city people",
+            "alt": "People in a hot city square, fanning themselves in the sun."
+          }
         ],
         "partnerLongTurn": "Right. In this picture there are people struggling through heavy rain with umbrellas, and in this one a car seems to be stuck in deep snow. In the rain, I imagine the main problem is just getting soaked and maybe being late for work, which is annoying but not exactly dangerous. The snow looks much more serious. If that driver is stuck on a quiet road, they could be there for hours, and it might be getting dark. As for how they're feeling, the people in the rain probably feel fed up more than anything, whereas the driver could be genuinely worried, especially if there's nobody around to help. I guess the snow is the worse situation, partly because it's so unpredictable. You can always buy an umbrella, but you can't do much about a road that's completely blocked.",
         "studentQuestion": "Which kind of weather do you find the most difficult to cope with? Why?"
@@ -145,7 +378,13 @@
       "p3": {
         "intro": "Now, I'd like you to talk about something together. Here are some things that have changed the way people communicate, and a question for you to discuss. First, you have some time to look at the task.",
         "question": "What effect might these things have on the way people communicate?",
-        "prompts": ["social media", "video calls", "working from home", "translation apps", "texting instead of calling"],
+        "prompts": [
+          "social media",
+          "video calls",
+          "working from home",
+          "translation apps",
+          "texting instead of calling"
+        ],
         "partnerLines": [
           "Do you want to start with social media? I think it's made us communicate more, but maybe not better. What's your view?",
           "Right. Video calls are an interesting one, because they're so much better than a phone call, but they still feel a bit artificial, don't they?",
@@ -160,11 +399,217 @@
         ]
       },
       "p4": [
-        { "q": "Do you think people are losing the ability to have face-to-face conversations?", "partner": "I wouldn't say losing it, but some people are definitely getting more nervous about it, especially on the phone." },
-        { "q": "Should there be limits on how much time children spend on screens?" },
-        { "q": "Is it ever acceptable to check your phone during a conversation?", "partner": "Only if you explain why, I think. Otherwise it just comes across as rude." },
-        { "q": "How might communication at work change in the future?" },
-        { "q": "Some people say we share too much of our private lives online. What's your opinion?" }
+        {
+          "q": "Do you think people are losing the ability to have face-to-face conversations?",
+          "partner": "I wouldn't say losing it, but some people are definitely getting more nervous about it, especially on the phone."
+        },
+        {
+          "q": "Should there be limits on how much time children spend on screens?"
+        },
+        {
+          "q": "Is it ever acceptable to check your phone during a conversation?",
+          "partner": "Only if you explain why, I think. Otherwise it just comes across as rude."
+        },
+        {
+          "q": "How might communication at work change in the future?"
+        },
+        {
+          "q": "Some people say we share too much of our private lives online. What's your opinion?"
+        }
+      ]
+    },
+    {
+      "id": "tc",
+      "title": "Technology, cities and the environment",
+      "partner": {
+        "id": "P",
+        "name": "Chloe",
+        "gender": "female",
+        "accent": "Australian"
+      },
+      "intro": "Good afternoon. My name's Theo, and I'll be your examiner today. Your partner is Chloe. Let's begin.",
+      "p2": {
+        "studentIntro": "Here are your pictures. They show people using technology in different situations. I'd like you to compare two of the pictures, and say why the people might be using technology in these situations, and how it might make their lives easier or more difficult.",
+        "studentQuestions": [
+          "Why might the people be using technology in these situations?",
+          "How might it make their lives easier or more difficult?"
+        ],
+        "studentPhotos": [
+          {
+            "query": "elderly woman video call tablet",
+            "alt": "An older woman smiling at her grandchildren on a tablet video call."
+          },
+          {
+            "query": "farmer using drone field",
+            "alt": "A farmer controlling a drone that flies over a large field of crops."
+          },
+          {
+            "query": "students virtual reality headset classroom",
+            "alt": "Secondary school students wearing virtual reality headsets in a classroom."
+          }
+        ],
+        "partnerQuestion": "Chloe, which of these people do you think benefits most from the technology? Why?",
+        "partnerAnswer": "Probably the older woman, I'd say. If her family lives far away, being able to see their faces makes a huge difference, especially if she lives on her own. The drone's clever, but the farmer could manage without it. For her, it's about not feeling lonely, which matters a lot more.",
+        "partnerIntro": "Now, Chloe, here are your pictures. They show people spending time in different places in a city. I'd like you to compare two of the pictures, and say why the people might have chosen to spend time there, and how important these places are for city life.",
+        "partnerQuestions": [
+          "Why might the people have chosen to spend time there?",
+          "How important are these places for city life?"
+        ],
+        "partnerPhotos": [
+          {
+            "query": "people picnic city park",
+            "alt": "Friends having a picnic on the grass in a busy city park."
+          },
+          {
+            "query": "rooftop garden city",
+            "alt": "People looking after plants in a garden on the roof of an apartment block."
+          },
+          {
+            "query": "street food market crowd",
+            "alt": "A crowded street market with stalls selling food from different countries."
+          }
+        ],
+        "partnerLongTurn": "OK, so the first picture shows a group of friends having a picnic in a park, and in the third one there's a really busy street market. I suppose the people in the park have gone there to get away from the noise for a bit, you know, to sit on some grass and relax in the sunshine. The market's quite different, it's lively and crowded, so I'd imagine people go there for the atmosphere as much as the food. As for how important these places are, I'd say they're essential, actually. Cities can be quite lonely places, and these are spots where people meet without having to spend much money. The park probably matters more for people's health, but the market is what gives a neighbourhood its personality.",
+        "studentQuestion": "Which of these places would you most like to spend an afternoon in? Why?"
+      },
+      "p3": {
+        "intro": "Now, I'd like you to talk about something together. Here are some things that could help cities become more environmentally friendly, and a question for you to discuss. First, you have some time to look at the task.",
+        "question": "How effective might these ideas be in making cities greener?",
+        "prompts": [
+          "banning cars from the city centre",
+          "creating more green spaces",
+          "improving public transport",
+          "recycling schemes",
+          "encouraging people to work from home"
+        ],
+        "partnerLines": [
+          "Shall I start? Banning cars from the centre seems the most obvious one, but I wonder whether it just moves the traffic somewhere else. What do you reckon?",
+          "Fair point. And public transport is linked to that, isn't it? People won't give up their cars unless the buses and trains are actually reliable.",
+          "Mm, I see what you mean. Green spaces are a bit different, though. They don't reduce pollution that much, but they make a city far more pleasant to live in.",
+          "Yeah. What about recycling? I'm a bit sceptical, to be honest, because a lot of it ends up in landfill anyway.",
+          "True. And working from home... it cuts commuting, but people might use more heating at home, so I'm not sure it's as green as it sounds."
+        ],
+        "decision": "Thank you. Now you have about a minute to decide which of these ideas would make the biggest difference.",
+        "decisionLines": [
+          "I'd go for public transport, because without it, none of the others really work. Would you agree?",
+          "Right, so shall we say public transport, then?"
+        ]
+      },
+      "p4": [
+        {
+          "q": "Do you think individuals or governments should be more responsible for protecting the environment?",
+          "partner": "I'd say governments, mainly, because they can change the rules for everyone. What one person does doesn't make much difference on its own."
+        },
+        {
+          "q": "Some people say that cities will become too crowded in the future. What do you think?"
+        },
+        {
+          "q": "Is technology more likely to solve environmental problems or to create new ones?",
+          "partner": "Probably both, to be honest. Every solution seems to come with a new problem attached."
+        },
+        {
+          "q": "Would you rather live in a big city or in the countryside? Why?"
+        },
+        {
+          "q": "How could people be encouraged to change their habits to help the environment?"
+        }
+      ]
+    },
+    {
+      "id": "td",
+      "title": "Work, achievement and choosing a job",
+      "partner": {
+        "id": "P",
+        "name": "Callum",
+        "gender": "male",
+        "accent": "Scottish"
+      },
+      "intro": "Good afternoon. My name's Theo, and I'll be your examiner today. Your partner is Callum. Let's begin.",
+      "p2": {
+        "studentIntro": "Here are your pictures. They show people working in unusual places. I'd like you to compare two of the pictures, and say what the people might enjoy about working in these places, and what challenges they might face.",
+        "studentQuestions": [
+          "What might the people enjoy about working in these places?",
+          "What challenges might they face?"
+        ],
+        "studentPhotos": [
+          {
+            "query": "lighthouse keeper",
+            "alt": "A man checking the lamp at the top of a lighthouse on a rocky coast."
+          },
+          {
+            "query": "chef busy restaurant kitchen",
+            "alt": "Chefs working at high speed in a busy restaurant kitchen."
+          },
+          {
+            "query": "remote worker laptop beach",
+            "alt": "A young woman working on a laptop at a café next to a beach."
+          }
+        ],
+        "partnerQuestion": "Callum, which of these jobs would you find the most difficult? Why?",
+        "partnerAnswer": "The kitchen, without a doubt. I'm not great under pressure, and from what I've heard, chefs have to deal with dozens of orders at the same time, in all that heat. The lighthouse might be lonely, but at least you'd have time to think.",
+        "partnerIntro": "Now, Callum, here are your pictures. They show people celebrating different achievements. I'd like you to compare two of the pictures, and say how the people might be feeling, and why these achievements might be important to them.",
+        "partnerQuestions": [
+          "How might the people be feeling?",
+          "Why might these achievements be important to them?"
+        ],
+        "partnerPhotos": [
+          {
+            "query": "graduation ceremony students hats",
+            "alt": "University students throwing their hats into the air at their graduation."
+          },
+          {
+            "query": "amateur football team trophy celebration",
+            "alt": "An amateur football team celebrating with a small trophy."
+          },
+          {
+            "query": "musician audience applause concert",
+            "alt": "A young musician bowing as the audience applauds at a concert."
+          }
+        ],
+        "partnerLongTurn": "Right, so in this one there are some students at their graduation, and in this one an amateur football team has just won a trophy. The students look absolutely delighted, and probably quite relieved as well, because a degree takes years of hard work. The footballers seem more excited than relieved, I'd say. It's more of an instant thing, isn't it? As for why it matters, for the students it's probably about their future, getting a good job and making their families proud. For the football team, I don't think it's really about the trophy, which is quite small. It's more about doing something together with friends and having a story to tell for years afterwards.",
+        "studentQuestion": "Which of these achievements do you think people remember for longest? Why?"
+      },
+      "p3": {
+        "intro": "Now, I'd like you to talk about something together. Here are some things people consider when choosing a job, and a question for you to discuss. First, you have some time to look at the task.",
+        "question": "How important are these things when people choose a job?",
+        "prompts": [
+          "the salary",
+          "the working hours",
+          "opportunities for promotion",
+          "job security",
+          "doing something meaningful"
+        ],
+        "partnerLines": [
+          "Shall we start with salary? It's the obvious one, but I'm not sure it's always the most important. What do you think?",
+          "I agree up to a point. Working hours matter a lot too, though. A great salary isn't much use if you never have time to enjoy it.",
+          "That's a good point. Promotion is interesting... I think younger people care about that more than they admit.",
+          "Maybe. And job security seems to be less common now. Hardly anyone stays in the same company for twenty years any more.",
+          "Exactly. Doing something meaningful, though... I think that's becoming more and more important for our generation."
+        ],
+        "decision": "Thank you. Now you have about a minute to decide which of these things will matter most to young people in the future.",
+        "decisionLines": [
+          "I'd probably say working hours, because people seem to value their free time more and more. Would you go along with that?",
+          "OK, let's go for that, then."
+        ]
+      },
+      "p4": [
+        {
+          "q": "Some people say it is better to have a boring job that pays well than an interesting job that pays badly. What do you think?",
+          "partner": "I'd go for the interesting one, as long as I could pay my rent. You spend so much of your life at work."
+        },
+        {
+          "q": "Do you think people will need to change careers more often in the future?"
+        },
+        {
+          "q": "Is it more important to be ambitious or to be content with what you have?",
+          "partner": "A bit of both, I think. Ambition's fine, but if you're never satisfied, you'll never be happy."
+        },
+        {
+          "q": "How should success be measured, in your opinion?"
+        },
+        {
+          "q": "Should young people be encouraged to start their own businesses rather than look for a job?"
+        }
       ]
     }
   ]
