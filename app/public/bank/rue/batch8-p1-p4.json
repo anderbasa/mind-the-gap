@@ -1,0 +1,221 @@
+[
+  {
+    "id": "seed-p1-6",
+    "part": "p1",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Is cash on its way out?",
+    "topic": "digital payments and the future of cash",
+    "text": "In many European cities, paying for a coffee with coins has become the {1} rather than the rule. Contactless cards and mobile phones are so convenient that, for a growing number of young people, cash has all but disappeared from daily life. Some economists predict that notes and coins will be a thing of the past within a decade, while others believe such forecasts are wide of the {2}, pointing to the attachment many people still feel to physical money.\n\nThe case for going cashless is easy to make. Digital payments are fast, and the record they leave makes it far easier to keep {3} of what you spend. Shops, too, save time and money when they no longer have to count and transport cash at the end of every day, {4} is why many now display 'card only' signs.\n\nYet critics warn that a cashless society would hit certain groups particularly {5}. Older people who are less comfortable with technology, and those without a bank account, could find themselves unable to take {6} in ordinary economic life. There are also concerns about privacy: every digital transaction can be tracked, whereas cash leaves no {7}.\n\nFor now, most governments seem to be taking a cautious approach. Rather than abolishing cash, several have passed laws requiring shops to accept it, at least for essential goods. The coins in your pocket, it seems, may have a little more life in them {8} all.",
+    "items": [
+      { "n": 1, "options": { "A": "exemption", "B": "omission", "C": "exception", "D": "deviation" }, "answer": "C", "focus": "fixed phrase", "hint": "Complete the fixed expression '___ rather than the rule'.", "explanation": "'The exception rather than the rule' means something unusual. An 'exemption' is official permission not to do something, an 'omission' is something left out and a 'deviation' is a change from the normal route or plan." },
+      { "n": 2, "options": { "A": "mark", "B": "target", "C": "aim", "D": "point" }, "answer": "A", "focus": "idiom", "hint": "An idiom meaning 'inaccurate' that comes from shooting at something.", "explanation": "'Wide of the mark' means not accurate. Although 'target' and 'aim' are related in meaning, the idiom only works with 'mark'." },
+      { "n": 3, "options": { "A": "trace", "B": "track", "C": "note", "D": "record" }, "answer": "B", "focus": "collocation", "hint": "Which noun completes 'keep ___ of' meaning 'monitor'?", "explanation": "'Keep track of' means to stay informed about something, here your spending. 'Keep a record of' would need the article 'a', and 'trace' and 'note' are not used in this expression." },
+      { "n": 4, "options": { "A": "this", "B": "that", "C": "what", "D": "which" }, "answer": "D", "focus": "linking word", "hint": "After a comma, you need a word that refers back to the whole previous idea.", "explanation": "'Which is why' introduces a consequence of the whole previous clause. 'That' cannot follow a comma in a non-defining clause, 'what' has no antecedent, and 'this' would need a new sentence." },
+      { "n": 5, "options": { "A": "hard", "B": "hardly", "C": "heavily", "D": "strongly" }, "answer": "A", "focus": "collocation", "hint": "Which adverb collocates with 'hit' to mean 'affect very badly'?", "explanation": "'Hit someone hard' means to affect them very badly. 'Hardly' means 'almost not', and 'heavily' and 'strongly' do not collocate with 'hit' in this sense." },
+      { "n": 6, "options": { "A": "place", "B": "role", "C": "part", "D": "share" }, "answer": "C", "focus": "fixed phrase", "hint": "A three-word expression meaning 'participate'.", "explanation": "'Take part in' means participate. 'Take place' means happen, and 'role' and 'share' would need an article ('take a role')." },
+      { "n": 7, "options": { "A": "print", "B": "trace", "C": "path", "D": "shadow" }, "answer": "B", "focus": "collocation", "hint": "Which noun completes the expression meaning 'leave no sign that it existed'?", "explanation": "'Leave no trace' means to leave no sign or evidence. The other nouns do not form this expression." },
+      { "n": 8, "options": { "A": "at", "B": "for", "C": "above", "D": "after" }, "answer": "D", "focus": "fixed phrase", "hint": "The expression means 'despite what people expected'.", "explanation": "'After all' means in spite of what was expected. 'Above all' means 'most importantly', which makes no sense here, and 'at all' and 'for all' do not fit the sentence." }
+    ]
+  },
+  {
+    "id": "seed-p1-7",
+    "part": "p1",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "How habits are made",
+    "topic": "forming and keeping new habits",
+    "text": "Most of us have at some point made a resolution to exercise more or eat better, only to {1} up a few weeks later. According to psychologists, the problem is rarely a lack of willpower. Instead, it lies in the way we go {2} trying to change our behaviour.\n\nHabits, researchers explain, are formed when an action is repeated so often in the same situation that it becomes automatic. Once this happens, the behaviour no longer {3} on conscious effort: we simply do it, in the same way that we brush our teeth without thinking. The difficulty is that this process takes far longer than most people assume. One well-known study found that it took participants an average of 66 days for a new routine to become second {4}.\n\nThe good news is that there are ways to make the process easier. Linking a new habit to an existing one – doing ten press-ups straight after your morning coffee, for example – effectively {5} the decision out of your hands. Making the habit as small as possible at first also helps, since it reduces the temptation to {6} it off until tomorrow.\n\nPerhaps most importantly, experts advise people not to be too hard on themselves when they slip up. Missing a single day, it turns out, makes very little {7} to whether a habit eventually sticks. What matters is getting back on {8} as soon as possible.",
+    "items": [
+      { "n": 1, "options": { "A": "set", "B": "give", "C": "put", "D": "hold" }, "answer": "B", "focus": "phrasal verb", "hint": "Which phrasal verb means 'stop trying'?", "explanation": "'Give up' means to stop doing something because it is too difficult. 'Set up', 'put up' and 'hold up' have completely different meanings." },
+      { "n": 2, "options": { "A": "into", "B": "over", "C": "about", "D": "through" }, "answer": "C", "focus": "phrasal verb", "hint": "Which phrasal verb means 'approach or deal with a task'?", "explanation": "'Go about doing something' means the way you approach a task. 'Go through' means experience something difficult, and 'go into' and 'go over' do not fit with '-ing'." },
+      { "n": 3, "options": { "A": "consists", "B": "insists", "C": "bases", "D": "depends" }, "answer": "D", "focus": "dependent preposition", "hint": "Which verb is followed by 'on' and means 'needs'?", "explanation": "'Depend on' means to need something. 'Consist' takes 'of' or 'in', 'insist on' means to demand, and 'base' needs an object ('base something on')." },
+      { "n": 4, "options": { "A": "nature", "B": "instinct", "C": "habit", "D": "character" }, "answer": "A", "focus": "fixed phrase", "hint": "A fixed expression for something you do automatically.", "explanation": "'Second nature' describes something you do so often that it feels automatic. The other nouns do not form this expression." },
+      { "n": 5, "options": { "A": "puts", "B": "takes", "C": "keeps", "D": "leaves" }, "answer": "B", "focus": "fixed phrase", "hint": "Complete the expression '___ something out of your hands'.", "explanation": "'Take something out of someone's hands' means to remove their control over it, so you no longer have to decide. The other verbs do not form this expression." },
+      { "n": 6, "options": { "A": "take", "B": "call", "C": "put", "D": "set" }, "answer": "C", "focus": "phrasal verb", "hint": "Which phrasal verb means 'postpone'?", "explanation": "'Put off' means to delay doing something. 'Call off' means to cancel, which does not fit with 'until tomorrow', and 'take off' and 'set off' mean different things." },
+      { "n": 7, "options": { "A": "change", "B": "difference", "C": "effect", "D": "matter" }, "answer": "B", "focus": "collocation", "hint": "Which noun collocates with 'make' and is followed by 'to'?", "explanation": "'Make (little) difference to' means to have (little) effect on. 'Effect' collocates with 'have', not 'make', and 'change' and 'matter' do not form this expression." },
+      { "n": 8, "options": { "A": "line", "B": "road", "C": "path", "D": "track" }, "answer": "D", "focus": "idiom", "hint": "An expression meaning 'return to the right plan after a problem'.", "explanation": "'Get back on track' means to return to doing what you planned. 'Path' and 'road' would need 'the right', and 'line' does not form this idiom." }
+    ]
+  },
+  {
+    "id": "seed-p1-8",
+    "part": "p1",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Too many visitors?",
+    "topic": "overtourism in popular cities",
+    "text": "For decades, cities competed fiercely to attract as many tourists as possible. Today, a growing number of popular destinations are grappling {1} the opposite problem. In places such as Venice, Amsterdam and Barcelona, residents complain that their neighbourhoods have been taken {2} by visitors, and that rising rents are forcing local people out.\n\nThe causes are not hard to identify. Cheap flights, short-term rental platforms and social media, which encourages everyone to photograph the same {3} of spots, have all contributed to a dramatic increase in visitor numbers. Tourism undoubtedly brings economic benefits, but they do not always {4} down to ordinary residents. Hotel chains and property owners may profit handsomely, while those who live in the busiest areas are left to deal with the noise, the crowds and the litter.\n\nLocal authorities have responded in a variety of ways. Some have introduced a tourist tax, while others have cracked {5} on short-term holiday rentals. Amsterdam has even launched an online campaign telling certain kinds of visitors – those who come mainly to party – to stay {6}.\n\nWhether such measures will work remains to be {7}. Critics argue that they simply shift the problem elsewhere, and that the real solution lies in persuading travellers to explore lesser-known places and to travel outside the peak season. For that to happen, however, the travel industry will have to rethink the way it does {8}.",
+    "items": [
+      { "n": 1, "options": { "A": "against", "B": "over", "C": "with", "D": "about" }, "answer": "C", "focus": "dependent preposition", "hint": "Which preposition follows 'grapple' when it means 'try to deal with a problem'?", "explanation": "'Grapple with a problem' means to try hard to deal with it. The verb is not used with the other prepositions." },
+      { "n": 2, "options": { "A": "in", "B": "up", "C": "on", "D": "over" }, "answer": "D", "focus": "phrasal verb", "hint": "Which phrasal verb means 'occupied and controlled'?", "explanation": "'Be taken over by' means to be controlled or filled by someone else. 'Taken in' means deceived, 'taken up' means occupied (time or space) and 'taken on' means employed." },
+      { "n": 3, "options": { "A": "handful", "B": "fistful", "C": "mouthful", "D": "armful" }, "answer": "A", "focus": "collocation", "hint": "Which word means 'a small number of' and can be used with places?", "explanation": "'A handful of' means a small number of. 'A fistful', 'a mouthful' and 'an armful' refer to physical amounts you can hold or eat." },
+      { "n": 4, "options": { "A": "flow", "B": "trickle", "C": "pour", "D": "drip" }, "answer": "B", "focus": "phrasal verb", "hint": "An expression from economics: benefits that reach poorer people slowly from the top.", "explanation": "'Trickle down' describes benefits gradually reaching people lower down in society. The other verbs are not used in this expression." },
+      { "n": 5, "options": { "A": "up", "B": "down", "C": "out", "D": "off" }, "answer": "B", "focus": "phrasal verb", "hint": "Which phrasal verb means 'start dealing with something more strictly'?", "explanation": "'Crack down on' means to take strict action against something. 'Crack up' means to start laughing or to break down mentally." },
+      { "n": 6, "options": { "A": "away", "B": "off", "C": "back", "D": "aside" }, "answer": "A", "focus": "phrasal verb", "hint": "The campaign tells these visitors not to come.", "explanation": "'Stay away' means not to come to a place. 'Stay off' needs an object ('stay off the grass'), and 'stay back' means keep a distance from something nearby." },
+      { "n": 7, "options": { "A": "watched", "B": "noticed", "C": "seen", "D": "viewed" }, "answer": "C", "focus": "fixed phrase", "hint": "A fixed expression meaning 'nobody knows yet'.", "explanation": "'It remains to be seen' means that the result is not yet known. Although the other verbs are related to 'see', they do not form the expression." },
+      { "n": 8, "options": { "A": "trade", "B": "commerce", "C": "work", "D": "business" }, "answer": "D", "focus": "collocation", "hint": "Which noun collocates with 'do'?", "explanation": "'Do business' means to operate commercially. 'Trade' and 'commerce' collocate with other verbs ('carry out trade'), and 'the way it does work' does not express the same idea." }
+    ]
+  },
+  {
+    "id": "seed-p2-6",
+    "part": "p2",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "The invention of the weekend",
+    "topic": "the history of the two-day weekend",
+    "text": "It is easy to assume that the weekend has always existed, but the idea of two consecutive days {1} work is surprisingly recent. In nineteenth-century Britain, most factory workers had only Sunday off, and many {2} them were so exhausted by the end of the week that they simply did not turn up on Monday morning. This habit became {3} common that it was given its own nickname: 'Saint Monday'.\n\nEmployers, unsurprisingly, were not pleased. Rather {4} fight a losing battle, some of them began offering workers Saturday afternoon off in exchange {5} a promise to arrive on time on Monday. The arrangement suited both sides, and it gradually spread from one industry to another.\n\nThe full two-day weekend, however, did not become widespread until the twentieth century. One of {6} most influential supporters was the American industrialist Henry Ford, who introduced a five-day week in his factories in 1926. His motives were not entirely generous: he believed that workers with more free time would spend more money – not {7} on cars.\n\nToday, some companies are experimenting with a four-day week, arguing that rested employees are more productive. {8} history is anything to go by, the idea may one day seem just as normal as the weekend does now.",
+    "items": [
+      { "n": 1, "answers": ["off", "without"], "focus": "preposition", "hint": "Days when you do not have to go to work are days ___ work.", "explanation": "'Days off work' are days when you do not work. 'Without' is also correct here." },
+      { "n": 2, "answers": ["of"], "focus": "preposition", "hint": "'Many ___ them' refers to part of a group.", "explanation": "'Many of them' means a large number from the group of workers already mentioned." },
+      { "n": 3, "answers": ["so"], "focus": "other", "hint": "Look for 'that' later in the sentence: '___ + adjective + that'.", "explanation": "'So + adjective + that' expresses a result. 'Such' would need a noun ('such a common habit')." },
+      { "n": 4, "answers": ["than"], "focus": "comparison", "hint": "Complete the expression meaning 'instead of'.", "explanation": "'Rather than' means 'instead of' and is followed here by a bare infinitive ('fight')." },
+      { "n": 5, "answers": ["for"], "focus": "fixed phrase", "hint": "Which preposition follows 'in exchange'?", "explanation": "'In exchange for something' means as a trade for it." },
+      { "n": 6, "answers": ["its", "the"], "focus": "pronoun", "hint": "The supporters of the two-day weekend: ___ most influential supporters.", "explanation": "'Its' refers back to 'the full two-day weekend'. 'The' is also possible: 'one of the most influential supporters'." },
+      { "n": 7, "answers": ["least"], "focus": "fixed phrase", "hint": "Complete the expression meaning 'especially'.", "explanation": "'Not least' means 'especially' or 'in particular': Ford expected workers to spend money, especially on cars." },
+      { "n": 8, "answers": ["if"], "focus": "conjunction", "hint": "Complete the expression '___ something is anything to go by'.", "explanation": "'If history is anything to go by' means 'judging by what happened in the past'." }
+    ]
+  },
+  {
+    "id": "seed-p2-7",
+    "part": "p2",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Walk your way to better ideas",
+    "topic": "walking and creative thinking",
+    "text": "Many great thinkers, from Charles Darwin to Steve Jobs, were famous for their long walks, and it turns out there may have been more to this habit {1} a simple love of fresh air. In a series of experiments at Stanford University, participants were asked to come up with creative uses for everyday objects. Those who did the task while walking produced, {2} average, around sixty per cent more ideas than those who remained seated.\n\nInterestingly, it did not seem to matter {3} people walked outdoors or on a treadmill facing a blank wall. The act of walking itself appeared to be {4} made the difference. Researchers believe that gentle exercise increases the flow of blood to the brain, while the rhythm of walking allows the mind to wander freely.\n\nThe effect, however, was limited to a particular kind of thinking. When participants were given problems {5} had a single correct answer, walking offered no advantage at {6}. In other words, a stroll is ideal for generating ideas, but not necessarily for evaluating them.\n\nThe practical lesson is a simple one. {7} time you are stuck on an essay or a project, it might be worth leaving your desk for twenty minutes. Just make sure you take something to write your ideas down {8}, as they have a habit of disappearing as soon as you sit down again.",
+    "items": [
+      { "n": 1, "answers": ["than"], "focus": "comparison", "hint": "'There is more to something ___ …' is a comparison.", "explanation": "'There is more to X than Y' means X is more complex than it seems." },
+      { "n": 2, "answers": ["on"], "focus": "fixed phrase", "hint": "Which preposition goes before 'average'?", "explanation": "'On average' means 'typically, when calculated as an average'." },
+      { "n": 3, "answers": ["whether", "if"], "focus": "conjunction", "hint": "Notice the 'or' later in the sentence: two alternatives.", "explanation": "'It did not matter whether … or …' introduces two alternatives. 'If' is also acceptable in informal English." },
+      { "n": 4, "answers": ["what"], "focus": "relative", "hint": "You need a word meaning 'the thing that'.", "explanation": "'What made the difference' means 'the thing that made the difference'." },
+      { "n": 5, "answers": ["that", "which"], "focus": "relative", "hint": "A relative pronoun for 'problems'.", "explanation": "'Problems that/which had a single correct answer' is a defining relative clause." },
+      { "n": 6, "answers": ["all"], "focus": "fixed phrase", "hint": "'No advantage at ___' emphasises the negative.", "explanation": "'At all' emphasises a negative: no advantage whatsoever." },
+      { "n": 7, "answers": ["next"], "focus": "other", "hint": "'___ time you are stuck' means 'the following occasion when'.", "explanation": "'Next time + present tense' refers to the next occasion something happens." },
+      { "n": 8, "answers": ["with", "on"], "focus": "preposition", "hint": "Think of a pen or a notebook: something to write your ideas down ___.", "explanation": "'Something to write down with' (a pen) or 'on' (a notebook): the preposition goes at the end of the infinitive clause." }
+    ]
+  },
+  {
+    "id": "seed-p2-8",
+    "part": "p2",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Why music gives us chills",
+    "topic": "the science of musical chills",
+    "text": "Have you ever felt a shiver run down your spine while listening to a piece of music? If {1}, you are far from alone. Scientists estimate that roughly half of all people experience these 'musical chills', though {2} intensity varies enormously from one person to the next.\n\nThe sensation tends to occur at moments of surprise: a sudden change in volume, an unexpected chord, or a voice {3} enters after a long silence. According to one theory, our brains are constantly trying to predict {4} will happen next in a song. When a prediction turns out to be wrong in a pleasant way, the brain rewards us with a release of dopamine, the same chemical that is involved {5} the enjoyment of food and other pleasures.\n\nNot everyone is equally likely to get chills, {6}. Studies suggest that people who score highly on a personality trait known as 'openness to experience' are more prone to them. {7} is more, brain scans have shown that such people tend to have stronger connections between the areas responsible for hearing and those that process emotion.\n\nSo the next time a song makes the hair on your arms stand up, there is no need to feel embarrassed. It may simply mean that your brain is particularly good {8} turning sound into feeling.",
+    "items": [
+      { "n": 1, "answers": ["so"], "focus": "other", "hint": "A short way of saying 'if you have'.", "explanation": "'If so' replaces a whole clause: 'if you have felt a shiver'." },
+      { "n": 2, "answers": ["their", "the", "its"], "focus": "pronoun", "hint": "The intensity of the chills.", "explanation": "'Their intensity' refers to the chills. 'The intensity' and 'its intensity' (the experience) are also possible." },
+      { "n": 3, "answers": ["that", "which"], "focus": "relative", "hint": "A relative pronoun for 'a voice'.", "explanation": "'A voice that/which enters' is a defining relative clause." },
+      { "n": 4, "answers": ["what"], "focus": "other", "hint": "The thing that will happen next.", "explanation": "'Predict what will happen' uses 'what' to mean 'the thing that'." },
+      { "n": 5, "answers": ["in"], "focus": "preposition", "hint": "Which preposition follows 'involved'?", "explanation": "'Be involved in something' means to play a part in it." },
+      { "n": 6, "answers": ["however", "though"], "focus": "conjunction", "hint": "A linking word at the end of a sentence that shows contrast.", "explanation": "'However' or 'though' at the end of the sentence contrasts with the previous paragraph: many people get chills, but not equally." },
+      { "n": 7, "answers": ["what"], "focus": "fixed phrase", "hint": "Complete the expression '___ is more', meaning 'in addition'.", "explanation": "'What is more' adds a further, stronger point." },
+      { "n": 8, "answers": ["at"], "focus": "preposition", "hint": "Which preposition follows 'good' when talking about ability?", "explanation": "'Good at + -ing' describes an ability." }
+    ]
+  },
+  {
+    "id": "seed-p3-6",
+    "part": "p3",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Funding a dream",
+    "topic": "crowdfunding for young entrepreneurs",
+    "text": "For young entrepreneurs, finding the money to turn an idea into a business has always been one of the greatest {1}. Banks are often {2} to lend to people with no track record, and few students have wealthy relatives to fall back on. Crowdfunding platforms promise to change all that by allowing anyone to raise money directly from the public.\n\nThe principle is simple. A creator describes the project online, sets a target and offers rewards to {3}, such as early access to the product. If the target is reached, the money is released; if not, nobody pays a cent. For many projects, a successful campaign also serves as proof that the product is genuinely {4}.\n\nHowever, the system is not without its problems. A significant number of projects fail to deliver what they promised, leaving backers feeling {5} or simply out of pocket. Critics also point out that success often depends less on the quality of the idea than on the creator's {6} to produce an eye-catching video.\n\nEven so, crowdfunding has made it {7} easier for people with good ideas but little money to get started. For those prepared to plan carefully and communicate honestly with their backers, it remains a {8} powerful tool.",
+    "items": [
+      { "n": 1, "base": "DIFFICULT", "answers": ["difficulties"], "focus": "noun suffix", "hint": "'One of the greatest…' needs a plural noun.", "explanation": "'One of the greatest + plural noun': difficult → difficulty → difficulties." },
+      { "n": 2, "base": "WILL", "answers": ["unwilling"], "focus": "negative prefix", "hint": "An adjective: banks do not want to lend.", "explanation": "'Unwilling to do something' means not wanting to do it: un- + willing." },
+      { "n": 3, "base": "SUPPORT", "answers": ["supporters"], "focus": "noun suffix", "hint": "People who give money to the project (plural).", "explanation": "The rewards are for people, so we need the plural noun 'supporters'." },
+      { "n": 4, "base": "MARKET", "answers": ["marketable"], "focus": "adjective suffix", "hint": "An adjective meaning 'that people will want to buy'.", "explanation": "'Marketable' means attractive to customers and easy to sell: market + -able." },
+      { "n": 5, "base": "DECEIVE", "answers": ["deceived"], "focus": "adjective suffix", "hint": "How do backers feel when a project does not deliver? Use a participle adjective.", "explanation": "'Feel deceived' means feel tricked or lied to. The past participle works as an adjective after 'feel'." },
+      { "n": 6, "base": "ABLE", "answers": ["ability"], "focus": "internal change", "hint": "A noun after the possessive 'creator's'.", "explanation": "'Ability to do something': able → ability. Note the change of spelling inside the word." },
+      { "n": 7, "base": "CONSIDER", "answers": ["considerably"], "focus": "adverb", "hint": "An adverb that modifies the comparative 'easier'.", "explanation": "'Considerably easier' means much easier: consider → considerable → considerably." },
+      { "n": 8, "base": "REMARK", "answers": ["remarkably"], "focus": "adverb", "hint": "An adverb that modifies the adjective 'powerful'.", "explanation": "'Remarkably powerful' means surprisingly powerful: remark → remarkable → remarkably." }
+    ]
+  },
+  {
+    "id": "seed-p3-7",
+    "part": "p3",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Bees on the rooftops",
+    "topic": "urban beekeeping",
+    "text": "Look up at the rooftops of many European cities and you may be surprised to find beehives. Urban beekeeping has become increasingly {1} over the past decade, with hotels, offices and even banks keeping colonies of their own. Supporters argue that city bees play a vital role in the {2} of plants in parks and gardens, and that the hobby raises public {3} of the threats facing insects.\n\nBees often seem to do better in cities than in the countryside. Urban areas offer a {4} wide variety of flowers throughout the year, whereas large farms tend to grow a single crop and are frequently sprayed with chemicals that can prove {5} to insects.\n\nNot everyone, however, is enthusiastic. Some ecologists warn that the rapid {6} of honeybee hives may be putting wild bees at a disadvantage, since the two compete for the same limited supply of pollen. In some cities, the number of hives has reached a level that experts consider {7}.\n\nThe solution, they suggest, is not to ban urban beekeeping but to plant more flowers and to pay greater attention to the needs of wild species, which are often {8} in all the excitement about honey.",
+    "items": [
+      { "n": 1, "base": "FASHION", "answers": ["fashionable"], "focus": "adjective suffix", "hint": "An adjective after 'become increasingly'.", "explanation": "'Fashionable' means popular at the moment: fashion + -able." },
+      { "n": 2, "base": "SURVIVE", "answers": ["survival"], "focus": "noun suffix", "hint": "A noun after 'the'.", "explanation": "'The survival of plants': survive → survival." },
+      { "n": 3, "base": "AWARE", "answers": ["awareness"], "focus": "noun suffix", "hint": "A noun: 'raise public ___ of something'.", "explanation": "'Raise awareness of' is a common collocation: aware + -ness." },
+      { "n": 4, "base": "SURPRISE", "answers": ["surprisingly"], "focus": "adverb", "hint": "An adverb that modifies the adjective 'wide'.", "explanation": "'A surprisingly wide variety': surprise → surprising → surprisingly." },
+      { "n": 5, "base": "HARM", "answers": ["harmful"], "focus": "adjective suffix", "hint": "An adjective after 'prove': the chemicals damage insects.", "explanation": "'Prove harmful to' means turn out to be damaging: harm + -ful." },
+      { "n": 6, "base": "EXPAND", "answers": ["expansion"], "focus": "noun suffix", "hint": "A noun after 'the rapid'.", "explanation": "'The rapid expansion of': expand → expansion (note the change from d to s)." },
+      { "n": 7, "base": "SUSTAIN", "answers": ["unsustainable"], "focus": "negative prefix", "hint": "An adjective with a negative meaning: the level cannot continue.", "explanation": "'Unsustainable' means it cannot continue at this level without causing damage: un- + sustain + -able." },
+      { "n": 8, "base": "LOOK", "answers": ["overlooked"], "focus": "compound", "hint": "A passive verb: wild species are ignored or forgotten.", "explanation": "'Be overlooked' means to be ignored or not noticed: over + look + -ed." }
+    ]
+  },
+  {
+    "id": "seed-p3-8",
+    "part": "p3",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "From bedroom to stadium",
+    "topic": "the rise of esports",
+    "text": "Not long ago, playing video games was widely regarded as a solitary and rather {1} way to spend an afternoon. Today, the best players compete in front of huge crowds, and the most successful teams attract {2} from global brands. Major tournaments now offer prize money that would once have been {3} for anything other than traditional sports.\n\nThe {4} of esports has been fuelled largely by streaming platforms, which allow millions of fans to watch matches live and to interact with their favourite players. For many young viewers, these players have become genuine celebrities, admired for their quick reflexes and strategic {5}.\n\nBehind the glamour, however, life as a professional gamer can be extremely demanding. Players often train for ten hours a day, and the pressure to perform is {6}. Many retire in their mid-twenties, suffering from injuries to their wrists or from sheer {7}.\n\nWhether esports will ever be accepted as a 'real' sport remains a matter of debate. What is {8}, however, is that they have changed the way an entire generation thinks about competition.",
+    "items": [
+      { "n": 1, "base": "PRODUCE", "answers": ["unproductive"], "focus": "negative prefix", "hint": "A negative adjective: a waste of time.", "explanation": "'Unproductive' means not achieving anything useful: un- + produce + -ive." },
+      { "n": 2, "base": "SPONSOR", "answers": ["sponsorship", "sponsors"], "focus": "noun suffix", "hint": "A noun: financial support from companies.", "explanation": "'Attract sponsorship' means attract financial support: sponsor + -ship. 'Sponsors' (the companies) is also possible." },
+      { "n": 3, "base": "THINK", "answers": ["unthinkable"], "focus": "negative prefix", "hint": "An adjective: it would have been impossible to imagine.", "explanation": "'Unthinkable' means too unlikely to be considered: un- + think + -able." },
+      { "n": 4, "base": "GROW", "answers": ["growth"], "focus": "internal change", "hint": "A noun after 'the'.", "explanation": "'The growth of esports': grow → growth." },
+      { "n": 5, "base": "BRILLIANT", "answers": ["brilliance"], "focus": "noun suffix", "hint": "A noun after the adjective 'strategic'.", "explanation": "'Strategic brilliance' means exceptional skill at planning: brilliant → brilliance." },
+      { "n": 6, "base": "RELENT", "answers": ["relentless"], "focus": "adjective suffix", "hint": "An adjective: the pressure never stops.", "explanation": "'Relentless' means continuous and never becoming less intense: relent + -less." },
+      { "n": 7, "base": "EXHAUST", "answers": ["exhaustion"], "focus": "noun suffix", "hint": "A noun after 'sheer'.", "explanation": "'Sheer exhaustion' means extreme tiredness: exhaust + -ion." },
+      { "n": 8, "base": "DENY", "answers": ["undeniable"], "focus": "negative prefix", "hint": "An adjective: nobody can say it is not true.", "explanation": "'Undeniable' means certainly true: un- + deny + -able (y changes to i)." }
+    ]
+  },
+  {
+    "id": "seed-p4-6",
+    "part": "p4",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Transformations: health and habits",
+    "topic": "health, sport and everyday habits",
+    "items": [
+      { "n": 1, "first": "I'd rather you didn't eat in the car.", "keyword": "PREFER", "before": "I would", "after": "eat in the car.", "answers": ["prefer you not to", "prefer it if you didn't", "prefer it if you did not"], "chunks": [["prefer you", "prefer it if you"], ["not to", "didn't", "did not"]], "focus": "other", "hint": "'Would prefer' can be followed by an object + to-infinitive, or by 'it if' + past simple.", "explanation": "'Would rather + past simple' and 'would prefer someone (not) to do' or 'would prefer it if someone did' express the same polite preference." },
+      { "n": 2, "first": "Doctors say that people should cut down on sugar.", "keyword": "ADVISED", "before": "People", "after": "down on sugar.", "answers": ["are advised to cut"], "chunks": [["are advised"], ["to cut"]], "focus": "passive", "hint": "Make the sentence passive: people + be + advised + to-infinitive.", "explanation": "'Advise someone to do something' becomes 'someone is advised to do something' in the passive." },
+      { "n": 3, "first": "Although he was tired, he finished the race.", "keyword": "DESPITE", "before": "He finished the race", "after": "tired.", "answers": ["despite the fact that he was", "despite the fact he was"], "chunks": [["despite the fact"], ["that he was", "he was"]], "focus": "other", "hint": "'Despite' is followed by a noun or '-ing', or by 'the fact that' + clause.", "explanation": "'Despite' cannot be followed directly by a clause, so we use 'despite the fact (that) + subject + verb'." },
+      { "n": 4, "first": "Smoking is not allowed anywhere in the hospital.", "keyword": "PERMITTED", "before": "Nobody", "after": "anywhere in the hospital.", "answers": ["is permitted to smoke"], "chunks": [["is permitted"], ["to smoke"]], "focus": "passive", "hint": "Nobody + passive of 'permit' + to-infinitive.", "explanation": "'Nobody is permitted to do something' means it is not allowed. 'Nobody' already makes the sentence negative." },
+      { "n": 5, "first": "If you don't warm up properly, you might injure yourself.", "keyword": "UNLESS", "before": "You might injure yourself", "after": "properly.", "answers": ["unless you warm up"], "chunks": [["unless you"], ["warm up"]], "focus": "conditional", "hint": "'Unless' means 'if … not', so the verb after it is positive.", "explanation": "'Unless you warm up' means 'if you don't warm up'. Do not add another negative after 'unless'." },
+      { "n": 6, "first": "I regret not drinking more water during the match.", "keyword": "WISH", "before": "I", "after": "more water during the match.", "answers": ["wish I had drunk", "wish I'd drunk"], "chunks": [["wish i had", "wish i'd"], ["drunk"]], "focus": "wish", "hint": "Regret about the past: wish + past perfect.", "explanation": "To express regret about a past action we use 'wish + past perfect': 'I wish I had drunk'." }
+    ]
+  },
+  {
+    "id": "seed-p4-7",
+    "part": "p4",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Transformations: technology",
+    "topic": "phones, computers and apps",
+    "items": [
+      { "n": 1, "first": "Someone stole my laptop from the library yesterday.", "keyword": "HAD", "before": "I", "after": "from the library yesterday.", "answers": ["had my laptop stolen"], "chunks": [["had my laptop"], ["stolen"]], "focus": "causative", "hint": "Use 'have + object + past participle' for something that happened to you.", "explanation": "'Have something stolen' describes an unpleasant thing someone else did to you or your possessions." },
+      { "n": 2, "first": "I've never used such a confusing app.", "keyword": "EVER", "before": "This is the most", "after": "used.", "answers": ["confusing app I have ever", "confusing app I've ever"], "chunks": [["confusing app"], ["i have ever", "i've ever"]], "focus": "comparison", "hint": "Superlative + present perfect + 'ever'.", "explanation": "'The most + adjective + noun + I have ever + past participle' expresses the same idea as 'I've never … such a …'." },
+      { "n": 3, "first": "As soon as I switched the computer on, it crashed.", "keyword": "SOONER", "before": "No", "after": "the computer on than it crashed.", "answers": ["sooner had I switched"], "chunks": [["sooner had i"], ["switched"]], "focus": "inversion", "hint": "'No sooner' at the start of a sentence needs inversion with the past perfect.", "explanation": "'No sooner had I + past participle … than …' means one thing happened immediately after another." },
+      { "n": 4, "first": "'Don't forget to back up your files,' my tutor told me.", "keyword": "REMINDED", "before": "My tutor", "after": "up my files.", "answers": ["reminded me to back"], "chunks": [["reminded me"], ["to back"]], "focus": "reported speech", "hint": "Remind + object + to-infinitive.", "explanation": "'Don't forget to…' is reported with 'remind someone to do something'." },
+      { "n": 5, "first": "It wasn't necessary for me to buy a new phone after all.", "keyword": "NEED", "before": "I", "after": "a new phone after all.", "answers": ["needn't have bought", "need not have bought", "didn't need to buy", "did not need to buy"], "chunks": [["needn't have", "need not have", "didn't need to", "did not need to"], ["bought", "buy"]], "focus": "modal", "hint": "Something that was not necessary in the past: 'needn't have + past participle' or 'didn't need to'.", "explanation": "'Needn't have bought' means you bought it but it was unnecessary. 'Didn't need to buy' is also accepted." },
+      { "n": 6, "first": "People think the company is developing a new phone.", "keyword": "THOUGHT", "before": "The company", "after": "a new phone.", "answers": ["is thought to be developing"], "chunks": [["is thought"], ["to be developing"]], "focus": "passive", "hint": "Passive reporting structure with a continuous infinitive.", "explanation": "'Is thought to be + -ing' reports something people believe is happening now." }
+    ]
+  },
+  {
+    "id": "seed-p4-8",
+    "part": "p4",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Transformations: news and the media",
+    "topic": "journalism, politics and the media",
+    "items": [
+      { "n": 1, "first": "I'm sure the minister knew about the problem.", "keyword": "MUST", "before": "The minister", "after": "about the problem.", "answers": ["must have known"], "chunks": [["must have"], ["known"]], "focus": "modal", "hint": "Certainty about the past: modal + have + past participle.", "explanation": "'Must have + past participle' expresses certainty about something in the past." },
+      { "n": 2, "first": "The newspaper apologised because it had published false information.", "keyword": "FOR", "before": "The newspaper apologised", "after": "false information.", "answers": ["for having published"], "chunks": [["for having"], ["published"]], "focus": "gerund/infinitive", "hint": "Apologise for + perfect gerund.", "explanation": "'Apologise for having done something' refers to an earlier action. 'For publishing' would be correct but has only two words." },
+      { "n": 3, "first": "It's possible that the article was written by an AI.", "keyword": "MAY", "before": "The article", "after": "by an AI.", "answers": ["may have been written"], "chunks": [["may have been"], ["written"]], "focus": "modal", "hint": "Possibility in the past + passive.", "explanation": "'May have been + past participle' expresses a past possibility in the passive." },
+      { "n": 4, "first": "Very few people read printed newspapers nowadays.", "keyword": "HARDLY", "before": "Nowadays,", "after": "printed newspapers.", "answers": ["hardly anyone reads", "hardly anybody reads"], "chunks": [["hardly anyone", "hardly anybody"], ["reads"]], "focus": "other", "hint": "'Hardly anyone' means 'very few people'. Watch the verb form.", "explanation": "'Hardly anyone' means almost nobody and takes a singular verb: 'reads'." },
+      { "n": 5, "first": "The interview was so interesting that I watched it twice.", "keyword": "SUCH", "before": "It was", "after": "that I watched it twice.", "answers": ["such an interesting interview"], "chunks": [["such an"], ["interesting interview"]], "focus": "other", "hint": "'Such + a/an + adjective + noun + that'.", "explanation": "'So + adjective' becomes 'such + a/an + adjective + noun'. Remember 'an' before a vowel sound." },
+      { "n": 6, "first": "'I didn't leak the documents,' the official said.", "keyword": "DENIED", "before": "The official", "after": "the documents.", "answers": ["denied having leaked", "denied that he had leaked", "denied that she had leaked", "denied that they had leaked"], "chunks": [["denied having", "denied that he had", "denied that she had", "denied that they had"], ["leaked"]], "focus": "reported speech", "hint": "Deny + perfect gerund, or deny that + past perfect.", "explanation": "'Deny having done something' reports a denial about the past. 'Denied leaking' is correct but has only two words." }
+    ]
+  }
+]
