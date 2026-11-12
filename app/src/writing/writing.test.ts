@@ -53,7 +53,7 @@ describe('nota del writing', () => {
     expect(estimateScale(12)).toBe(180);
     expect(estimateScale(17)).toBe(200);
     expect(estimateScale(20)).toBe(210);
-    expect(estimateScale(-3)).toBe(120);
+    expect(estimateScale(-3)).toBe(110);
     expect(estimateScale(10)).toBe(170);
   });
 });

@@ -90,7 +90,7 @@ export function LongTurn() {
         : `long turn of ${level} seconds, no partner`;
       const res = await assessSpeaking(mode, [{ label, prompt: prompt.text, transcript: heard.transcript, metrics: heard.metrics, pronunciation: heard.pronunciation }], false);
       const scores = res.assessment.scores;
-      const { raw75, scale } = speakingScale([scores.grammar, scores.vocabulary, scores.discourse, scores.pronunciation, scores.global]);
+      const { raw75, scale } = speakingScale({ ...scores, interaction: undefined });
       const a: Attempt = { heard, assessment: res.assessment, scale, raw75, model: res.model, durationMs: r.durationMs, recId };
       const all = [...attempts, a];
       setAttempts(all);

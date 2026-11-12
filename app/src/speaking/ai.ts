@@ -129,7 +129,7 @@ export async function assessSpeaking(mode: string, items: AssessItem[], paid: bo
     allowPaid: paid,
   });
   const a = r.data!;
-  const { raw75, scale } = speakingScale(Object.values(a.scores));
+  const { raw75, scale } = speakingScale(a.scores);
   return { assessment: a, raw75, scale, model: r.model.model };
 }
 

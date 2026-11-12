@@ -68,10 +68,14 @@ describe('métricas del habla', () => {
   });
 
   it('nota orientativa con las anclas oficiales', () => {
-    expect(speakingScale([2, 2, 2, 2, 2, 2])).toEqual({ raw75: 30, scale: 160 });
-    expect(speakingScale([3, 3, 3, 3, 3, 3])).toEqual({ raw75: 45, scale: 180 });
-    expect(speakingScale([5, 5, 5, 5, 5, 5]).scale).toBe(210);
-    expect(speakingScale([5, 4, 5, 4, 5]).raw75).toBe(69);
+    const all = (n: number) => ({ grammar: n, vocabulary: n, discourse: n, pronunciation: n, interaction: n, global: n });
+    expect(speakingScale(all(2))).toEqual({ raw75: 30, scale: 160 });
+    expect(speakingScale(all(3))).toEqual({ raw75: 45, scale: 180 });
+    expect(speakingScale(all(5)).scale).toBe(210);
+    // la Global cuenta ×5: subirla 1 punto sube 5 de 75
+    expect(speakingScale({ ...all(3), global: 4 }).raw75).toBe(50);
+    // sin compañero, la interacción = discurso
+    expect(speakingScale({ grammar: 5, vocabulary: 4, discourse: 5, pronunciation: 4, global: 5 }).raw75).toBe(71);
   });
 });
 

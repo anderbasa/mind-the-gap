@@ -122,12 +122,12 @@ export async function recordPart(kind: PartKind, ref: string, data: { marks?: nu
 /** Notas por destreza con lo que haya hecho (aciertos → escala; writing y speaking ya traen su escala). */
 export function skillsOf(run: DiagRun): SkillScores {
   const out: SkillScores = {};
-  const byPct = (b: Block) => {
+  const byPct = (b: 'uoe' | 'reading' | 'listening') => {
     const ps = run.parts.filter((p) => p.block === b && p.done && p.max);
     if (!ps.length) return undefined;
     const marks = ps.reduce((a, p) => a + (p.marks ?? 0), 0);
     const max = ps.reduce((a, p) => a + (p.max ?? 0), 0);
-    return pctToScale((marks / max) * 100);
+    return pctToScale((marks / max) * 100, b);
   };
   const uoe = byPct('uoe');
   const reading = byPct('reading');

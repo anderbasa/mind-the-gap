@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { fill, getPrompt } from '../ai/prompts';
-import { overallOf, pctToScale } from '../scoring/estimate';
+import { overallOf, pctToScale, rawToScale } from '../scoring/estimate';
 import { SCENARIOS } from '../speaking/scenarios';
 import { notesText } from '../tutor/notes';
 import { nextPart, partRoute, skillsOf, type DiagRun } from './run';
@@ -20,6 +20,15 @@ const run: DiagRun = {
 };
 
 describe('notas estimadas', () => {
+  it('tablas oficiales: Use of English y Listening tienen umbrales más bajos que el Reading', () => {
+    expect(rawToScale('uoe', 16)).toBe(180);
+    expect(rawToScale('listening', 18)).toBe(180);
+    expect(rawToScale('writing', 24)).toBe(180);
+    expect(rawToScale('speaking', 45)).toBe(180);
+    expect(rawToScale('reading', 32)).toBe(180);
+    expect(rawToScale('uoe', 8)).toBe(142);
+  });
+
   it('porcentaje → escala con las anclas oficiales del Reading', () => {
     expect(pctToScale(46)).toBe(160);
     expect(pctToScale(64)).toBe(180);
@@ -37,7 +46,8 @@ describe('notas estimadas', () => {
 describe('diagnóstico', () => {
   it('nota por destreza con lo hecho hasta ahora', () => {
     const s = skillsOf(run);
-    expect(s.uoe).toBe(pctToScale((14 / 20) * 100));
+    expect(s.uoe).toBe(pctToScale(70, 'uoe'));
+    expect(s.uoe).toBe(190); // 70 % de 28 = 19,6 → entre 16 (180) y 23 (200)
     expect(s.listening).toBe(210);
     expect(s.writing).toBe(175);
     expect(s.reading).toBeUndefined();

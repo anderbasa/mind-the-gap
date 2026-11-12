@@ -181,7 +181,7 @@ function ScoreCard(props: { v: WritingVersion; f: Feedback; n: number }) {
         ))}
       </div>
       <p class="muted small">
-        La nota en la escala es orientativa: cada tarea es la mitad del paper y la conversión exacta se calibrará con las tablas oficiales en la Fase 7.
+        Nota orientativa con la tabla oficial de Cambridge para el Writing (cada tarea es la mitad del paper).
       </p>
     </section>
   );

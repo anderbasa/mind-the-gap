@@ -71,7 +71,7 @@ export function Diagnostico() {
                   <SkillLine key={k} label={SKILLS[k].label} color={SKILLS[k].color} score={run.result!.skills[k] ?? null} />
                 ))}
                 <p class="muted small">
-                  Notas orientativas en la escala Cambridge (global = media de las cinco). Se calibrarán con las tablas oficiales en la Fase 7. Lo que Theo ha anotado
+                  Notas orientativas con las tablas oficiales de conversión de Cambridge (global = media de las cinco). Cerca de un límite, cuenta con ±3 puntos. Lo que Theo ha anotado
                   está en <a href="#/ajustes/theo">Ajustes → Lo que Theo sabe de ti</a>.
                 </p>
               </>

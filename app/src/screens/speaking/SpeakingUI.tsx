@@ -194,7 +194,7 @@ export function SpeakingFeedbackBody(props: { doc: SpeakingDoc }) {
             <span class="small muted">{c.es}</span>
           </div>
         ))}
-        <p class="muted small">Orientativa: se basa en la transcripción y en notas de pronunciación, y se calibrará con las tablas oficiales en la Fase 7.</p>
+        <p class="muted small">Orientativa: tabla oficial de Cambridge (la Global Achievement cuenta ×5), a partir de la transcripción y de notas de pronunciación.</p>
       </section>
 
       <section class="card card-line stack" style={{ ...g(8), '--card-line': 'var(--signal)' } as JSX.CSSProperties}>

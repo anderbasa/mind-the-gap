@@ -1,6 +1,7 @@
 // Banco del Speaking (examinador con guion fijo, compañero semiguionizado) y métricas del habla.
 import { z } from 'zod';
 import { speakingLines, speakingUnitOf, type SpeakingLine } from '../listening/ttsCore';
+import { rawToScale } from '../scoring/estimate';
 
 const Speaker = z.object({ id: z.string(), name: z.string(), gender: z.enum(['female', 'male']), accent: z.string() });
 const Photo = z.object({ query: z.string(), alt: z.string() });
@@ -119,29 +120,12 @@ export function paceLabel(wpm: number): string {
 /* ── Nota orientativa ───────────────────────────────────────────── */
 
 /**
- * Seis notas de 0 a 5 (gramática, vocabulario, discurso, pronunciación, interacción y global)
- * → sobre 75 → escala Cambridge con las anclas del documento oficial de conversión
- * (Speaking: 66 → 200, 45 → 180, 30 → 160). Orientativa hasta calibrarla en la Fase 7.
+ * Ponderación oficial del Speaking de C1 Advanced: gramática, vocabulario, discurso, pronunciación e
+ * interacción cuentan ×2 (0–10 cada una) y la Global Achievement ×5 (0–25): 75 en total.
+ * Sin compañero (long turn), la interacción se toma igual que el discurso.
  */
-const ANCHORS: [number, number][] = [
-  [0, 100],
-  [30, 160],
-  [45, 180],
-  [66, 200],
-  [75, 210],
-];
-
-export function speakingScale(scores: number[]): { raw75: number; scale: number } {
-  const sum = scores.reduce((a, b) => a + b, 0);
-  const raw75 = Math.round((sum / (scores.length * 5)) * 75);
-  let scale = 210;
-  for (let i = 1; i < ANCHORS.length; i++) {
-    const [x0, y0] = ANCHORS[i - 1];
-    const [x1, y1] = ANCHORS[i];
-    if (raw75 <= x1) {
-      scale = Math.round(y0 + ((raw75 - x0) / (x1 - x0)) * (y1 - y0));
-      break;
-    }
-  }
-  return { raw75, scale };
+export function speakingScale(s: { grammar: number; vocabulary: number; discourse: number; pronunciation: number; interaction?: number; global: number }): { raw75: number; scale: number } {
+  const inter = s.interaction ?? s.discourse;
+  const raw75 = Math.round(2 * (s.grammar + s.vocabulary + s.discourse + s.pronunciation + inter) + 5 * s.global);
+  return { raw75, scale: rawToScale('speaking', raw75) };
 }

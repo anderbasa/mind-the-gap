@@ -1,5 +1,6 @@
 // Formato de la corrección de un writing (lo que devuelve la IA) y la nota estimada.
 import { z } from 'zod';
+import { rawToScale } from '../scoring/estimate';
 
 const Score = z.number().int().min(0).max(5);
 
@@ -54,26 +55,11 @@ export const CRITERIA: { key: keyof Feedback['scores']; label: string; es: strin
 export const total = (s: Feedback['scores']) => s.content + s.communicative + s.organisation + s.language;
 
 /**
- * Nota orientativa en la escala Cambridge para UNA tarea (sobre 20).
- * Anclas aproximadas (cada tarea vale la mitad del paper de 40): 8/20 ≈ 160, 12/20 ≈ 180, 17/20 ≈ 200.
- * Se verificarán con la tabla oficial en la Fase 7; mientras tanto se muestran como «≈».
+ * Nota orientativa en la escala Cambridge para UNA tarea (sobre 20), con la tabla oficial del Writing
+ * (34/24/16/10 de 40 → 200/180/160/142): una tarea vale la mitad del paper.
  */
-const ANCHORS: [number, number][] = [
-  [0, 120],
-  [8, 160],
-  [12, 180],
-  [17, 200],
-  [20, 210],
-];
-
 export function estimateScale(raw: number): number {
-  const r = Math.max(0, Math.min(20, raw));
-  for (let i = 1; i < ANCHORS.length; i++) {
-    const [x0, y0] = ANCHORS[i - 1];
-    const [x1, y1] = ANCHORS[i];
-    if (r <= x1) return Math.round(y0 + ((r - x0) / (x1 - x0)) * (y1 - y0));
-  }
-  return 210;
+  return rawToScale('writing', Math.max(0, Math.min(20, raw)) * 2);
 }
 
 export function scaleLabel(scale: number): string {

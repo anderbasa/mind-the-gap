@@ -289,7 +289,7 @@ export function Progreso() {
           {score ? (
             <p class="muted small">
               Del {score.kind === 'mini' ? 'mini-diagnóstico' : 'diagnóstico'} del {new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long' }).format(score.at)}: global ≈ {score.overall} (media de las cinco). Son
-              estimaciones orientativas; en la Fase 7 se calibran con las tablas oficiales y se tienen en cuenta tus simulacros.
+              estimaciones orientativas con las tablas oficiales de Cambridge (cerca de un límite, ±3 puntos).
             </p>
           ) : (
             <p class="muted small">Las notas aparecerán tras el diagnóstico (Hoy → «Hacer el diagnóstico»). Siempre se muestran como estimación.</p>
