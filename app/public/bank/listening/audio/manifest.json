@@ -501,13 +501,578 @@
     "B": "en-au-training-1"
    },
    "model": "gemini-3.8-flash-lite-tts"
+  },
+  "l4-a": {
+   "hash": "57227f913a05",
+   "file": "l4-a-57227f913a05.mp3",
+   "duration": 186.56,
+   "turns": [
+    [
+     0.3,
+     33.61
+    ],
+    [
+     36.11,
+     72.56
+    ],
+    [
+     75.06,
+     112.34
+    ],
+    [
+     114.83,
+     151.18
+    ],
+    [
+     153.68,
+     186.26
+    ]
+   ],
+   "voices": {
+    "1": "en-gb-commercial-8",
+    "2": "rasalgethi",
+    "3": "en-ie-techagent-5",
+    "4": "en-au-podcaster-5",
+    "5": "en-gb-tutor-11"
+   },
+   "model": "gemini-3.8-flash-tts"
+  },
+  "l4-b": {
+   "hash": "67298261fd13",
+   "file": "l4-b-67298261fd13.mp3",
+   "duration": 180.87,
+   "turns": [
+    [
+     0.3,
+     34.55
+    ],
+    [
+     37.05,
+     72.7
+    ],
+    [
+     75.2,
+     109.7
+    ],
+    [
+     112.2,
+     144.97
+    ],
+    [
+     147.47,
+     180.57
+    ]
+   ],
+   "voices": {
+    "1": "en-gb-tutor-3",
+    "2": "gacrux",
+    "3": "en-ie-csagent-4",
+    "4": "en-au-tutor-1",
+    "5": "en-gb-advisor-3"
+   },
+   "model": "gemini-3.8-flash-tts"
+  },
+  "sp-ta-p2-pa": {
+   "hash": "36cfc0f0421e",
+   "file": "sp-ta-p2-pa-36cfc0f0421e.mp3",
+   "duration": 16.78,
+   "turns": [
+    [
+     0.3,
+     16.48
+    ]
+   ],
+   "voices": {
+    "P": "en-ie-concierge-3"
+   },
+   "model": "gemini-3.8-flash-tts"
+  },
+  "sp-ta-p2-pl": {
+   "hash": "600b0b513f2e",
+   "file": "sp-ta-p2-pl-600b0b513f2e.mp3",
+   "duration": 41.91,
+   "turns": [
+    [
+     0.3,
+     41.61
+    ]
+   ],
+   "voices": {
+    "P": "en-ie-concierge-3"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "sp-tb-p2-pl": {
+   "hash": "1dd65b0f1c5e",
+   "file": "sp-tb-p2-pl-1dd65b0f1c5e.mp3",
+   "duration": 47.39,
+   "turns": [
+    [
+     0.3,
+     47.09
+    ]
+   ],
+   "voices": {
+    "P": "algieba"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d01": {
+   "hash": "25efcc3e0301",
+   "file": "dict-d01-25efcc3e0301.mp3",
+   "duration": 5.29,
+   "turns": [
+    [
+     0.3,
+     4.99
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-advisor-4"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d07": {
+   "hash": "91f2310e4459",
+   "file": "dict-d07-91f2310e4459.mp3",
+   "duration": 4.82,
+   "turns": [
+    [
+     0.3,
+     4.52
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-advisor-4"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d13": {
+   "hash": "7039e996fc77",
+   "file": "dict-d13-7039e996fc77.mp3",
+   "duration": 5.09,
+   "turns": [
+    [
+     0.3,
+     4.79
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-advisor-4"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d19": {
+   "hash": "5e38dde0d6ae",
+   "file": "dict-d19-5e38dde0d6ae.mp3",
+   "duration": 7.4,
+   "turns": [
+    [
+     0.3,
+     7.1
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-advisor-4"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d02": {
+   "hash": "5d15a4b75a28",
+   "file": "dict-d02-5d15a4b75a28.mp3",
+   "duration": 4.55,
+   "turns": [
+    [
+     0.3,
+     4.25
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-csagent-3"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d08": {
+   "hash": "51ced96b7c47",
+   "file": "dict-d08-51ced96b7c47.mp3",
+   "duration": 5.19,
+   "turns": [
+    [
+     0.3,
+     4.89
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-csagent-3"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d14": {
+   "hash": "cea265c81d08",
+   "file": "dict-d14-cea265c81d08.mp3",
+   "duration": 5.15,
+   "turns": [
+    [
+     0.3,
+     4.85
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-csagent-3"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d20": {
+   "hash": "ad3d27ec12a5",
+   "file": "dict-d20-ad3d27ec12a5.mp3",
+   "duration": 7.18,
+   "turns": [
+    [
+     0.3,
+     6.88
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-csagent-3"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d03": {
+   "hash": "5ef1f73fa500",
+   "file": "dict-d03-5ef1f73fa500.mp3",
+   "duration": 5.04,
+   "turns": [
+    [
+     0.3,
+     4.74
+    ]
+   ],
+   "voices": {
+    "A": "vindemiatrix"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d09": {
+   "hash": "68cf360ab579",
+   "file": "dict-d09-68cf360ab579.mp3",
+   "duration": 5.21,
+   "turns": [
+    [
+     0.3,
+     4.91
+    ]
+   ],
+   "voices": {
+    "A": "vindemiatrix"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d15": {
+   "hash": "e3b74d74817f",
+   "file": "dict-d15-e3b74d74817f.mp3",
+   "duration": 5.37,
+   "turns": [
+    [
+     0.3,
+     5.07
+    ]
+   ],
+   "voices": {
+    "A": "vindemiatrix"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d21": {
+   "hash": "7a26b02674a0",
+   "file": "dict-d21-7a26b02674a0.mp3",
+   "duration": 6.72,
+   "turns": [
+    [
+     0.3,
+     6.42
+    ]
+   ],
+   "voices": {
+    "A": "vindemiatrix"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d04": {
+   "hash": "b2b0fa3a1cbc",
+   "file": "dict-d04-b2b0fa3a1cbc.mp3",
+   "duration": 5.07,
+   "turns": [
+    [
+     0.3,
+     4.77
+    ]
+   ],
+   "voices": {
+    "A": "en-ie-training-7"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d10": {
+   "hash": "db858c733e48",
+   "file": "dict-d10-db858c733e48.mp3",
+   "duration": 4.94,
+   "turns": [
+    [
+     0.3,
+     4.64
+    ]
+   ],
+   "voices": {
+    "A": "en-ie-training-7"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d16": {
+   "hash": "c7bc404fc5f3",
+   "file": "dict-d16-c7bc404fc5f3.mp3",
+   "duration": 5.73,
+   "turns": [
+    [
+     0.3,
+     5.43
+    ]
+   ],
+   "voices": {
+    "A": "en-ie-training-7"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d22": {
+   "hash": "44bf09b2db26",
+   "file": "dict-d22-44bf09b2db26.mp3",
+   "duration": 6.51,
+   "turns": [
+    [
+     0.3,
+     6.21
+    ]
+   ],
+   "voices": {
+    "A": "en-ie-training-7"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d05": {
+   "hash": "21ffaddee0aa",
+   "file": "dict-d05-21ffaddee0aa.mp3",
+   "duration": 4.02,
+   "turns": [
+    [
+     0.3,
+     3.72
+    ]
+   ],
+   "voices": {
+    "A": "en-au-techagent-1"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d11": {
+   "hash": "18c42f57e7c9",
+   "file": "dict-d11-18c42f57e7c9.mp3",
+   "duration": 5.23,
+   "turns": [
+    [
+     0.3,
+     4.93
+    ]
+   ],
+   "voices": {
+    "A": "en-au-techagent-1"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d17": {
+   "hash": "f483785eca12",
+   "file": "dict-d17-f483785eca12.mp3",
+   "duration": 8.06,
+   "turns": [
+    [
+     0.3,
+     7.76
+    ]
+   ],
+   "voices": {
+    "A": "en-au-techagent-1"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d23": {
+   "hash": "22e1eb0a3526",
+   "file": "dict-d23-22e1eb0a3526.mp3",
+   "duration": 5.78,
+   "turns": [
+    [
+     0.3,
+     5.48
+    ]
+   ],
+   "voices": {
+    "A": "en-au-techagent-1"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d06": {
+   "hash": "3a7cf8151b80",
+   "file": "dict-d06-3a7cf8151b80.mp3",
+   "duration": 4.28,
+   "turns": [
+    [
+     0.3,
+     3.98
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-training-1"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d12": {
+   "hash": "d50b656a1cb3",
+   "file": "dict-d12-d50b656a1cb3.mp3",
+   "duration": 7.17,
+   "turns": [
+    [
+     0.3,
+     6.87
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-training-1"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d18": {
+   "hash": "cc370b647683",
+   "file": "dict-d18-cc370b647683.mp3",
+   "duration": 7.15,
+   "turns": [
+    [
+     0.3,
+     6.85
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-training-1"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "dict-d24": {
+   "hash": "9c877ba87bab",
+   "file": "dict-d24-9c877ba87bab.mp3",
+   "duration": 7.46,
+   "turns": [
+    [
+     0.3,
+     7.16
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-training-1"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "cs-gonna": {
+   "hash": "2503f7633958",
+   "file": "cs-gonna-2503f7633958.mp3",
+   "duration": 2.89,
+   "turns": [
+    [
+     0.3,
+     2.59
+    ]
+   ],
+   "voices": {
+    "A": "fenrir"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "cs-didja": {
+   "hash": "1aca87c7add7",
+   "file": "cs-didja-1aca87c7add7.mp3",
+   "duration": 3.14,
+   "turns": [
+    [
+     0.3,
+     2.84
+    ]
+   ],
+   "voices": {
+    "A": "fenrir"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "cs-wanna": {
+   "hash": "5a262df96efd",
+   "file": "cs-wanna-5a262df96efd.mp3",
+   "duration": 3.21,
+   "turns": [
+    [
+     0.3,
+     2.91
+    ]
+   ],
+   "voices": {
+    "A": "vindemiatrix"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "cs-of": {
+   "hash": "a1f77c1a3a15",
+   "file": "cs-of-a1f77c1a3a15.mp3",
+   "duration": 7.18,
+   "turns": [
+    [
+     0.3,
+     6.88
+    ]
+   ],
+   "voices": {
+    "A": "vindemiatrix"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "cs-doncha": {
+   "hash": "0f224c132f4f",
+   "file": "cs-doncha-0f224c132f4f.mp3",
+   "duration": 2.02,
+   "turns": [
+    [
+     0.3,
+     1.72
+    ]
+   ],
+   "voices": {
+    "A": "vindemiatrix"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "cs-kinda": {
+   "hash": "cada990a28cf",
+   "file": "cs-kinda-cada990a28cf.mp3",
+   "duration": 3.59,
+   "turns": [
+    [
+     0.3,
+     3.29
+    ]
+   ],
+   "voices": {
+    "A": "vindemiatrix"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
   }
  },
  "status": {
-  "at": "2026-11-11T11:58:36.718Z",
+  "at": "2026-11-12T17:05:14.781Z",
   "total": 150,
-  "done": 10,
+  "done": 45,
   "stoppedBy": "cuota diaria gratuita de voz agotada (en los dos modelos)",
-  "requests": 5
+  "requests": 23
  }
 }
