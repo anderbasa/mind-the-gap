@@ -8,7 +8,7 @@ import { hasStore, store } from '../state';
 import { aiErrorMessage, runAI } from '../ai/client';
 import { getPrompt } from '../ai/prompts';
 import { AiError } from '../ai/types';
-import { beep, blobToBase64, blobToWav16k, playBlob, unlockAudio } from '../voice/audio';
+import { beep, blobToBase64, blobToWav16k, playBlob, primeSpeech, unlockAudio, unlockSharedAudio } from '../voice/audio';
 import { listRecordings, saveRecording } from '../voice/idb';
 import { testLiveConnection } from '../voice/live';
 import { micErrorMessage, pickMime, Recorder, type Recording } from '../voice/recorder';
@@ -120,7 +120,7 @@ const TESTS: TestDef[] = [
         await playBlob(r.blob);
         return { status: 'ask', question: '¿Te has oído bien?', detail: `${r.method} · ${r.mimeType} · ${(r.blob.size / 1024).toFixed(0)} KB` };
       } catch (e) {
-        return { status: 'fail', detail: (e as Error).name ? micErrorMessage(e) : String(e) };
+        return { status: 'fail', detail: (e as Error).name === 'PlaybackBlockedError' ? (e as Error).message : (e as Error).name ? micErrorMessage(e) : String(e) };
       }
     },
   },
@@ -135,7 +135,7 @@ const TESTS: TestDef[] = [
         await playBlob(r.blob);
         return { status: 'ask', question: '¿Te has oído bien?', detail: `${r.method} · ${(r.blob.size / 1024).toFixed(0)} KB` };
       } catch (e) {
-        return { status: 'fail', detail: micErrorMessage(e) };
+        return { status: 'fail', detail: (e as Error).name === 'PlaybackBlockedError' ? (e as Error).message : micErrorMessage(e) };
       }
     },
   },
@@ -238,6 +238,9 @@ const PILL: Record<Status, { cls: string; text: string }> = {
 function TestCard(props: { def: TestDef; busy: boolean; setBusy: (b: boolean) => void }) {
   const st = results.value[props.def.id] ?? { status: 'idle' };
   const run = async () => {
+    // Dentro del toque, antes de cualquier await: el iPhone deja sonar audio y voz después.
+    void unlockSharedAudio();
+    primeSpeech();
     props.setBusy(true);
     setResult(props.def.id, { status: 'running' });
     try {

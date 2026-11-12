@@ -3,41 +3,19 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { JSX } from 'preact';
 import type { UnitAudio } from '../../listening/bank';
+import { sharedAudio, unlockSharedAudio } from '../../voice/audio';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 
-let shared: HTMLAudioElement | null = null;
-let unlocked = false;
-
-export function audioEl(): HTMLAudioElement {
-  if (!shared) {
-    shared = new Audio();
-    shared.preload = 'auto';
-    const x = shared as HTMLAudioElement & { preservesPitch?: boolean; webkitPreservesPitch?: boolean };
-    x.preservesPitch = true; // «más despacio» sin voz grave
-    x.webkitPreservesPitch = true;
-  }
-  return shared;
-}
+export const audioEl = sharedAudio;
 
 /** Llamar dentro de un toque: deja el audio listo para sonar después sin otro toque (iOS). */
-export async function unlockAudioEl(): Promise<void> {
-  if (unlocked) return;
-  const el = audioEl();
-  try {
-    el.muted = true;
-    await el.play();
-    el.pause();
-  } catch {
-    /* sin src todavía: se reintentará en el siguiente toque */
-  } finally {
-    el.muted = false;
-  }
-  unlocked = true;
+export function unlockAudioEl(): Promise<void> {
+  return unlockSharedAudio();
 }
 
 export function stopAudio(): void {
-  shared?.pause();
+  sharedAudio().pause();
 }
 
 /** Desde la transcripción: salta a un momento y reproduce. */

@@ -42,7 +42,7 @@ export function RecordPanel(props: { maxSec: number; exact?: boolean; label: str
     }
   };
 
-  const start = async () => {
+  const start = async (auto = false) => {
     stopping.current = false;
     try {
       await beep(880, 120);
@@ -57,12 +57,13 @@ export function RecordPanel(props: { maxSec: number; exact?: boolean; label: str
         if (s >= props.maxSec) void stop();
       }, 200);
     } catch (e) {
-      toast(micErrorMessage(e), 6000);
+      // Arranque automático rechazado (p. ej. iPhone sin toque): queda el botón «Hablar».
+      if (!auto) toast(micErrorMessage(e), 6000);
     }
   };
 
   useEffect(() => {
-    if (props.autoStart) void start();
+    if (props.autoStart) void start(true);
     return () => {
       if (timer.current) clearInterval(timer.current);
       if (!stopping.current) cancelRecording();
@@ -77,7 +78,7 @@ export function RecordPanel(props: { maxSec: number; exact?: boolean; label: str
         {state === 'rec' && <span class={`pill tabular ${left < 10 ? 'signal' : ''}`}>{props.exact ? fmt(left) : fmt(elapsed)}</span>}
       </div>
       {state === 'idle' && (
-        <button class="btn signal" onClick={start}>
+        <button class="btn signal" onClick={() => start()}>
           🎙 Hablar
         </button>
       )}

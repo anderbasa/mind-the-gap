@@ -60,28 +60,95 @@ let current: HTMLAudioElement | null = null;
 export function stopPlayback(): void {
   if (current) {
     current.pause();
-    current.src = '';
+    current.removeAttribute('src'); // (src = '' apuntaría a la propia página)
+    current.load();
     current = null;
+  }
+}
+
+/* ── Un único <audio> para toda la app ─────────────────────────── */
+// En iPhone cada elemento de audio necesita «su» toque para sonar. Si usamos siempre el mismo y lo
+// desbloqueamos en el primer toque, después puede sonar sin más toques (al acabar de grabar, en el
+// simulacro, en el modo examen del Listening…).
+
+let shared: HTMLAudioElement | null = null;
+let sharedUnlocked = false;
+let silentUrl: string | null = null;
+
+export function sharedAudio(): HTMLAudioElement {
+  if (!shared) {
+    shared = new Audio();
+    shared.preload = 'auto';
+    const x = shared as HTMLAudioElement & { preservesPitch?: boolean; webkitPreservesPitch?: boolean };
+    x.preservesPitch = true; // «más despacio» sin voz grave
+    x.webkitPreservesPitch = true;
+  }
+  return shared;
+}
+
+/**
+ * Llamar al principio de un toque, ANTES de cualquier await: deja listo el audio (elemento compartido
+ * y AudioContext) para que pueda sonar después sin otro toque.
+ */
+export function unlockSharedAudio(): Promise<void> {
+  void unlockAudio();
+  if (sharedUnlocked) return Promise.resolve();
+  const el = sharedAudio();
+  // Si ya tiene un audio cargado (p. ej. el del listening), se toca en silencio y se para.
+  const real = !!el.getAttribute('src') && el.src !== silentUrl;
+  if (!real) {
+    silentUrl ??= URL.createObjectURL(pcm16ToWav(new Uint8Array(2400), 24000));
+    el.src = silentUrl;
+  }
+  el.muted = true;
+  return el
+    .play() // se llama dentro del toque (antes de cualquier await del llamador)
+    .then(() => {
+      el.pause();
+      if (real) el.currentTime = 0;
+      sharedUnlocked = true;
+    })
+    .catch(() => undefined)
+    .finally(() => {
+      el.muted = false;
+    });
+}
+
+/** La voz del sistema en iPhone también necesita un primer toque: una frase vacía la despierta. */
+export function primeSpeech(): void {
+  try {
+    if (!('speechSynthesis' in window)) return;
+    const u = new SpeechSynthesisUtterance(' ');
+    u.volume = 0;
+    speechSynthesis.speak(u);
+  } catch {
+    /* nada */
+  }
+}
+
+export class PlaybackBlockedError extends Error {
+  constructor() {
+    super('El iPhone no ha dejado reproducir el audio sin tocar la pantalla. Pulsa «Repetir».');
+    this.name = 'PlaybackBlockedError';
   }
 }
 
 export async function playBlob(blob: Blob, opts: { rate?: number } = {}): Promise<void> {
   stopPlayback();
   const url = URL.createObjectURL(blob);
-  const a = new Audio();
+  const a = sharedAudio();
   a.src = url;
-  a.preload = 'auto';
-  (a as HTMLAudioElement & { preservesPitch?: boolean; webkitPreservesPitch?: boolean }).preservesPitch = true;
-  (a as HTMLAudioElement & { webkitPreservesPitch?: boolean }).webkitPreservesPitch = true;
   a.playbackRate = opts.rate ?? 1;
   current = a;
   try {
     await new Promise<void>((resolve, reject) => {
       a.onended = () => resolve();
       a.onerror = () => reject(new Error('No se ha podido reproducir el audio.'));
-      a.play().catch(reject);
+      a.play().catch((e: Error) => reject(e?.name === 'NotAllowedError' ? new PlaybackBlockedError() : e));
     });
   } finally {
+    a.onended = null;
+    a.onerror = null;
     URL.revokeObjectURL(url);
     if (current === a) current = null;
   }

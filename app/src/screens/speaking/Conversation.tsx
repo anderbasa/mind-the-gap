@@ -10,6 +10,7 @@ import { joinRecordings, keepRecording, saveSpeaking } from '../../speaking/data
 import { getScenario, SCENARIOS, type Scenario } from '../../speaking/scenarios';
 import { speechMetrics } from '../../speaking/schema';
 import { sayText, stopSpeaking } from '../../speaking/voice';
+import { primeSpeech, unlockSharedAudio } from '../../voice/audio';
 import { LiveSession, type LiveState } from '../../voice/liveSession';
 import type { Recording } from '../../voice/recorder';
 import { Band, ListItem, Page, Spinner, toast } from '../../ui/components';
@@ -89,6 +90,8 @@ function Talk(props: { s: Scenario }) {
   }, [mode]);
 
   const startLive = async () => {
+    void unlockSharedAudio(); // dentro del toque
+    primeSpeech();
     setNote(null);
     const session = new LiveSession({
       onState: (st, detail) => {

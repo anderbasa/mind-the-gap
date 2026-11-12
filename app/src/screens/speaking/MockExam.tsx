@@ -8,7 +8,7 @@ import { joinRecordings, keepRecording, saveSpeaking, type SpeakingItem } from '
 import { buildSteps, PART_NAMES, pickP1, type Card, type Step } from '../../speaking/mock';
 import { linesById, loadSpeakingBank, type SpeakingBankT, type SpeakingLine, type SpeakingTest } from '../../speaking/schema';
 import { sayLine, stopSpeaking } from '../../speaking/voice';
-import { unlockAudio } from '../../voice/audio';
+import { primeSpeech, unlockSharedAudio } from '../../voice/audio';
 import type { Recording } from '../../voice/recorder';
 import { Band, Page, Spinner, toast } from '../../ui/components';
 import { PhotoCard } from './Photos';
@@ -118,8 +118,10 @@ export function MockExam() {
     }
   }, [idx, phase]);
 
-  const begin = async () => {
-    await unlockAudio();
+  const begin = () => {
+    // Dentro del toque: audio compartido y voz del sistema listos para sonar sin más toques.
+    void unlockSharedAudio();
+    primeSpeech();
     taken.current = [];
     setPhase('running');
     setIdx(0);
