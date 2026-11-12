@@ -17,6 +17,7 @@ import { store } from '../state';
 import { updateTutorNotes } from '../tutor/notes';
 import { Band, ListItem, MetroLine, Page, SkillLine, Spinner, toast } from '../ui/components';
 import { recordActivity } from '../progress/progress';
+import { clearDraft, loadDraft, saveDraft } from '../ui/drafts';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 
@@ -147,6 +148,7 @@ function Resultados() {
     await store().remove(`scores/${r.id}`);
     setRows(rows.filter((x) => x.id !== r.id));
     toast('Resultado borrado');
+    void import('../planner/state').then((m) => m.gatherState()).catch(() => undefined);
   };
   const [last, ...rest] = rows;
   const date = (t: number) => new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'short' }).format(t);
@@ -450,11 +452,23 @@ export function SimulacroRespuestas() {
   const [sets, setSets] = useState<RueSet[] | null>(null);
   const [answers, setAnswers] = useState<Record<string, Answers>>({});
   const [busy, setBusy] = useState(false);
+  const [runId, setRunId] = useState('');
   useEffect(() => {
     rueSetsOfRun().then(setSets);
+    getRun('mock').then((r) => {
+      if (!r) return;
+      setRunId(r.id);
+      const d = loadDraft<Record<string, Answers>>(`paper.${r.id}`, 14 * 86_400_000);
+      if (d) setAnswers(d);
+    });
   }, []);
 
-  const set = (id: string, n: number, v: string) => setAnswers((a) => ({ ...a, [id]: { ...(a[id] ?? {}), [n]: v } }));
+  const set = (id: string, n: number, v: string) =>
+    setAnswers((a) => {
+      const next = { ...a, [id]: { ...(a[id] ?? {}), [n]: v } };
+      if (runId) saveDraft(`paper.${runId}`, next);
+      return next;
+    });
 
   const submit = async () => {
     if (!sets) return;
@@ -480,6 +494,7 @@ export function SimulacroRespuestas() {
           .catch(() => undefined);
       }
       toast(failed ? `Paper 1 corregido. ${failed} respuesta${failed === 1 ? '' : 's'} abierta${failed === 1 ? '' : 's'} sin revisar por la IA: cuenta${failed === 1 ? '' : 'n'} solo si coincide${failed === 1 ? '' : 'n'} con la clave.` : 'Paper 1 corregido', failed ? 5000 : 2600);
+      if (runId) clearDraft(`paper.${runId}`);
       navigate('/simulacro', { replace: true });
     } catch (e) {
       toast((e as Error).message || 'No se ha podido corregir.', 4000);

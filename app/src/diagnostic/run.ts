@@ -180,6 +180,8 @@ export async function finishRun(run: DiagRun): Promise<DiagRun> {
     ...(isMock ? { label: run.paper === 'full' ? 'Simulacro completo' : `Simulacro · ${run.paper}`, paper: run.paper } : {}),
   };
   await store().set(`scores/${isMock ? 'mock' : 'diag'}-${run.id}`, doc as unknown as Record<string, unknown>);
+  // Nota nueva: se rehace el resumen que usan los avisos de Telegram.
+  void import('../planner/state').then((m) => m.gatherState()).catch(() => undefined);
   return run;
 }
 

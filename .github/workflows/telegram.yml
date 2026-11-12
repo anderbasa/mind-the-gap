@@ -32,6 +32,7 @@ jobs:
           sparse-checkout: |
             scripts
             app/src
+            prompts
 
       - uses: actions/setup-node@v5
         with:
@@ -43,5 +44,7 @@ jobs:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Para el comentario de Theo del domingo (la misma clave gratis que usan los audios).
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           # Tu UID no es secreto (ya está en firestore.rules): identifica, no da acceso.
           MTG_UID: 50sQgmkiXNdj7R9zehCXcjViLLs2

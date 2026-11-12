@@ -83,7 +83,7 @@ export function eveningText(p: { streak: Streak; todayMin: number }): string {
   return lines.join('\n');
 }
 
-export function sundayText(p: { week: DayDoc[]; streak: Streak; estimate?: { overall: number; margin: number } | null; report?: { summary: string; focus: string[] } | null; examDays?: number | null }): string {
+export function sundayText(p: { week: DayDoc[]; streak: Streak; estimate?: { overall: number; margin: number } | null; report?: { summary: string; focus: string[] } | null; theo?: string | null; examDays?: number | null }): string {
   const min = Math.round(p.week.reduce((a, d) => a + (d.activeSec ?? 0), 0) / 60);
   const xp = p.week.reduce((a, d) => a + (d.xp ?? 0), 0);
   const counted = p.week.filter((d) => (d.activeSec ?? 0) >= 600 || d.sessionDone).length;
@@ -93,8 +93,27 @@ export function sundayText(p: { week: DayDoc[]; streak: Streak; estimate?: { ove
   if (p.report) {
     lines.push('', `<i>${esc(p.report.summary)}</i>`);
     if (p.report.focus.length) lines.push('', '<b>La semana que viene</b>', ...p.report.focus.slice(0, 3).map((f) => `• ${esc(f)}`));
+  } else if (p.theo) {
+    lines.push('', `<b>Theo:</b> <i>${esc(p.theo)}</i>`, '', 'El informe completo, en la app (Hoy → informe).');
   } else lines.push('', 'Pide a Theo tu informe semanal en la app (Hoy → informe).');
   return lines.join('\n');
+}
+
+/** Datos de la semana para el comentario de Theo (texto para el prompt; sin nada que no esté en la app). */
+export function weekStatsText(p: { week: DayDoc[]; streak: Streak; estimate?: { overall: number; margin: number } | null; priorities?: { label: string; why: string }[]; examDays?: number | null }): string {
+  const min = Math.round(p.week.reduce((a, d) => a + (d.activeSec ?? 0), 0) / 60);
+  const xp = p.week.reduce((a, d) => a + (d.xp ?? 0), 0);
+  const counted = p.week.filter((d) => (d.activeSec ?? 0) >= 600 || d.sessionDone).length;
+  const bySkill: Record<string, number> = {};
+  for (const d of p.week) for (const [k, v] of Object.entries(d.xpBySkill ?? {})) bySkill[k] = (bySkill[k] ?? 0) + (v ?? 0);
+  return [
+    `Study time: ${min} min over ${counted} of 7 days (a day counts with 10+ min). XP: ${xp}.`,
+    `XP by area: ${Object.entries(bySkill).map(([k, v]) => `${k} ${v}`).join(', ') || 'none'}.`,
+    `Streak: ${p.streak.current} days (best ${p.streak.best}).`,
+    p.estimate ? `Estimated Cambridge score: ${p.estimate.overall} ± ${p.estimate.margin} (C1 = 180).` : 'No estimated score yet (diagnostic not done).',
+    p.examDays != null && p.examDays >= 0 ? `Exam in ${p.examDays} days.` : 'No exam date set.',
+    `Priorities for next week: ${(p.priorities ?? []).map((x) => `${x.label} (${x.why})`).join('; ') || 'unknown'}.`,
+  ].join('\n');
 }
 
 /** Días hasta el examen (hora de Madrid), o null. */

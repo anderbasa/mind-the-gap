@@ -24,6 +24,7 @@ import {
 import { addCards } from '../srs/srs';
 import { Band, ListItem, Page, Segmented, Spinner, toast } from '../ui/components';
 import { ExplainEs } from '../ui/ExplainEs';
+import { clearDraft, loadDraft, saveDraft } from '../ui/drafts';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 const LINE = 'var(--line-listening)';
@@ -225,8 +226,9 @@ const LEVELS = [
 
 function Huecos(props: { id: string; doc: SeriesDoc; onChange: (p: Partial<SeriesDoc>) => void; onDone: () => void }) {
   const { doc } = props;
-  const [level, setLevel] = useState(String(doc.gapScore?.level ?? 2));
-  const [given, setGiven] = useState<Record<number, string>>({});
+  const [level, setLevel] = useState(() => loadDraft<{ level: string }>(`series-gaps.${props.id}`)?.level ?? String(doc.gapScore?.level ?? 2));
+  const dKey = `series-gaps.${props.id}`;
+  const [given, setGiven] = useState<Record<number, string>>(() => loadDraft<{ level: string; given: Record<number, string> }>(dKey)?.given ?? {});
   const [result, setResult] = useState<ReturnType<typeof markGaps> | null>(null);
   const segs = useMemo(() => placeGaps(doc.text, doc.lesson.gaps, Number(level)), [doc.text, doc.lesson.gaps, level]);
   const nGaps = segs.filter((s) => s.t === 'gap').length;
@@ -235,11 +237,13 @@ function Huecos(props: { id: string; doc: SeriesDoc; onChange: (p: Partial<Serie
     setLevel(v);
     setGiven({});
     setResult(null);
+    clearDraft(dKey);
   };
 
   const check = async () => {
     const r = markGaps(segs, given);
     setResult(r);
+    clearDraft(dKey);
     const gapScore = { level: Number(level), ok: r.ok, total: r.total };
     props.onChange({ gapScore });
     void patchSeries(props.id, { gapScore });
@@ -276,7 +280,11 @@ function Huecos(props: { id: string; doc: SeriesDoc; onChange: (p: Partial<Serie
                 {...({ autocorrect: 'off', autocapitalize: 'off' } as Record<string, string>)}
                 onInput={(e) => {
                   const v = (e.target as HTMLInputElement).value;
-                  setGiven((cur) => ({ ...cur, [s.i]: v }));
+                  setGiven((cur) => {
+                    const next = { ...cur, [s.i]: v };
+                    saveDraft(dKey, { level, given: next });
+                    return next;
+                  });
                 }}
               />
               {level === '1' && !result && <sup class="muted">{s.word[0]}</sup>}
@@ -320,18 +328,25 @@ function Huecos(props: { id: string; doc: SeriesDoc; onChange: (p: Partial<Serie
 
 function Respuestas(props: { id: string; doc: SeriesDoc; onChange: (p: Partial<SeriesDoc>) => void; onDone: () => void }) {
   const L = props.doc.lesson;
-  const [ans, setAns] = useState(props.doc.answers ?? { rephrase: L.rephrase.map(() => ''), questions: L.questions.map(() => '') });
+  const aKey = `series-answers.${props.id}`;
+  const [ans, setAns] = useState(() => props.doc.answers ?? loadDraft<{ rephrase: string[]; questions: string[] }>(aKey) ?? { rephrase: L.rephrase.map(() => ''), questions: L.questions.map(() => '') });
   const [busy, setBusy] = useState(false);
   const chk = props.doc.check;
   if (!L.rephrase.length && !L.questions.length) return null;
 
-  const set = (k: 'rephrase' | 'questions', i: number, v: string) => setAns((cur) => ({ ...cur, [k]: cur[k].map((x, j) => (j === i ? v : x)) }));
+  const set = (k: 'rephrase' | 'questions', i: number, v: string) =>
+    setAns((cur) => {
+      const next = { ...cur, [k]: cur[k].map((x, j) => (j === i ? v : x)) };
+      saveDraft(aKey, next);
+      return next;
+    });
   const submit = async () => {
     setBusy(true);
     try {
       const check = await checkAnswers(L, ans);
       props.onChange({ check, answers: ans });
       await patchSeries(props.id, { check, answers: ans });
+      clearDraft(aKey);
       props.onDone();
     } catch (e) {
       toast(aiErrorMessage(e), 4500);

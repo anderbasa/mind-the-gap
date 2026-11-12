@@ -16,6 +16,7 @@ import { SaveWordBar, picked } from './WordTap';
 import { DiagContinue } from '../DiagContinue';
 import { recordPart } from '../../diagnostic/run';
 import { recordActivity } from '../../progress/progress';
+import { clearDraft, loadDraft, saveDraft } from '../../ui/drafts';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 type Phase = { k: 'loading' } | { k: 'empty'; allSeen: boolean; oldest: RueSet | null } | { k: 'doing' } | { k: 'marking' } | { k: 'done' };
@@ -75,9 +76,12 @@ export function RuePlayer() {
 
   const begin = (s: RueSet) => {
     setSet(s);
-    setAnswers(readDraft(s.id));
+    const draft = readDraft(s.id);
+    setAnswers(draft);
     setResult(null);
-    start.current = Date.now();
+    const saved = loadDraft<number>(`rue-start.${s.id}`, 3 * 3_600_000);
+    start.current = saved && Object.keys(draft).length ? saved : Date.now();
+    saveDraft(`rue-start.${s.id}`, start.current);
     setPhase({ k: 'doing' });
     window.scrollTo(0, 0);
   };
@@ -153,6 +157,7 @@ export function RuePlayer() {
     setReviewFailed(failed);
     setPhase({ k: 'done' });
     window.scrollTo(0, 0);
+    clearDraft(`rue-start.${set.id}`);
     try {
       localStorage.removeItem(draftKey(set.id));
     } catch {

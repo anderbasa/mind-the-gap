@@ -187,8 +187,10 @@ export async function currentEstimate(): Promise<{ estimate: Estimate; scores: S
 
 export async function saveOfficial(doc: Omit<ScoreDoc, 'kind'>): Promise<void> {
   await store().set(`scores/official-${doc.at.toString(36)}`, { ...doc, kind: 'official' } as unknown as Record<string, unknown>);
+  void import('../planner/state').then((m) => m.gatherState()).catch(() => undefined);
 }
 
 export async function deleteOfficial(at: number): Promise<void> {
   await store().remove(`scores/official-${at.toString(36)}`);
+  void import('../planner/state').then((m) => m.gatherState()).catch(() => undefined);
 }

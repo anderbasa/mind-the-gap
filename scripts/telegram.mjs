@@ -11,6 +11,7 @@
 //   node scripts/telegram.mjs --seco     → (solo en tu ordenador) imprime el mensaje en vez de enviarlo; no apunta nada.
 //                                          Acepta ACCESS_TOKEN + FIREBASE_PROJECT en lugar de la cuenta de servicio.
 import crypto from 'node:crypto';
+import { readFile } from 'node:fs/promises';
 import * as plan from '../app/src/planner/plan.ts';
 import * as rules from '../app/src/progress/rules.ts';
 import * as tg from '../app/src/notify/telegram.ts';
@@ -19,7 +20,7 @@ const SECO = process.argv.includes('--seco');
 const PRUEBA = SECO || process.argv.includes('--prueba');
 const APP_URL = process.env.APP_URL || 'https://anderbasa.github.io/mind-the-gap/';
 const UID = process.env.MTG_UID;
-const { FIREBASE_SERVICE_ACCOUNT, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } = process.env;
+const { FIREBASE_SERVICE_ACCOUNT, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, GEMINI_API_KEY } = process.env;
 
 function fin(msg, code = 0) {
   console.log(msg);
@@ -123,6 +124,35 @@ ${text}
   }
 }
 
+/* ── Comentario de Theo (Gemini, gratis; opcional) ──────────────── */
+
+const GEMINI_MODELS = ['gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'];
+
+async function theoComment(vars) {
+  if (!GEMINI_API_KEY?.trim()) return null;
+  try {
+    const raw = await readFile(new URL('../prompts/tasks/telegram-sunday.md', import.meta.url), 'utf8');
+    const body = raw.replace(/^---[\s\S]*?---\s*/, '').replace(/\{\{(\w+)\}\}/g, (_, k) => vars[k] ?? '');
+    for (const model of GEMINI_MODELS) {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-goog-api-key': GEMINI_API_KEY.trim() },
+        body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: body }] }], generationConfig: { maxOutputTokens: 300, temperature: 0.7 } }),
+      });
+      if (!res.ok) {
+        console.log(`Theo (${model}): HTTP ${res.status}, pruebo el siguiente.`);
+        continue;
+      }
+      const j = await res.json();
+      const text = (j.candidates?.[0]?.content?.parts ?? []).map((p) => p.text ?? '').join('').trim();
+      if (text) return text.slice(0, 600);
+    }
+  } catch {
+    console.log('Theo: no he podido escribir el comentario (se manda sin él).');
+  }
+  return null;
+}
+
 /* ── Principal ──────────────────────────────────────────────────── */
 
 TOKEN = LOCAL ? process.env.ACCESS_TOKEN : await accessToken();
@@ -154,7 +184,13 @@ for (const kind of kinds) {
     const mon = rules.mondayOf(m.date);
     const week = days.filter((d) => d.date >= mon && d.date <= m.date);
     const report = await getDoc(`reports/week-${mon}`);
-    await send(tg.sundayText({ week, streak, estimate: digest?.estimate ?? null, report: report?.summary ? { summary: report.summary, focus: report.focus ?? [] } : null, examDays }), {
+    let theo = null;
+    if (!report?.summary) {
+      const prio = digest?.state ? plan.priorities(digest.state, now).slice(0, 2).map((x) => ({ label: x.skill, why: x.why })) : [];
+      const notesText = notes ? [notes.summary, notes.weaknesses, notes.patterns, notes.nextChallenge].flat().filter(Boolean).map(String).join(' · ').slice(0, 800) : '(none yet)';
+      theo = await theoComment({ stats: tg.weekStatsText({ week, streak, estimate: digest?.estimate ?? null, priorities: prio, examDays }), notes: notesText });
+    }
+    await send(tg.sundayText({ week, streak, estimate: digest?.estimate ?? null, report: report?.summary ? { summary: report.summary, focus: report.focus ?? [] } : null, theo, examDays }), {
       text: 'Ver tu informe',
       url: `${APP_URL}#/informe`,
     });

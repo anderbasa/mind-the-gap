@@ -60,3 +60,16 @@ describe('textos', () => {
     expect(s).toContain('te faltan unos 4');
   });
 });
+
+describe('Theo en el resumen del domingo', () => {
+  it('los datos para Theo llevan números reales y las prioridades; su comentario va escapado', async () => {
+    const { weekStatsText } = await import('./telegram');
+    const week = [day('2026-11-09', 20), day('2026-11-10', 5)];
+    const txt = weekStatsText({ week, streak: computeStreak(week, '2026-11-15'), estimate: null, priorities: [{ label: 'uoe', why: 'a 16 de 180' }], examDays: null });
+    expect(txt).toContain('25 min over 1 of 7 days');
+    expect(txt).toContain('uoe (a 16 de 180)');
+    expect(txt).toContain('diagnostic not done');
+    const s = sundayText({ week, streak: computeStreak(week, '2026-11-15'), theo: 'Only 25 minutes <this> week.' });
+    expect(s).toContain('<b>Theo:</b> <i>Only 25 minutes &lt;this&gt; week.</i>');
+  });
+});
