@@ -1,0 +1,164 @@
+{
+  "id": "l3-c",
+  "part": "l3",
+  "title": "Under pressure",
+  "createdAt": 1794873600000,
+  "context": "You will hear an interview with Dr Sam Turner, a sports psychologist, about how athletes deal with pressure.",
+  "unit": {
+    "id": "l3-c",
+    "speakers": [
+      {
+        "id": "A",
+        "name": "Laura",
+        "gender": "female",
+        "accent": "British"
+      },
+      {
+        "id": "B",
+        "name": "Sam",
+        "gender": "male",
+        "accent": "New Zealand"
+      }
+    ],
+    "style": "a natural radio interview, thoughtful and articulate, at a normal pace",
+    "gapMs": 450,
+    "turns": [
+      {
+        "s": "A",
+        "text": "My guest today is Doctor Sam Turner, a sports psychologist who has worked with Olympic athletes and professional football teams. Sam, let's start with penalty shootouts. Why do so many top players miss when it really matters?"
+      },
+      {
+        "s": "B",
+        "text": "It's a great question, and the answer isn't really about skill. In training, those same players would score nine times out of ten. What changes in a shootout is that they start thinking about the consequences rather than the task. Instead of focusing on where they want the ball to go, they're imagining the newspaper headlines if they miss. And the moment you do that, your body becomes tense and your technique suffers."
+      },
+      {
+        "s": "A",
+        "text": "So is there anything they can do about it?"
+      },
+      {
+        "s": "B",
+        "text": "Quite a lot, actually. One of the most effective things is a consistent routine. If you watch the best penalty takers, they do exactly the same thing every time: the same number of steps back, the same breath, the same look at the goal. It isn't superstition. A routine gives the mind something familiar to hold on to, so there's less room for the anxious thoughts to creep in."
+      },
+      {
+        "s": "A",
+        "text": "I've read that some teams now practise shootouts in front of crowds of fans. Does that help?"
+      },
+      {
+        "s": "B",
+        "text": "It helps a little, but you can never fully recreate the real thing. The pressure of a cup final simply can't be manufactured on a training ground. What you can do is practise being uncomfortable. I sometimes ask players to take penalties when they're exhausted at the end of a session, or while their teammates are shouting at them. The aim isn't to make it feel real, it's to teach them that they can perform even when they don't feel ready."
+      },
+      {
+        "s": "A",
+        "text": "Interesting. And is it true that taking your time helps?"
+      },
+      {
+        "s": "B",
+        "text": "Rushing is one of the most common mistakes. Research has found that players who hurry their penalty after the referee blows the whistle are significantly more likely to miss. It's a kind of escape: they want the unpleasant moment to be over as quickly as possible. Taking an extra second or two, even if it feels awkward, gives you back a sense of control."
+      },
+      {
+        "s": "A",
+        "text": "Is a certain amount of nervousness actually useful, though?"
+      },
+      {
+        "s": "B",
+        "text": "Very much so. A bit of adrenaline sharpens your reactions and your focus. The problem isn't feeling nervous; it's interpreting those feelings as a sign that something is going wrong. I teach players to tell themselves that a racing heart means their body is getting ready to perform. It sounds almost too simple, but changing the label really does change the effect."
+      },
+      {
+        "s": "A",
+        "text": "What about the goalkeepers? We tend to forget them."
+      },
+      {
+        "s": "B",
+        "text": "We do, and that's partly why they have a psychological advantage. Nobody expects a goalkeeper to save a penalty, so they have nothing to lose. The clever ones use that. They take their time, they make themselves look big, they might even chat to the taker. All of it is designed to make the taker think, and as I said, thinking is the enemy."
+      },
+      {
+        "s": "A",
+        "text": "Finally, Sam, does any of this apply to the rest of us, who'll never take a penalty in a cup final?"
+      },
+      {
+        "s": "B",
+        "text": "Absolutely. Exams, job interviews, presentations: the same principles apply. Focus on the task, not the consequences. Have a routine. And don't rush. I've used exactly the same techniques with students who freeze in exams, and the results can be remarkable."
+      }
+    ]
+  },
+  "questions": [
+    {
+      "n": 15,
+      "stem": "According to Sam, why do top players often miss penalties in shootouts?",
+      "options": {
+        "A": "They have not practised enough.",
+        "B": "They focus on what might happen if they fail.",
+        "C": "They try to place the ball too precisely.",
+        "D": "They are physically tired by that stage."
+      },
+      "answer": "B",
+      "explanation": "Sam says the players start thinking about the consequences, such as the headlines if they miss, rather than the task. Skill and practice are not the problem: they score nine times out of ten in training.",
+      "evidence": "they start thinking about the consequences rather than the task"
+    },
+    {
+      "n": 16,
+      "stem": "What does Sam say about routines before a penalty?",
+      "options": {
+        "A": "They are a form of superstition.",
+        "B": "They only work for very experienced players.",
+        "C": "They should be changed regularly.",
+        "D": "They help to keep anxious thoughts away."
+      },
+      "answer": "D",
+      "explanation": "A routine gives the mind something familiar, leaving 'less room for the anxious thoughts'. He says explicitly that it isn't superstition.",
+      "evidence": "so there's less room for the anxious thoughts to creep in"
+    },
+    {
+      "n": 17,
+      "stem": "What is the purpose of the uncomfortable training Sam describes?",
+      "options": {
+        "A": "to make practice feel exactly like a real match",
+        "B": "to show players they can succeed without feeling ready",
+        "C": "to improve players' physical fitness",
+        "D": "to help players ignore their teammates"
+      },
+      "answer": "B",
+      "explanation": "The aim is not to make it feel real (A); it is to teach players that they can perform even when they don't feel ready.",
+      "evidence": "it's to teach them that they can perform even when they don't feel ready"
+    },
+    {
+      "n": 18,
+      "stem": "According to Sam, players who rush their penalties",
+      "options": {
+        "A": "want an unpleasant situation to end.",
+        "B": "usually feel more confident.",
+        "C": "are following their coach's instructions.",
+        "D": "are trying to surprise the goalkeeper."
+      },
+      "answer": "A",
+      "explanation": "Rushing is 'a kind of escape': the players want the unpleasant moment to be over as quickly as possible.",
+      "evidence": "they want the unpleasant moment to be over as quickly as possible"
+    },
+    {
+      "n": 19,
+      "stem": "Why does Sam say goalkeepers have a psychological advantage?",
+      "options": {
+        "A": "They have more experience of penalties.",
+        "B": "They are allowed to move before the kick.",
+        "C": "Nobody expects them to succeed.",
+        "D": "They can study the taker beforehand."
+      },
+      "answer": "C",
+      "explanation": "Because nobody expects a goalkeeper to save a penalty, they have nothing to lose.",
+      "evidence": "Nobody expects a goalkeeper to save a penalty, so they have nothing to lose."
+    },
+    {
+      "n": 20,
+      "stem": "What does Sam say about using these techniques outside sport?",
+      "options": {
+        "A": "They are less effective in academic situations.",
+        "B": "He has seen them work well with students.",
+        "C": "They need to be adapted for each person.",
+        "D": "Most people already use them without realising."
+      },
+      "answer": "B",
+      "explanation": "He has used the same techniques with students who freeze in exams, with 'remarkable' results.",
+      "evidence": "I've used exactly the same techniques with students who freeze in exams, and the results can be remarkable."
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "id": "l1-c",
+  "part": "l1",
+  "title": "Courses, gardens and coins",
+  "createdAt": 1794873600000,
+  "extracts": [
+    {
+      "context": "You hear two colleagues talking about a time-management course they attended.",
+      "unit": {
+        "id": "l1-c-x1",
+        "speakers": [
+          { "id": "A", "name": "Maya", "gender": "female", "accent": "American" },
+          { "id": "B", "name": "Ollie", "gender": "male", "accent": "British" }
+        ],
+        "style": "a natural, relaxed conversation between colleagues",
+        "gapMs": 400,
+        "turns": [
+          { "s": "A", "text": "So, what did you make of the course yesterday? I have to admit, I went in expecting the usual stuff about to-do lists and colour-coded calendars." },
+          { "s": "B", "text": "Me too. And to be fair, there was a bit of that. But the part about saying no to meetings was actually useful. I counted afterwards, and I spent eleven hours in meetings last week. Eleven! Half of them I didn't need to be in." },
+          { "s": "A", "text": "That bit was good. Although I thought the trainer made it sound easier than it is. If your manager invites you, you can't exactly decline just because a course told you to." },
+          { "s": "B", "text": "True. I think the trick is to ask what they need from you beforehand. Sometimes you can just send your figures by email and skip the whole thing." },
+          { "s": "A", "text": "Maybe. What I'm definitely going to try is blocking out my mornings for proper work. No emails before eleven." },
+          { "s": "B", "text": "Good luck with that. I'll believe it when I see it." }
+        ]
+      },
+      "questions": [
+        {
+          "n": 1,
+          "stem": "What did Ollie find most useful about the course?",
+          "options": { "A": "advice on organising his calendar", "B": "the suggestion to attend fewer meetings", "C": "a method for writing to-do lists" },
+          "answer": "B",
+          "explanation": "Ollie says the part about saying no to meetings was useful, and he realised he had spent eleven hours in meetings. To-do lists and calendars were what they both expected, not what he valued.",
+          "evidence": "But the part about saying no to meetings was actually useful."
+        },
+        {
+          "n": 2,
+          "stem": "What does Maya think about the trainer's advice on meetings?",
+          "options": { "A": "It is unrealistic in some situations.", "B": "It is already company policy.", "C": "It would be popular with their manager." },
+          "answer": "A",
+          "explanation": "Maya thinks the trainer made it sound easier than it is: you cannot simply refuse when your manager invites you.",
+          "evidence": "I thought the trainer made it sound easier than it is."
+        }
+      ]
+    },
+    {
+      "context": "You hear a woman telling a friend about a community garden she has joined.",
+      "unit": {
+        "id": "l1-c-x2",
+        "speakers": [
+          { "id": "A", "name": "Siobhan", "gender": "female", "accent": "Irish" },
+          { "id": "B", "name": "Mark", "gender": "male", "accent": "British" }
+        ],
+        "style": "a warm, chatty conversation between old friends",
+        "gapMs": 400,
+        "turns": [
+          { "s": "A", "text": "You'd love the garden, Mark. I only went along because my neighbour kept nagging me, but I'm completely hooked now. Every Saturday morning, rain or shine." },
+          { "s": "B", "text": "I can't imagine you weeding. You used to complain about watering a cactus." },
+          { "s": "A", "text": "I know! But it's not really about the vegetables, if I'm honest. We grow loads, and most of it goes to the food bank down the road. For me, though, it's the people. I've lived on that street for six years and I barely knew anyone. Now I can't walk to the shop without stopping for a chat." },
+          { "s": "B", "text": "That sounds nice. Do you need to know what you're doing, though? I wouldn't know a carrot from a weed." },
+          { "s": "A", "text": "Nobody cares. There's a retired farmer called Des who teaches everyone. He's very patient, as long as you don't touch his tomatoes." }
+        ]
+      },
+      "questions": [
+        {
+          "n": 3,
+          "stem": "What does Siobhan value most about the garden?",
+          "options": { "A": "the food she is able to take home", "B": "the chance to get to know her neighbours", "C": "the opportunity to help the food bank" },
+          "answer": "B",
+          "explanation": "She says it is not really about the vegetables: what matters to her is the people, since she barely knew anyone on her street before. The food bank gets most of the produce, but that is not what she values most.",
+          "evidence": "For me, though, it's the people."
+        },
+        {
+          "n": 4,
+          "stem": "What does Siobhan suggest about Des?",
+          "options": { "A": "He is protective of part of the garden.", "B": "He is impatient with beginners.", "C": "He started the garden himself." },
+          "answer": "A",
+          "explanation": "Des is patient with everyone 'as long as you don't touch his tomatoes', so he is protective of his part of the garden. B is the opposite of what she says.",
+          "evidence": "as long as you don't touch his tomatoes"
+        }
+      ]
+    },
+    {
+      "context": "You hear two presenters on a radio arts programme discussing an exhibition about the history of money.",
+      "unit": {
+        "id": "l1-c-x3",
+        "speakers": [
+          { "id": "A", "name": "Fiona", "gender": "female", "accent": "Scottish" },
+          { "id": "B", "name": "Jacob", "gender": "male", "accent": "Canadian" }
+        ],
+        "style": "a lively radio discussion between two presenters",
+        "gapMs": 400,
+        "turns": [
+          { "s": "A", "text": "Now, Jacob, you went to see the new exhibition on the history of money. I'll be honest, it doesn't sound like the most thrilling way to spend an afternoon." },
+          { "s": "B", "text": "That's what I thought, and I was completely wrong. They've avoided the obvious trap of just putting old coins in glass cases. There are coins, of course, but the focus is on people: what money meant to a Roman soldier, a medieval farmer, a factory worker in the eighteen hundreds." },
+          { "s": "A", "text": "So it's more social history than economics?" },
+          { "s": "B", "text": "Exactly. My only complaint is the final room, which is about digital currencies. It felt rushed, as if they'd run out of time or money, which would be ironic. But I'd still say it's the best exhibition I've seen this year." },
+          { "s": "A", "text": "High praise indeed. It's on until March." }
+        ]
+      },
+      "questions": [
+        {
+          "n": 5,
+          "stem": "What did Jacob like about the exhibition?",
+          "options": { "A": "It explains complex economic ideas clearly.", "B": "It concentrates on people's experiences of money.", "C": "It has an impressive collection of rare coins." },
+          "answer": "B",
+          "explanation": "Jacob says the focus is on people and what money meant to them. Fiona's question confirms it is social history rather than economics, and the coins are not the main attraction.",
+          "evidence": "the focus is on people"
+        },
+        {
+          "n": 6,
+          "stem": "What criticism does Jacob make?",
+          "options": { "A": "One section seems less carefully developed.", "B": "The exhibition is too expensive to visit.", "C": "Some displays are difficult to understand." },
+          "answer": "A",
+          "explanation": "His only complaint is that the final room on digital currencies felt rushed. The joke about running out of money refers to the organisers, not the ticket price.",
+          "evidence": "It felt rushed, as if they'd run out of time or money"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "l4-c",
+  "part": "l4",
+  "title": "Learning an instrument as an adult",
+  "createdAt": 1794873600000,
+  "context": "You will hear five short extracts in which people talk about learning a musical instrument as adults.",
+  "unit": {
+    "id": "l4-c",
+    "speakers": [
+      { "id": "1", "name": "Joanna", "gender": "female", "accent": "British" },
+      { "id": "2", "name": "Dwayne", "gender": "male", "accent": "American" },
+      { "id": "3", "name": "Thandi", "gender": "female", "accent": "South African" },
+      { "id": "4", "name": "Luc", "gender": "male", "accent": "Canadian" },
+      { "id": "5", "name": "Clodagh", "gender": "female", "accent": "Irish" }
+    ],
+    "style": "spontaneous and natural, as if talking to an interviewer, at a normal pace",
+    "gapMs": 2500,
+    "turns": [
+      { "s": "1", "text": "My daughter started the violin at school, and I used to sit in on her lessons feeling slightly useless. One day I thought, why not learn alongside her? That way we'd have something to do together, and I'd understand what she was going through. What I wasn't prepared for was how tough it is on the body. After twenty minutes of practice my neck and shoulders ache as if I'd been lifting weights. My daughter, of course, finds this hilarious, and she's already far better than me." },
+      { "s": "2", "text": "I'd never really listened to jazz until a friend's wedding, where this old guy played the piano for about an hour after dinner. There was one piece, I still don't know what it was called, that just stopped me in my tracks. I went home and booked lessons the next week. The first few months were great; every week I could play something new. But then I hit a wall. I've been working on the same three songs since the spring, and some days it feels like I'm going backwards." },
+      { "s": "3", "text": "I broke my wrist badly in a cycling accident, and when the cast came off, my fingers barely moved. My physiotherapist suggested piano lessons as a way to get them working again, which sounded like a strange idea, but she was right. Six months later my hand is almost back to normal. The unexpected bonus has been my concentration. I'm an accountant, and I can focus on long reports far better than before. I'm convinced the practice has trained my brain as well as my fingers." },
+      { "s": "4", "text": "When I was twelve, my music teacher told me, in front of the whole class, that I had no sense of rhythm and should stick to sport. I believed her for thirty years. Then last year, on my forty-second birthday, I decided enough was enough and bought a second-hand drum kit. Partly, I'll admit, I wanted to show that she'd been wrong about me. I expected practising to be a chore I'd have to force myself through. Instead, it's become the best part of my day. My neighbours are less enthusiastic." },
+      { "s": "5", "text": "My grandfather played the accordion at every family party when I was little, and I promised him I'd learn one day. He died when I was fifteen, and the accordion sat in my parents' attic for years. When I finally brought it down, I felt I owed it to him. Practising on my own is fine; I can get through most of his old tunes now. But the first time I played at a family gathering, my hands were shaking so much I could barely press the keys. I hadn't expected an audience of cousins to be so terrifying." }
+    ]
+  },
+  "task1": {
+    "prompt": "TASK ONE · For questions 21–25, choose from the list (A–H) why each speaker decided to start learning an instrument.",
+    "options": {
+      "A": "to share an interest with a family member",
+      "B": "to recover from an injury",
+      "C": "to prove someone wrong",
+      "D": "to keep a promise made long ago",
+      "E": "to have something creative outside work",
+      "F": "because of a piece of music they heard",
+      "G": "to meet new people",
+      "H": "because a friend persuaded them"
+    }
+  },
+  "task2": {
+    "prompt": "TASK TWO · For questions 26–30, choose from the list (A–H) what each speaker has found most surprising.",
+    "options": {
+      "A": "how quickly they improved at first",
+      "B": "how much they enjoy practising",
+      "C": "how physically demanding it is",
+      "D": "how patient their teacher is",
+      "E": "how hard it is to play in front of others",
+      "F": "how much it has helped them in other areas",
+      "G": "how expensive it has become",
+      "H": "how slow progress becomes after the first months"
+    }
+  },
+  "answers1": ["A", "F", "B", "C", "D"],
+  "answers2": ["C", "H", "F", "B", "E"],
+  "notes": [
+    { "evidence1": "That way we'd have something to do together", "evidence2": "What I wasn't prepared for was how tough it is on the body.", "explanation": "She started so that she and her daughter would have something to do together. Her surprise is physical: her neck and shoulders ache." },
+    { "evidence1": "There was one piece, I still don't know what it was called, that just stopped me in my tracks.", "evidence2": "But then I hit a wall.", "explanation": "A piece he heard at a wedding made him book lessons. He improved quickly at first (a distractor for A), but what surprised him is that progress then stopped." },
+    { "evidence1": "My physiotherapist suggested piano lessons as a way to get them working again", "evidence2": "I can focus on long reports far better than before", "explanation": "She took up the piano to recover the movement in her fingers after an accident. The unexpected bonus is better concentration at work. The physiotherapist is not a friend (H)." },
+    { "evidence1": "I wanted to show that she'd been wrong about me", "evidence2": "Instead, it's become the best part of my day.", "explanation": "He wanted to prove his old music teacher wrong. He expected practising to be a chore, but now he loves it." },
+    { "evidence1": "I promised him I'd learn one day", "evidence2": "my hands were shaking so much I could barely press the keys", "explanation": "She learnt the accordion to keep a childhood promise to her grandfather. Playing at home is fine; playing in front of her family terrified her." }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "l2-c",
+  "part": "l2",
+  "title": "Bringing pianos back to life",
+  "createdAt": 1794873600000,
+  "context": "You will hear a woman called Elena talking about her work restoring old pianos.",
+  "unit": {
+    "id": "l2-c",
+    "speakers": [{ "id": "A", "name": "Elena", "gender": "female", "accent": "Australian" }],
+    "style": "a relaxed, engaging talk to an audience, at a natural pace",
+    "gapMs": 700,
+    "turns": [
+      { "s": "A", "text": "Hello, everyone. My name's Elena, and I restore old pianos for a living, which is a job most people don't realise still exists. I've been doing it for about fifteen years now, mostly from a workshop in an old railway warehouse just outside the city." },
+      { "s": "A", "text": "I actually trained as a primary school teacher. I could play the piano reasonably well, but I had no idea how one worked. That changed when my grandmother left me her piano, which was over a hundred years old and in a terrible state. I couldn't afford to have it repaired, so I borrowed some books from the library and decided to do it myself. It took me almost two years." },
+      { "s": "A", "text": "People often assume the hardest part of the job is the tuning, but it isn't. Tuning is a skill you can learn with practice. What really takes time is replacing the hammers, the small felt-covered parts that strike the strings. On a typical piano there are eighty-eight of them, and every single one has to be adjusted by hand." },
+      { "s": "A", "text": "The pianos come to me from all sorts of places. Some are family heirlooms, like my grandmother's. Others turn up where you'd never expect them. The strangest one I've worked on was discovered in a church hall, where it had been hidden behind a stage curtain for about forty years. Nobody even knew it was there." },
+      { "s": "A", "text": "One thing I've learnt is that the condition of a piano depends less on its age than on where it's been kept. The biggest enemy isn't time, it's humidity. A piano that has spent years next to a radiator can be in a far worse state than one that is twice as old but has lived in a cool, steady room." },
+      { "s": "A", "text": "I don't use many modern tools. Most of the work is done with equipment that hasn't changed much in a century, although I do use an app on my phone to check the tuning at the end. I'd say ninety per cent of the job is patience." },
+      { "s": "A", "text": "I'm often asked whether it's worth restoring a cheap old piano rather than buying a new one. My honest answer is that it depends on why you want it. If it's for the sound, a good new instrument might be better value. But many of my customers aren't really paying for a piano. They're paying for a memory." },
+      { "s": "A", "text": "These days I also run weekend courses for beginners. They're always fully booked, and the students who do best, interestingly, are rarely musicians. They tend to be people who are good with their hands, like carpenters or retired engineers. So if you've ever wanted to look inside a piano, come and find me afterwards." }
+    ]
+  },
+  "items": [
+    { "n": 7, "sentence": "Elena's workshop is in an old ___ just outside the city.", "answers": ["railway warehouse", "warehouse"], "explanation": "She works from a workshop in an old railway warehouse.", "evidence": "a workshop in an old railway warehouse" },
+    { "n": 8, "sentence": "Elena originally trained as a ___.", "answers": ["primary school teacher", "school teacher", "teacher"], "explanation": "She trained as a primary school teacher before she learnt how pianos work.", "evidence": "I actually trained as a primary school teacher" },
+    { "n": 9, "sentence": "Restoring her grandmother's piano took Elena almost ___.", "answers": ["two years", "2 years"], "explanation": "She repaired it herself with library books, and it took almost two years.", "evidence": "It took me almost two years." },
+    { "n": 10, "sentence": "According to Elena, the task that takes the most time is replacing the ___.", "answers": ["hammers"], "explanation": "Tuning can be learnt; what really takes time is replacing the hammers, all eighty-eight of them.", "evidence": "What really takes time is replacing the hammers" },
+    { "n": 11, "sentence": "The strangest piano Elena has restored was found in a ___.", "answers": ["church hall"], "explanation": "It was discovered in a church hall. The stage curtain is what it was hidden behind, not where it was found.", "evidence": "was discovered in a church hall" },
+    { "n": 12, "sentence": "Elena says that the biggest threat to a piano's condition is ___.", "answers": ["humidity"], "explanation": "The biggest enemy isn't time, it's humidity, which is why a piano near a radiator suffers.", "evidence": "The biggest enemy isn't time, it's humidity." },
+    { "n": 13, "sentence": "At the end of a job, Elena uses ___ to check the tuning.", "answers": ["an app", "app", "a phone app", "an app on her phone"], "explanation": "Most of her tools are traditional, but she checks the tuning with an app on her phone.", "evidence": "I do use an app on my phone to check the tuning" },
+    { "n": 14, "sentence": "The beginners who do best on Elena's courses are usually people who are good with their ___.", "answers": ["hands"], "explanation": "The best students are rarely musicians: they are people who are good with their hands, like carpenters.", "evidence": "people who are good with their hands" }
+  ]
+}
