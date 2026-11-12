@@ -1066,13 +1066,156 @@
     "A": "vindemiatrix"
    },
    "model": "gemini-3.8-flash-lite-tts"
+  },
+  "l1-c-x1": {
+   "hash": "30b463123162",
+   "file": "l1-c-x1-30b463123162.mp3",
+   "duration": 50.93,
+   "turns": [
+    [
+     0.3,
+     9.49
+    ],
+    [
+     9.49,
+     21.63
+    ],
+    [
+     21.63,
+     32.39
+    ],
+    [
+     32.39,
+     40.69
+    ],
+    [
+     40.69,
+     48.1
+    ],
+    [
+     48.1,
+     50.63
+    ]
+   ],
+   "voices": {
+    "A": "aoede",
+    "B": "en-gb-training-11"
+   },
+   "model": "gemini-3.8-flash-tts"
+  },
+  "l1-c-x2": {
+   "hash": "b91eb1788eb4",
+   "file": "l1-c-x2-b91eb1788eb4.mp3",
+   "duration": 37.03,
+   "turns": [
+    [
+     0.3,
+     7.5
+    ],
+    [
+     7.5,
+     12.11
+    ],
+    [
+     12.11,
+     25.35
+    ],
+    [
+     25.35,
+     30.18
+    ],
+    [
+     30.18,
+     36.74
+    ]
+   ],
+   "voices": {
+    "A": "en-ie-concierge-3",
+    "B": "en-gb-training-12"
+   },
+   "model": "gemini-3.8-flash-tts"
+  },
+  "l1-c-x3": {
+   "hash": "571cf9bb34c5",
+   "file": "l1-c-x3-571cf9bb34c5.mp3",
+   "duration": 49.73,
+   "turns": [
+    [
+     0.3,
+     10.52
+    ],
+    [
+     10.52,
+     29.28
+    ],
+    [
+     29.28,
+     32.03
+    ],
+    [
+     32.03,
+     46.32
+    ],
+    [
+     46.32,
+     49.43
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-tutor-20",
+    "B": "en-ca-commercial-6"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "l2-c": {
+   "hash": "7664178f665b",
+   "file": "l2-c-7664178f665b.mp3",
+   "duration": 149,
+   "turns": [
+    [
+     0.3,
+     17.1
+    ],
+    [
+     17.1,
+     38.35
+    ],
+    [
+     38.35,
+     57.75
+    ],
+    [
+     57.75,
+     79.44
+    ],
+    [
+     79.44,
+     98.53
+    ],
+    [
+     98.53,
+     111.85
+    ],
+    [
+     111.85,
+     129.47
+    ],
+    [
+     129.47,
+     148.7
+    ]
+   ],
+   "voices": {
+    "A": "en-au-concierge-6"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
   }
  },
  "status": {
-  "at": "2026-11-12T17:05:14.781Z",
-  "total": 150,
-  "done": 45,
+  "at": "2026-11-12T17:32:18.940Z",
+  "total": 156,
+  "done": 49,
   "stoppedBy": "cuota diaria gratuita de voz agotada (en los dos modelos)",
-  "requests": 23
+  "requests": 6
  }
 }
