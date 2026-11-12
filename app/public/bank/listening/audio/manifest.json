@@ -1209,13 +1209,81 @@
     "A": "en-au-concierge-6"
    },
    "model": "gemini-3.8-flash-lite-tts"
+  },
+  "l3-c": {
+   "hash": "ea97d382e7ba",
+   "file": "l3-c-ea97d382e7ba.mp3",
+   "duration": 196.12,
+   "turns": [
+    [
+     0.3,
+     15.2
+    ],
+    [
+     15.2,
+     40.17
+    ],
+    [
+     40.17,
+     42.1
+    ],
+    [
+     42.1,
+     63.55
+    ],
+    [
+     63.55,
+     69.16
+    ],
+    [
+     69.16,
+     97.82
+    ],
+    [
+     97.82,
+     100.85
+    ],
+    [
+     100.85,
+     122.16
+    ],
+    [
+     122.16,
+     127.07
+    ],
+    [
+     127.07,
+     151.19
+    ],
+    [
+     151.19,
+     155.29
+    ],
+    [
+     155.29,
+     172.75
+    ],
+    [
+     172.75,
+     178.43
+    ],
+    [
+     178.43,
+     195.82
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-commercial-9",
+    "B": "en-nz-tutor-8"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
   }
  },
  "status": {
-  "at": "2026-11-12T17:32:18.940Z",
-  "total": 156,
-  "done": 49,
+  "at": "2026-11-12T17:36:03.912Z",
+  "total": 208,
+  "done": 50,
   "stoppedBy": "cuota diaria gratuita de voz agotada (en los dos modelos)",
-  "requests": 6
+  "requests": 3
  }
 }
