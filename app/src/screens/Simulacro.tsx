@@ -10,7 +10,8 @@ import { markSet, type Answers } from '../rue/marking';
 import { buildPaperPdf, sharePdf } from '../rue/paperPdf';
 import { reviewOpenAnswers } from '../rue/review';
 import { PARTS, type RueSet } from '../rue/schema';
-import { overallOf, scaleText } from '../scoring/estimate';
+import { overallOf, scaleText, type ScoreDoc } from '../scoring/estimate';
+import { loadScores } from '../scoring/readiness';
 import { navigate } from '../router';
 import { store } from '../state';
 import { updateTutorNotes } from '../tutor/notes';
@@ -64,16 +65,7 @@ export function Simulacro() {
         {busy && <Spinner label={busy} />}
         {!active && !busy && (
           <>
-            {run?.result && (
-              <section class="card stack" style={g(10)}>
-                <span class="kicker">Último simulacro · {PAPERS.find((p) => p.id === run.paper)?.title}</span>
-                {run.paper === 'full' && <MetroLine estimate={run.result.overall} />}
-                {SKILL_ORDER.filter((k) => run.result!.skills[k] != null).map((k) => (
-                  <SkillLine key={k} label={SKILLS[k].label} color={SKILLS[k].color} score={run.result!.skills[k] ?? null} />
-                ))}
-                <p class="muted small">Con las tablas oficiales de conversión de Cambridge. Cuenta para «¿Estoy listo?».</p>
-              </section>
-            )}
+            <Resultados />
             <div class="list">
               {PAPERS.map((p) => (
                 <ListItem key={p.id} dot="var(--ink)" title={p.title} sub={`${p.es} · ~${p.minutes >= 60 ? `${Math.floor(p.minutes / 60)} h ${p.minutes % 60 ? `${p.minutes % 60} min` : ''}` : `${p.minutes} min`}`} onClick={() => begin(p.id)} />
@@ -133,9 +125,70 @@ export function Simulacro() {
             <button class="linkbtn" onClick={() => confirm('¿Abandonar este simulacro? Lo hecho no cuenta.') && setRun(null)}>
               Elegir otro simulacro
             </button>
+            <Resultados />
           </>
         )}
       </Page>
+    </>
+  );
+}
+
+/* ── Tus resultados (se pueden borrar) ────────────────────────── */
+
+function Resultados() {
+  const [rows, setRows] = useState<(ScoreDoc & { id: string })[] | null>(null);
+  useEffect(() => {
+    loadScores().then((all) => setRows((all as (ScoreDoc & { id: string })[]).filter((s) => s.kind === 'mock')));
+  }, []);
+  if (!rows?.length) return null;
+  const name = (r: ScoreDoc) => PAPERS.find((p) => p.id === r.paper)?.title ?? r.label ?? 'Simulacro';
+  const remove = async (r: ScoreDoc & { id: string }) => {
+    if (!confirm(`¿Borrar «${name(r)}» (${r.overall})? Deja de contar para tu nota y para «¿Estoy listo?». No se puede deshacer.`)) return;
+    await store().remove(`scores/${r.id}`);
+    setRows(rows.filter((x) => x.id !== r.id));
+    toast('Resultado borrado');
+  };
+  const [last, ...rest] = rows;
+  const date = (t: number) => new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'short' }).format(t);
+  return (
+    <>
+      <section class="card stack" style={g(10)}>
+        <div class="spread">
+          <span class="kicker">Último · {name(last)}</span>
+          <span class="small muted">{date(last.at)}</span>
+        </div>
+        {last.paper === 'full' && <MetroLine estimate={last.overall} />}
+        {SKILL_ORDER.filter((k) => last.skills[k] != null).map((k) => (
+          <SkillLine key={k} label={SKILLS[k].label} color={SKILLS[k].color} score={last.skills[k] ?? null} />
+        ))}
+        <p class="muted small" style={{ margin: 0 }}>
+          Con las tablas oficiales de Cambridge. Cuenta para tu nota y para «¿Estoy listo?».
+        </p>
+        <button class="linkbtn" onClick={() => remove(last)} style={{ alignSelf: 'flex-start' }}>
+          No lo hice en serio: borrarlo
+        </button>
+      </section>
+      {rest.length > 0 && (
+        <details class="fold">
+          <summary>
+            <span class="grow small">
+              <strong>Simulacros anteriores ({rest.length})</strong>
+            </span>
+          </summary>
+          <div class="fold-body stack" style={g(6)}>
+            {rest.map((r) => (
+              <div key={r.id} class="spread small">
+                <span>
+                  {name(r)} · {date(r.at)} · <strong>{r.overall}</strong>
+                </span>
+                <button class="linkbtn" onClick={() => remove(r)}>
+                  Borrar
+                </button>
+              </div>
+            ))}
+          </div>
+        </details>
+      )}
     </>
   );
 }
@@ -405,6 +458,10 @@ export function SimulacroRespuestas() {
 
   const submit = async () => {
     if (!sets) return;
+    // Corregir casi en blanco guardaría una nota falsa que hunde tu estimación: se pregunta antes.
+    const total = sets.reduce((a, s) => a + s.items.length, 0);
+    const given = sets.reduce((a, s) => a + Object.values(answers[s.id] ?? {}).filter((v) => String(v).trim()).length, 0);
+    if (given < total / 2 && !confirm(`Solo has metido ${given} de ${total} respuestas. Las vacías cuentan como falladas y esta nota contará para tu estimación. ¿Corregir igualmente?`)) return;
     setBusy(true);
     try {
       let failed = 0;

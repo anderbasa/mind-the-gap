@@ -106,6 +106,8 @@ interface ScoreView {
   overall: number;
   /** Última medición de casi todo (diagnóstico, mini, simulacro completo u oficial). */
   last: ScoreDoc;
+  /** Hay diagnóstico (o mini, o un examen completo): si no, Hoy sigue proponiéndolo. */
+  hasDiag: boolean;
 }
 
 const KIND_ES: Record<ScoreDoc['kind'], string> = { diagnostic: 'diagnóstico', mini: 'mini-diagnóstico', mock: 'simulacro', official: 'sample test oficial' };
@@ -117,7 +119,8 @@ function useScore(): ScoreView | null | undefined {
     currentEstimate()
       .then(({ estimate, scores, lastBroad }) => {
         const last = lastBroad ?? scores[0];
-        setS(estimate.overall != null && last ? { est: estimate, overall: estimate.overall, last } : null);
+        const hasDiag = scores.some((x) => x.kind === 'diagnostic' || x.kind === 'mini' || x.kind === 'official' || x.paper === 'full');
+        setS(estimate.overall != null && last ? { est: estimate, overall: estimate.overall, last, hasDiag } : null);
       })
       .catch(() => setS(null));
   }, []);
@@ -164,12 +167,17 @@ function Trayecto() {
       ) : (
         <p class="muted small">Aún no hay nota estimada: Theo no se fía de tu nota del First. El diagnóstico mide dónde estás de verdad, y el tramo rojo será tu «gap».</p>
       )}
-      {(!score || old) && (
-        <button class="btn signal" onClick={() => navigate(score ? '/diagnostico?mini=1' : '/diagnostico')}>
-          {score ? 'Toca el mini-diagnóstico mensual' : 'Hacer el diagnóstico (~60 min)'}
+      {score && !score.hasDiag && (
+        <p class="small muted" style={{ margin: 0 }}>
+          Esta nota sale solo de {score.est.complete ? 'tus simulacros' : `${Object.keys(score.est.skills).length} de 5 destrezas`}: el diagnóstico mide las cinco.
+        </p>
+      )}
+      {(!score || old || !score.hasDiag) && (
+        <button class="btn signal" onClick={() => navigate(score?.hasDiag ? '/diagnostico?mini=1' : '/diagnostico')}>
+          {score?.hasDiag ? 'Toca el mini-diagnóstico mensual' : 'Hacer el diagnóstico (~60 min)'}
         </button>
       )}
-      {score && !old && (
+      {score && !old && score.hasDiag && (
         <button class="linkbtn" onClick={() => navigate('/listo')}>
           ¿Estoy listo?
         </button>
@@ -211,21 +219,6 @@ export function Hoy() {
         <HoySesion />
         <Trayecto />
         <HoyExtras />
-
-
-        <section class="stack" style={g(8)}>
-          <span class="kicker">Así va la obra</span>
-          <div class="list">
-            <ListItem dot="var(--ok)" title="Fase 1 · Base" sub="Login, perfil, Theo, capa de IA, prueba de voz" right={<span class="pill ok">Hecha</span>} />
-            <ListItem dot="var(--line-uoe)" title="Fase 2 · Reading & Use of English" sub="Las 8 partes, modo práctica y examen" right={<span class="pill ok">Hecha</span>} />
-            <ListItem dot="var(--line-writing)" title="Fase 3 · Writing y Reformular" sub="Corrección, Upgrade to C1, reescritura, Dímelo mejor" right={<span class="pill ok">Hecha</span>} />
-            <ListItem dot="var(--line-listening)" title="Fase 4 · Listening" sub="4 partes con varios acentos, dictados, inglés hablado real" right={<span class="pill ok">Hecha</span>} />
-            <ListItem dot="var(--line-speaking)" title="Fase 5 · Speaking por voz" sub="Simulacro, role-plays, long turn" right={<span class="pill ok">Hecha</span>} />
-            <ListItem dot="var(--line-vocab)" title="Fase 6 · Diagnóstico, errores, vocabulario y gramática" sub="Diagnóstico, memoria de Theo, cuaderno de errores, FSRS y gramática C1" right={<span class="pill ok">Hecha</span>} />
-            <ListItem dot="var(--signal)" title="Fase 7 · Sesión de hoy y examen" sub="Plan del día, informe semanal, simulacros y ¿Estoy listo?" right={<span class="pill ok">Hecha</span>} />
-            <ListItem dot="var(--ok)" title="Fase 8 · Rachas, XP y logros" sub="Hecha la primera mitad. Faltan Escenas de series, Telegram y el pulido" right={<span class="pill">En obra</span>} />
-          </div>
-        </section>
       </Page>
     </>
   );
