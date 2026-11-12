@@ -133,20 +133,36 @@ export class PlaybackBlockedError extends Error {
   }
 }
 
-export async function playBlob(blob: Blob, opts: { rate?: number } = {}): Promise<void> {
+/** Reproduce un audio en el elemento compartido. `maxMs`: corta a ese tiempo (para pruebas). */
+export async function playBlob(blob: Blob, opts: { rate?: number; maxMs?: number } = {}): Promise<void> {
   stopPlayback();
   const url = URL.createObjectURL(blob);
   const a = sharedAudio();
   a.src = url;
   a.playbackRate = opts.rate ?? 1;
   current = a;
+  const timers: ReturnType<typeof setTimeout>[] = [];
   try {
     await new Promise<void>((resolve, reject) => {
+      let started = false;
       a.onended = () => resolve();
       a.onerror = () => reject(new Error('No se ha podido reproducir el audio.'));
-      a.play().catch((e: Error) => reject(e?.name === 'NotAllowedError' ? new PlaybackBlockedError() : e));
+      a.onplaying = () => (started = true);
+      a.play()
+        .then(() => (started = true))
+        .catch((e: Error) => reject(e?.name === 'NotAllowedError' ? new PlaybackBlockedError() : e));
+      // Si en 8 s no ha empezado a sonar, algo lo bloquea: mejor avisar que quedarse colgado.
+      timers.push(setTimeout(() => !started && reject(new PlaybackBlockedError()), 8000));
+      if (opts.maxMs) timers.push(setTimeout(() => (a.pause(), resolve()), opts.maxMs));
+      // Nunca más de lo que dura (más un margen), por si el navegador no avisa del final.
+      a.onloadedmetadata = () => {
+        if (Number.isFinite(a.duration)) timers.push(setTimeout(resolve, (a.duration / (opts.rate ?? 1)) * 1000 + 3000));
+      };
     });
   } finally {
+    timers.forEach(clearTimeout);
+    a.onplaying = null;
+    a.onloadedmetadata = null;
     a.onended = null;
     a.onerror = null;
     URL.revokeObjectURL(url);

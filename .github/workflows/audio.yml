@@ -19,6 +19,8 @@ on:
   schedule:
     # La cuota gratuita se reinicia a medianoche de California (8:00 UTC en invierno, 7:00 en verano).
     - cron: '35 8 * * *'
+    # De respaldo: GitHub a veces retrasa o se salta la primera.
+    - cron: '35 15 * * *'
   workflow_dispatch:
 
 permissions:

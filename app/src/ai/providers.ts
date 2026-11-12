@@ -24,7 +24,8 @@ export const DEFAULT_CHAINS: Record<TaskId, ModelRef[]> = {
   // Validar: un modelo distinto del que suele generar.
   validate: [g(MODELS.geminiFlash), g(MODELS.geminiFlashAlt), g(MODELS.geminiLite)],
   'open-answer': [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt)],
-  transcribe: [g(MODELS.geminiFlash), g(MODELS.geminiLite)],
+  // Transcribir: Flash-Lite primero (rápido y ~500 al día gratis); 3.8 Flash suele dar 503.
+  transcribe: [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt), g(MODELS.geminiFlash)],
   'ocr-writing': [g(MODELS.geminiFlash), g(MODELS.geminiFlashAlt), g(MODELS.geminiLite)],
   // Claude solo se usa si lo eliges en esa corrección; si no, la cadena empieza en Gemini (gratis).
   'correct-writing': [c(MODELS.claudeSonnet), g(MODELS.geminiFlash), g(MODELS.geminiFlashAlt), g(MODELS.geminiLite)],

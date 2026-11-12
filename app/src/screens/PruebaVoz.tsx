@@ -14,6 +14,7 @@ import { testLiveConnection } from '../voice/live';
 import { micErrorMessage, pickMime, Recorder, type Recording } from '../voice/recorder';
 import { englishVoices, speakSystem, systemVoices, voiceFor } from '../voice/speech';
 import { geminiSpeak } from '../voice/tts';
+import { loadManifest } from '../listening/bank';
 import { Band, Page } from '../ui/components';
 
 type Status = 'idle' | 'running' | 'ok' | 'fail' | 'ask';
@@ -165,17 +166,25 @@ const TESTS: TestDef[] = [
   },
   {
     id: 'gemini-tts',
-    title: '7 · Voz de Theo (Gemini)',
-    desc: 'Genera audio con Gemini TTS a través del Worker. Necesita conexión.',
+    title: '7 · Voz de Gemini',
+    desc: 'Pone un audio del banco generado con la voz de Gemini (lo que oirás en el Listening y el Speaking). Necesita conexión.',
     run: async () => {
       try {
-        const wav = await geminiSpeak("Right then. Mind the gap — between B2 and C1, that is. Let's close it.", {
-          style: 'Say it in a warm, slightly dry London accent',
-        });
+        // Un trozo ya generado en GitHub: no gasta la cuota de voz (≈10 al día).
+        const m = await loadManifest();
+        const entry = Object.values(m.units)[0];
+        if (entry) {
+          const r = await fetch(`${import.meta.env.BASE_URL}bank/listening/audio/${entry.file}`);
+          if (!r.ok) throw new Error(`No se ha podido descargar el audio (${r.status}).`);
+          const blob = await r.blob();
+          await playBlob(blob, { maxMs: 12_000 });
+          return { status: 'ask', question: '¿Has oído la voz de Gemini (unos segundos)?', detail: `audio del banco · ${(blob.size / 1024).toFixed(0)} KB` };
+        }
+        const wav = await geminiSpeak("Right then. Mind the gap — between B2 and C1, that is. Let's close it.");
         await playBlob(wav);
-        return { status: 'ask', question: '¿Ha sonado la voz de Theo?', detail: `${(wav.size / 1024).toFixed(0)} KB` };
+        return { status: 'ask', question: '¿Ha sonado la voz de Theo?', detail: `generada ahora · ${(wav.size / 1024).toFixed(0)} KB` };
       } catch (e) {
-        return { status: 'fail', detail: aiErrorMessage(e) };
+        return { status: 'fail', detail: e instanceof AiError ? aiErrorMessage(e) : (e as Error).message };
       }
     },
   },
@@ -184,14 +193,18 @@ const TESTS: TestDef[] = [
     title: '8 · Transcripción literal',
     desc: 'Envía tu última grabación a Gemini, que la transcribe tal cual (con tus «ehm»).',
     run: async () => {
-      if (!lastRecording) return { status: 'fail', detail: 'Haz antes la prueba 3.' };
+      const saved = lastRecording ? null : (await listRecordings().catch(() => []))[0];
+      const blob = lastRecording?.blob ?? saved?.blob;
+      if (!blob) return { status: 'fail', detail: 'Haz antes la prueba 3.' };
       try {
-        const wav = await blobToWav16k(lastRecording.blob);
+        const wav = await blobToWav16k(blob);
         const r = await runAI({
           task: 'transcribe',
           system: getPrompt('transcribe-verbatim').body,
           messages: [{ role: 'user', parts: [{ inline: { mimeType: 'audio/wav', data: await blobToBase64(wav) } }, { text: 'Transcribe this recording.' }] }],
           maxTokens: 600,
+          timeoutMs: 60_000,
+          retries: 1,
         });
         return { status: 'ok', detail: `«${r.text.trim()}» (${r.model.model})` };
       } catch (e) {
