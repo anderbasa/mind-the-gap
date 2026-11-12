@@ -1,0 +1,470 @@
+[
+  {
+    "id": "seed-p5-6",
+    "part": "p5",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Why saving is so hard",
+    "topic": "behavioural economics and personal saving",
+    "text": "Every January, millions of people promise themselves that this will be the year they finally start saving. By March, most of those promises have quietly been forgotten. It is tempting to put this down to a lack of discipline, and many personal finance books do exactly that, lecturing their readers about cutting back on takeaway coffees. Behavioural economists, however, have reached a rather different conclusion. The problem, they argue, is not that we are weak, but that our minds were never designed for the task.\n\nConsider what economists call 'present bias'. Offered fifty euros today or sixty in a month's time, most people take the smaller sum, even though waiting would earn them a return no bank could match. Yet when the same choice is pushed into the future – fifty euros in a year or sixty in thirteen months – the majority happily choose to wait. The extra month is identical in both cases; what changes is that, in the first, the reward is right in front of us. Saving asks us to sacrifice something real and immediate for the sake of a future self who, frankly, feels like a stranger.\n\nThat last point is more than a figure of speech. In one well-known experiment, researchers scanned the brains of volunteers while they thought first about themselves and then about a famous actor. When the volunteers were asked to imagine themselves ten years from now, the pattern of activity looked less like the first and more like the second. Small wonder, then, that we are reluctant to hand over our money to someone our own brain treats as a celebrity we have never met.\n\nOur habit of dividing money into mental compartments does not help either. A bonus at work or a birthday present from a grandparent tends to be filed under 'treats', and spent accordingly, while the same amount earned through overtime is treated with far more respect. This 'mental accounting' is not entirely irrational – it helps people stick to budgets – but it means that windfalls, which could easily be saved, rarely are.\n\nModern technology has made matters worse. Online shops store our card details so that a purchase takes a single click, and apps tempt us with notifications, discounts and countdown timers designed to create a sense of urgency. Spending has never required less thought. Saving, meanwhile, still involves filling in forms, comparing interest rates and making decisions that most of us would rather postpone. In a contest between an effortless pleasure and a tedious chore, it is hardly surprising which one usually wins. The point is not that people are foolish, but that the environment in which they make financial decisions has been carefully designed by companies whose interests are not the same as theirs.\n\nIf willpower is not the answer, what is? The most effective solutions, it turns out, are the ones that remove the need for willpower altogether. When employers enrol workers in a pension scheme automatically, leaving them free to opt out, participation rates soar from around half to over ninety per cent. Nobody is forced to save; it is simply that doing nothing, which is what most of us do best, now leads to saving rather than spending. Some banks have borrowed the same idea, rounding up every card payment and quietly moving the difference into a savings account.\n\nThere is something slightly uncomfortable about all this. If the best way to make people save is to take advantage of their laziness, are they really making a choice at all? Critics of so-called 'nudges' worry that governments and companies might use the same techniques for less admirable purposes. It is a fair concern. But it is worth remembering that there is no neutral option: every form, every website and every pension scheme has a default of some kind. The only question is whether it works for us or against us.",
+    "items": [
+      {
+        "n": 1,
+        "question": "What does the writer suggest about personal finance books in the first paragraph?",
+        "options": {
+          "A": "Their advice is now out of date.",
+          "B": "They put people's difficulties down to a lack of self-control.",
+          "C": "Most of them are written by economists.",
+          "D": "They exaggerate how much people spend on coffee."
+        },
+        "answer": "B",
+        "evidence": "many personal finance books do exactly that",
+        "hint": "What does 'do exactly that' refer back to?",
+        "explanation": "'Do exactly that' refers to putting the failure to save 'down to a lack of discipline', which is the same as blaming a lack of self-control. The writer then contrasts this with the economists' view."
+      },
+      {
+        "n": 2,
+        "question": "The example of the fifty and sixty euros is used to show that people",
+        "options": {
+          "A": "rarely understand how interest rates work.",
+          "B": "prefer to make financial decisions far in advance.",
+          "C": "are more patient than economists used to believe.",
+          "D": "value rewards more highly when they are immediate."
+        },
+        "answer": "D",
+        "evidence": "what changes is that, in the first, the reward is right in front of us",
+        "hint": "The extra month is the same in both choices. What is different?",
+        "explanation": "People wait when both rewards are in the future but grab the money when it is available now: the immediacy of the reward changes their choice. Nothing is said about understanding interest rates (A)."
+      },
+      {
+        "n": 3,
+        "question": "What does the brain-scan experiment suggest?",
+        "options": {
+          "A": "People find it impossible to imagine the distant future.",
+          "B": "People's brains react to famous people in unusual ways.",
+          "C": "People think of their future selves almost as other people.",
+          "D": "People become more generous as they grow older."
+        },
+        "answer": "C",
+        "evidence": "the pattern of activity looked less like the first and more like the second",
+        "hint": "'The first' and 'the second' refer to thinking about yourself and thinking about an actor.",
+        "explanation": "Imagining their future selves produced brain activity similar to thinking about a stranger (the actor), not about themselves. This supports the idea that our future self 'feels like a stranger'."
+      },
+      {
+        "n": 4,
+        "question": "In the fourth paragraph, the writer says that 'mental accounting'",
+        "options": {
+          "A": "has some advantages in spite of its drawbacks.",
+          "B": "explains why people choose to work overtime.",
+          "C": "is a habit that is easy to unlearn.",
+          "D": "makes people more careful with unexpected money."
+        },
+        "answer": "A",
+        "evidence": "is not entirely irrational – it helps people stick to budgets",
+        "hint": "Look for a phrase that defends mental accounting before the word 'but'.",
+        "explanation": "The writer admits mental accounting helps with budgets (an advantage) but says it stops people saving windfalls (a drawback). D is the opposite of what the text says."
+      },
+      {
+        "n": 5,
+        "question": "According to the writer, automatic enrolment in pension schemes works because",
+        "options": {
+          "A": "workers are not allowed to leave the scheme.",
+          "B": "employers offer workers extra money to join.",
+          "C": "it makes saving the result of doing nothing.",
+          "D": "it appeals to workers' sense of responsibility."
+        },
+        "answer": "C",
+        "evidence": "doing nothing, which is what most of us do best, now leads to saving rather than spending",
+        "hint": "What happens if a worker simply does nothing?",
+        "explanation": "Workers can opt out, so nobody is forced (A is wrong); the scheme works because inactivity now results in saving. It removes the need for willpower rather than appealing to responsibility (D)."
+      },
+      {
+        "n": 6,
+        "question": "In the final paragraph, how does the writer respond to critics of 'nudges'?",
+        "options": {
+          "A": "by accepting their point while adding an important qualification",
+          "B": "by dismissing their worries as exaggerated",
+          "C": "by calling for new laws to control companies",
+          "D": "by agreeing that nudges should no longer be used"
+        },
+        "answer": "A",
+        "evidence": "It is a fair concern. But it is worth remembering that there is no neutral option",
+        "hint": "Notice 'It is a fair concern' followed by 'But…'.",
+        "explanation": "The writer accepts the criticism ('a fair concern') but adds that every system has a default anyway, so the real question is whether the default helps us. The writer neither dismisses nor fully agrees with the critics."
+      }
+    ]
+  },
+  {
+    "id": "seed-p5-7",
+    "part": "p5",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "The art of disagreeing well",
+    "topic": "what school debating taught a writer about arguments",
+    "text": "At my school, the debating society met every Thursday in a classroom that smelled of floor polish. I joined at fourteen for the worst possible reason: someone I wanted to impress was a member. They left after a term; I stayed for four years. The society had a reputation for being rather earnest, and most of my friends could not understand why anyone would voluntarily spend an afternoon arguing about school uniforms or the voting age. What kept me there was not the trophies, of which there were very few, but the discovery that arguing well had almost nothing to do with winning.\n\nThis was not obvious at first. In my early debates I treated every point my opponents made as an attack to be repelled. I interrupted, I exaggerated, and I occasionally made up statistics on the spot, a tactic that worked until the day an opponent politely asked for my source. The silence that followed taught me more than any coach ever did. Our teacher, Mr Okoye, never told us off for losing. What he could not tolerate was what he called 'arguing with a straw man' – attacking a weaker version of the other side's case because the real one was too hard to answer.\n\nHis solution was a rule that we all hated. Before you were allowed to criticise an opponent's argument, you had to summarise it in your own words to their satisfaction. If they did not agree that your summary was fair, you had to try again. The first time I attempted it, I needed three goes, and by the end I had lost much of my enthusiasm for the reply I had prepared. That, I later realised, was precisely the point. Once you have stated someone's position fairly, it is much harder to pretend that it is stupid.\n\nPsychologists have a name for the tendency Mr Okoye was trying to train out of us. 'Motivated reasoning' describes the way we search for evidence that supports what we already believe, while finding reasons to dismiss anything that does not. Highly intelligent people, it seems, are not immune; if anything, they are better at constructing elaborate justifications for conclusions they reached for emotional reasons. Being clever, in other words, can make you more skilful at fooling yourself.\n\nThere is research to suggest that his method works outside school debating societies, too. In one study, people who held strong views on a political issue were asked to explain, step by step, how a policy they supported would actually work. Many found they could not, and after trying, they tended to express their opinions less forcefully. Simply admitting the limits of what we know, it seems, makes us more open to the possibility that others have a point. It is not a comfortable experience. Few of us enjoy discovering that our confident opinions rest on rather shaky foundations, which may explain why we so rarely put ourselves through it voluntarily.\n\nNone of this means that every opinion deserves equal respect, or that disagreement should be avoided. Some arguments are simply wrong, and saying so clearly is a kind of honesty. But there is a difference between rejecting an idea and humiliating the person who holds it. The first can change minds; the second almost never does, because people who feel attacked tend to defend their position more fiercely than before.\n\nI think about those Thursday afternoons more often than I expected to. Online, where most arguments now take place, the incentives run in exactly the opposite direction: the sharpest put-down attracts the most attention, and nobody is required to summarise anyone else's view before dismissing it. Perhaps that is why so few minds seem to change. It may be naive to hope that the rule which so irritated me at fourteen could catch on more widely, but I cannot think of a better place to start.",
+    "items": [
+      {
+        "n": 1,
+        "question": "What does the writer say about joining the debating society?",
+        "options": {
+          "A": "The writer's reason for joining was not a very good one.",
+          "B": "The society was famous for winning trophies.",
+          "C": "The writer left at the same time as a friend.",
+          "D": "The writer joined because a teacher recommended it."
+        },
+        "answer": "A",
+        "evidence": "I joined at fourteen for the worst possible reason",
+        "hint": "How does the writer describe the reason for joining?",
+        "explanation": "The writer calls it 'the worst possible reason': joining to impress someone. The society won 'very few' trophies (B), and the other person left while the writer stayed (C)."
+      },
+      {
+        "n": 2,
+        "question": "What does the writer say about inventing statistics?",
+        "options": {
+          "A": "It was encouraged by the coach.",
+          "B": "It succeeded until it was exposed.",
+          "C": "All the debaters did it.",
+          "D": "It got the writer into serious trouble."
+        },
+        "answer": "B",
+        "evidence": "a tactic that worked until the day an opponent politely asked for my source",
+        "hint": "When did the tactic stop working?",
+        "explanation": "Making up statistics 'worked until' an opponent asked for the source, which exposed it. There is no mention of punishment (D); the silence simply taught the writer a lesson."
+      },
+      {
+        "n": 3,
+        "question": "What was the purpose of Mr Okoye's rule?",
+        "options": {
+          "A": "to make debates shorter and more focused",
+          "B": "to stop students interrupting each other",
+          "C": "to make it harder to dismiss an opposing view unfairly",
+          "D": "to help students memorise their opponents' arguments"
+        },
+        "answer": "C",
+        "evidence": "Once you have stated someone's position fairly, it is much harder to pretend that it is stupid",
+        "hint": "The writer says 'That … was precisely the point'. What happens after a fair summary?",
+        "explanation": "Summarising the other side fairly makes it difficult to attack a weaker version of their case, which is exactly the 'straw man' Mr Okoye disliked."
+      },
+      {
+        "n": 4,
+        "question": "What point does the writer make about intelligent people in the fourth paragraph?",
+        "options": {
+          "A": "They are less likely to change their minds than others.",
+          "B": "They rarely reach conclusions for emotional reasons.",
+          "C": "They are better at recognising motivated reasoning in others.",
+          "D": "Their intelligence may help them deceive themselves."
+        },
+        "answer": "D",
+        "evidence": "Being clever, in other words, can make you more skilful at fooling yourself",
+        "hint": "Look at the sentence that begins 'in other words'.",
+        "explanation": "Intelligent people are better at justifying conclusions they reached emotionally, so cleverness can make self-deception easier. B contradicts the text, and A and C are not mentioned."
+      },
+      {
+        "n": 5,
+        "question": "In the fifth paragraph, the writer argues that",
+        "options": {
+          "A": "all opinions should be treated with the same respect.",
+          "B": "it is better to avoid disagreements where possible.",
+          "C": "attacking people makes them hold their views more strongly.",
+          "D": "politeness matters more than honesty in an argument."
+        },
+        "answer": "C",
+        "evidence": "people who feel attacked tend to defend their position more fiercely than before",
+        "hint": "Why does humiliating someone 'almost never' change their mind?",
+        "explanation": "People who feel attacked defend their views more fiercely. The writer explicitly rejects A and B ('None of this means…') and values saying clearly when an argument is wrong (D)."
+      },
+      {
+        "n": 6,
+        "question": "How does the writer feel about arguments online?",
+        "options": {
+          "A": "doubtful, but still hopeful that one change could help",
+          "B": "confident that they will improve before long",
+          "C": "convinced that they will always do more harm than good",
+          "D": "unconcerned, since few people take them seriously"
+        },
+        "answer": "A",
+        "evidence": "It may be naive to hope that the rule which so irritated me at fourteen could catch on more widely",
+        "hint": "The writer admits the hope may be naive, but…",
+        "explanation": "The writer recognises that hoping for the rule to spread 'may be naive' (doubt) but still sees it as the best 'place to start' (hope)."
+      }
+    ]
+  },
+  {
+    "id": "seed-p5-8",
+    "part": "p5",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Lessons from the bench",
+    "topic": "a footballer's injury and a new career in coaching",
+    "text": "The injury happened in the eighty-third minute of a match we were already winning comfortably. I went into a tackle I had made a thousand times before, heard something that sounded like a branch snapping, and knew before I hit the ground that my season was over. I was twenty-two, playing in the third division and quietly hoping that a bigger club might notice me. Lying on the grass, I remember thinking, absurdly, about the fact that my boots were new.\n\nThe diagnosis was a torn ligament in my knee: surgery, then nine months of rehabilitation at the very least. The first few weeks were the worst. Footballers are used to bodies that do what they are told, and mine had suddenly stopped cooperating. Climbing the stairs to my flat took several minutes. Friends were sympathetic, but their visits grew shorter and less frequent, and I could hardly blame them; my conversation had shrunk to the state of my knee.\n\nRehabilitation, I discovered, is mostly boredom. Each morning I went to the club's gym and repeated the same exercises: lifting my leg a few centimetres off the bed, bending my knee a little further than the day before, standing on one foot while trying not to wobble. Progress was measured in degrees and seconds rather than in goals. Some weeks nothing seemed to change at all, and I began to wonder whether I would ever play again at the level I had reached. The other players, busy with their own season, passed me in the corridor with a nod and a sympathetic look that I quickly came to dread.\n\nIt was the club physiotherapist, a softly spoken woman called Ines, who suggested I come to training anyway. I resisted at first. Watching other people do what I could not seemed like a particularly refined form of torture. But she was persistent, and eventually I found myself sitting on a bench by the pitch twice a week, wrapped in a coat, with nothing to do but observe.\n\nWhat I saw surprised me. From the touchline, the game looked completely different. I noticed patterns I had never been aware of as a player: the way our midfield drifted to the left when we were under pressure, the gap that opened up every time our full-back went forward. Without a ball at my feet, I had time to think, and I began filling notebooks with diagrams. When the assistant coach saw them, he laughed, then borrowed one, and returned it a week later covered in his own comments.\n\nOver the following months, the assistant coach and I developed a routine. After each match, he would ask me what I had noticed, and we would argue about it over coffee in the club canteen. Sometimes I was wrong; occasionally, to his evident irritation, I was right. I began reading books on tactics and watching matches from other leagues, pausing the recordings to work out why a team had lost its shape.\n\nBy the time I was fit to play again, something had shifted. I still loved being on the pitch, but I no longer saw it as the only place where I could contribute. When the coach asked whether I would help with the youth team on Sunday mornings, I agreed without hesitation, and found that explaining the game to fifteen-year-olds was harder, and more rewarding, than I had imagined.\n\nI played for three more seasons before deciding to concentrate on coaching. People sometimes assume that the injury ended my career, and I have stopped correcting them, but it is not quite true. It ended one career and, almost by accident, started another. I am not sure I would have chosen that particular way of discovering what I was good at. But I suspect that, without those months on the bench, I would never have looked up from the ball long enough to find out.",
+    "items": [
+      {
+        "n": 1,
+        "question": "What does the writer say about the moment of the injury?",
+        "options": {
+          "A": "It happened during an unusually risky tackle.",
+          "B": "The writer immediately understood how serious it was.",
+          "C": "The writer had long been afraid of such an injury.",
+          "D": "It changed the result of the match."
+        },
+        "answer": "B",
+        "evidence": "knew before I hit the ground that my season was over",
+        "hint": "When did the writer realise what had happened?",
+        "explanation": "The writer knew 'before I hit the ground' that the season was over. The tackle was one made 'a thousand times before' (A), and the team was already winning comfortably (D)."
+      },
+      {
+        "n": 2,
+        "question": "Why, according to the writer, did friends visit less often?",
+        "options": {
+          "A": "The writer had little to talk about except the injury.",
+          "B": "The writer's flat was difficult to reach.",
+          "C": "They were busy with their own careers.",
+          "D": "The writer preferred to be left alone."
+        },
+        "answer": "A",
+        "evidence": "my conversation had shrunk to the state of my knee",
+        "hint": "Why could the writer 'hardly blame them'?",
+        "explanation": "The writer understands the shorter visits because conversation had become limited to the knee. The stairs (B) were difficult for the writer, not for the visitors."
+      },
+      {
+        "n": 3,
+        "question": "How did the writer initially feel about Ines's suggestion?",
+        "options": {
+          "A": "grateful for the chance to stay involved",
+          "B": "worried about what the coach might think",
+          "C": "reluctant, because watching would be painful",
+          "D": "confused about what it would involve"
+        },
+        "answer": "C",
+        "evidence": "Watching other people do what I could not seemed like a particularly refined form of torture",
+        "hint": "The writer 'resisted at first'. Why?",
+        "explanation": "The writer compares watching others play to 'torture', so the first reaction was reluctance. Gratitude (A) is not mentioned."
+      },
+      {
+        "n": 4,
+        "question": "What does the writer suggest about the assistant coach's reaction to the notebooks?",
+        "options": {
+          "A": "He did not take them seriously.",
+          "B": "His amusement turned into genuine interest.",
+          "C": "It persuaded the writer to stop taking notes.",
+          "D": "It was the first time he had spoken to the writer."
+        },
+        "answer": "B",
+        "evidence": "he laughed, then borrowed one, and returned it a week later covered in his own comments",
+        "hint": "What did he do after laughing?",
+        "explanation": "He laughed at first, but borrowing a notebook and adding his own comments shows he took the ideas seriously."
+      },
+      {
+        "n": 5,
+        "question": "When the writer was fit again,",
+        "options": {
+          "A": "they wanted to give up playing immediately.",
+          "B": "they found coaching young players easier than expected.",
+          "C": "they were asked to replace the youth team coach.",
+          "D": "they realised they could contribute away from the pitch."
+        },
+        "answer": "D",
+        "evidence": "I no longer saw it as the only place where I could contribute",
+        "hint": "What had 'shifted' by the time the writer could play again?",
+        "explanation": "The writer no longer saw the pitch as the only place to contribute. They kept playing for three seasons (A), and coaching was 'harder' than imagined (B); they helped the youth team rather than replacing its coach (C)."
+      },
+      {
+        "n": 6,
+        "question": "What does the writer mean in the final paragraph?",
+        "options": {
+          "A": "The injury forced the writer into a job they did not want.",
+          "B": "People are right to say the injury ended the writer's career.",
+          "C": "The experience revealed a talent the writer might otherwise have missed.",
+          "D": "The writer regrets stopping playing too soon."
+        },
+        "answer": "C",
+        "evidence": "without those months on the bench, I would never have looked up from the ball long enough to find out",
+        "hint": "What would the writer never have found out without the injury?",
+        "explanation": "The months on the bench led the writer to discover a talent for coaching. The writer says the claim in B is 'not quite true', and there is no sign of regret (D) or unwillingness (A)."
+      }
+    ]
+  },
+  {
+    "id": "seed-p6-6",
+    "part": "p6",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Working for nothing?",
+    "topic": "unpaid internships",
+    "intro": "Four commentators give their views on unpaid internships for students and graduates.",
+    "texts": [
+      {
+        "letter": "A",
+        "author": "Ruth Allen, careers adviser",
+        "text": "Students often ask me whether an unpaid internship is worth the sacrifice, and my honest answer is usually yes. A few months inside an organisation teaches you things no lecture can: how decisions are really made, how to handle a difficult client, how to write an email that people actually read. That said, I am well aware that not everyone can afford to work for nothing, and it troubles me that the students who most need a foot in the door are often the ones least able to accept such offers. Even so, I am not convinced that outlawing unpaid placements would help; many smaller organisations would simply stop offering them. And contrary to popular belief, few employers profit from the arrangement: training an intern properly takes up a great deal of a manager's time."
+      },
+      {
+        "letter": "B",
+        "author": "Marcus Hale, labour economist",
+        "text": "The defenders of unpaid internships like to describe them as an investment in young people's futures. In my experience, the reality is rather less inspiring. Interns are frequently left to make coffee, answer phones and update spreadsheets, tasks that teach them little beyond patience. Meanwhile, organisations obtain months of labour without paying a cent for it, which is exactly why the practice has spread so rapidly. The social consequences are serious. When entry to an industry depends on being able to live without an income, that industry will inevitably be dominated by the children of the comfortably off. The solution is simple: legislation should require every intern to be paid at least the minimum wage, which would in effect put an end to unpaid placements altogether."
+      },
+      {
+        "letter": "C",
+        "author": "Lena Fischer, founder of a design studio",
+        "text": "I take on two interns every summer, and I can say with some confidence that they leave knowing far more than when they arrived. They work on real projects for real clients, and several have gone on to impressive careers. What frustrates me is the claim that these placements are only for the privileged. Our positions are advertised openly, and we have taken interns from all kinds of backgrounds; anyone with talent and enthusiasm can apply. People also forget what an internship costs a business like mine. Every hour I spend explaining things to an intern is an hour I am not spending on paid work. If the government banned unpaid placements, I would simply stop offering them, and nobody would gain from that."
+      },
+      {
+        "letter": "D",
+        "author": "Sam Okafor, student union officer",
+        "text": "I have no doubt that a well-run internship can be one of the most valuable experiences a student has; several of my friends found their careers that way. The problem is what happens to those who cannot take part. Students who have to work in a supermarket every summer to pay their rent are effectively shut out, however talented they are, and this widens the gap between rich and poor graduates. Companies, meanwhile, get enthusiastic, well-qualified workers for nothing, and they know it. Voluntary codes of practice have been tried and have failed. It is time for the law to make unpaid internships illegal, so that opportunities depend on ability rather than on the size of a parent's bank account."
+      }
+    ],
+    "items": [
+      {
+        "n": 1,
+        "question": "Which writer has a different view from the others on whether unpaid internships disadvantage young people from less wealthy families?",
+        "answer": "C",
+        "hint": "Three writers worry about students who cannot afford to work for nothing. Who rejects that claim?",
+        "explanation": "C is frustrated by 'the claim that these placements are only for the privileged' and says anyone can apply. A, B and D all say poorer students are disadvantaged."
+      },
+      {
+        "n": 2,
+        "question": "Which writer shares B's opinion on whether the law should prohibit unpaid internships?",
+        "answer": "D",
+        "hint": "B wants legislation that would end unpaid placements. Who else wants the law to act?",
+        "explanation": "D says 'It is time for the law to make unpaid internships illegal'. A doubts a ban would help and C would stop offering placements if they were banned."
+      },
+      {
+        "n": 3,
+        "question": "Which writer expresses a similar view to C regarding how much employers gain from taking on interns?",
+        "answer": "A",
+        "hint": "C says interns cost a business time. Who else says employers do not really profit?",
+        "explanation": "A says 'few employers profit from the arrangement' because training takes a manager's time, like C. B and D say companies get free labour."
+      },
+      {
+        "n": 4,
+        "question": "Which writer takes a different view from A on the value of the experience interns gain?",
+        "answer": "B",
+        "hint": "A thinks interns learn a lot. Who says they learn very little?",
+        "explanation": "B says interns do tasks 'that teach them little beyond patience'. C and D, like A, believe a good internship is valuable."
+      }
+    ]
+  },
+  {
+    "id": "seed-p6-7",
+    "part": "p6",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Should university be free?",
+    "topic": "tuition fees and free higher education",
+    "intro": "Four writers discuss whether university education should be free for students.",
+    "texts": [
+      {
+        "letter": "A",
+        "author": "Helen Ward, economist",
+        "text": "The case against tuition fees rests largely on the claim that they deter talented students from poorer families. It is an understandable fear, but the evidence does not support it. In countries where fees are repaid only once graduates earn above a certain threshold, applications from disadvantaged groups have continued to rise. Repayments of this kind work more like a tax on the extra income a degree generates, and that extra income is considerable: over a lifetime, graduates earn substantially more than non-graduates. It is the individual, above all, who gains. My real concern about abolishing fees is a practical one. Universities would become entirely dependent on government budgets, and when public money is tight, as it always eventually is, class sizes grow and teaching suffers."
+      },
+      {
+        "letter": "B",
+        "author": "Tomás Reyes, sociologist",
+        "text": "We do not ask children to pay for their primary schools, because we accept that an educated population benefits everyone. I see no reason why that principle should stop at eighteen. Doctors, engineers and teachers trained at public expense serve the whole of society, including the many people who never set foot in a lecture theatre, so it seems entirely reasonable that taxpayers should share the cost. Fees, by contrast, send a powerful message to young people from families with no experience of university: this is not for you. Repayment schemes may be generous on paper, but the prospect of starting adult life with a debt of tens of thousands is enough to put many off. As for funding, the money can be found if governments treat higher education as a priority."
+      },
+      {
+        "letter": "C",
+        "author": "Lucas Moreau, final-year student",
+        "text": "Most of my friends at university come from families where borrowing to pay for education is normal. The people I know who did not apply are, almost without exception, from homes where it is not. I find it hard to believe that this is a coincidence. Like many students, I would welcome the abolition of fees, and I think it is perfectly fair to ask the public to pay, because graduates go on to contribute far more in taxes and skills than their education ever cost. I do have one reservation, though. I have seen what happens when a department loses funding: fewer tutorials, overcrowded seminars, lecturers with no time to answer emails. If free tuition meant less money per student, the quality of what we learn would suffer."
+      },
+      {
+        "letter": "D",
+        "author": "Anne Lindqvist, former university principal",
+        "text": "Having run a university for ten years, I am often asked whether education should be free. My answer may surprise people: I do not think it is right to ask a nurse or a bus driver who never went to university to pay, through their taxes, for the degree of someone who will probably end up earning more than they do. A degree is, first and foremost, an investment that pays off for the person who holds it. That said, I accept that fees can discourage students from poorer homes, many of whom are understandably frightened of debt. And I do not share the fear that free tuition would damage standards. Several European countries combine free education with excellent universities; what matters is a long-term funding commitment from government, not who signs the cheque."
+      }
+    ],
+    "items": [
+      {
+        "n": 1,
+        "question": "Which writer shares A's view about the effect that abolishing tuition fees could have on the quality of teaching?",
+        "answer": "C",
+        "hint": "A fears that teaching would suffer. Who has the same reservation?",
+        "explanation": "C says that if free tuition meant less money per student, 'the quality of what we learn would suffer'. B thinks the money can be found and D does not fear for standards."
+      },
+      {
+        "n": 2,
+        "question": "Which writer has a different opinion from the others about whether fees discourage students from poorer backgrounds?",
+        "answer": "A",
+        "hint": "Three writers think fees put poorer students off. Who says the evidence shows otherwise?",
+        "explanation": "A says 'the evidence does not support' the fear that fees deter poorer students. B, C and D all believe fees can discourage them."
+      },
+      {
+        "n": 3,
+        "question": "Which writer expresses a similar view to A on who benefits most from a university degree?",
+        "answer": "D",
+        "hint": "A says the individual gains above all. Who calls a degree an investment for the person who holds it?",
+        "explanation": "D says a degree is 'first and foremost, an investment that pays off for the person who holds it', like A. B and C stress the benefits for society."
+      },
+      {
+        "n": 4,
+        "question": "Which writer shares B's opinion that it is reasonable to ask taxpayers to pay for higher education?",
+        "answer": "C",
+        "hint": "B says taxpayers should share the cost. Who agrees that the public should pay?",
+        "explanation": "C thinks 'it is perfectly fair to ask the public to pay'. D thinks it is not right to ask taxpayers, and A does not discuss the question."
+      }
+    ]
+  },
+  {
+    "id": "seed-p6-8",
+    "part": "p6",
+    "source": "seed",
+    "createdAt": 1794873600000,
+    "title": "Is VAR good for football?",
+    "topic": "video assistant referees in football",
+    "intro": "Four writers give their opinions on the use of video technology to help referees in football.",
+    "texts": [
+      {
+        "letter": "A",
+        "author": "Joe Harper, sports columnist",
+        "text": "Let us be honest: VAR has made football fairer. Goals that should never have counted are now ruled out, and players who dive in the penalty area are caught far more often than before. Anyone who claims that decisions have not improved has simply not been paying attention. The price, however, has been high. The wait while a goal is checked drains the joy from the moment, and I have watched entire stadiums fall silent, unsure whether to celebrate. The answer is not to abandon the system but to make it more open. If fans could see the replays on the big screen and hear the referee explain the decision, as happens in rugby, much of the frustration would disappear."
+      },
+      {
+        "letter": "B",
+        "author": "Clara Benítez, former referee",
+        "text": "I was refereeing when VAR arrived, and I welcomed it. I no longer do. The technology was sold to us as a way of eliminating mistakes, but most controversial decisions in football are not mistakes in any simple sense; they are matters of judgement. Was that contact enough for a penalty? Was the arm in an unnatural position? A replay does not answer those questions; it merely moves the argument from the pitch to a studio, where a second referee interprets the same pictures differently. Meanwhile, supporters wait in silence for minutes at a time, and the spontaneous explosion of a goal celebration has become a thing of the past. After several seasons, I have concluded that the experiment has failed and should be ended."
+      },
+      {
+        "letter": "C",
+        "author": "Dev Patel, data analyst",
+        "text": "The numbers are clear. Before VAR, roughly one in five major decisions in top-flight matches was wrong; that figure has fallen dramatically. I understand why some supporters dislike the delays, but the idea that VAR has destroyed the atmosphere in stadiums is, frankly, exaggerated. Crowds adapted to it within a season, and if anything, the tension of waiting for a decision has created a new kind of drama. Where I do think football could learn from other sports is in transparency. Allowing spectators to hear the conversation between the referee and the video assistant would help people understand decisions, even when they disagree with them."
+      },
+      {
+        "letter": "D",
+        "author": "Marta Lindgren, fan representative",
+        "text": "Nobody can seriously deny that VAR corrects some obvious errors; the evidence on that is overwhelming. But football was never meant to be a laboratory. The game's appeal lies in its emotion, and that emotion depends on a goal being a goal the moment the ball crosses the line. Since VAR arrived, I have seen supporters hesitate before celebrating, looking anxiously at the referee instead of hugging the stranger beside them. Some propose broadcasting referees' discussions to the crowd, but I fear that would simply expose officials to even more abuse. On balance, I would rather accept the occasional wrong decision than lose what makes the game special. It is time to switch VAR off."
+      }
+    ],
+    "items": [
+      {
+        "n": 1,
+        "question": "Which writer has a different opinion from the others about whether VAR has made decisions more accurate?",
+        "answer": "B",
+        "hint": "Three writers say VAR corrects errors. Who argues that replays cannot settle most decisions?",
+        "explanation": "B says controversial decisions are 'matters of judgement' that a replay cannot answer. A, C and D all accept that VAR has improved accuracy."
+      },
+      {
+        "n": 2,
+        "question": "Which writer shares C's view on letting spectators hear or see how referees reach their decisions?",
+        "answer": "A",
+        "hint": "C wants spectators to hear the referees' conversation. Who makes a similar proposal?",
+        "explanation": "A wants fans to 'see the replays on the big screen and hear the referee explain the decision'. D fears this would expose officials to abuse, and B does not discuss it."
+      },
+      {
+        "n": 3,
+        "question": "Which writer takes a different view from the others on the effect of VAR on the atmosphere in stadiums?",
+        "answer": "C",
+        "hint": "Three writers say VAR has spoilt goal celebrations. Who thinks this is exaggerated?",
+        "explanation": "C says the idea that VAR has destroyed the atmosphere is 'exaggerated' and that waiting creates 'a new kind of drama'. A, B and D all describe crowds unsure whether to celebrate."
+      },
+      {
+        "n": 4,
+        "question": "Which writer shares B's view on whether VAR should continue to be used?",
+        "answer": "D",
+        "hint": "B thinks the experiment should be ended. Who else wants to stop using VAR?",
+        "explanation": "D concludes 'It is time to switch VAR off'. A wants to keep the system but make it more open, and C wants to improve its transparency."
+      }
+    ]
+  }
+]
