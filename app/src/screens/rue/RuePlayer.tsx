@@ -15,6 +15,7 @@ import { Results } from './Results';
 import { SaveWordBar, picked } from './WordTap';
 import { DiagContinue } from '../DiagContinue';
 import { recordPart } from '../../diagnostic/run';
+import { recordActivity } from '../../progress/progress';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 type Phase = { k: 'loading' } | { k: 'empty'; allSeen: boolean; oldest: RueSet | null } | { k: 'doing' } | { k: 'marking' } | { k: 'done' };
@@ -161,6 +162,7 @@ export function RuePlayer() {
     if (hasStore()) {
       const pct = r.max ? (r.marks / r.max) * 100 : 0;
       void markDone(set.id, pct);
+      void recordActivity({ kind: 'rue', part, mode: exam ? 'exam' : 'practice' });
       void store().add('attempts', {
         kind: 'rue',
         part,

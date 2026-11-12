@@ -11,6 +11,7 @@ import { countdown, currentEstimate, type Estimate } from '../scoring/readiness'
 import { tutorNotes } from '../tutor/notes';
 import { SrsPanel } from './SrsPanel';
 import { getToday, type SessionDoc } from '../planner/state';
+import { Celebraciones, HoyRacha, TiempoSemanal } from './Racha';
 
 /** En Hoy: la sesión del día (empezarla o seguirla). */
 function HoySesion() {
@@ -204,7 +205,9 @@ export function Hoy() {
     <>
       <Band kicker={`Mind the Gap · ${todayEs()}`} title={`${greeting()}${name ? `, ${name}` : ''}.`} />
       <Page>
+        <Celebraciones />
         <CuentaAtras />
+        <HoyRacha />
         <HoySesion />
         <Trayecto />
         <HoyExtras />
@@ -220,7 +223,7 @@ export function Hoy() {
             <ListItem dot="var(--line-speaking)" title="Fase 5 · Speaking por voz" sub="Simulacro, role-plays, long turn" right={<span class="pill ok">Hecha</span>} />
             <ListItem dot="var(--line-vocab)" title="Fase 6 · Diagnóstico, errores, vocabulario y gramática" sub="Diagnóstico, memoria de Theo, cuaderno de errores, FSRS y gramática C1" right={<span class="pill ok">Hecha</span>} />
             <ListItem dot="var(--signal)" title="Fase 7 · Sesión de hoy y examen" sub="Plan del día, informe semanal, simulacros y ¿Estoy listo?" right={<span class="pill ok">Hecha</span>} />
-            <ListItem dot="var(--ink)" title="Fase 8" sub="Rachas, XP, logros, Telegram y pulido" />
+            <ListItem dot="var(--ok)" title="Fase 8 · Rachas, XP y logros" sub="Hecha la primera mitad. Faltan Escenas de series, Telegram y el pulido" right={<span class="pill">En obra</span>} />
           </div>
         </section>
       </Page>
@@ -353,6 +356,16 @@ export function Progreso() {
             <p class="muted small">Las notas aparecerán tras el diagnóstico (Hoy → «Hacer el diagnóstico»). Siempre se muestran como estimación.</p>
           )}
         </section>
+        <TiempoSemanal />
+        <button class="list-item" onClick={() => navigate('/logros')}>
+          <span class="line-dot" style={{ '--dot': 'var(--ok)' } as JSX.CSSProperties} />
+          <span class="grow">
+            <span class="list-title" style={{ display: 'block' }}>
+              Logros e hitos
+            </span>
+            <span class="list-sub">Racha, XP y lo que has conseguido, con datos</span>
+          </span>
+        </button>
         <section class="card stack" style={g(10)}>
           <h2>¿Estoy listo?</h2>
           <p class="small">

@@ -22,6 +22,8 @@ export const SettingsSchema = z.object({
     .default({ globalMin: 185, mocksNeeded: 2, skillMin: 170 }),
   srsNewPerDay: z.number().int().min(0).default(10),
   examDate: z.string().nullable().default(null),
+  /** XP que quieres sacar cada día (Hoy muestra cuánto llevas). */
+  xpDailyGoal: z.number().int().min(10).max(500).default(60),
 });
 
 export type Settings = z.infer<typeof SettingsSchema>;

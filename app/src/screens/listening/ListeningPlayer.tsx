@@ -13,6 +13,7 @@ import { ExplainEs } from '../../ui/ExplainEs';
 import { AudioPlayer, audioEl, seekAndPlay, stopAudio } from './AudioPlayer';
 import { DiagContinue } from '../DiagContinue';
 import { recordPart } from '../../diagnostic/run';
+import { recordActivity } from '../../progress/progress';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 const draftKey = (id: string) => `mtg.listening.draft.${id}`;
@@ -282,6 +283,7 @@ export function ListeningPlayer() {
     if (diag) void recordPart('listening', set.id, { marks: r.marks, max: r.max });
     if (!hasStore()) return;
     const pct = Math.round((r.marks / r.max) * 100);
+    void recordActivity({ kind: 'listening', part, mode: exam ? 'exam' : 'practice' });
     void store()
       .add('attempts', { kind: 'listening', part, setId: set.id, mode: exam ? 'exam' : 'practice', marks: r.marks, max: r.max, pct, answers, durationMs: Date.now() - start, at: Date.now() })
       .catch(() => undefined);

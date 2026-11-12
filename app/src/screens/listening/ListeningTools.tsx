@@ -9,6 +9,7 @@ import type { UnitSpec } from '../../listening/ttsCore';
 import { hasStore, store } from '../../state';
 import { Band, Page, Spinner, toast } from '../../ui/components';
 import { audioEl, stopAudio, unlockAudioEl } from './AudioPlayer';
+import { recordActivity } from '../../progress/progress';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 const NO_AUTOCORRECT = { autocorrect: 'off', autocapitalize: 'sentences', autocomplete: 'off' } as Record<string, string>;
@@ -148,6 +149,7 @@ export function Dictados() {
     } catch {
       /* nada */
     }
+    void recordActivity({ kind: 'dictation' });
     if (hasStore()) void store().add('attempts', { kind: 'dictation', itemId: cur.id, correct: r.correct, total: r.total, at: Date.now() }).catch(() => undefined);
   };
 

@@ -78,6 +78,12 @@ function attach(s: Store, user: UserInfo) {
   unsubs.push(s.watch('meta/settings', (v) => (settings.value = parseSettings(v)), onErr));
   // Memoria de Theo: se carga aparte para no crear dependencias circulares.
   void import('./tutor/notes').then((m) => unsubs.push(s.watch('tutorNotes/current', (v) => m.onNotesDoc(v as never), onErr)));
+  // Racha, XP y logros: el reloj de estudio activo y los datos del día.
+  void import('./progress/progress').then((m) => {
+    m.startTracker();
+    void m.loadProgress();
+  });
+  void import('./progress/achievements').then((m) => void m.loadEarned());
 }
 
 export async function boot(): Promise<void> {

@@ -46,6 +46,10 @@ registerProcessor('mtg-capture', MtgCapture);
 `;
 let workletLoaded = false;
 
+/** Grabaciones abiertas ahora mismo (para contar el tiempo de estudio aunque no toques la pantalla). */
+let liveRecordings = 0;
+export const isRecording = () => liveRecordings > 0;
+
 export class Recorder {
   private stream: MediaStream | null = null;
   private rec: MediaRecorder | null = null;
@@ -68,6 +72,7 @@ export class Recorder {
     this.stream = await navigator.mediaDevices.getUserMedia({
       audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true, channelCount: 1 },
     });
+    liveRecordings++;
     const ctx = audioCtx();
     this.source = ctx.createMediaStreamSource(this.stream);
 
@@ -150,6 +155,7 @@ export class Recorder {
     this.node?.disconnect();
     this.source?.disconnect();
     this.analyser?.disconnect();
+    if (this.stream) liveRecordings = Math.max(0, liveRecordings - 1);
     this.stream?.getTracks().forEach((t) => t.stop());
     this.stream = null;
     this.rec = null;

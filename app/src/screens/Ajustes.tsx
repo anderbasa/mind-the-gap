@@ -40,6 +40,26 @@ export function Ajustes() {
           </div>
         </section>
         <section class="stack" style={g(8)}>
+          <span class="kicker">Racha y XP</span>
+          <label class="field">
+            <span>Objetivo diario de XP</span>
+            <input
+              class="input"
+              type="number"
+              min={10}
+              max={500}
+              step={10}
+              inputMode="numeric"
+              value={settings.value.xpDailyGoal}
+              onChange={async (e) => {
+                const v = Math.round(Number((e.currentTarget as HTMLInputElement).value));
+                if (Number.isFinite(v) && v >= 10 && v <= 500) await saveSettings({ xpDailyGoal: v });
+              }}
+            />
+            <small>Unos 60 XP son una sesión normal de 30 minutos. La racha no depende de esto: cuenta con 10 minutos o la sesión de hoy.</small>
+          </label>
+        </section>
+        <section class="stack" style={g(8)}>
           <span class="kicker">Apariencia (este dispositivo)</span>
           <Segmented<ThemePref>
             label="Tema"

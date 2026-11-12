@@ -15,6 +15,7 @@ import { navigate } from '../router';
 import { store } from '../state';
 import { updateTutorNotes } from '../tutor/notes';
 import { Band, ListItem, MetroLine, Page, SkillLine, Spinner, toast } from '../ui/components';
+import { recordActivity } from '../progress/progress';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 
@@ -416,6 +417,7 @@ export function SimulacroRespuestas() {
           failed += rev.failed;
         }
         await recordPart('rue', s.id, { marks: r.marks, max: r.max });
+        void recordActivity({ kind: 'rue', part: s.part, mode: 'exam' });
         void store()
           .add('attempts', { kind: 'rue', part: s.part, exerciseId: s.id, source: s.source, mode: 'exam', paper: true, answers: ans, marks: r.marks, max: r.max, pct: Math.round((r.marks / r.max) * 100), at: Date.now() })
           .catch(() => undefined);

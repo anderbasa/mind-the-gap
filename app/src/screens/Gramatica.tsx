@@ -10,6 +10,7 @@ import { store } from '../state';
 import { Band, ListItem, Page, Spinner, toast } from '../ui/components';
 import { ExplainEs } from '../ui/ExplainEs';
 import { Rich } from '../ui/rich';
+import { recordActivity } from '../progress/progress';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 const NO_AUTOCORRECT = { autocorrect: 'off', autocapitalize: 'sentences', autocomplete: 'off' } as Record<string, string>;
@@ -93,6 +94,7 @@ export function GramaticaPunto() {
       const r = await checkGrammar(lesson, prompt, answer);
       setRes(r);
       setProg(await recordGrammar(lesson.id, r.ok, prog));
+      void recordActivity({ kind: 'grammar' });
       if (!r.ok) {
         void store()
           .add('errors', { kind: 'grammar', category: 'grammar', focus: lesson.title, yourAnswer: answer, correct: r.corrected, explanation: r.comment, at: Date.now() })

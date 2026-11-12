@@ -1250,3 +1250,74 @@ table.cmp td:not(:first-child) {
     padding-bottom: 0;
   }
 }
+
+/* ── Racha, XP y logros ──────────────────────────────── */
+
+.xpbar {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--paper-sunk);
+  overflow: hidden;
+}
+.xpbar > div {
+  height: 100%;
+  border-radius: 5px;
+  background: var(--signal);
+  transition: width 0.4s var(--ease-out);
+}
+.weekbars {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 8px;
+  height: 96px;
+}
+.wb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.wb-col {
+  flex: 1;
+  width: 100%;
+  max-width: 28px;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 4px;
+  background: var(--paper-sunk);
+}
+.wb-bar {
+  width: 100%;
+  border-radius: 4px;
+  background: var(--ink);
+}
+.wb.today .wb-bar {
+  background: var(--signal);
+}
+.wb.future .wb-col {
+  opacity: 0.45;
+}
+.wb-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink-3);
+}
+.wb-dot.on {
+  background: var(--ok);
+  border-color: var(--ok);
+}
+.wb-dot.prot {
+  border-style: dashed;
+  border-color: var(--ok);
+}
+.wb-lab {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-3);
+}
+.wb.today .wb-lab {
+  color: var(--signal);
+}

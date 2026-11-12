@@ -7,6 +7,7 @@ import { checkTyped, listCards, RATINGS, review, saveCard, todaysQueue, type Car
 import { sayText } from '../speaking/voice';
 import { primeSpeech } from '../voice/audio';
 import { Band, Page, Spinner } from '../ui/components';
+import { recordActivity } from '../progress/progress';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 const NO_AUTOCORRECT = { autocorrect: 'off', autocapitalize: 'none', autocomplete: 'off' } as Record<string, string>;
@@ -45,6 +46,7 @@ export function Repaso() {
   const rate = async (grade: Grade) => {
     const next = review(card, grade);
     await saveCard(next).catch(() => undefined);
+    void recordActivity({ kind: 'card' });
     // Si vuelve a tocar en pocos minutos (aprendiendo), se repite al final de esta sesión.
     const again = next.status !== 'mastered' && next.fsrs.due < Date.now() + 15 * 60_000;
     setQueue(again ? [...queue, next] : queue);

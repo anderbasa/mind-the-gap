@@ -92,6 +92,9 @@ export async function getToday(): Promise<SessionDoc | null> {
 
 export async function saveToday(doc: SessionDoc): Promise<void> {
   await store().set(`sessions/${doc.date}`, JSON.parse(JSON.stringify(doc)) as Record<string, unknown>);
+  const active = doc.tasks.filter((t) => !t.postponed);
+  // Sesión completa = el día cuenta para la racha aunque no llegues a 10 minutos.
+  if (active.length && active.every((t) => t.done)) void import('../progress/progress').then((m) => m.markSessionDone());
   const postponed = doc.tasks.some((t) => t.postponed);
   if (postponed) await store().set('meta/session', { pendingSpeaking: true }, { merge: true });
 }

@@ -6,6 +6,7 @@ import { store } from '../../state';
 import { Band, Page, Spinner, toast } from '../../ui/components';
 import { ExplainEs } from '../../ui/ExplainEs';
 import { checkVersion, generateItems, loadGenerated, REPHRASE_BANK, TOPIC_IDS, TOPICS, type Check, type RephraseItem, type Topic } from '../../writing/rephrase';
+import { recordActivity } from '../../progress/progress';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 const DONE_KEY = 'mtg.rephrase.done';
@@ -132,6 +133,7 @@ export function Reformular() {
       d.add(item.id);
       setDone(d);
       saveDone(d);
+      void recordActivity({ kind: 'rephrase' });
       void store()
         .add('attempts', {
           kind: 'rephrase',

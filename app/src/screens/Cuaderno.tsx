@@ -8,6 +8,7 @@ import { addCards } from '../srs/srs';
 import { store } from '../state';
 import { Band, Page, Spinner, toast } from '../ui/components';
 import { Fold } from '../ui/ExplainEs';
+import { recordActivity } from '../progress/progress';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 const NO_AUTOCORRECT = { autocorrect: 'off', autocapitalize: 'sentences', autocomplete: 'off' } as Record<string, string>;
@@ -36,6 +37,7 @@ function Practice(props: { p: Pattern }) {
       return d.correct === d.total && d.ops.every((o) => o.kind === 'ok');
     });
     setChecked({ ...checked, [i]: ok });
+    void recordActivity({ kind: 'error-practice' });
     void store()
       .add('attempts', { kind: 'error-practice', pattern: props.p.name, ok, at: Date.now() })
       .catch(() => undefined);

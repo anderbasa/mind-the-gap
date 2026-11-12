@@ -65,7 +65,9 @@ export async function createWriting(input: { taskId: string; text: string; sourc
     createdAt: now,
     updatedAt: now,
   };
-  return store().add('writings', clean(doc) as unknown as Record<string, unknown>);
+  const id = await store().add('writings', clean(doc) as unknown as Record<string, unknown>);
+  void import('../progress/progress').then((m) => m.recordActivity({ kind: 'writing' }));
+  return id;
 }
 
 export async function addVersion(id: string, text: string, source: 'typed' | 'photo'): Promise<void> {
@@ -73,6 +75,7 @@ export async function addVersion(id: string, text: string, source: 'typed' | 'ph
   if (!doc) throw new Error('No encuentro ese writing');
   const versions = [...doc.versions, { text: text.trim(), words: countWords(text), source, at: Date.now() }];
   await store().set(`writings/${id}`, clean({ versions, updatedAt: Date.now() }), { merge: true });
+  void import('../progress/progress').then((m) => m.recordActivity({ kind: 'writing', rewrite: true }));
 }
 
 /* ── Corrección ─────────────────────────────────────────────────── */

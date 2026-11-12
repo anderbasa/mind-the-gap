@@ -89,6 +89,7 @@ const clean = <T>(o: T): T => JSON.parse(JSON.stringify(o));
 
 export async function saveSpeaking(doc: SpeakingDoc): Promise<string> {
   const id = await store().add('speakings', clean(doc) as unknown as Record<string, unknown>);
+  void import('../progress/progress').then((m) => m.recordActivity({ kind: 'speaking', mode: doc.mode }));
   for (const e of doc.assessment.errors) {
     void store()
       .add('errors', { kind: 'speaking', speakingId: id, category: e.category, yourAnswer: e.quote, correct: e.correction, explanation: e.why, example: e.example, at: Date.now() })
