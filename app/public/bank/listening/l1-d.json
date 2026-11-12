@@ -1,0 +1,234 @@
+{
+  "id": "l1-d",
+  "part": "l1",
+  "title": "Landlords, films and final projects",
+  "createdAt": 1794873600000,
+  "extracts": [
+    {
+      "context": "You hear two flatmates talking about a problem with their landlord.",
+      "unit": {
+        "id": "l1-d-x1",
+        "speakers": [
+          {
+            "id": "A",
+            "name": "Grace",
+            "gender": "female",
+            "accent": "British"
+          },
+          {
+            "id": "B",
+            "name": "Niall",
+            "gender": "male",
+            "accent": "Irish"
+          }
+        ],
+        "style": "a natural conversation between flatmates, slightly frustrated",
+        "gapMs": 400,
+        "turns": [
+          {
+            "s": "A",
+            "text": "Did you get a reply from the landlord about the boiler?"
+          },
+          {
+            "s": "B",
+            "text": "Finally, yes. He says he'll send someone on Thursday, which would be grand if he hadn't said exactly the same thing two weeks ago."
+          },
+          {
+            "s": "A",
+            "text": "Honestly. We've been boiling kettles to wash for a fortnight. I think we should put it in writing this time, an email, so there's a record of when we first told him."
+          },
+          {
+            "s": "B",
+            "text": "That's fair. I've just been phoning him, and he always sounds so reasonable on the phone that I end up apologising for bothering him."
+          },
+          {
+            "s": "A",
+            "text": "Exactly, that's his technique. And if nobody turns up on Thursday, I'm going to check what the tenancy agreement says about repairs. There must be some kind of time limit."
+          },
+          {
+            "s": "B",
+            "text": "Fine by me. You're much better at that kind of thing than I am."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "n": 1,
+          "stem": "Why is Niall unhappy with the landlord's reply?",
+          "options": {
+            "A": "The landlord has made the same promise before.",
+            "B": "Thursday is not a convenient day for him.",
+            "C": "The landlord has refused to pay for the repair."
+          },
+          "answer": "A",
+          "explanation": "The landlord promised to send someone on Thursday, but he had 'said exactly the same thing two weeks ago'.",
+          "evidence": "if he hadn't said exactly the same thing two weeks ago"
+        },
+        {
+          "n": 2,
+          "stem": "What does Grace want to do next?",
+          "options": {
+            "A": "phone the landlord herself",
+            "B": "contact the landlord in writing",
+            "C": "start looking for a new flat"
+          },
+          "answer": "B",
+          "explanation": "Grace wants to send an email so that there is a record. Phoning is what Niall has been doing, without success.",
+          "evidence": "I think we should put it in writing this time"
+        }
+      ]
+    },
+    {
+      "context": "You hear two friends talking about a film they have just seen.",
+      "unit": {
+        "id": "l1-d-x2",
+        "speakers": [
+          {
+            "id": "A",
+            "name": "Ethan",
+            "gender": "male",
+            "accent": "American"
+          },
+          {
+            "id": "B",
+            "name": "Jess",
+            "gender": "female",
+            "accent": "Australian"
+          }
+        ],
+        "style": "a lively conversation between friends leaving a cinema",
+        "gapMs": 400,
+        "turns": [
+          {
+            "s": "A",
+            "text": "So, what did you think? Be honest."
+          },
+          {
+            "s": "B",
+            "text": "Honestly? The first hour was brilliant. The way they filmed the city at night, all those long silent shots... I was completely gripped."
+          },
+          {
+            "s": "A",
+            "text": "But?"
+          },
+          {
+            "s": "B",
+            "text": "But the ending. After all that build-up, the whole mystery was explained in about two minutes by a character we'd barely seen before. It felt like the writers had painted themselves into a corner and couldn't think of a way out."
+          },
+          {
+            "s": "A",
+            "text": "I didn't mind that, actually. I thought the point was that the answer didn't matter. It was really a film about loneliness, not about the crime."
+          },
+          {
+            "s": "B",
+            "text": "Maybe. You always find a deeper meaning, though. Sometimes a bad ending is just a bad ending."
+          },
+          {
+            "s": "A",
+            "text": "Fair enough. I still want to see it again, though, if only to look at those night shots of the city one more time."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "n": 3,
+          "stem": "What did Jess particularly like about the film?",
+          "options": {
+            "A": "the performances of the actors",
+            "B": "the way it was photographed",
+            "C": "the soundtrack"
+          },
+          "answer": "B",
+          "explanation": "She loved the way the city was filmed at night, with long silent shots. She does not mention the acting or the music.",
+          "evidence": "The way they filmed the city at night"
+        },
+        {
+          "n": 4,
+          "stem": "What does Ethan think about the ending?",
+          "options": {
+            "A": "It was the weakest part of the film.",
+            "B": "It mattered less than the film's real subject.",
+            "C": "It should have been longer."
+          },
+          "answer": "B",
+          "explanation": "Ethan says the answer to the mystery didn't matter because the film was really about loneliness. Jess is the one who thinks the ending was weak.",
+          "evidence": "It was really a film about loneliness, not about the crime."
+        }
+      ]
+    },
+    {
+      "context": "You hear a student talking to her tutor about her final-year project.",
+      "unit": {
+        "id": "l1-d-x3",
+        "speakers": [
+          {
+            "id": "A",
+            "name": "Ava",
+            "gender": "female",
+            "accent": "Canadian"
+          },
+          {
+            "id": "B",
+            "name": "Doctor Shaw",
+            "gender": "male",
+            "accent": "British"
+          }
+        ],
+        "style": "a calm, friendly conversation in a university office",
+        "gapMs": 400,
+        "turns": [
+          {
+            "s": "A",
+            "text": "Thanks for seeing me, Doctor Shaw. I wanted to ask about my project. I've collected far more data than I expected, and I'm not sure how to fit it all in."
+          },
+          {
+            "s": "B",
+            "text": "That's a nice problem to have, Ava. But you're right to be concerned. The most common mistake I see in final-year projects is students trying to include everything they've found. It makes the argument very hard to follow."
+          },
+          {
+            "s": "A",
+            "text": "So should I just leave some of it out? It feels like a waste, after all those interviews."
+          },
+          {
+            "s": "B",
+            "text": "Think of it this way. Your job isn't to show how hard you've worked; it's to answer your research question. Anything that doesn't help with that can go in an appendix, or nowhere at all."
+          },
+          {
+            "s": "A",
+            "text": "OK. That actually makes me feel a lot better."
+          },
+          {
+            "s": "B",
+            "text": "Good. Send me a new outline by Friday and we'll go through it together."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "n": 5,
+          "stem": "What is Ava's problem?",
+          "options": {
+            "A": "She does not have enough data.",
+            "B": "She has more material than she can use.",
+            "C": "She has missed an important deadline."
+          },
+          "answer": "B",
+          "explanation": "She has collected far more data than expected and does not know how to fit it all in.",
+          "evidence": "I've collected far more data than I expected"
+        },
+        {
+          "n": 6,
+          "stem": "What advice does Doctor Shaw give Ava?",
+          "options": {
+            "A": "to include only what answers her research question",
+            "B": "to carry out more interviews",
+            "C": "to change her research question"
+          },
+          "answer": "A",
+          "explanation": "Anything that doesn't help to answer the research question can go in an appendix or be left out.",
+          "evidence": "Anything that doesn't help with that can go in an appendix, or nowhere at all."
+        }
+      ]
+    }
+  ]
+}

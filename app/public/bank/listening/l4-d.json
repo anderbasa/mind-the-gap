@@ -1,0 +1,61 @@
+{
+  "id": "l4-d",
+  "part": "l4",
+  "title": "Memorable job interviews",
+  "createdAt": 1794873600000,
+  "context": "You will hear five short extracts in which people talk about a job interview they remember well.",
+  "unit": {
+    "id": "l4-d",
+    "speakers": [
+      { "id": "1", "name": "Sanjay", "gender": "male", "accent": "British" },
+      { "id": "2", "name": "Megan", "gender": "female", "accent": "American" },
+      { "id": "3", "name": "Ruairi", "gender": "male", "accent": "Irish" },
+      { "id": "4", "name": "Sophie", "gender": "female", "accent": "Australian" },
+      { "id": "5", "name": "Tariq", "gender": "male", "accent": "Canadian" }
+    ],
+    "style": "spontaneous and natural, as if talking to an interviewer, at a normal pace",
+    "gapMs": 2500,
+    "turns": [
+      { "s": "1", "text": "I'd applied for a job as a data analyst, and halfway through the interview they put a laptop in front of me and said, 'This spreadsheet is broken. You've got twenty minutes to fix it.' I'd never heard of that happening before. Then, about five minutes in, the laptop froze completely. My first instinct was to panic, but I took a breath, told them what I'd been trying to do and talked them through how I'd solve it on paper. They told me afterwards that it was my reaction that got me the job." },
+      { "s": "2", "text": "I walked into the room and nearly walked straight back out again, because the person interviewing me was a guy from my high school. Back then I'd written him off as the quiet, boring kid who never said anything, and I'm ashamed to say I wasn't always nice to him. Twelve years later, here he was, asking me the sharpest questions I've ever been asked. He was totally professional about it, and I did get the job. But it really made me think about how quickly I used to make up my mind about people." },
+      { "s": "3", "text": "Everything was going grand until the manager leaned back and asked me which kitchen appliance I'd be, and why. I genuinely thought she was joking. When I realised she wasn't, I said a toaster, because I'm reliable, I warm up quickly, and I occasionally set off the fire alarm. She laughed, and I relaxed. I found out later that the other candidates had far more experience than me. I think what made the difference was that I didn't apologise for who I was." },
+      { "s": "4", "text": "I'd expected to meet one person, so when I was shown into a room with six people sitting behind a long table, I was pretty thrown. They took turns firing questions at me, and I never knew who to look at. I didn't get the job, and I was gutted for about a week. But one of them rang me afterwards and gave me really detailed feedback, which was incredibly generous. I used every word of it in my next interview, and that time I was offered the position." },
+      { "s": "5", "text": "At the time I was applying for about ten jobs at once, and I'd got into the habit of using pretty much the same answers for all of them. Big mistake. Right at the start, I told the interviewer how much I admired the company, and then used the name of their main competitor. There was a terrible silence. I tried to laugh it off, but I knew it was over. These days I treat every application as if it's the only one, and I put in the hours before I walk through the door." }
+    ]
+  },
+  "task1": {
+    "prompt": "TASK ONE · For questions 21–25, choose from the list (A–H) what happened at each speaker's interview.",
+    "options": {
+      "A": "They arrived late.",
+      "B": "They were asked an unusual question.",
+      "C": "They met someone they already knew.",
+      "D": "They had to do a practical task.",
+      "E": "The interviewer was unfriendly.",
+      "F": "They made an embarrassing mistake.",
+      "G": "They were interviewed by a group.",
+      "H": "The interview was cut short."
+    }
+  },
+  "task2": {
+    "prompt": "TASK TWO · For questions 26–30, choose from the list (A–H) what each speaker learnt from the experience.",
+    "options": {
+      "A": "to prepare more carefully",
+      "B": "to be honest about their weaknesses",
+      "C": "not to judge people too quickly",
+      "D": "to ask more questions of their own",
+      "E": "that being yourself can matter more than experience",
+      "F": "to stay calm when something goes wrong",
+      "G": "that failure can lead to success",
+      "H": "to dress more formally"
+    }
+  },
+  "answers1": ["D", "C", "B", "G", "F"],
+  "answers2": ["F", "C", "E", "G", "A"],
+  "notes": [
+    { "evidence1": "You've got twenty minutes to fix it.", "evidence2": "My first instinct was to panic, but I took a breath", "explanation": "He had to fix a spreadsheet during the interview. When the laptop froze, staying calm is what got him the job." },
+    { "evidence1": "the person interviewing me was a guy from my high school", "evidence2": "how quickly I used to make up my mind about people", "explanation": "Her interviewer was someone she knew from school and had dismissed as boring. She realised she had judged him too quickly." },
+    { "evidence1": "asked me which kitchen appliance I'd be", "evidence2": "what made the difference was that I didn't apologise for who I was", "explanation": "He was asked an unusual question. Although the others had more experience, being himself made the difference." },
+    { "evidence1": "a room with six people sitting behind a long table", "evidence2": "I used every word of it in my next interview", "explanation": "She faced a panel of six. She didn't get the job, but the feedback helped her succeed in the next interview." },
+    { "evidence1": "used the name of their main competitor", "evidence2": "These days I treat every application as if it's the only one", "explanation": "He embarrassingly used a competitor's name. Now he prepares each application properly instead of reusing the same answers." }
+  ]
+}

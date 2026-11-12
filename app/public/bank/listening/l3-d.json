@@ -1,0 +1,172 @@
+{
+  "id": "l3-d",
+  "part": "l3",
+  "title": "Fixing things together",
+  "createdAt": 1794873600000,
+  "context": "You will hear an interview with Marta Ruiz, who started a network of repair cafés where people fix broken things.",
+  "unit": {
+    "id": "l3-d",
+    "speakers": [
+      {
+        "id": "A",
+        "name": "Ben",
+        "gender": "male",
+        "accent": "British"
+      },
+      {
+        "id": "B",
+        "name": "Marta",
+        "gender": "female",
+        "accent": "American"
+      }
+    ],
+    "style": "a natural radio interview, warm and articulate, at a normal pace",
+    "gapMs": 450,
+    "turns": [
+      {
+        "s": "A",
+        "text": "My guest today is Marta Ruiz, who started the first repair café in her city five years ago. There are now more than thirty. Marta, for anyone who hasn't been to one, what exactly is a repair café?"
+      },
+      {
+        "s": "B",
+        "text": "It's very simple, really. Once a month, we take over a community hall, and people bring in things that are broken: toasters, bicycles, jackets with broken zips, lamps. Volunteers with the right skills help them fix them. The important word there is help. We don't take your toaster away and give it back repaired. You sit next to the volunteer and do as much of the work as you can yourself."
+      },
+      {
+        "s": "A",
+        "text": "Why does that matter so much?"
+      },
+      {
+        "s": "B",
+        "text": "Because the point isn't just to save one toaster. It's to change how people feel about the things they own. When you've opened something up and seen how it works, you're far less likely to throw it away the next time it goes wrong. A lot of people arrive convinced they're useless with their hands, and they leave feeling slightly proud of themselves."
+      },
+      {
+        "s": "A",
+        "text": "How did it all start for you?"
+      },
+      {
+        "s": "B",
+        "text": "Rather by accident. My washing machine broke, and the company told me that repairing it would cost more than buying a new one. That seemed absurd to me, so I found a video online and fixed it myself for the price of a small part. I was so pleased that I told everyone I knew, and a neighbour suggested we organise something for the whole street."
+      },
+      {
+        "s": "A",
+        "text": "Do manufacturers make repairs deliberately difficult?"
+      },
+      {
+        "s": "B",
+        "text": "Some do, although it's getting better. The biggest problem we see isn't products designed to fail; it's products that are glued together instead of screwed, so you can't get inside without breaking them. And spare parts can be impossible to find. New rules in Europe are starting to change that, which is encouraging, but there's a long way to go."
+      },
+      {
+        "s": "A",
+        "text": "Who are your volunteers?"
+      },
+      {
+        "s": "B",
+        "text": "All sorts, but a surprising number are retired engineers and electricians who miss using their skills. We also get students, which I love, because the older volunteers enjoy passing on what they know. Some of our best friendships have started over a broken radio."
+      },
+      {
+        "s": "A",
+        "text": "And what's the most unusual thing anyone has brought in?"
+      },
+      {
+        "s": "B",
+        "text": "Oh, that's easy. A man once arrived with a mechanical toy monkey that played the drums. It had belonged to his father, and it hadn't worked for sixty years. It took three volunteers an entire afternoon, but when it finally started playing again, half the room was in tears. Moments like that remind me that people aren't really attached to objects. They're attached to the memories that come with them."
+      },
+      {
+        "s": "A",
+        "text": "Do people ever leave disappointed?"
+      },
+      {
+        "s": "B",
+        "text": "Of course. Not everything can be saved, and we're honest about that. But even when a repair fails, people usually understand why their machine stopped working, and that changes what they look for next time. Several people have told me they now check whether a product can be repaired before they buy it, which is exactly the kind of change we hoped for."
+      },
+      {
+        "s": "A",
+        "text": "Finally, what would you say to people who think repairing things is old-fashioned?"
+      },
+      {
+        "s": "B",
+        "text": "I'd say that throwing things away is what's old-fashioned. We simply can't afford to keep buying new things every time something breaks. Repairing isn't about going backwards. It's about growing up."
+      }
+    ]
+  },
+  "questions": [
+    {
+      "n": 15,
+      "stem": "According to Marta, what is special about the way repair cafés work?",
+      "options": {
+        "A": "All repairs are carried out free of charge.",
+        "B": "Visitors take part in fixing their own things.",
+        "C": "Only qualified engineers are allowed to help.",
+        "D": "Broken items are collected from people's homes."
+      },
+      "answer": "B",
+      "explanation": "The key word is 'help': volunteers do not repair things for you; you sit next to them and do as much as you can yourself.",
+      "evidence": "You sit next to the volunteer and do as much of the work as you can yourself."
+    },
+    {
+      "n": 16,
+      "stem": "Marta believes that taking part in a repair",
+      "options": {
+        "A": "changes people's attitude to their possessions.",
+        "B": "teaches people a skill they can use at work.",
+        "C": "saves people a great deal of money.",
+        "D": "makes people more critical of manufacturers."
+      },
+      "answer": "A",
+      "explanation": "The aim is to change how people feel about the things they own, so they are less likely to throw them away.",
+      "evidence": "It's to change how people feel about the things they own."
+    },
+    {
+      "n": 17,
+      "stem": "What led Marta to start the first repair café?",
+      "options": {
+        "A": "advice from the company that made her washing machine",
+        "B": "a successful repair she did herself",
+        "C": "a video she made for her neighbours",
+        "D": "a course she had attended"
+      },
+      "answer": "B",
+      "explanation": "She fixed her washing machine herself with the help of an online video, and was so pleased that a neighbour suggested organising something. The company told her repair would cost more than a new machine.",
+      "evidence": "I found a video online and fixed it myself for the price of a small part"
+    },
+    {
+      "n": 18,
+      "stem": "What does Marta say is the biggest obstacle to repairing products?",
+      "options": {
+        "A": "Products are deliberately made to break quickly.",
+        "B": "New European rules have made repairs more complicated.",
+        "C": "Few people know where to find instructions.",
+        "D": "Many products cannot be opened without being damaged."
+      },
+      "answer": "D",
+      "explanation": "The biggest problem is products that are glued instead of screwed, so you cannot get inside without breaking them. She says the problem is not products designed to fail, and the new rules are helping.",
+      "evidence": "products that are glued together instead of screwed"
+    },
+    {
+      "n": 19,
+      "stem": "What does Marta particularly enjoy about the volunteers?",
+      "options": {
+        "A": "Older volunteers pass their knowledge on to younger ones.",
+        "B": "Most of them are students.",
+        "C": "They work very quickly.",
+        "D": "They have set up a professional association."
+      },
+      "answer": "A",
+      "explanation": "She loves having students because the older volunteers enjoy passing on what they know.",
+      "evidence": "the older volunteers enjoy passing on what they know"
+    },
+    {
+      "n": 20,
+      "stem": "What does the story of the toy monkey show, according to Marta?",
+      "options": {
+        "A": "Some objects are impossible to repair.",
+        "B": "Old toys are often more valuable than people think.",
+        "C": "People value objects for the memories attached to them.",
+        "D": "Some repairs should only be done by experts."
+      },
+      "answer": "C",
+      "explanation": "People aren't really attached to objects but to the memories that come with them.",
+      "evidence": "They're attached to the memories that come with them."
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "id": "l2-d",
+  "part": "l2",
+  "title": "Life on the island",
+  "createdAt": 1794873600000,
+  "context": "You will hear a man called Kieran talking about his work as a ranger on a small island.",
+  "unit": {
+    "id": "l2-d",
+    "speakers": [
+      {
+        "id": "A",
+        "name": "Kieran",
+        "gender": "male",
+        "accent": "Scottish"
+      }
+    ],
+    "style": "a relaxed, engaging talk to an audience, at a natural pace",
+    "gapMs": 700,
+    "turns": [
+      {
+        "s": "A",
+        "text": "Good evening, everyone. I'm Kieran, and for the last six years I've been the ranger on a small island off the west coast of Scotland. It's about four kilometres long, and outside the summer months the population is exactly eleven people, including me."
+      },
+      {
+        "s": "A",
+        "text": "People imagine the job is mostly about counting birds, and to be fair, that's a big part of it. The island has one of the largest colonies of puffins in the country, and every spring I spend weeks crawling around the cliffs with a notebook. But the work is much more varied than that. I repair fences, clear rubbish from the beaches and, in summer, I lead guided walks for visitors. Some days I see more seabirds than people, which suits me perfectly."
+      },
+      {
+        "s": "A",
+        "text": "Before this, I was a geography teacher in Glasgow for nine years. I loved the teaching but hated the commute, which took me over an hour each way. When I saw the job advertised, I applied almost as a joke. To my surprise, I got an interview, and the rest, as they say, is history."
+      },
+      {
+        "s": "A",
+        "text": "The biggest challenge is the weather. In winter, the ferry can be cancelled for a week or more, so everyone on the island keeps an emergency supply of food. I've learnt to keep at least ten days' worth in my cupboard. The other thing you have to get used to is the wind. On a bad day, it's strong enough to knock you off your feet."
+      },
+      {
+        "s": "A",
+        "text": "What surprises visitors most is how much plastic we find on the beaches. Very little of it comes from the island itself. Most of it is carried by the currents, sometimes from thousands of kilometres away. Last year we found a bottle with a label from a supermarket in Canada."
+      },
+      {
+        "s": "A",
+        "text": "My favourite time of year is late autumn, when the grey seals come ashore to have their pups. For about six weeks, the beaches on the north side are completely taken over by them, and visitors aren't allowed anywhere near."
+      },
+      {
+        "s": "A",
+        "text": "Living here has changed me. I used to be someone who was always busy, always checking my phone. Now I measure my day by the tides rather than the clock. The internet connection is slow, which I've come to see as a blessing rather than a problem."
+      },
+      {
+        "s": "A",
+        "text": "If any of you are thinking about doing something similar, my advice is to spend a full winter somewhere remote before you commit. The summer is easy. It's the dark, wet months that tell you whether you're really suited to this kind of life."
+      }
+    ]
+  },
+  "items": [
+    {
+      "n": 7,
+      "sentence": "Outside the summer months, the island has a population of ___ people.",
+      "answers": [
+        "eleven",
+        "11"
+      ],
+      "explanation": "The population is exactly eleven people, including Kieran.",
+      "evidence": "the population is exactly eleven people"
+    },
+    {
+      "n": 8,
+      "sentence": "In spring, Kieran spends weeks studying the island's large colony of ___.",
+      "answers": [
+        "puffins"
+      ],
+      "explanation": "The island has one of the country's largest colonies of puffins, which he studies on the cliffs every spring.",
+      "evidence": "one of the largest colonies of puffins in the country"
+    },
+    {
+      "n": 9,
+      "sentence": "Before becoming a ranger, Kieran was a ___ teacher.",
+      "answers": [
+        "geography"
+      ],
+      "explanation": "He was a geography teacher in Glasgow for nine years.",
+      "evidence": "I was a geography teacher in Glasgow"
+    },
+    {
+      "n": 10,
+      "sentence": "What Kieran disliked about his previous job was the ___.",
+      "answers": [
+        "commute"
+      ],
+      "explanation": "He loved teaching but hated the commute, over an hour each way.",
+      "evidence": "hated the commute"
+    },
+    {
+      "n": 11,
+      "sentence": "Kieran always keeps enough food for at least ___ in case the ferry is cancelled.",
+      "answers": [
+        "ten days",
+        "10 days"
+      ],
+      "explanation": "Because the ferry can be cancelled in winter, he keeps at least ten days' worth of food.",
+      "evidence": "at least ten days' worth"
+    },
+    {
+      "n": 12,
+      "sentence": "Last year, Kieran found a bottle with a label from a supermarket in ___.",
+      "answers": [
+        "Canada"
+      ],
+      "explanation": "Most plastic arrives with the currents; one bottle came from a supermarket in Canada.",
+      "evidence": "a label from a supermarket in Canada"
+    },
+    {
+      "n": 13,
+      "sentence": "In late autumn, the beaches on the north side are used by ___ to have their young.",
+      "answers": [
+        "grey seals",
+        "seals",
+        "gray seals"
+      ],
+      "explanation": "The grey seals come ashore to have their pups, and visitors are kept away.",
+      "evidence": "when the grey seals come ashore to have their pups"
+    },
+    {
+      "n": 14,
+      "sentence": "Kieran advises people to spend a whole ___ somewhere remote before deciding to move.",
+      "answers": [
+        "winter"
+      ],
+      "explanation": "Summer is easy; the dark, wet months show whether you are suited to the life.",
+      "evidence": "spend a full winter somewhere remote"
+    }
+  ]
+}
