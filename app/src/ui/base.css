@@ -1060,3 +1060,65 @@ table.cmp td {
 table.cmp td:not(:first-child) {
   text-align: right;
 }
+
+/* ── Vocabulario, gramática y cuaderno ───────────────── */
+
+.srs-front {
+  font-size: 20px;
+  white-space: pre-line;
+}
+.rategrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.statrow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 12px;
+}
+.statrow strong {
+  font-size: 20px;
+  margin-right: 4px;
+}
+.gblocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-family: var(--font-read);
+  font-size: 19px;
+}
+.gb {
+  padding: 4px 8px;
+  border-radius: 8px;
+  border-bottom: 3px solid currentColor;
+}
+.gleg {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid currentColor;
+}
+.gb-neg { color: var(--signal); background: color-mix(in srgb, var(--signal) 12%, transparent); }
+.gb-aux { color: #2f6fd6; background: color-mix(in srgb, #2f6fd6 12%, transparent); }
+.gb-subj { color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, transparent); }
+.gb-verb { color: var(--warn); background: color-mix(in srgb, var(--warn) 14%, transparent); }
+.gb-focus { color: var(--line-grammar); background: color-mix(in srgb, var(--line-grammar) 12%, transparent); }
+.gb-clause { color: var(--line-listening); background: color-mix(in srgb, var(--line-listening) 12%, transparent); }
+.gb-rest { color: var(--ink-3); background: var(--paper-sunk); }
+.wbuilt {
+  min-height: 56px;
+  padding: 12px;
+  border: 2px dashed var(--rule-strong);
+  border-radius: 12px;
+  font-size: 18px;
+}
+.chip.used {
+  opacity: 0.35;
+}
+.flash-ok {
+  box-shadow: 0 0 0 3px var(--ok);
+}
+.flash-bad {
+  box-shadow: 0 0 0 3px var(--bad);
+}

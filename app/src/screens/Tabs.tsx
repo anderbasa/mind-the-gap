@@ -9,6 +9,57 @@ import { IconTheo } from '../ui/icons';
 import { latestScore } from '../diagnostic/run';
 import type { ScoreDoc } from '../scoring/estimate';
 import { tutorNotes } from '../tutor/notes';
+import { SrsPanel } from './SrsPanel';
+import { getPatterns, topFive, type Pattern } from '../errors/notebook';
+import { listCards, todaysQueue } from '../srs/srs';
+
+/** En Hoy: tus 5 errores top y el repaso de vocabulario pendiente. */
+function HoyExtras() {
+  const [top, setTop] = useState<Pattern[]>([]);
+  const [due, setDue] = useState<number | null>(null);
+  useEffect(() => {
+    getPatterns()
+      .then((d) => setTop(topFive(d)))
+      .catch(() => undefined);
+    listCards()
+      .then((c) => {
+        const q = todaysQueue(c);
+        setDue(c.length ? q.due.length + q.fresh.length : null);
+      })
+      .catch(() => undefined);
+  }, []);
+  return (
+    <>
+      {due !== null && due > 0 && (
+        <section class="card card-line stack" style={{ ...g(8), '--card-line': 'var(--line-vocab)' } as JSX.CSSProperties}>
+          <div class="spread">
+            <h3>Repaso de vocabulario</h3>
+            <span class="pill">{due}</span>
+          </div>
+          <button class="btn quiet" onClick={() => navigate('/vocabulario/repaso')}>
+            Repasar ahora
+          </button>
+        </section>
+      )}
+      {top.length > 0 && (
+        <section class="card stack" style={g(8)}>
+          <span class="kicker">Tus 5 errores top</span>
+          {top.map((p, i) => (
+            <div key={p.name} class="spread">
+              <span class="small">
+                {i + 1}. {p.name}
+              </span>
+              <span class="pill bad">×{p.count}</span>
+            </div>
+          ))}
+          <button class="linkbtn" onClick={() => navigate('/cuaderno')}>
+            Practicarlos en el cuaderno de errores
+          </button>
+        </section>
+      )}
+    </>
+  );
+}
 
 /** Tu última nota estimada (diagnóstico o mini-diagnóstico). */
 function useScore(): ScoreDoc | null | undefined {
@@ -87,6 +138,7 @@ export function Hoy() {
       <Band kicker={`Mind the Gap · ${todayEs()}`} title={`${greeting()}${name ? `, ${name}` : ''}.`} />
       <Page>
         <Trayecto />
+        <HoyExtras />
 
         <section class="card card-line stack" style={{ ...g(12), '--card-line': 'var(--signal)' } as JSX.CSSProperties}>
           <div class="spread">
@@ -110,7 +162,7 @@ export function Hoy() {
             <ListItem dot="var(--line-writing)" title="Fase 3 · Writing y Reformular" sub="Corrección, Upgrade to C1, reescritura, Dímelo mejor" right={<span class="pill ok">Hecha</span>} />
             <ListItem dot="var(--line-listening)" title="Fase 4 · Listening" sub="4 partes con varios acentos, dictados, inglés hablado real" right={<span class="pill ok">Hecha</span>} />
             <ListItem dot="var(--line-speaking)" title="Fase 5 · Speaking por voz" sub="Simulacro, role-plays, long turn" right={<span class="pill ok">Hecha</span>} />
-            <ListItem dot="var(--line-vocab)" title="Fase 6 · Diagnóstico y memoria de Theo" sub="Ya: diagnóstico y notas de Theo · Después: errores, vocabulario (FSRS) y gramática" right={<span class="pill signal">Ahora</span>} />
+            <ListItem dot="var(--line-vocab)" title="Fase 6 · Diagnóstico, errores, vocabulario y gramática" sub="Diagnóstico, memoria de Theo, cuaderno de errores, FSRS y gramática C1" right={<span class="pill ok">Hecha</span>} />
             <ListItem dot="var(--ink)" title="Fases 7–8" sub="Sesión diaria, simulacros, ¿Estoy listo?, rachas, Telegram" />
           </div>
         </section>
@@ -147,8 +199,8 @@ export function Practicar() {
         <section class="stack" style={g(8)}>
           <span class="kicker">Herramientas</span>
           <div class="list">
-            <ListItem dot="var(--line-grammar)" title="Gramática C1" sub="Inversión, cleft sentences, orden de palabras" right={<PhasePill n={6} />} disabled />
-            <ListItem dot="var(--bad)" title="Cuaderno de errores" sub="Tus patrones, con ejercicios dirigidos" right={<PhasePill n={6} />} disabled />
+            <ListItem dot="var(--line-grammar)" title="Gramática C1" sub="12 puntos clave, práctica libre corregida y minijuegos" to="/practicar/gramatica" />
+            <ListItem dot="var(--bad)" title="Cuaderno de errores" sub="Tus patrones, tus 5 errores top y práctica dirigida" to="/cuaderno" />
           </div>
         </section>
       </Page>
@@ -211,19 +263,8 @@ export function Vocabulario() {
     <>
       <Band kicker="Mind the Gap · Vocabulario" title="Vocabulary" line="var(--line-vocab)" />
       <Page>
+        <SrsPanel />
         <SavedWords />
-        <section class="card stack" style={g(10)}>
-          <div class="spread">
-            <h2>Repaso espaciado</h2>
-            <PhasePill n={6} />
-          </div>
-          <p>
-            Tarjetas siempre en contexto (significado, hueco, word formation, collocation y producción del castellano al inglés), programadas con el algoritmo FSRS.
-          </p>
-          <p class="muted small">
-            Una palabra solo pasa a «dominada» cuando la usas bien tres veces sin que te la pidan, en un writing o un speaking. Acertar tarjetas no basta.
-          </p>
-        </section>
       </Page>
     </>
   );

@@ -22,7 +22,9 @@ export type TaskId =
   | 'roleplay'
   | 'tutor-notes'
   | 'weekly-report'
-  | 'voice-test';
+  | 'voice-test'
+  | 'error-patterns'
+  | 'grammar';
 
 export type AiPart = { text: string } | { inline: { mimeType: string; data: string } };
 

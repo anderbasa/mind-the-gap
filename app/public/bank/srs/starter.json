@@ -1,0 +1,652 @@
+[
+ {
+  "type": "collocation",
+  "term": "pay attention",
+  "front": "___ attention to detail",
+  "answer": "pay",
+  "accepted": [],
+  "back": "Pay attention to detail.",
+  "es": "prestar atención al detalle",
+  "hint": "p",
+  "say": "Pay attention to detail."
+ },
+ {
+  "type": "collocation",
+  "term": "reach a compromise",
+  "front": "___ a compromise (llegar a un acuerdo)",
+  "answer": "reach",
+  "accepted": [],
+  "back": "They finally reached a compromise.",
+  "es": "llegar a un acuerdo",
+  "hint": "r",
+  "say": "They finally reached a compromise."
+ },
+ {
+  "type": "collocation",
+  "term": "draw a conclusion",
+  "front": "___ a conclusion",
+  "answer": "draw",
+  "accepted": [
+   "reach",
+   "come to"
+  ],
+  "back": "It is too early to draw a conclusion.",
+  "es": "sacar una conclusión",
+  "hint": "d",
+  "say": "It is too early to draw a conclusion."
+ },
+ {
+  "type": "collocation",
+  "term": "make an effort",
+  "front": "___ an effort",
+  "answer": "make",
+  "accepted": [],
+  "back": "She made an effort to stay calm.",
+  "es": "hacer un esfuerzo",
+  "hint": "m",
+  "say": "She made an effort to stay calm."
+ },
+ {
+  "type": "collocation",
+  "term": "put pressure on",
+  "front": "___ pressure on someone",
+  "answer": "put",
+  "accepted": [],
+  "back": "Don't put pressure on yourself.",
+  "es": "presionar a alguien",
+  "hint": "p",
+  "say": "Don't put pressure on yourself."
+ },
+ {
+  "type": "collocation",
+  "term": "take a risk",
+  "front": "___ a risk",
+  "answer": "take",
+  "accepted": [
+   "run"
+  ],
+  "back": "I'm not prepared to take that risk.",
+  "es": "correr un riesgo",
+  "hint": "t",
+  "say": "I'm not prepared to take that risk."
+ },
+ {
+  "type": "collocation",
+  "term": "meet a deadline",
+  "front": "___ a deadline (cumplir un plazo)",
+  "answer": "meet",
+  "accepted": [],
+  "back": "We managed to meet the deadline.",
+  "es": "cumplir un plazo",
+  "hint": "m",
+  "say": "We managed to meet the deadline."
+ },
+ {
+  "type": "collocation",
+  "term": "do a favour",
+  "front": "___ someone a favour",
+  "answer": "do",
+  "accepted": [],
+  "back": "Could you do me a favour?",
+  "es": "hacer un favor",
+  "hint": "d",
+  "say": "Could you do me a favour?"
+ },
+ {
+  "type": "collocation",
+  "term": "take the blame",
+  "front": "___ the blame for something",
+  "answer": "take",
+  "accepted": [],
+  "back": "He took the blame for the mistake.",
+  "es": "cargar con la culpa",
+  "hint": "t",
+  "say": "He took the blame for the mistake."
+ },
+ {
+  "type": "collocation",
+  "term": "earn a living",
+  "front": "___ a living",
+  "answer": "earn",
+  "accepted": [
+   "make"
+  ],
+  "back": "It is hard to earn a living as an artist.",
+  "es": "ganarse la vida",
+  "hint": "e",
+  "say": "It is hard to earn a living as an artist."
+ },
+ {
+  "type": "collocation",
+  "term": "make a profit",
+  "front": "___ a profit",
+  "answer": "make",
+  "accepted": [
+   "turn"
+  ],
+  "back": "The firm made a profit for the first time.",
+  "es": "obtener beneficios",
+  "hint": "m",
+  "say": "The firm made a profit for the first time."
+ },
+ {
+  "type": "collocation",
+  "term": "play a role",
+  "front": "___ a role in something",
+  "answer": "play",
+  "accepted": [],
+  "back": "Luck played a role in their success.",
+  "es": "desempeñar un papel",
+  "hint": "p",
+  "say": "Luck played a role in their success."
+ },
+ {
+  "type": "collocation",
+  "term": "shed light on",
+  "front": "___ light on a problem (aclarar)",
+  "answer": "shed",
+  "accepted": [
+   "throw",
+   "cast"
+  ],
+  "back": "The report sheds light on the problem.",
+  "es": "arrojar luz sobre algo",
+  "hint": "s",
+  "say": "The report sheds light on the problem."
+ },
+ {
+  "type": "collocation",
+  "term": "raise an issue",
+  "front": "___ an issue (plantear un tema)",
+  "answer": "raise",
+  "accepted": [],
+  "back": "She raised an important issue.",
+  "es": "plantear una cuestión",
+  "hint": "r",
+  "say": "She raised an important issue."
+ },
+ {
+  "type": "collocation",
+  "term": "vast majority",
+  "front": "a ___ majority (aplastante)",
+  "answer": "vast",
+  "accepted": [
+   "overwhelming"
+  ],
+  "back": "A vast majority voted in favour.",
+  "es": "una mayoría aplastante",
+  "hint": "v",
+  "say": "A vast majority voted in favour."
+ },
+ {
+  "type": "collocation",
+  "term": "heavy rain",
+  "front": "___ rain (lluvia fuerte)",
+  "answer": "heavy",
+  "accepted": [],
+  "back": "Heavy rain caused delays.",
+  "es": "lluvia intensa",
+  "hint": "h",
+  "say": "Heavy rain caused delays."
+ },
+ {
+  "type": "collocation",
+  "term": "compelling argument",
+  "front": "a ___ argument (convincente)",
+  "answer": "compelling",
+  "accepted": [
+   "convincing",
+   "strong",
+   "persuasive"
+  ],
+  "back": "She made a compelling argument.",
+  "es": "un argumento convincente",
+  "hint": "c",
+  "say": "She made a compelling argument."
+ },
+ {
+  "type": "collocation",
+  "term": "fierce competition",
+  "front": "___ competition (feroz)",
+  "answer": "fierce",
+  "accepted": [
+   "stiff",
+   "intense"
+  ],
+  "back": "There is fierce competition for jobs.",
+  "es": "competencia feroz",
+  "hint": "f",
+  "say": "There is fierce competition for jobs."
+ },
+ {
+  "type": "collocation",
+  "term": "pose a question",
+  "front": "___ a question (plantear)",
+  "answer": "pose",
+  "accepted": [
+   "raise"
+  ],
+  "back": "The results pose a difficult question.",
+  "es": "plantear una pregunta",
+  "hint": "p",
+  "say": "The results pose a difficult question."
+ },
+ {
+  "type": "collocation",
+  "term": "break a habit",
+  "front": "___ a habit (dejar un hábito)",
+  "answer": "break",
+  "accepted": [
+   "kick"
+  ],
+  "back": "It took him years to break the habit.",
+  "es": "dejar un hábito",
+  "hint": "b",
+  "say": "It took him years to break the habit."
+ },
+ {
+  "type": "wordform",
+  "term": "reduction",
+  "front": "There has been a sharp ___ in unemployment. (REDUCE)",
+  "answer": "reduction",
+  "back": "There has been a sharp reduction in unemployment.",
+  "es": "reducción",
+  "say": "There has been a sharp reduction in unemployment."
+ },
+ {
+  "type": "wordform",
+  "term": "willingness",
+  "front": "Her ___ to compromise impressed everyone. (WILLING)",
+  "answer": "willingness",
+  "back": "Her willingness to compromise impressed everyone.",
+  "es": "disposición",
+  "say": "Her willingness to compromise impressed everyone."
+ },
+ {
+  "type": "wordform",
+  "term": "impractical",
+  "front": "The plan proved completely ___. (PRACTICE)",
+  "answer": "impractical",
+  "back": "The plan proved completely impractical.",
+  "es": "poco práctico",
+  "say": "The plan proved completely impractical."
+ },
+ {
+  "type": "wordform",
+  "term": "simplify",
+  "front": "We need to ___ the process. (SIMPLE)",
+  "answer": "simplify",
+  "back": "We need to simplify the process.",
+  "es": "simplificar",
+  "say": "We need to simplify the process."
+ },
+ {
+  "type": "wordform",
+  "term": "deliberately",
+  "front": "His comments were ___ offensive. (DELIBERATE)",
+  "answer": "deliberately",
+  "back": "His comments were deliberately offensive.",
+  "es": "deliberadamente",
+  "say": "His comments were deliberately offensive."
+ },
+ {
+  "type": "wordform",
+  "term": "introduction",
+  "front": "The ___ of the new rules caused confusion. (INTRODUCE)",
+  "answer": "introduction",
+  "back": "The introduction of the new rules caused confusion.",
+  "es": "introducción",
+  "say": "The introduction of the new rules caused confusion."
+ },
+ {
+  "type": "wordform",
+  "term": "exceptionally",
+  "front": "Prices are ___ high at the moment. (EXCEPTION)",
+  "answer": "exceptionally",
+  "back": "Prices are exceptionally high at the moment.",
+  "es": "excepcionalmente",
+  "say": "Prices are exceptionally high at the moment."
+ },
+ {
+  "type": "wordform",
+  "term": "understanding",
+  "front": "She has a deep ___ of economics. (UNDERSTAND)",
+  "answer": "understanding",
+  "back": "She has a deep understanding of economics.",
+  "es": "comprensión",
+  "say": "She has a deep understanding of economics."
+ },
+ {
+  "type": "wordform",
+  "term": "consistent",
+  "front": "The results were ___ with previous studies. (CONSIST)",
+  "answer": "consistent",
+  "back": "The results were consistent with previous studies.",
+  "es": "coherente",
+  "say": "The results were consistent with previous studies."
+ },
+ {
+  "type": "wordform",
+  "term": "controversial",
+  "front": "It was a highly ___ decision. (CONTROVERSY)",
+  "answer": "controversial",
+  "back": "It was a highly controversial decision.",
+  "es": "polémico",
+  "say": "It was a highly controversial decision."
+ },
+ {
+  "type": "gap",
+  "term": "come up with",
+  "front": "We need to come ___ with a better plan.",
+  "answer": "up",
+  "accepted": [],
+  "back": "We need to come up with a better plan.",
+  "es": "idear, proponer",
+  "hint": "u",
+  "say": "We need to come up with a better plan."
+ },
+ {
+  "type": "gap",
+  "term": "put off",
+  "front": "The meeting has been ___ off until next week.",
+  "answer": "put",
+  "accepted": [],
+  "back": "The meeting has been put off until next week.",
+  "es": "aplazar",
+  "hint": "p",
+  "say": "The meeting has been put off until next week."
+ },
+ {
+  "type": "gap",
+  "term": "sort out",
+  "front": "Let's ___ out this mess before the boss arrives.",
+  "answer": "sort",
+  "accepted": [],
+  "back": "Let's sort out this mess before the boss arrives.",
+  "es": "arreglar, solucionar",
+  "hint": "s",
+  "say": "Let's sort out this mess before the boss arrives."
+ },
+ {
+  "type": "gap",
+  "term": "crack down on",
+  "front": "The police have ___ down on tax evasion.",
+  "answer": "cracked",
+  "accepted": [
+   "clamped"
+  ],
+  "back": "The police have cracked down on tax evasion.",
+  "es": "tomar medidas duras",
+  "hint": "c",
+  "say": "The police have cracked down on tax evasion."
+ },
+ {
+  "type": "gap",
+  "term": "put up with",
+  "front": "I can't put ___ with the noise any more.",
+  "answer": "up",
+  "accepted": [],
+  "back": "I can't put up with the noise any more.",
+  "es": "aguantar",
+  "hint": "u",
+  "say": "I can't put up with the noise any more."
+ },
+ {
+  "type": "gap",
+  "term": "fall through",
+  "front": "The deal fell ___ at the last minute.",
+  "answer": "through",
+  "accepted": [],
+  "back": "The deal fell through at the last minute.",
+  "es": "fracasar, venirse abajo",
+  "hint": "t",
+  "say": "The deal fell through at the last minute."
+ },
+ {
+  "type": "gap",
+  "term": "pick up",
+  "front": "Sales have been picking ___ since January.",
+  "answer": "up",
+  "accepted": [],
+  "back": "Sales have been picking up since January.",
+  "es": "repuntar",
+  "hint": "u",
+  "say": "Sales have been picking up since January."
+ },
+ {
+  "type": "gap",
+  "term": "pluck up the courage",
+  "front": "He finally ___ up the courage to ask.",
+  "answer": "plucked",
+  "accepted": [
+   "summoned"
+  ],
+  "back": "He finally plucked up the courage to ask.",
+  "es": "armarse de valor",
+  "hint": "p",
+  "say": "He finally plucked up the courage to ask."
+ },
+ {
+  "type": "gap",
+  "term": "look into",
+  "front": "Let me look ___ the matter and get back to you.",
+  "answer": "into",
+  "accepted": [],
+  "back": "Let me look into the matter and get back to you.",
+  "es": "investigar, estudiar",
+  "hint": "i",
+  "say": "Let me look into the matter and get back to you."
+ },
+ {
+  "type": "gap",
+  "term": "phase in",
+  "front": "The new rules will be phased ___ over two years.",
+  "answer": "in",
+  "accepted": [],
+  "back": "The new rules will be phased in over two years.",
+  "es": "introducir gradualmente",
+  "hint": "i",
+  "say": "The new rules will be phased in over two years."
+ },
+ {
+  "type": "gap",
+  "term": "despite",
+  "front": "___ the bad weather, the match went ahead.",
+  "answer": "Despite",
+  "accepted": [
+   "In spite of"
+  ],
+  "back": "Despite the bad weather, the match went ahead.",
+  "es": "a pesar de",
+  "hint": "D",
+  "say": "Despite the bad weather, the match went ahead."
+ },
+ {
+  "type": "gap",
+  "term": "strange as it may seem",
+  "front": "Strange ___ it may seem, it is true.",
+  "answer": "as",
+  "accepted": [
+   "though"
+  ],
+  "back": "Strange as it may seem, it is true.",
+  "es": "por extraño que parezca",
+  "hint": "a",
+  "say": "Strange as it may seem, it is true."
+ },
+ {
+  "type": "gap",
+  "term": "not only… but",
+  "front": "Not ___ did she pass, but she came top.",
+  "answer": "only",
+  "accepted": [],
+  "back": "Not only did she pass, but she came top.",
+  "es": "no solo… sino que",
+  "hint": "o",
+  "say": "Not only did she pass, but she came top."
+ },
+ {
+  "type": "gap",
+  "term": "no sooner… than",
+  "front": "No ___ had I arrived than the phone rang.",
+  "answer": "sooner",
+  "accepted": [],
+  "back": "No sooner had I arrived than the phone rang.",
+  "es": "nada más… cuando",
+  "hint": "s",
+  "say": "No sooner had I arrived than the phone rang."
+ },
+ {
+  "type": "gap",
+  "term": "in part",
+  "front": "The success was due ___ part to your help.",
+  "answer": "in",
+  "accepted": [],
+  "back": "The success was due in part to your help.",
+  "es": "en parte",
+  "hint": "i",
+  "say": "The success was due in part to your help."
+ },
+ {
+  "type": "meaning",
+  "term": "a steep learning curve",
+  "front": "a steep learning curve\n“Starting a job in finance was a steep learning curve.”",
+  "back": "something that takes a lot of effort to learn quickly",
+  "es": "algo que cuesta mucho aprender al principio",
+  "say": "Starting a job in finance was a steep learning curve."
+ },
+ {
+  "type": "meaning",
+  "term": "cut corners",
+  "front": "cut corners\n“If you cut corners on safety, someone will get hurt.”",
+  "back": "do something badly or cheaply to save time or money",
+  "es": "hacer algo mal para ahorrar tiempo o dinero",
+  "say": "If you cut corners on safety, someone will get hurt."
+ },
+ {
+  "type": "meaning",
+  "term": "a blessing in disguise",
+  "front": "a blessing in disguise\n“Losing that job turned out to be a blessing in disguise.”",
+  "back": "something that seems bad but has good results",
+  "es": "no hay mal que por bien no venga",
+  "say": "Losing that job turned out to be a blessing in disguise."
+ },
+ {
+  "type": "meaning",
+  "term": "be on the fence",
+  "front": "be on the fence\n“I'm still on the fence about which offer to accept.”",
+  "back": "be unable to decide",
+  "es": "no decidirse, estar indeciso",
+  "say": "I'm still on the fence about which offer to accept."
+ },
+ {
+  "type": "meaning",
+  "term": "go the extra mile",
+  "front": "go the extra mile\n“She always goes the extra mile for her clients.”",
+  "back": "make more effort than is expected",
+  "es": "esforzarse más de lo que se espera",
+  "say": "She always goes the extra mile for her clients."
+ },
+ {
+  "type": "meaning",
+  "term": "make ends meet",
+  "front": "make ends meet\n“Many students work two jobs to make ends meet.”",
+  "back": "have just enough money to live",
+  "es": "llegar a fin de mes",
+  "say": "Many students work two jobs to make ends meet."
+ },
+ {
+  "type": "meaning",
+  "term": "the bottom line",
+  "front": "the bottom line\n“The bottom line is that we cannot afford it.”",
+  "back": "the most important fact; also the final profit or loss",
+  "es": "lo esencial; el resultado final",
+  "say": "The bottom line is that we cannot afford it."
+ },
+ {
+  "type": "meaning",
+  "term": "break even",
+  "front": "break even\n“The café only started to break even after two years.”",
+  "back": "neither make a profit nor lose money",
+  "es": "cubrir costes, no ganar ni perder",
+  "say": "The café only started to break even after two years."
+ },
+ {
+  "type": "production",
+  "term": "wish + past perfect",
+  "front": "Ojalá hubiera estudiado más.",
+  "answer": "I wish I had studied more.",
+  "accepted": [
+   "If only I had studied more."
+  ],
+  "back": "I wish I had studied more.",
+  "say": "I wish I had studied more."
+ },
+ {
+  "type": "production",
+  "term": "not only… but also",
+  "front": "No solo aprobó, sino que sacó la mejor nota.",
+  "answer": "Not only did she pass, but she also got the best mark.",
+  "accepted": [
+   "Not only did she pass, but she got the best mark.",
+   "Not only did he pass, but he also got the best mark."
+  ],
+  "back": "Not only did she pass, but she also got the best mark.",
+  "say": "Not only did she pass, but she also got the best mark."
+ },
+ {
+  "type": "production",
+  "term": "what-cleft",
+  "front": "Lo que más me preocupa es el precio.",
+  "answer": "What worries me most is the price.",
+  "accepted": [
+   "What concerns me most is the price."
+  ],
+  "back": "What worries me most is the price.",
+  "say": "What worries me most is the price."
+ },
+ {
+  "type": "production",
+  "term": "should have",
+  "front": "Deberías habérmelo dicho.",
+  "answer": "You should have told me.",
+  "accepted": [],
+  "back": "You should have told me.",
+  "say": "You should have told me."
+ },
+ {
+  "type": "production",
+  "term": "be said to",
+  "front": "Se dice que la empresa tiene problemas.",
+  "answer": "The company is said to have problems.",
+  "accepted": [
+   "It is said that the company has problems.",
+   "The company is said to be in trouble."
+  ],
+  "back": "The company is said to have problems.",
+  "say": "The company is said to have problems."
+ },
+ {
+  "type": "production",
+  "term": "the more… the better",
+  "front": "Cuanto más practicas, mejor lo haces.",
+  "answer": "The more you practise, the better you get.",
+  "accepted": [
+   "The more you practise, the better you become.",
+   "The more you practice, the better you get."
+  ],
+  "back": "The more you practise, the better you get.",
+  "say": "The more you practise, the better you get."
+ },
+ {
+  "type": "production",
+  "term": "having + participle",
+  "front": "Habiendo terminado el informe, se fue a casa.",
+  "answer": "Having finished the report, she went home.",
+  "accepted": [
+   "Having finished the report, he went home."
+  ],
+  "back": "Having finished the report, she went home.",
+  "say": "Having finished the report, she went home."
+ }
+]

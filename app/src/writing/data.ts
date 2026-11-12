@@ -184,6 +184,8 @@ async function correct(id: string, paid: boolean): Promise<WritingDoc> {
   if (doc.diag && vIdx === 0) {
     void import('../diagnostic/run').then((m) => m.recordPart('writing', doc.taskId, { marks: raw, max: 20, scale: estimateScale(raw) }));
   }
+  // Vocabulario: cuenta los usos espontáneos (3 usos bien = palabra dominada).
+  void import('../srs/srs').then((m) => m.countSpontaneousUses(v.text, [...fb.topErrors, ...fb.otherErrors].map((e) => e.quote)));
   // Theo actualiza sus notas sobre ti (Gemini, gratis; como mucho cada 10 minutos).
   void import('../tutor/notes').then((m) => m.updateTutorNotes(`Writing corrected: "${doc.title}", version ${vIdx + 1}, ${raw}/20`));
   return { ...doc, versions };

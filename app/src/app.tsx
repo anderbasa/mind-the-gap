@@ -28,6 +28,9 @@ import { LongTurn } from './screens/speaking/LongTurn';
 import { Conversation } from './screens/speaking/Conversation';
 import { Diagnostico } from './screens/Diagnostico';
 import { TheoNotes } from './screens/TheoNotes';
+import { Cuaderno } from './screens/Cuaderno';
+import { Repaso } from './screens/Repaso';
+import { GramaticaHub, GramaticaPunto, IdiomsGame, OrdenPalabras } from './screens/Gramatica';
 import type { ComponentType } from 'preact';
 
 const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
@@ -59,6 +62,12 @@ const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
   '/practicar/speaking/conversacion': { C: Conversation, tabs: false },
   '/diagnostico': { C: Diagnostico, tabs: false },
   '/ajustes/theo': { C: TheoNotes, tabs: false },
+  '/cuaderno': { C: Cuaderno, tabs: false },
+  '/vocabulario/repaso': { C: Repaso, tabs: false },
+  '/practicar/gramatica': { C: GramaticaHub, tabs: false },
+  '/practicar/gramatica/punto': { C: GramaticaPunto, tabs: false },
+  '/practicar/gramatica/orden': { C: OrdenPalabras, tabs: false },
+  '/practicar/gramatica/idioms': { C: IdiomsGame, tabs: false },
 };
 
 export function App() {

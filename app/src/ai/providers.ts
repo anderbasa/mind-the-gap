@@ -35,6 +35,8 @@ export const DEFAULT_CHAINS: Record<TaskId, ModelRef[]> = {
   'tutor-notes': [g(MODELS.geminiFlash), g(MODELS.geminiLite)],
   'weekly-report': [g(MODELS.geminiFlash), g(MODELS.geminiLite)],
   'voice-test': [g(MODELS.geminiLite)],
+  'error-patterns': [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt), g(MODELS.geminiFlash)],
+  grammar: [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt)],
 };
 
 export const TASK_LABELS: Record<TaskId, string> = {
@@ -52,6 +54,8 @@ export const TASK_LABELS: Record<TaskId, string> = {
   'tutor-notes': 'Notas de Theo',
   'weekly-report': 'Informe semanal',
   'voice-test': 'Prueba de voz',
+  'error-patterns': 'Cuaderno de errores',
+  grammar: 'Gramática C1',
 };
 
 /** Modelos que se pueden elegir en Ajustes. */
