@@ -1,12 +1,13 @@
 // Simulacros: por paper o completos. En pantalla (con las pantallas de ejercicios en modo examen)
 // o el Paper 1 en papel: PDF imprimible con hoja de respuestas y después introduces lo que marcaste.
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import type { ComponentChildren, JSX } from 'preact';
 import { PAPERS, startMock } from '../diagnostic/mock';
 import { finishRun, getRun, nextPart, partRoute, recordPart, skillsOf, type DiagRun } from '../diagnostic/run';
 import { SKILL_ORDER, SKILLS } from '../domain/skills';
 import { getSet } from '../rue/bank';
 import { markSet, type Answers } from '../rue/marking';
+import { buildPaperPdf, sharePdf } from '../rue/paperPdf';
 import { reviewOpenAnswers } from '../rue/review';
 import { PARTS, type RueSet } from '../rue/schema';
 import { overallOf, scaleText } from '../scoring/estimate';
@@ -315,22 +316,45 @@ function PrintPart(props: { s: RueSet }): ComponentChildren {
 
 export function SimulacroImprimir() {
   const [sets, setSets] = useState<RueSet[] | null>(null);
+  const [pdfLib, setPdfLib] = useState<typeof import('jspdf') | null>(null);
+  const [busy, setBusy] = useState(false);
+  const docRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     rueSetsOfRun().then(setSets);
+    // Se carga ya, para que al tocar el botón el PDF salga al momento (iOS solo deja compartir justo tras el toque).
+    import('jspdf')
+      .then(setPdfLib)
+      .catch(() => undefined);
   }, []);
+
+  const downloadPdf = async () => {
+    if (!pdfLib || !docRef.current) return;
+    setBusy(true);
+    try {
+      const blob = buildPaperPdf(docRef.current, pdfLib.jsPDF);
+      const res = await sharePdf(blob, 'C1-Advanced-Paper-1.pdf');
+      if (res === 'downloaded') toast('PDF descargado');
+    } catch (e) {
+      toast((e as Error).message || 'No se ha podido crear el PDF.', 4000);
+    } finally {
+      setBusy(false);
+    }
+  };
+
   if (!sets) return <Spinner />;
   if (!sets.length) return <NoMock />;
   return (
-    <div class="printdoc">
-      <div class="noprint stack" style={{ ...g(8), padding: '16px' }}>
-        <button class="btn signal" onClick={() => window.print()}>
-          Imprimir / Guardar como PDF
-        </button>
-        <button class="linkbtn" onClick={() => navigate('/simulacro')}>
-          Volver al simulacro
-        </button>
-        <p class="small muted">En el iPhone: Compartir → Imprimir → (pellizca la vista previa para guardarla como PDF).</p>
+    <>
+      <div class="noprint">
+        <Band back="/simulacro" kicker="Simulacro · Paper 1 en papel" title="Imprimir o PDF" sub="8 partes y hoja de respuestas" line="var(--ink)" />
       </div>
+    <div class="printdoc" ref={docRef}>
+      <section class="noprint card flat stack" style={{ ...g(6), margin: '16px 0' }}>
+        <span class="small">
+          <strong>Descargar PDF</strong> lo crea en el móvil: en el iPhone se abre el menú de compartir y eliges «Guardar en Archivos», «Imprimir» o mandártelo.
+        </span>
+        <span class="small muted">Hazlo con lápiz en 1 h 30 min y luego, en el simulacro, «Introducir mis respuestas».</span>
+      </section>
       <header class="phead">
         <h1>C1 Advanced · Reading and Use of English (practice)</h1>
         <p>Time: 1 hour 30 minutes · Mind the Gap · original practice material</p>
@@ -354,6 +378,15 @@ export function SimulacroImprimir() {
         ))}
       </section>
     </div>
+      <div class="printbar noprint">
+        <button class="btn signal" onClick={downloadPdf} disabled={!pdfLib || busy}>
+          {busy ? 'Creando el PDF…' : pdfLib ? 'Descargar PDF' : 'Preparando el PDF…'}
+        </button>
+        <button class="btn quiet" onClick={() => window.print()}>
+          Imprimir
+        </button>
+      </div>
+    </>
   );
 }
 

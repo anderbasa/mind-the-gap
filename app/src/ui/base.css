@@ -1224,3 +1224,29 @@ table.cmp td:not(:first-child) {
     break-before: page;
   }
 }
+
+/* Barra fija abajo de la página imprimible (lejos de la barra de estado del iPhone). */
+.printbar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 50;
+  display: flex;
+  gap: 8px;
+  padding: 10px var(--page-pad) calc(var(--safe-bottom) + 10px);
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+}
+.printbar .btn {
+  flex: 1;
+}
+.printbar .btn.signal {
+  flex: 2;
+}
+.printdoc {
+  padding-bottom: calc(var(--safe-bottom) + 96px);
+}
+@media print {
+  .printdoc {
+    padding-bottom: 0;
+  }
+}

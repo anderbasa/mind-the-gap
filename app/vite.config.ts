@@ -14,7 +14,8 @@ export default defineConfig({
       manifest: false, // usamos public/manifest.webmanifest, escrito a mano
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,webmanifest,json}'], // json = banco de ejercicios, disponible sin conexión
-        globIgnores: ['splash/**'],
+        // html2canvas, canvg y purify solo los usa jsPDF.html(), que la app no llama: fuera de la caché.
+        globIgnores: ['splash/**', 'assets/html2canvas-*.js', 'assets/index.es-*.js', 'assets/purify.es-*.js'],
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
         skipWaiting: true,
