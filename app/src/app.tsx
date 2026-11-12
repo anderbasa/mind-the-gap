@@ -35,6 +35,7 @@ import { Repaso } from './screens/Repaso';
 import { Simulacro, SimulacroImprimir, SimulacroRespuestas } from './screens/Simulacro';
 import { Listo } from './screens/Listo';
 import { Logros } from './screens/Racha';
+import { SeriesHub, SeriesLeccion } from './screens/Series';
 import { GramaticaHub, GramaticaPunto, IdiomsGame, OrdenPalabras } from './screens/Gramatica';
 import type { ComponentType } from 'preact';
 
@@ -80,6 +81,8 @@ const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
   '/simulacro/respuestas': { C: SimulacroRespuestas, tabs: false },
   '/listo': { C: Listo, tabs: false },
   '/logros': { C: Logros, tabs: false },
+  '/practicar/series': { C: SeriesHub, tabs: false },
+  '/practicar/series/leccion': { C: SeriesLeccion, tabs: false },
 };
 
 export function App() {

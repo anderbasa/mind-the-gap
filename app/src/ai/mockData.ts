@@ -1,6 +1,7 @@
 // Respuestas JSON de ejemplo para el modo demo (localhost?demo): permiten ver las pantallas
 // de corrección sin gastar cuota. No se usan nunca con la IA real.
 import type { AiRequest } from './types';
+import { SERIES_CHECK, SERIES_LESSON } from '../series/demoScene';
 
 const FEEDBACK = {
   scores: { content: 4, communicative: 3, organisation: 3, language: 3 },
@@ -141,5 +142,6 @@ export function mockJson(req: AiRequest): unknown | undefined {
   if (req.task === 'ocr-writing') return OCR;
   if (req.task === 'rephrase') return sys.includes('MODE: Say it better') ? SAY : CHECK;
   if (req.task === 'generate' && sys.includes('MODE: Rephrasing generator')) return GENERATED;
+  if (req.task === 'series') return sys.includes('MODE: TV scene lesson check') ? SERIES_CHECK : SERIES_LESSON;
   return undefined;
 }

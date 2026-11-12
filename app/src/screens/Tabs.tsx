@@ -245,6 +245,7 @@ export function Practicar() {
             <ListItem dot={SKILLS.writing.color} title="Writing" sub="Essay, email, letter, proposal, report, review · escrito o en foto" to="/practicar/writing" />
             <ListItem dot={SKILLS.listening.color} title="Listening" sub="4 partes con acentos variados, dictados e inglés hablado real" to="/practicar/listening" />
             <ListItem dot={SKILLS.speaking.color} title="Speaking" sub="Simulacro con examinador y compañero, long turn y role-plays" to="/practicar/speaking" />
+            <ListItem dot={SKILLS.listening.color} title="Escenas de series" sub="Pega subtítulos de algo que hayas visto: Theo te monta la lección" to="/practicar/series" />
             <ListItem dot="var(--line-grammar)" title="Reformular" sub="Una frase y una instrucción: hasta 3 formas de decirlo" to="/practicar/reformular" />
             <ListItem dot="var(--line-grammar)" title="Dímelo mejor" sub="Pega una frase tuya: corregida, neutra, formal y natural" to="/practicar/dimelo" />
             <ListItem dot="var(--signal)" title="Habla con Theo" sub="Chat por escrito, con correcciones rápidas" to="/theo" />

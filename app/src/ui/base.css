@@ -1321,3 +1321,41 @@ table.cmp td:not(:first-child) {
 .wb.today .wb-lab {
   color: var(--signal);
 }
+
+/* ── Escenas de series ───────────────────────────────── */
+
+.scene {
+  white-space: pre-wrap;
+  line-height: 2.1;
+}
+.scene-gap {
+  white-space: nowrap;
+}
+.gapin {
+  font: inherit;
+  font-size: 0.95em;
+  padding: 0 4px;
+  min-width: 4ch;
+  border: none;
+  border-bottom: 2px solid var(--ink-3);
+  background: var(--paper-sunk);
+  color: var(--ink);
+  border-radius: 3px 3px 0 0;
+}
+.gapin:focus {
+  outline: none;
+  border-bottom-color: var(--signal);
+}
+.gapin.ok {
+  border-bottom-color: var(--ok);
+  color: var(--ok);
+}
+.gapin.bad {
+  border-bottom-color: var(--bad);
+  color: var(--bad);
+  text-decoration: line-through;
+}
+.gapfix {
+  color: var(--ok);
+  font-weight: 700;
+}

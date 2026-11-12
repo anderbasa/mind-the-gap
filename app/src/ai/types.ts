@@ -24,7 +24,8 @@ export type TaskId =
   | 'weekly-report'
   | 'voice-test'
   | 'error-patterns'
-  | 'grammar';
+  | 'grammar'
+  | 'series';
 
 export type AiPart = { text: string } | { inline: { mimeType: string; data: string } };
 

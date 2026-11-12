@@ -35,7 +35,7 @@ export interface VocabCard {
   hint?: string;
   /** Lo que se lee en voz alta. */
   say?: string;
-  source: 'starter' | 'vocab' | 'error' | 'manual';
+  source: 'starter' | 'vocab' | 'error' | 'manual' | 'series';
   status: 'new' | 'learning' | 'review' | 'mastered';
   uses: number;
   fsrs: StoredFsrs;

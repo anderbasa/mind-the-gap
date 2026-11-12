@@ -37,6 +37,8 @@ export const DEFAULT_CHAINS: Record<TaskId, ModelRef[]> = {
   'voice-test': [g(MODELS.geminiLite)],
   'error-patterns': [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt), g(MODELS.geminiFlash)],
   grammar: [g(MODELS.geminiLite), g(MODELS.geminiLiteAlt)],
+  // Escenas de series: lección con un Flash (mejor calidad) y Flash-Lite de respaldo.
+  series: [g(MODELS.geminiFlashAlt), g(MODELS.geminiLite), g(MODELS.geminiLiteAlt)],
 };
 
 export const TASK_LABELS: Record<TaskId, string> = {
@@ -56,6 +58,7 @@ export const TASK_LABELS: Record<TaskId, string> = {
   'voice-test': 'Prueba de voz',
   'error-patterns': 'Cuaderno de errores',
   grammar: 'Gramática C1',
+  series: 'Escenas de series',
 };
 
 /** Modelos que se pueden elegir en Ajustes. */
