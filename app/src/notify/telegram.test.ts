@@ -22,6 +22,9 @@ describe('qué aviso toca', () => {
     expect(due(at('2026-11-12T13:07:00Z'), DEFAULT_TELEGRAM, {}, s)).toEqual(['daily']);
     expect(due(at('2026-11-12T13:37:00Z'), DEFAULT_TELEGRAM, { daily: '2026-11-12' }, s)).toEqual([]);
     expect(due(at('2026-11-12T12:37:00Z'), DEFAULT_TELEGRAM, {}, s)).toEqual([]); // 13:37 en Madrid
+    // GitHub llega tarde: a las 15:37 aún se manda; a las 18:37, ya no
+    expect(due(at('2026-11-12T14:37:00Z'), DEFAULT_TELEGRAM, {}, s)).toEqual(['daily']);
+    expect(due(at('2026-11-12T17:37:00Z'), { ...DEFAULT_TELEGRAM, evening: false }, {}, s)).toEqual([]);
   });
 
   it('noche: solo si la racha está en juego', () => {

@@ -39,8 +39,9 @@ export function madridNow(now: number): MadridNow {
 export function due(now: number, cfg: TelegramSettings, sent: Sent, streak: Streak): Kind[] {
   const m = madridNow(now);
   const out: Kind[] = [];
-  // Mediodía: dentro de su hora (el cron prueba dos veces por hora).
-  if (cfg.daily && m.hour === cfg.hour && sent.daily !== m.date) out.push('daily');
+  // Mediodía: desde su hora y hasta 4 h después. El cron de GitHub prueba dos veces por hora, pero a veces
+  // llega con más de una hora de retraso (o se salta una): mejor tarde que nunca, y solo una vez al día.
+  if (cfg.daily && m.hour >= cfg.hour && m.hour < cfg.hour + 4 && sent.daily !== m.date) out.push('daily');
   // Noche: solo si la racha está en juego (hoy aún no cuenta).
   if (cfg.evening && m.hour >= cfg.eveningHour && sent.evening !== m.date && !streak.todayDone && streak.current > 0) out.push('evening');
   // Domingo: resumen de la semana.
