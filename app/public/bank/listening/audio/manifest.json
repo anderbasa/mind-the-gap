@@ -1277,13 +1277,84 @@
     "B": "en-nz-tutor-8"
    },
    "model": "gemini-3.8-flash-lite-tts"
+  },
+  "l4-c": {
+   "hash": "b15069b3f8ca",
+   "file": "l4-c-b15069b3f8ca.mp3",
+   "duration": 156.22,
+   "turns": [
+    [
+     0.3,
+     28.44
+    ],
+    [
+     30.94,
+     57.1
+    ],
+    [
+     59.6,
+     88.58
+    ],
+    [
+     91.09,
+     120.57
+    ],
+    [
+     123.07,
+     155.92
+    ]
+   ],
+   "voices": {
+    "1": "en-gb-tutor-10",
+    "2": "algenib",
+    "3": "Achernar",
+    "4": "en-ca-tutor-3",
+    "5": "en-ie-commercial-4"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
+  },
+  "l1-d-x1": {
+   "hash": "cdbcfb354b8d",
+   "file": "l1-d-x1-cdbcfb354b8d.mp3",
+   "duration": 38.03,
+   "turns": [
+    [
+     0.3,
+     2.77
+    ],
+    [
+     2.77,
+     10.05
+    ],
+    [
+     10.05,
+     19.2
+    ],
+    [
+     19.2,
+     25.58
+    ],
+    [
+     25.58,
+     34.73
+    ],
+    [
+     34.73,
+     37.73
+    ]
+   ],
+   "voices": {
+    "A": "en-gb-tutor-17",
+    "B": "en-ie-podcaster-2"
+   },
+   "model": "gemini-3.8-flash-lite-tts"
   }
  },
  "status": {
-  "at": "2026-11-12T17:36:03.912Z",
+  "at": "2026-11-12T21:56:21.212Z",
   "total": 208,
-  "done": 50,
+  "done": 52,
   "stoppedBy": "cuota diaria gratuita de voz agotada (en los dos modelos)",
-  "requests": 3
+  "requests": 8
  }
 }
