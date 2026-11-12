@@ -1,0 +1,47 @@
+# Avisos por Telegram (scripts/telegram.mjs). El cron prueba cada 30 min de 4 a 22 UTC y el script
+# decide con la hora de Madrid (sirve en invierno y en verano) qué toca; cada aviso, una vez al día.
+# Repo público: los logs se ven, así que el script nunca imprime claves, chat_id ni tus datos.
+name: Telegram
+
+on:
+  schedule:
+    - cron: '7,37 4-22 * * *'
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: 'prueba = manda ya un mensaje; normal = lo que toque a esta hora'
+        type: choice
+        options: [prueba, normal]
+        default: prueba
+
+permissions:
+  contents: read
+
+concurrency:
+  group: telegram
+  cancel-in-progress: false
+
+jobs:
+  avisar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            scripts
+            app/src
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Avisar
+        run: node scripts/telegram.mjs ${{ inputs.modo == 'prueba' && '--prueba' || '' }}
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Tu UID no es secreto (ya está en firestore.rules): identifica, no da acceso.
+          MTG_UID: 50sQgmkiXNdj7R9zehCXcjViLLs2

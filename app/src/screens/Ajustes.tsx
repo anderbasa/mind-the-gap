@@ -59,6 +59,7 @@ export function Ajustes() {
             <small>Unos 60 XP son una sesión normal de 30 minutos. La racha no depende de esto: cuenta con 10 minutos o la sesión de hoy.</small>
           </label>
         </section>
+        <AvisosTelegram />
         <section class="stack" style={g(8)}>
           <span class="kicker">Apariencia (este dispositivo)</span>
           <Segmented<ThemePref>
@@ -102,6 +103,44 @@ export function Ajustes() {
         </section>
       </Page>
     </>
+  );
+}
+
+/* ── Avisos por Telegram ─────────────────────────────────────── */
+
+function AvisosTelegram() {
+  const t = settings.value.telegram;
+  const save = (patch: Partial<typeof t>) => saveSettings({ telegram: { ...t, ...patch } });
+  const hourSel = (value: number, min: number, max: number, onChange: (v: number) => void, label: string) => (
+    <select class="input" aria-label={label} value={value} onChange={(e) => onChange(Number((e.currentTarget as HTMLSelectElement).value))} style={{ width: 'auto' }}>
+      {Array.from({ length: max - min + 1 }, (_, i) => min + i).map((h) => (
+        <option key={h} value={h}>
+          {h}:00–{h + 1}:00
+        </option>
+      ))}
+    </select>
+  );
+  const row = (on: boolean, toggle: () => void, title: string, sub: string, sel: JSX.Element) => (
+    <div class="card flat stack" style={g(6)}>
+      <label class="row" style={{ ...g(10), alignItems: 'center' }}>
+        <input type="checkbox" checked={on} onChange={toggle} />
+        <span class="grow">
+          <strong>{title}</strong>
+          <br />
+          <span class="small muted">{sub}</span>
+        </span>
+      </label>
+      {on && sel}
+    </div>
+  );
+  return (
+    <section class="stack" style={g(8)}>
+      <span class="kicker">Avisos por Telegram</span>
+      {row(t.daily, () => save({ daily: !t.daily }), 'Mediodía', 'La sesión sugerida y el mini reto de Theo', hourSel(t.hour, 6, 22, (v) => save({ hour: v }), 'Hora del aviso de mediodía'))}
+      {row(t.evening, () => save({ evening: !t.evening }), 'Noche, si la racha peligra', 'Solo si hoy aún no has llegado a 10 minutos', hourSel(t.eveningHour, 17, 23, (v) => save({ eveningHour: v }), 'Hora del aviso de noche'))}
+      {row(t.sunday, () => save({ sunday: !t.sunday }), 'Resumen del domingo', 'Minutos, XP, racha, nota y el foco de la semana', hourSel(t.sundayHour, 8, 22, (v) => save({ sundayHour: v }), 'Hora del resumen del domingo'))}
+      <p class="muted small">Hora de Madrid. Los manda GitHub (README, paso 10); puede llegar con unos minutos de retraso.</p>
+    </section>
   );
 }
 

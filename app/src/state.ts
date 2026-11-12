@@ -84,6 +84,8 @@ function attach(s: Store, user: UserInfo) {
     void m.loadProgress();
   });
   void import('./progress/achievements').then((m) => void m.loadEarned());
+  // Resumen para Telegram (sin prisa: cuando la app ya ha cargado).
+  if (!IS_DEMO) setTimeout(() => void import('./planner/state').then((m) => m.refreshDigest()), 10_000);
 }
 
 export async function boot(): Promise<void> {

@@ -24,6 +24,17 @@ export const SettingsSchema = z.object({
   examDate: z.string().nullable().default(null),
   /** XP que quieres sacar cada día (Hoy muestra cuánto llevas). */
   xpDailyGoal: z.number().int().min(10).max(500).default(60),
+  /** Avisos por Telegram (los manda GitHub Actions: scripts/telegram.mjs). */
+  telegram: z
+    .object({
+      daily: z.boolean().default(true),
+      hour: z.number().int().min(6).max(22).default(14),
+      evening: z.boolean().default(true),
+      eveningHour: z.number().int().min(17).max(23).default(21),
+      sunday: z.boolean().default(true),
+      sundayHour: z.number().int().min(8).max(22).default(19),
+    })
+    .default({ daily: true, hour: 14, evening: true, eveningHour: 21, sunday: true, sundayHour: 19 }),
 });
 
 export type Settings = z.infer<typeof SettingsSchema>;

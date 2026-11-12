@@ -7,7 +7,7 @@ import { getPatterns } from '../errors/notebook';
 import { LESSONS } from '../grammar/lessons';
 import { getGrammarProgress } from '../grammar/practice';
 import { listCards, todaysQueue } from '../srs/srs';
-import { store } from '../state';
+import { hasStore, store } from '../state';
 import type { CheckIn, PlannerState, PlanTask } from './plan';
 
 const READING_PARTS = new Set(['p1', 'p5', 'p6', 'p7', 'p8']);
@@ -62,7 +62,7 @@ export async function gatherState(): Promise<PlannerState> {
   const np = run && !run.finishedAt ? nextPart(run) : null;
   const lastActivity = Math.max(0, ...Object.values(last).map(Number), ...cards.map((c) => c.fsrs.last_review ?? 0)) || null;
 
-  return {
+  const st: PlannerState = {
     scores,
     lastBySkill: last,
     recentErrors: recent,
@@ -74,6 +74,19 @@ export async function gatherState(): Promise<PlannerState> {
     hasDiagnostic: !!score,
     diagnosticNext: score ? null : np ? { label: np.label, route: partRoute(np), minutes: BLOCKS.find((b) => b.id === np.block)?.minutes ?? 15 } : { label: 'empezar', route: '/diagnostico', minutes: 15 },
   };
+  // Resumen para los avisos de Telegram (el script de GitHub recalcula el plan con esto).
+  const est = cur?.estimate;
+  void s
+    .set('meta/digest', JSON.parse(JSON.stringify({ state: st, estimate: est?.overall != null ? { overall: est.overall, margin: est.margin } : null, updatedAt: Date.now() })) as Record<string, unknown>)
+    .catch(() => undefined);
+  return st;
+}
+
+/** Al abrir la app: si el resumen para Telegram tiene más de 6 horas, se rehace. */
+export async function refreshDigest(): Promise<void> {
+  if (!hasStore()) return;
+  const d = await store().get<{ updatedAt?: number }>('meta/digest').catch(() => null);
+  if (!d?.updatedAt || Date.now() - d.updatedAt > 6 * 3_600_000) await gatherState().catch(() => undefined);
 }
 
 /* ── Sesión guardada ─────────────────────────────────────────── */
