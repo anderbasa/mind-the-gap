@@ -78,3 +78,26 @@ describe('memoria de Theo', () => {
     expect(t).toContain('Pending mini-challenge: Use two inversions.');
   });
 });
+
+describe('simulacros', () => {
+  const run: DiagRun = {
+    id: 'm1',
+    mode: 'full',
+    paper: 'full',
+    startedAt: 0,
+    parts: [
+      { block: 'uoe', kind: 'rue', ref: 'p4-a', part: 'p4', label: 'P4', done: true, marks: 10, max: 12 },
+      { block: 'writing', kind: 'writing', ref: 'essay-1', part: 'w1', label: 'W1', done: true, scale: 180, marks: 14, max: 20 },
+      { block: 'writing', kind: 'writing', ref: 'review-1', part: 'w2', label: 'W2', done: true, scale: 170, marks: 12, max: 20 },
+      { block: 'speaking', kind: 'speaking', ref: 'ta', part: 's', label: 'S', done: false },
+    ],
+  };
+  it('rutas en modo simulacro (mock=1) y el speaking va al simulacro con examinador', () => {
+    expect(partRoute(run.parts[0], 'mock')).toBe('/practicar/rue/p4?mode=exam&id=p4-a&mock=1');
+    expect(partRoute(run.parts[3], 'mock')).toBe('/practicar/speaking/simulacro?test=ta&mock=1');
+    expect(nextPart(run)?.ref).toBe('ta');
+  });
+  it('writing con dos tareas: (14 + 12) / 2 × 2 = 26 de 40 → escala oficial', () => {
+    expect(skillsOf(run).writing).toBe(rawToScale('writing', 26));
+  });
+});

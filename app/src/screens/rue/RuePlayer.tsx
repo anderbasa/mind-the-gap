@@ -60,7 +60,7 @@ export function RuePlayer() {
   const part = route.value.path.split('/')[3] as PartId;
   const exam = route.value.query.get('mode') === 'exam';
   const wantedId = route.value.query.get('id');
-  const diag = route.value.query.get('diag') === '1';
+  const diag = (route.value.query.get('diag') === '1' || route.value.query.get('mock') === '1');
   const info = PARTS[part];
 
   const [phase, setPhase] = useState<Phase>({ k: 'loading' });

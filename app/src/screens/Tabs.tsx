@@ -1,13 +1,13 @@
 // Pestañas principales. En la Fase 1 muestran la estructura y lo que llega en cada fase.
 import type { JSX } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import { profile, store } from '../state';
+import { profile, settings, store } from '../state';
 import { SKILL_ORDER, SKILLS } from '../domain/skills';
 import { navigate } from '../router';
 import { Band, ListItem, MetroLine, Page, SkillLine, Spinner } from '../ui/components';
 import { IconTheo } from '../ui/icons';
-import { latestScore } from '../diagnostic/run';
 import type { ScoreDoc } from '../scoring/estimate';
+import { countdown, currentEstimate, type Estimate } from '../scoring/readiness';
 import { tutorNotes } from '../tutor/notes';
 import { SrsPanel } from './SrsPanel';
 import { getToday, type SessionDoc } from '../planner/state';
@@ -100,15 +100,44 @@ function HoyExtras() {
   );
 }
 
-/** Tu última nota estimada (diagnóstico o mini-diagnóstico). */
-function useScore(): ScoreDoc | null | undefined {
-  const [s, setS] = useState<ScoreDoc | null | undefined>(undefined);
+interface ScoreView {
+  est: Estimate;
+  overall: number;
+  /** Última medición de casi todo (diagnóstico, mini, simulacro completo u oficial). */
+  last: ScoreDoc;
+}
+
+const KIND_ES: Record<ScoreDoc['kind'], string> = { diagnostic: 'diagnóstico', mini: 'mini-diagnóstico', mock: 'simulacro', official: 'sample test oficial' };
+
+/** Tu nota estimada ahora: media ponderada de diagnósticos, simulacros y notas oficiales. */
+function useScore(): ScoreView | null | undefined {
+  const [s, setS] = useState<ScoreView | null | undefined>(undefined);
   useEffect(() => {
-    latestScore()
-      .then(setS)
+    currentEstimate()
+      .then(({ estimate, scores, lastBroad }) => {
+        const last = lastBroad ?? scores[0];
+        setS(estimate.overall != null && last ? { est: estimate, overall: estimate.overall, last } : null);
+      })
       .catch(() => setS(null));
   }, []);
   return s;
+}
+
+/** Con fecha de examen: cuenta atrás en Hoy. */
+function CuentaAtras() {
+  const date = settings.value.examDate;
+  if (!date) return null;
+  const cd = countdown(date, Date.now());
+  if (cd.phase === 'past') return null;
+  return (
+    <button class="card card-line stack" style={{ ...g(4), '--card-line': 'var(--ink)', textAlign: 'left' } as JSX.CSSProperties} onClick={() => navigate('/listo')}>
+      <span class="kicker">Cuenta atrás · C1 Advanced</span>
+      <strong class="tabular" style={{ fontSize: '22px' }}>
+        {cd.days === 0 ? '¡Es hoy!' : `${cd.days} ${cd.days === 1 ? 'día' : 'días'}`}
+      </strong>
+      <span class="small">{cd.advice}</span>
+    </button>
+  );
 }
 
 const DAY = 86_400_000;
@@ -117,7 +146,7 @@ function Trayecto() {
   const score = useScore();
   const challenge = tutorNotes.value?.nextChallenge;
   if (score === undefined) return <Spinner />;
-  const old = score && Date.now() - score.at > 30 * DAY;
+  const old = score && Date.now() - score.last.at > 30 * DAY;
   return (
     <section class="card stack" style={g(10)}>
       <div class="spread">
@@ -127,8 +156,9 @@ function Trayecto() {
       <MetroLine estimate={score?.overall ?? null} />
       {score ? (
         <p class="small">
-          Nota estimada <strong>≈ {score.overall}</strong>{score.overall < 180 ? ` · te faltan unos ${180 - score.overall} puntos para el C1` : ' · ya estás en zona C1'}. Del{' '}
-          {score.kind === 'mini' ? 'mini-diagnóstico' : 'diagnóstico'} del {new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long' }).format(score.at)} (orientativa).
+          Nota estimada <strong>≈ {score.overall}</strong> ± {score.est.margin}
+          {score.overall < 180 ? ` · te faltan unos ${180 - score.overall} puntos para el C1` : ' · ya estás en zona C1'}. Última medición: {KIND_ES[score.last.kind]} del{' '}
+          {new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long' }).format(score.last.at)} (orientativa).
         </p>
       ) : (
         <p class="muted small">Aún no hay nota estimada: Theo no se fía de tu nota del First. El diagnóstico mide dónde estás de verdad, y el tramo rojo será tu «gap».</p>
@@ -139,8 +169,8 @@ function Trayecto() {
         </button>
       )}
       {score && !old && (
-        <button class="linkbtn" onClick={() => navigate('/diagnostico')}>
-          Ver el diagnóstico
+        <button class="linkbtn" onClick={() => navigate('/listo')}>
+          ¿Estoy listo?
         </button>
       )}
       {challenge && (
@@ -166,8 +196,6 @@ function todayEs(d = new Date()): string {
   return new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }).format(d);
 }
 
-const PhasePill = (props: { n: number }) => <span class="pill">Fase {props.n}</span>;
-
 /* ── Hoy ───────────────────────────────────────────────────────── */
 
 export function Hoy() {
@@ -176,6 +204,7 @@ export function Hoy() {
     <>
       <Band kicker={`Mind the Gap · ${todayEs()}`} title={`${greeting()}${name ? `, ${name}` : ''}.`} />
       <Page>
+        <CuentaAtras />
         <HoySesion />
         <Trayecto />
         <HoyExtras />
@@ -190,7 +219,8 @@ export function Hoy() {
             <ListItem dot="var(--line-listening)" title="Fase 4 · Listening" sub="4 partes con varios acentos, dictados, inglés hablado real" right={<span class="pill ok">Hecha</span>} />
             <ListItem dot="var(--line-speaking)" title="Fase 5 · Speaking por voz" sub="Simulacro, role-plays, long turn" right={<span class="pill ok">Hecha</span>} />
             <ListItem dot="var(--line-vocab)" title="Fase 6 · Diagnóstico, errores, vocabulario y gramática" sub="Diagnóstico, memoria de Theo, cuaderno de errores, FSRS y gramática C1" right={<span class="pill ok">Hecha</span>} />
-            <ListItem dot="var(--ink)" title="Fases 7–8" sub="Sesión diaria, simulacros, ¿Estoy listo?, rachas, Telegram" />
+            <ListItem dot="var(--signal)" title="Fase 7 · Sesión de hoy y examen" sub="Plan del día, informe semanal, simulacros y ¿Estoy listo?" right={<span class="pill ok">Hecha</span>} />
+            <ListItem dot="var(--ink)" title="Fase 8" sub="Rachas, XP, logros, Telegram y pulido" />
           </div>
         </section>
       </Page>
@@ -218,9 +248,10 @@ export function Practicar() {
           </div>
         </section>
         <section class="stack" style={g(8)}>
-          <span class="kicker">El examen (próximas fases)</span>
+          <span class="kicker">El examen</span>
           <div class="list">
-            <ListItem dot="var(--ink)" title="Simulacros" sub="Por paper o completos, en pantalla o en papel" right={<PhasePill n={7} />} disabled />
+            <ListItem dot="var(--ink)" title="Simulacros" sub="Por paper o completos · el Paper 1 también en papel" to="/simulacro" />
+            <ListItem dot="var(--signal)" title="¿Estoy listo?" sub="Tu nota con margen, tu criterio, cuándo reservar y cuenta atrás" to="/listo" />
           </div>
         </section>
         <section class="stack" style={g(8)}>
@@ -311,23 +342,31 @@ export function Progreso() {
             <span class="pill">frente a 180</span>
           </div>
           {SKILL_ORDER.map((k) => (
-            <SkillLine key={k} label={SKILLS[k].label} color={SKILLS[k].color} score={score?.skills[k] ?? null} />
+            <SkillLine key={k} label={SKILLS[k].label} color={SKILLS[k].color} score={score?.est.skills[k]?.value ?? null} margin={score?.est.skills[k]?.margin} />
           ))}
           {score ? (
             <p class="muted small">
-              Del {score.kind === 'mini' ? 'mini-diagnóstico' : 'diagnóstico'} del {new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long' }).format(score.at)}: global ≈ {score.overall} (media de las cinco). Son
-              estimaciones orientativas con las tablas oficiales de Cambridge (cerca de un límite, ±3 puntos).
+              Global ≈ {score.overall} ± {score.est.margin}: media ponderada de tus diagnósticos, simulacros y notas oficiales de los últimos meses (las recientes pesan más), con las tablas oficiales de Cambridge. Son
+              estimaciones orientativas.
             </p>
           ) : (
             <p class="muted small">Las notas aparecerán tras el diagnóstico (Hoy → «Hacer el diagnóstico»). Siempre se muestran como estimación.</p>
           )}
         </section>
         <section class="card stack" style={g(10)}>
-          <div class="spread">
-            <h2>¿Estoy listo?</h2>
-            <PhasePill n={7} />
+          <h2>¿Estoy listo?</h2>
+          <p class="small">
+            Criterio: global ≥ {settings.value.readiness.globalMin} en {settings.value.readiness.mocksNeeded} simulacros completos y ninguna destreza por debajo de {settings.value.readiness.skillMin}. Con margen, tendencia,
+            aviso para reservar y cuenta atrás.
+          </p>
+          <div class="row" style={{ ...g(8), flexWrap: 'wrap' }}>
+            <button class="btn signal" onClick={() => navigate('/listo')}>
+              Ver si estoy listo
+            </button>
+            <button class="btn quiet" onClick={() => navigate('/simulacro')}>
+              Simulacros
+            </button>
           </div>
-          <p>Criterio por defecto: global ≥ 185 en dos simulacros completos y ninguna destreza por debajo de 170. Se puede cambiar.</p>
         </section>
       </Page>
     </>

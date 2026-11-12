@@ -226,7 +226,7 @@ export function MetroLine(props: { estimate: number | null; target?: number }) {
 }
 
 /** Una línea por destreza con su nota frente a 180. */
-export function SkillLine(props: { label: string; color: string; score: number | null }) {
+export function SkillLine(props: { label: string; color: string; score: number | null; margin?: number }) {
   const pct = props.score == null ? 0 : Math.max(0, Math.min(1, (props.score - 150) / (205 - 150)));
   const c1 = (180 - 150) / (205 - 150);
   return (
@@ -238,6 +238,7 @@ export function SkillLine(props: { label: string; color: string; score: number |
         </span>
         <span class="tabular" style={{ fontWeight: 700 }}>
           {props.score ?? '—'}
+          {props.score != null && props.margin ? <span class="muted small" style={{ fontWeight: 500 }}> ±{props.margin}</span> : null}
         </span>
       </div>
       <div style={{ position: 'relative', height: '8px', borderRadius: '4px', background: 'var(--paper-sunk)' }}>

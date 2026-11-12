@@ -100,7 +100,7 @@ export function wordState(n: number): 'ok' | 'warn' | 'bad' {
 
 export function WritingEditor() {
   const rewriteId = route.value.query.get('rewrite');
-  const diag = route.value.query.get('diag') === '1';
+  const diag = (route.value.query.get('diag') === '1' || route.value.query.get('mock') === '1');
   const [doc, setDoc] = useState<WritingDoc | null>(null);
   const [loading, setLoading] = useState(!!rewriteId);
   const task = getTask(route.value.query.get('task') ?? doc?.taskId ?? '');

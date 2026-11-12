@@ -1,6 +1,7 @@
 // Datos para el plan del día (lo que has hecho y cuándo, notas, errores…), la sesión guardada
 // (users/{uid}/sessions/{día}) y la detección automática de tareas hechas.
-import { BLOCKS, getRun, latestScore, nextPart, partRoute } from '../diagnostic/run';
+import { BLOCKS, getRun, nextPart, partRoute } from '../diagnostic/run';
+import { currentEstimate } from '../scoring/readiness';
 import type { Skill } from '../domain/skills';
 import { getPatterns } from '../errors/notebook';
 import { LESSONS } from '../grammar/lessons';
@@ -18,8 +19,8 @@ type Row = Record<string, unknown> & { id: string };
 
 export async function gatherState(): Promise<PlannerState> {
   const s = store();
-  const [score, attempts, writings, speakings, errors, cards, gprog, patterns, meta, run] = await Promise.all([
-    latestScore().catch(() => null),
+  const [cur, attempts, writings, speakings, errors, cards, gprog, patterns, meta, run] = await Promise.all([
+    currentEstimate().catch(() => null),
     s.list<Record<string, unknown>>('attempts', { orderBy: 'at', desc: true, limit: 200 }).catch(() => [] as Row[]),
     s.list<Record<string, unknown>>('writings', { orderBy: 'createdAt', desc: true, limit: 20 }).catch(() => [] as Row[]),
     s.list<Record<string, unknown>>('speakings', { orderBy: 'at', desc: true, limit: 20 }).catch(() => [] as Row[]),
@@ -53,13 +54,16 @@ export async function gatherState(): Promise<PlannerState> {
     recent[k] = (recent[k] ?? 0) + 1;
   }
 
+  // Nota por destreza: la estimación combinada (diagnóstico, simulacros, oficiales).
+  const scores = Object.fromEntries(Object.entries(cur?.estimate.skills ?? {}).map(([k, v]) => [k, v.value])) as PlannerState['scores'];
+  const score = cur && cur.scores.some((x) => x.kind !== 'mock' || x.paper === 'full') ? cur : null;
   const q = todaysQueue(cards);
   const next = LESSONS.find((l) => !(gprog as Record<string, { done?: boolean }>)[l.id]?.done);
   const np = run && !run.finishedAt ? nextPart(run) : null;
   const lastActivity = Math.max(0, ...Object.values(last).map(Number), ...cards.map((c) => c.fsrs.last_review ?? 0)) || null;
 
   return {
-    scores: score?.skills ?? {},
+    scores,
     lastBySkill: last,
     recentErrors: recent,
     dueCards: q.due.length + q.fresh.length,

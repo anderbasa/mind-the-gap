@@ -32,6 +32,8 @@ import { Cuaderno } from './screens/Cuaderno';
 import { Sesion } from './screens/Sesion';
 import { Informe } from './screens/Informe';
 import { Repaso } from './screens/Repaso';
+import { Simulacro, SimulacroImprimir, SimulacroRespuestas } from './screens/Simulacro';
+import { Listo } from './screens/Listo';
 import { GramaticaHub, GramaticaPunto, IdiomsGame, OrdenPalabras } from './screens/Gramatica';
 import type { ComponentType } from 'preact';
 
@@ -72,6 +74,10 @@ const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
   '/practicar/gramatica/punto': { C: GramaticaPunto, tabs: false },
   '/practicar/gramatica/orden': { C: OrdenPalabras, tabs: false },
   '/practicar/gramatica/idioms': { C: IdiomsGame, tabs: false },
+  '/simulacro': { C: Simulacro, tabs: false },
+  '/simulacro/imprimir': { C: SimulacroImprimir, tabs: false },
+  '/simulacro/respuestas': { C: SimulacroRespuestas, tabs: false },
+  '/listo': { C: Listo, tabs: false },
 };
 
 export function App() {

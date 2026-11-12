@@ -50,4 +50,6 @@ export interface ScoreDoc {
   overall: number;
   at: number;
   label?: string;
+  /** Simulacros: qué paper ('full' = los cuatro). */
+  paper?: string;
 }

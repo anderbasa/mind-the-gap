@@ -40,7 +40,7 @@ export function SpeakingFeedback() {
         line="var(--line-speaking)"
       />
       <Page>
-        {route.value.query.get('diag') === '1' && <DiagContinue />}
+        {(route.value.query.get('diag') === '1' || route.value.query.get('mock') === '1') && <DiagContinue />}
         <SpeakingFeedbackBody doc={doc} />
       </Page>
     </>

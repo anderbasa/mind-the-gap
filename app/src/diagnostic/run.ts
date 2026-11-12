@@ -3,7 +3,7 @@
 import { listeningProgress, loadSets } from '../listening/bank';
 import { allSets, getProgress } from '../rue/bank';
 import type { PartId } from '../rue/schema';
-import { overallOf, pctToScale, type ScoreDoc, type SkillScores } from '../scoring/estimate';
+import { overallOf, pctToScale, rawToScale, type ScoreDoc, type SkillScores } from '../scoring/estimate';
 import { hasStore, store } from '../state';
 import { listWritings } from '../writing/data';
 import { WRITING_TASKS } from '../writing/tasks';
@@ -24,9 +24,14 @@ export interface DiagPart {
   at?: number;
 }
 
+export type RunDoc = 'diagnostic' | 'mock';
+export type MockPaper = 'full' | 'rue' | 'writing' | 'listening' | 'speaking';
+
 export interface DiagRun {
   id: string;
   mode: 'full' | 'mini';
+  /** Solo en simulacros: qué paper (o todos). */
+  paper?: MockPaper;
   startedAt: number;
   parts: DiagPart[];
   finishedAt?: number;
@@ -41,15 +46,16 @@ export const BLOCKS: { id: Block; title: string; es: string; minutes: number }[]
   { id: 'speaking', title: 'Speaking', es: 'Una conversación con Theo: él anota en silencio', minutes: 8 },
 ];
 
-const DOC = 'meta/diagnostic';
+const DOC = (d: RunDoc) => `meta/${d === 'mock' ? 'mock' : 'diagnostic'}`;
+const docOf = (run: DiagRun): RunDoc => (run.paper ? 'mock' : 'diagnostic');
 
-export async function getRun(): Promise<DiagRun | null> {
+export async function getRun(doc: RunDoc = 'diagnostic'): Promise<DiagRun | null> {
   if (!hasStore()) return null;
-  return store().get<DiagRun>(DOC);
+  return store().get<DiagRun>(DOC(doc));
 }
 
 async function save(run: DiagRun): Promise<void> {
-  await store().set(DOC, JSON.parse(JSON.stringify(run)) as Record<string, unknown>);
+  await store().set(DOC(docOf(run)), JSON.parse(JSON.stringify(run)) as Record<string, unknown>);
 }
 
 /** Elige el contenido (lo que aún no has hecho, si se puede) y empieza un diagnóstico nuevo. */
@@ -91,16 +97,17 @@ export async function startRun(mode: 'full' | 'mini' = 'full'): Promise<DiagRun>
 }
 
 /** La ruta de la pantalla que hace cada parte (en modo examen y marcada como diagnóstico). */
-export function partRoute(p: DiagPart): string {
+export function partRoute(p: DiagPart, doc: RunDoc = 'diagnostic'): string {
+  const flag = doc === 'mock' ? 'mock=1' : 'diag=1';
   switch (p.kind) {
     case 'rue':
-      return `/practicar/rue/${p.part}?mode=exam&id=${p.ref}&diag=1`;
+      return `/practicar/rue/${p.part}?mode=exam&id=${p.ref}&${flag}`;
     case 'listening':
-      return `/practicar/listening/${p.part}?mode=exam&id=${p.ref}&diag=1`;
+      return `/practicar/listening/${p.part}?mode=exam&id=${p.ref}&${flag}`;
     case 'writing':
-      return `/practicar/writing/escribir?task=${p.ref}&diag=1`;
+      return `/practicar/writing/escribir?task=${p.ref}&${flag}`;
     case 'speaking':
-      return `/practicar/speaking/conversacion?s=diag&diag=1`;
+      return doc === 'mock' ? `/practicar/speaking/simulacro?test=${p.ref}&mock=1` : `/practicar/speaking/conversacion?s=diag&diag=1`;
   }
 }
 
@@ -110,13 +117,26 @@ export function nextPart(run: DiagRun, block?: Block): DiagPart | null {
 
 /** Lo llaman las pantallas de ejercicios al terminar una parte del diagnóstico. */
 export async function recordPart(kind: PartKind, ref: string, data: { marks?: number; max?: number; scale?: number }): Promise<DiagRun | null> {
-  const run = await getRun();
-  if (!run || run.finishedAt) return run;
-  const p = run.parts.find((x) => x.kind === kind && x.ref === ref && !x.done);
-  if (!p) return run;
-  Object.assign(p, data, { done: true, at: Date.now() });
-  await save(run);
-  return run;
+  // Puede ser parte del diagnóstico o de un simulacro: se busca en los dos.
+  for (const doc of ['mock', 'diagnostic'] as RunDoc[]) {
+    const run = await getRun(doc);
+    if (!run || run.finishedAt) continue;
+    const p = run.parts.find((x) => x.kind === kind && x.ref === ref && !x.done);
+    if (!p) continue;
+    Object.assign(p, data, { done: true, at: Date.now() });
+    await save(run);
+    return run;
+  }
+  return null;
+}
+
+/** El diagnóstico o simulacro en curso en el que se ha hecho algo más recientemente. */
+export async function activeRun(): Promise<{ run: DiagRun; doc: RunDoc } | null> {
+  const runs = (await Promise.all((['mock', 'diagnostic'] as RunDoc[]).map(async (d) => ({ run: await getRun(d), doc: d })))).filter(
+    (x): x is { run: DiagRun; doc: RunDoc } => !!x.run && !x.run.finishedAt,
+  );
+  const lastAt = (r: DiagRun) => Math.max(r.startedAt, ...r.parts.map((p) => p.at ?? 0));
+  return runs.sort((a, b) => lastAt(b.run) - lastAt(a.run))[0] ?? null;
 }
 
 /** Notas por destreza con lo que haya hecho (aciertos → escala; writing y speaking ya traen su escala). */
@@ -135,7 +155,9 @@ export function skillsOf(run: DiagRun): SkillScores {
   if (uoe != null) out.uoe = uoe;
   if (reading != null) out.reading = reading;
   if (listening != null) out.listening = listening;
-  const w = run.parts.find((p) => p.block === 'writing' && p.done)?.scale;
+  // Writing: cada tarea vale 20; se escala al paper de 40 (con una sola tarea, la suya ×2).
+  const ws = run.parts.filter((p) => p.block === 'writing' && p.done);
+  const w = ws.length ? (ws.every((p) => p.marks != null) ? rawToScale('writing', (ws.reduce((a, p) => a + (p.marks ?? 0), 0) * 2) / ws.length) : ws[0].scale) : undefined;
   const s = run.parts.find((p) => p.block === 'speaking' && p.done)?.scale;
   if (w != null) out.writing = w;
   if (s != null) out.speaking = s;
@@ -149,8 +171,15 @@ export async function finishRun(run: DiagRun): Promise<DiagRun> {
   run.result = { skills, overall };
   run.finishedAt = Date.now();
   await save(run);
-  const doc: ScoreDoc = { kind: run.mode === 'full' ? 'diagnostic' : 'mini', skills, overall, at: run.finishedAt };
-  await store().set(`scores/diag-${run.id}`, doc as unknown as Record<string, unknown>);
+  const isMock = !!run.paper;
+  const doc: ScoreDoc = {
+    kind: isMock ? 'mock' : run.mode === 'full' ? 'diagnostic' : 'mini',
+    skills,
+    overall,
+    at: run.finishedAt,
+    ...(isMock ? { label: run.paper === 'full' ? 'Simulacro completo' : `Simulacro · ${run.paper}`, paper: run.paper } : {}),
+  };
+  await store().set(`scores/${isMock ? 'mock' : 'diag'}-${run.id}`, doc as unknown as Record<string, unknown>);
   return run;
 }
 

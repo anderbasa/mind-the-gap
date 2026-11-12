@@ -225,7 +225,7 @@ export function ListeningPlayer() {
   const part = route.value.path.split('/')[3] as LPart;
   const exam = route.value.query.get('mode') === 'exam';
   const wanted = route.value.query.get('id');
-  const diag = route.value.query.get('diag') === '1';
+  const diag = (route.value.query.get('diag') === '1' || route.value.query.get('mock') === '1');
   const info = LPART_INFO[part];
 
   const [set, setSet] = useState<ListeningSetT | null | undefined>(undefined);

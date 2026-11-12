@@ -177,7 +177,12 @@ export function MockExam() {
         model: r.model,
         at: Date.now(),
       });
-      navigate(`/practicar/speaking/ver?id=${id}`, { replace: true });
+      const inMock = route.value.query.get('mock') === '1';
+      if (inMock) {
+        const { recordPart } = await import('../../diagnostic/run');
+        await recordPart('speaking', test.id, { scale: r.scale });
+      }
+      navigate(`/practicar/speaking/ver?id=${id}${inMock ? '&mock=1' : ''}`, { replace: true });
     } catch (e) {
       toast(errorText(e), 5000);
       setBusy(null);
