@@ -1122,3 +1122,18 @@ table.cmp td:not(:first-child) {
 .flash-bad {
   box-shadow: 0 0 0 3px var(--bad);
 }
+
+/* ── Sesión de hoy e informe ─────────────────────────── */
+
+.task.done {
+  opacity: 0.6;
+}
+.task.postponed {
+  border-style: dashed;
+  box-shadow: none;
+}
+.wgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}

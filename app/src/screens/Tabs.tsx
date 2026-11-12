@@ -10,6 +10,45 @@ import { latestScore } from '../diagnostic/run';
 import type { ScoreDoc } from '../scoring/estimate';
 import { tutorNotes } from '../tutor/notes';
 import { SrsPanel } from './SrsPanel';
+import { getToday, type SessionDoc } from '../planner/state';
+
+/** En Hoy: la sesión del día (empezarla o seguirla). */
+function HoySesion() {
+  const [doc, setDoc] = useState<SessionDoc | null | undefined>(undefined);
+  useEffect(() => {
+    getToday()
+      .then(setDoc)
+      .catch(() => setDoc(null));
+  }, []);
+  const active = doc?.tasks.filter((t) => !t.postponed) ?? [];
+  const done = active.filter((t) => t.done).length;
+  return (
+    <section class="card card-line stack" style={{ ...g(12), '--card-line': 'var(--signal)' } as JSX.CSSProperties}>
+      <div class="spread">
+        <h2>Sesión de hoy</h2>
+        {doc && <span class={`pill ${done === active.length ? 'ok' : ''}`}>{done}/{active.length}</span>}
+      </div>
+      {doc === undefined ? null : doc ? (
+        <>
+          <p class="small">{done === active.length ? '¡Hecha! Si te quedan ganas, rehaz el plan con más tiempo.' : doc.greeting}</p>
+          <button class="btn signal" onClick={() => navigate('/sesion')}>
+            {done === active.length ? 'Ver la sesión' : 'Seguir la sesión'}
+          </button>
+        </>
+      ) : (
+        <>
+          <p class="small">Tres preguntas (tiempo, si puedes hablar y tu energía) y te monto la sesión con lo que más puntos te resta, explicando por qué.</p>
+          <button class="btn signal" onClick={() => navigate('/sesion')}>
+            Empezar la sesión de hoy
+          </button>
+        </>
+      )}
+      <button class="linkbtn" onClick={() => navigate('/theo')}>
+        <IconTheo width={16} height={16} /> O habla con Theo por escrito
+      </button>
+    </section>
+  );
+}
 import { getPatterns, topFive, type Pattern } from '../errors/notebook';
 import { listCards, todaysQueue } from '../srs/srs';
 
@@ -137,22 +176,10 @@ export function Hoy() {
     <>
       <Band kicker={`Mind the Gap · ${todayEs()}`} title={`${greeting()}${name ? `, ${name}` : ''}.`} />
       <Page>
+        <HoySesion />
         <Trayecto />
         <HoyExtras />
 
-        <section class="card card-line stack" style={{ ...g(12), '--card-line': 'var(--signal)' } as JSX.CSSProperties}>
-          <div class="spread">
-            <h2>Sesión de hoy</h2>
-            <PhasePill n={7} />
-          </div>
-          <p>
-            Cada día te preguntaré cuánto tiempo tienes, si puedes hablar en voz alta y cómo vas de energía, y montaré la sesión con lo que más puntos te resta.
-          </p>
-          <p class="muted small">Mientras se construye, ya puedes hablar con Theo por escrito.</p>
-          <button class="btn signal" onClick={() => navigate('/theo')}>
-            <IconTheo width={22} height={22} /> Habla con Theo
-          </button>
-        </section>
 
         <section class="stack" style={g(8)}>
           <span class="kicker">Así va la obra</span>

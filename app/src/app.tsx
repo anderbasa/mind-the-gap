@@ -29,6 +29,8 @@ import { Conversation } from './screens/speaking/Conversation';
 import { Diagnostico } from './screens/Diagnostico';
 import { TheoNotes } from './screens/TheoNotes';
 import { Cuaderno } from './screens/Cuaderno';
+import { Sesion } from './screens/Sesion';
+import { Informe } from './screens/Informe';
 import { Repaso } from './screens/Repaso';
 import { GramaticaHub, GramaticaPunto, IdiomsGame, OrdenPalabras } from './screens/Gramatica';
 import type { ComponentType } from 'preact';
@@ -63,6 +65,8 @@ const ROUTES: Record<string, { C: ComponentType; tabs: boolean }> = {
   '/diagnostico': { C: Diagnostico, tabs: false },
   '/ajustes/theo': { C: TheoNotes, tabs: false },
   '/cuaderno': { C: Cuaderno, tabs: false },
+  '/sesion': { C: Sesion, tabs: false },
+  '/informe': { C: Informe, tabs: false },
   '/vocabulario/repaso': { C: Repaso, tabs: false },
   '/practicar/gramatica': { C: GramaticaHub, tabs: false },
   '/practicar/gramatica/punto': { C: GramaticaPunto, tabs: false },

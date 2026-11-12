@@ -3,7 +3,7 @@
 Tu profe particular de inglés con IA (**Theo**) para pasar de B2 a **C1 Advanced** (Cambridge, 180+).
 Web instalable en el iPhone (PWA) y usable en el ordenador. La usa una sola persona.
 
-> **Estado:** Fases 1 a 6 terminadas. Ver «Fases» al final.
+> **Estado:** Fases 1 a 6 terminadas y la 7 a medias (sesión de hoy e informe semanal hechos). Ver «Fases» al final.
 
 ---
 
@@ -170,7 +170,7 @@ Todo pasa por `runAI({ task, system, messages, schema })` (`app/src/ai/client.ts
 - [x] **4 · Listening** — guiones originales de las 4 partes (2 por parte para empezar) con voces y acentos variados (británico, americano, australiano, irlandés, escocés). Modo examen (tiempo de lectura y cada audio dos veces sin pausa) y práctica (pausa, velocidad sin cambiar el tono, «Repetir frase»). Corrección con la transcripción y la frase exacta de cada respuesta; tocar una frase la vuelve a reproducir. 24 dictados en tres niveles con comparación palabra a palabra, 22 fenómenos de «inglés hablado real» con audio y enlaces a podcasts, radio y series. Los audios los genera GitHub una vez (`.github/workflows/audio.yml`) y, si falta alguno, se puede generar en el dispositivo.
 - [x] **5 · Speaking por voz** — simulacro completo de las 4 partes por turnos (Theo de examinador y un compañero, con los tiempos reales; voces pregrabadas en GitHub y la del dispositivo mientras tanto), partes sueltas, fotos de Pexels, entrenamiento del long turn (30 → 90 s) con «dilo otra vez, pero mejor», role-plays y conversación libre con Gemini Live (o por turnos si no está disponible) con botón «Help». Al final: transcripción literal, palabras por minuto, muletillas, pausas, pronunciación, los 6 criterios, nota orientativa, «say it better» y registro de los recursos C1 que de verdad usas. Las grabaciones se quedan en el dispositivo; a Firestore solo va el texto.
 - [x] **6 · Diagnóstico, cuaderno de errores, vocabulario (FSRS), gramática y memoria de Theo** — diagnóstico completo (~60 min en 5 bloques reanudables) y mini-diagnóstico mensual, con la nota estimada por destreza en Hoy y Progreso; memoria de Theo (Ajustes); cuaderno de errores con patrones (al tercer error), tus 5 errores top, práctica dirigida y tarjetas; vocabulario con repaso espaciado FSRS (pack de inicio de 60 tarjetas, tus palabras guardadas → tarjetas, alta manual, buscador, tope diario de nuevas y «dominada» solo tras 3 usos espontáneos en writings y speakings); gramática C1 (12 puntos con microlección, bloques de colores, «explícamelo de otra forma» y producción libre corregida; se domina con 4 de 5) y minijuegos de orden de palabras e idioms.
-- [ ] **7 · Sesión de hoy, simulacros y «¿Estoy listo?»**
+- [ ] **7 · Sesión de hoy, simulacros y «¿Estoy listo?»** — hecho: sesión de hoy (tiempo, si puedes hablar y energía → plan con «por qué te toca esto», regla: distancia a 180 + días sin practicar + errores recientes; modo mínimo de 5 min, modo silencioso con el speaking pendiente para casa, fin de semana con tareas largas y bienvenida tras días sin entrar; las tareas se marcan solas al hacerlas), informe semanal con resumen de Theo, y notas con las tablas oficiales de conversión de Cambridge. Falta: simulacros (en pantalla y PDF) y «¿Estoy listo?».
 - [ ] **8 · Rachas, logros, Telegram y pulido**
 
 Contenido: todo lo que se genera es original y tiene formato de examen. Nada se copia de material oficial de Cambridge. Para práctica real, usa los [sample tests oficiales gratuitos](https://www.cambridgeenglish.org/exams-and-tests/qualifications/advanced/preparation/).
