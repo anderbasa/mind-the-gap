@@ -76,6 +76,8 @@ function attach(s: Store, user: UserInfo) {
     ),
   );
   unsubs.push(s.watch('meta/settings', (v) => (settings.value = parseSettings(v)), onErr));
+  // Memoria de Theo: se carga aparte para no crear dependencias circulares.
+  void import('./tutor/notes').then((m) => unsubs.push(s.watch('tutorNotes/current', (v) => m.onNotesDoc(v as never), onErr)));
 }
 
 export async function boot(): Promise<void> {

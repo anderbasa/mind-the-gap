@@ -3,7 +3,7 @@
 Tu profe particular de inglés con IA (**Theo**) para pasar de B2 a **C1 Advanced** (Cambridge, 180+).
 Web instalable en el iPhone (PWA) y usable en el ordenador. La usa una sola persona.
 
-> **Estado:** Fases 1 a 5 terminadas (base, Reading & Use of English, Writing y Reformular, Listening, Speaking). Ver «Fases» al final.
+> **Estado:** Fases 1 a 5 terminadas y la 6 a medias (diagnóstico y memoria de Theo hechos). Ver «Fases» al final.
 
 ---
 
@@ -169,7 +169,7 @@ Todo pasa por `runAI({ task, system, messages, schema })` (`app/src/ai/client.ts
 - [x] **3 · Writing y Reformular** — 12 enunciados (essay, letter, email, proposal, report, review) con plan de párrafos, banco de lenguaje y cronómetro opcional. Entrega escrita (sin autocorrector, con contador 220–260) o en foto (Gemini transcribe tal cual y avisa de lo que no ha leído bien). Corrección con los 4 criterios (0–5), nota orientativa en la escala, errores marcados en tu texto, Upgrade to C1, cohesión, palabras repetidas (las que adoptas van a tu vocabulario), versión modelo y reescritura con comparación de nota. Todos los errores van al cuaderno de errores. **Reformular** (39 frases escritas a mano; hasta 3 versiones corregidas al momento) y **Dímelo mejor** (corregida + neutra, formal y natural).
 - [x] **4 · Listening** — guiones originales de las 4 partes (2 por parte para empezar) con voces y acentos variados (británico, americano, australiano, irlandés, escocés). Modo examen (tiempo de lectura y cada audio dos veces sin pausa) y práctica (pausa, velocidad sin cambiar el tono, «Repetir frase»). Corrección con la transcripción y la frase exacta de cada respuesta; tocar una frase la vuelve a reproducir. 24 dictados en tres niveles con comparación palabra a palabra, 22 fenómenos de «inglés hablado real» con audio y enlaces a podcasts, radio y series. Los audios los genera GitHub una vez (`.github/workflows/audio.yml`) y, si falta alguno, se puede generar en el dispositivo.
 - [x] **5 · Speaking por voz** — simulacro completo de las 4 partes por turnos (Theo de examinador y un compañero, con los tiempos reales; voces pregrabadas en GitHub y la del dispositivo mientras tanto), partes sueltas, fotos de Pexels, entrenamiento del long turn (30 → 90 s) con «dilo otra vez, pero mejor», role-plays y conversación libre con Gemini Live (o por turnos si no está disponible) con botón «Help». Al final: transcripción literal, palabras por minuto, muletillas, pausas, pronunciación, los 6 criterios, nota orientativa, «say it better» y registro de los recursos C1 que de verdad usas. Las grabaciones se quedan en el dispositivo; a Firestore solo va el texto.
-- [ ] **6 · Diagnóstico, cuaderno de errores, vocabulario (FSRS), gramática y memoria de Theo**
+- [ ] **6 · Diagnóstico, cuaderno de errores, vocabulario (FSRS), gramática y memoria de Theo** — hecho: diagnóstico completo (~60 min en 5 bloques reanudables, con las pantallas de ejercicios en modo examen) y mini-diagnóstico mensual; nota estimada por destreza en Hoy y Progreso; memoria de Theo (notas sobre ti que lee antes de cada clase y se actualizan tras el diagnóstico, cada writing y cada speaking; se ven en Ajustes). Falta: cuaderno de errores, vocabulario con FSRS y gramática C1.
 - [ ] **7 · Sesión de hoy, simulacros y «¿Estoy listo?»**
 - [ ] **8 · Rachas, logros, Telegram y pulido**
 

@@ -33,6 +33,8 @@ export interface WritingDoc {
   plan?: string;
   /** Minutos que tardaste, si usaste el cronómetro. */
   minutes?: number;
+  /** Parte del diagnóstico de nivel. */
+  diag?: boolean;
   versions: WritingVersion[];
   createdAt: number;
   updatedAt: number;
@@ -47,7 +49,7 @@ export async function listWritings(limit = 50): Promise<WritingRow[]> {
   return store().list<WritingDoc>('writings', { orderBy: 'createdAt', desc: true, limit });
 }
 
-export async function createWriting(input: { taskId: string; text: string; source: 'typed' | 'photo'; plan?: string; minutes?: number }): Promise<string> {
+export async function createWriting(input: { taskId: string; text: string; source: 'typed' | 'photo'; plan?: string; minutes?: number; diag?: boolean }): Promise<string> {
   const task = getTask(input.taskId);
   if (!task) throw new Error('Enunciado desconocido');
   const now = Date.now();
@@ -58,6 +60,7 @@ export async function createWriting(input: { taskId: string; text: string; sourc
     title: task.title,
     ...(input.plan?.trim() ? { plan: input.plan.trim() } : {}),
     ...(input.minutes ? { minutes: input.minutes } : {}),
+    ...(input.diag ? { diag: true } : {}),
     versions: [{ text: input.text.trim(), words: countWords(input.text), source: input.source, at: now }],
     createdAt: now,
     updatedAt: now,
@@ -178,6 +181,11 @@ async function correct(id: string, paid: boolean): Promise<WritingDoc> {
       })
       .catch(() => undefined);
   }
+  if (doc.diag && vIdx === 0) {
+    void import('../diagnostic/run').then((m) => m.recordPart('writing', doc.taskId, { marks: raw, max: 20, scale: estimateScale(raw) }));
+  }
+  // Theo actualiza sus notas sobre ti (Gemini, gratis; como mucho cada 10 minutos).
+  void import('../tutor/notes').then((m) => m.updateTutorNotes(`Writing corrected: "${doc.title}", version ${vIdx + 1}, ${raw}/20`));
   return { ...doc, versions };
 }
 

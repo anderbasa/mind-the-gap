@@ -48,7 +48,7 @@ function ScenarioList() {
           Hablas con Theo en tiempo real (Gemini Live, gratis). Usa auriculares: si no, el micro puede captar su voz. Las correcciones llegan al final, nunca en medio.
         </p>
         <div class="list">
-          {SCENARIOS.map((x) => (
+          {SCENARIOS.filter((x) => !x.hidden).map((x) => (
             <ListItem key={x.id} dot="var(--line-speaking)" title={x.title} sub={`${x.es} · ~${x.minutes} min`} to={`/practicar/speaking/conversacion?s=${x.id}`} />
           ))}
         </div>
@@ -206,7 +206,11 @@ function Talk(props: { s: Scenario }) {
         model: r.model,
         at: Date.now(),
       });
-      navigate(`/practicar/speaking/ver?id=${id}`, { replace: true });
+      if (route.value.query.get('diag') === '1') {
+        const { recordPart } = await import('../../diagnostic/run');
+        await recordPart('speaking', s.id, { scale: r.scale });
+      }
+      navigate(`/practicar/speaking/ver?id=${id}${route.value.query.get('diag') === '1' ? '&diag=1' : ''}`, { replace: true });
     } catch (e) {
       toast(errorText(e), 5000);
       setBusy(null);

@@ -8,14 +8,14 @@ export interface Route {
 }
 
 function parse(): Route {
-  const raw = location.hash.replace(/^#/, '') || '/';
+  const raw = (typeof location !== 'undefined' ? location.hash : '').replace(/^#/, '') || '/';
   const [path, qs = ''] = raw.split('?');
   return { path: path || '/', query: new URLSearchParams(qs) };
 }
 
 export const route = signal<Route>(parse());
 
-addEventListener('hashchange', () => {
+if (typeof window !== 'undefined') addEventListener('hashchange', () => {
   route.value = parse();
   window.scrollTo(0, 0);
 });

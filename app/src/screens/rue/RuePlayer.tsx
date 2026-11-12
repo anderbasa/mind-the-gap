@@ -13,6 +13,8 @@ import { Band, Page, Spinner } from '../../ui/components';
 import { PartView } from './parts';
 import { Results } from './Results';
 import { SaveWordBar, picked } from './WordTap';
+import { DiagContinue } from '../DiagContinue';
+import { recordPart } from '../../diagnostic/run';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 type Phase = { k: 'loading' } | { k: 'empty'; allSeen: boolean; oldest: RueSet | null } | { k: 'doing' } | { k: 'marking' } | { k: 'done' };
@@ -58,6 +60,7 @@ export function RuePlayer() {
   const part = route.value.path.split('/')[3] as PartId;
   const exam = route.value.query.get('mode') === 'exam';
   const wantedId = route.value.query.get('id');
+  const diag = route.value.query.get('diag') === '1';
   const info = PARTS[part];
 
   const [phase, setPhase] = useState<Phase>({ k: 'loading' });
@@ -154,6 +157,7 @@ export function RuePlayer() {
     } catch {
       /* nada */
     }
+    if (diag) void recordPart('rue', set.id, { marks: r.marks, max: r.max });
     if (hasStore()) {
       const pct = r.max ? (r.marks / r.max) * 100 : 0;
       void markDone(set.id, pct);
@@ -249,6 +253,7 @@ export function RuePlayer() {
           </>
         )}
 
+        {phase.k === 'done' && diag && <DiagContinue />}
         {phase.k === 'done' && set && result && (
           <Results
             set={set}

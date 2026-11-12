@@ -94,6 +94,7 @@ export async function saveSpeaking(doc: SpeakingDoc): Promise<string> {
       .add('errors', { kind: 'speaking', speakingId: id, category: e.category, yourAnswer: e.quote, correct: e.correction, explanation: e.why, example: e.example, at: Date.now() })
       .catch(() => undefined);
   }
+  void import('../tutor/notes').then((m) => m.updateTutorNotes(`Speaking assessed: "${doc.title}" (${doc.mode}), ≈${doc.scale}`));
   return id;
 }
 

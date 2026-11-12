@@ -11,6 +11,8 @@ import { hasStore, store } from '../../state';
 import { Band, Page, Spinner, toast } from '../../ui/components';
 import { ExplainEs } from '../../ui/ExplainEs';
 import { AudioPlayer, audioEl, seekAndPlay, stopAudio } from './AudioPlayer';
+import { DiagContinue } from '../DiagContinue';
+import { recordPart } from '../../diagnostic/run';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 const draftKey = (id: string) => `mtg.listening.draft.${id}`;
@@ -223,6 +225,7 @@ export function ListeningPlayer() {
   const part = route.value.path.split('/')[3] as LPart;
   const exam = route.value.query.get('mode') === 'exam';
   const wanted = route.value.query.get('id');
+  const diag = route.value.query.get('diag') === '1';
   const info = LPART_INFO[part];
 
   const [set, setSet] = useState<ListeningSetT | null | undefined>(undefined);
@@ -276,6 +279,7 @@ export function ListeningPlayer() {
     } catch {
       /* nada */
     }
+    if (diag) void recordPart('listening', set.id, { marks: r.marks, max: r.max });
     if (!hasStore()) return;
     const pct = Math.round((r.marks / r.max) * 100);
     void store()
@@ -310,7 +314,8 @@ export function ListeningPlayer() {
     <>
       <Band back="/practicar/listening" kicker={kicker} title={info.name.replace(/^Part \d · /, '')} sub={`${set.title} · ${info.items} preguntas`} line="var(--line-listening)" />
       <Page>
-        {result && (
+        {result && diag && <DiagContinue />}
+        {result && !diag && (
           <section class="card card-line stack" style={{ ...g(8), '--card-line': 'var(--line-listening)' } as JSX.CSSProperties}>
             <div class="spread">
               <span class="kicker">Resultado</span>

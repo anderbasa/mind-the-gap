@@ -100,6 +100,7 @@ export function wordState(n: number): 'ok' | 'warn' | 'bad' {
 
 export function WritingEditor() {
   const rewriteId = route.value.query.get('rewrite');
+  const diag = route.value.query.get('diag') === '1';
   const [doc, setDoc] = useState<WritingDoc | null>(null);
   const [loading, setLoading] = useState(!!rewriteId);
   const task = getTask(route.value.query.get('task') ?? doc?.taskId ?? '');
@@ -215,14 +216,14 @@ export function WritingEditor() {
         await addVersion(rewriteId, text, draft.source);
         id = rewriteId;
       } else {
-        id = await createWriting({ taskId: task.id, text, source: draft.source, plan, minutes });
+        id = await createWriting({ taskId: task.id, text, source: draft.source, plan, minutes, diag });
       }
       try {
         localStorage.removeItem(key);
       } catch {
         /* nada */
       }
-      if (!claude) startCorrection(id, false); // sin Claude solo hay una opción, y es gratis
+      if (!claude || diag) startCorrection(id, false); // sin Claude (o en el diagnóstico) se corrige gratis
       navigate(`/practicar/writing/ver?id=${id}`, { replace: true });
     } catch (e) {
       toast((e as Error).message || 'No se ha podido guardar.', 4000);

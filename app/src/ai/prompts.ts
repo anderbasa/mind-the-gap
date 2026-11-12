@@ -48,6 +48,13 @@ export function fill(template: string, vars: Record<string, string>): string {
   });
 }
 
+let defaultNotes = '';
+
+/** Notas de Theo sobre el alumno (las carga el estado global); se usan si no se pasan otras. */
+export function setDefaultTutorNotes(text: string): void {
+  defaultNotes = text;
+}
+
 export interface TutorContext {
   profile: Profile;
   tutorNotes?: string;
@@ -62,7 +69,7 @@ export function buildSystem(ctx: TutorContext, taskId?: string, taskVars: Record
   const base = fill(getPrompt('tutor-system').body, {
     student_name: ctx.profile.name.trim() || 'the student',
     student_profile: profileForPrompt(ctx.profile) || '(profile not filled in yet)',
-    tutor_notes: ctx.tutorNotes?.trim() || '(no notes yet — this is the beginning; measure their real level before assuming anything)',
+    tutor_notes: ctx.tutorNotes?.trim() || defaultNotes.trim() || '(no notes yet — this is the beginning; measure their real level before assuming anything)',
     learning_words: ctx.learningWords?.length ? ctx.learningWords.join(', ') : '(none yet)',
     today,
   });

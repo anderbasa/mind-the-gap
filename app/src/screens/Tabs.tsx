@@ -6,6 +6,61 @@ import { SKILL_ORDER, SKILLS } from '../domain/skills';
 import { navigate } from '../router';
 import { Band, ListItem, MetroLine, Page, SkillLine, Spinner } from '../ui/components';
 import { IconTheo } from '../ui/icons';
+import { latestScore } from '../diagnostic/run';
+import type { ScoreDoc } from '../scoring/estimate';
+import { tutorNotes } from '../tutor/notes';
+
+/** Tu última nota estimada (diagnóstico o mini-diagnóstico). */
+function useScore(): ScoreDoc | null | undefined {
+  const [s, setS] = useState<ScoreDoc | null | undefined>(undefined);
+  useEffect(() => {
+    latestScore()
+      .then(setS)
+      .catch(() => setS(null));
+  }, []);
+  return s;
+}
+
+const DAY = 86_400_000;
+
+function Trayecto() {
+  const score = useScore();
+  const challenge = tutorNotes.value?.nextChallenge;
+  if (score === undefined) return <Spinner />;
+  const old = score && Date.now() - score.at > 30 * DAY;
+  return (
+    <section class="card stack" style={g(10)}>
+      <div class="spread">
+        <span class="kicker">Tu trayecto</span>
+        <span class="pill">Next station: 180</span>
+      </div>
+      <MetroLine estimate={score?.overall ?? null} />
+      {score ? (
+        <p class="small">
+          Nota estimada <strong>≈ {score.overall}</strong>{score.overall < 180 ? ` · te faltan unos ${180 - score.overall} puntos para el C1` : ' · ya estás en zona C1'}. Del{' '}
+          {score.kind === 'mini' ? 'mini-diagnóstico' : 'diagnóstico'} del {new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long' }).format(score.at)} (orientativa).
+        </p>
+      ) : (
+        <p class="muted small">Aún no hay nota estimada: Theo no se fía de tu nota del First. El diagnóstico mide dónde estás de verdad, y el tramo rojo será tu «gap».</p>
+      )}
+      {(!score || old) && (
+        <button class="btn signal" onClick={() => navigate(score ? '/diagnostico?mini=1' : '/diagnostico')}>
+          {score ? 'Toca el mini-diagnóstico mensual' : 'Hacer el diagnóstico (~60 min)'}
+        </button>
+      )}
+      {score && !old && (
+        <button class="linkbtn" onClick={() => navigate('/diagnostico')}>
+          Ver el diagnóstico
+        </button>
+      )}
+      {challenge && (
+        <p class="small">
+          <strong>Mini reto de Theo:</strong> <span class="read">{challenge}</span>
+        </p>
+      )}
+    </section>
+  );
+}
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 
@@ -31,16 +86,7 @@ export function Hoy() {
     <>
       <Band kicker={`Mind the Gap · ${todayEs()}`} title={`${greeting()}${name ? `, ${name}` : ''}.`} />
       <Page>
-        <section class="card stack" style={g(10)}>
-          <div class="spread">
-            <span class="kicker">Tu trayecto</span>
-            <span class="pill">Next station: 180</span>
-          </div>
-          <MetroLine estimate={null} />
-          <p class="muted small">
-            Aún no hay nota estimada: Theo no se fía de tu nota del First. El diagnóstico (Fase 6) medirá dónde estás de verdad, y el tramo rojo será tu «gap».
-          </p>
-        </section>
+        <Trayecto />
 
         <section class="card card-line stack" style={{ ...g(12), '--card-line': 'var(--signal)' } as JSX.CSSProperties}>
           <div class="spread">
@@ -63,8 +109,9 @@ export function Hoy() {
             <ListItem dot="var(--line-uoe)" title="Fase 2 · Reading & Use of English" sub="Las 8 partes, modo práctica y examen" right={<span class="pill ok">Hecha</span>} />
             <ListItem dot="var(--line-writing)" title="Fase 3 · Writing y Reformular" sub="Corrección, Upgrade to C1, reescritura, Dímelo mejor" right={<span class="pill ok">Hecha</span>} />
             <ListItem dot="var(--line-listening)" title="Fase 4 · Listening" sub="4 partes con varios acentos, dictados, inglés hablado real" right={<span class="pill ok">Hecha</span>} />
-            <ListItem dot="var(--line-speaking)" title="Fase 5 · Speaking por voz" sub="Simulacro, role-plays, long turn" right={<span class="pill signal">Ahora</span>} />
-            <ListItem dot="var(--line-vocab)" title="Fases 6–8" sub="Diagnóstico, SRS, sesión diaria, ¿Estoy listo?, Telegram" />
+            <ListItem dot="var(--line-speaking)" title="Fase 5 · Speaking por voz" sub="Simulacro, role-plays, long turn" right={<span class="pill ok">Hecha</span>} />
+            <ListItem dot="var(--line-vocab)" title="Fase 6 · Diagnóstico y memoria de Theo" sub="Ya: diagnóstico y notas de Theo · Después: errores, vocabulario (FSRS) y gramática" right={<span class="pill signal">Ahora</span>} />
+            <ListItem dot="var(--ink)" title="Fases 7–8" sub="Sesión diaria, simulacros, ¿Estoy listo?, rachas, Telegram" />
           </div>
         </section>
       </Page>
@@ -185,6 +232,7 @@ export function Vocabulario() {
 /* ── Progreso ──────────────────────────────────────────────────── */
 
 export function Progreso() {
+  const score = useScore();
   return (
     <>
       <Band kicker="Mind the Gap · Progreso" title="Progress" />
@@ -195,9 +243,16 @@ export function Progreso() {
             <span class="pill">frente a 180</span>
           </div>
           {SKILL_ORDER.map((k) => (
-            <SkillLine key={k} label={SKILLS[k].label} color={SKILLS[k].color} score={null} />
+            <SkillLine key={k} label={SKILLS[k].label} color={SKILLS[k].color} score={score?.skills[k] ?? null} />
           ))}
-          <p class="muted small">Las notas aparecerán tras el diagnóstico. Siempre se mostrarán como estimación, con su margen y cómo se han calculado.</p>
+          {score ? (
+            <p class="muted small">
+              Del {score.kind === 'mini' ? 'mini-diagnóstico' : 'diagnóstico'} del {new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long' }).format(score.at)}: global ≈ {score.overall} (media de las cinco). Son
+              estimaciones orientativas; en la Fase 7 se calibran con las tablas oficiales y se tienen en cuenta tus simulacros.
+            </p>
+          ) : (
+            <p class="muted small">Las notas aparecerán tras el diagnóstico (Hoy → «Hacer el diagnóstico»). Siempre se muestran como estimación.</p>
+          )}
         </section>
         <section class="card stack" style={g(10)}>
           <div class="spread">

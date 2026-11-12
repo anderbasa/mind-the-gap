@@ -5,6 +5,7 @@ import { store } from '../../state';
 import type { SpeakingDoc } from '../../speaking/data';
 import { Band, Page, Spinner } from '../../ui/components';
 import { SpeakingFeedbackBody } from './SpeakingUI';
+import { DiagContinue } from '../DiagContinue';
 
 export function SpeakingFeedback() {
   const id = route.value.query.get('id') ?? '';
@@ -39,6 +40,7 @@ export function SpeakingFeedback() {
         line="var(--line-speaking)"
       />
       <Page>
+        {route.value.query.get('diag') === '1' && <DiagContinue />}
         <SpeakingFeedbackBody doc={doc} />
       </Page>
     </>

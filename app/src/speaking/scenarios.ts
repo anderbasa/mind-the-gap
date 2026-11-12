@@ -7,6 +7,8 @@ export interface Scenario {
   goal: string;
   twist: string;
   minutes: number;
+  /** No sale en la lista (p. ej. la conversación del diagnóstico). */
+  hidden?: boolean;
 }
 
 export const SCENARIOS: Scenario[] = [
@@ -65,6 +67,18 @@ export const SCENARIOS: Scenario[] = [
     minutes: 8,
   },
 ];
+
+/** Conversación del diagnóstico: Theo charla contigo y anota en silencio. */
+SCENARIOS.push({
+  id: 'diag',
+  title: 'Diagnostic conversation',
+  es: 'Charla con Theo para medir tu nivel de Speaking. Él anota en silencio.',
+  role: 'Theo, the student’s new English tutor, getting to know them in their first conversation. Friendly and relaxed, but you are quietly assessing their level, so you vary the type of question.',
+  goal: 'The student talks about themselves and gives opinions so that Theo can measure their speaking level.',
+  twist: 'Move from simple personal questions (studies, free time, plans) to asking them to compare and speculate, and finally to abstract opinion questions (technology, work, society), each a bit harder than the last.',
+  minutes: 7,
+  hidden: true,
+});
 
 export const getScenario = (id: string | null) => SCENARIOS.find((s) => s.id === id) ?? null;
 

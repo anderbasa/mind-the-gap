@@ -28,6 +28,7 @@ export function Ajustes() {
           <span class="kicker">Tú</span>
           <div class="list">
             <ListItem title="Tus datos" sub="Perfil, idiomas y detalles para Theo («algo ha cambiado»)" to="/ajustes/perfil" />
+            <ListItem title="Lo que Theo sabe de ti" sub="Su memoria: puntos fuertes, errores que repites y mini reto" to="/ajustes/theo" />
           </div>
         </section>
         <section class="stack" style={g(8)}>

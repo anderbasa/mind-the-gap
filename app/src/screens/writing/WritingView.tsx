@@ -22,6 +22,7 @@ import {
 import { CRITERIA, scaleLabel, type Feedback, type FeedbackCorrection } from '../../writing/schema';
 import { getTask, TYPE_LABEL } from '../../writing/tasks';
 import { TaskCard } from './WritingEditor';
+import { DiagContinue } from '../DiagContinue';
 
 const g = (n: number) => ({ '--gap': `${n}px` }) as JSX.CSSProperties;
 
@@ -486,6 +487,7 @@ export function WritingView() {
           </Fold>
         )}
 
+        {v.feedback && doc.diag && idx === 0 && <DiagContinue />}
         {v.feedback && <FeedbackView id={id} doc={doc} v={v} f={v.feedback} n={idx + 1} latest={idx === lastIdx} />}
 
         {task && (
