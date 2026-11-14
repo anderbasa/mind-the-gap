@@ -3783,13 +3783,72 @@
     "P": "en-gb-training-1"
    },
    "model": "gemini-3.8-flash-lite-tts"
+  },
+  "sp-td-p3-d0": {
+   "hash": "ae00690a1811",
+   "file": "sp-td-p3-d0-ae00690a1811.mp3",
+   "duration": 8.26,
+   "turns": [
+    [
+     0.3,
+     7.96
+    ]
+   ],
+   "voices": {
+    "P": "en-gb-training-1"
+   },
+   "model": "gemini-3.8-flash-tts"
+  },
+  "sp-td-p3-d1": {
+   "hash": "5a651f593fa8",
+   "file": "sp-td-p3-d1-5a651f593fa8.mp3",
+   "duration": 2.22,
+   "turns": [
+    [
+     0.3,
+     1.92
+    ]
+   ],
+   "voices": {
+    "P": "en-gb-training-1"
+   },
+   "model": "gemini-3.8-flash-tts"
+  },
+  "sp-td-p4-a0": {
+   "hash": "f7f65d9eb52c",
+   "file": "sp-td-p4-a0-f7f65d9eb52c.mp3",
+   "duration": 7.02,
+   "turns": [
+    [
+     0.3,
+     6.72
+    ]
+   ],
+   "voices": {
+    "P": "en-gb-training-1"
+   },
+   "model": "gemini-3.8-flash-tts"
+  },
+  "sp-td-p4-a2": {
+   "hash": "b726428886c6",
+   "file": "sp-td-p4-a2-b726428886c6.mp3",
+   "duration": 6.38,
+   "turns": [
+    [
+     0.3,
+     6.08
+    ]
+   ],
+   "voices": {
+    "P": "en-gb-training-1"
+   },
+   "model": "gemini-3.8-flash-tts"
   }
  },
  "status": {
-  "at": "2026-11-14T15:22:25.120Z",
+  "at": "2026-11-14T20:03:44.259Z",
   "total": 208,
-  "done": 204,
-  "stoppedBy": "cuota diaria gratuita de voz agotada (en los dos modelos)",
-  "requests": 22
+  "done": 208,
+  "requests": 1
  }
 }
